@@ -8,32 +8,67 @@ exports.handler = async function () {
     };
   }
 
+  const teamId = 49;
+  const season = 2025;
+  const competitions = [39, 2, 45, 48];
+
   try {
-    const res = await fetch(
-      "https://v3.football.api-sports.io/leagues?season=2025&team=49",
-      {
-        headers: {
-          "x-apisports-key": apiKey
+    const playersMap = new Map();
+
+    for (const leagueId of competitions) {
+      const res = await fetch(
+        `https://v3.football.api-sports.io/players?league=${leagueId}&season=${season}&team=${teamId}`,
+        {
+          headers: {
+            "x-apisports-key": apiKey
+          }
         }
+      );
+
+      const data = await res.json();
+      const players = data.response || [];
+
+      for (const entry of players) {
+        const name = entry.player?.name;
+        const stats = entry.statistics?.[0];
+
+        if (!name || !stats) continue;
+
+        const goals = stats.goals?.total || 0;
+        const assists = stats.goals?.assists || 0;
+
+        if (!playersMap.has(name)) {
+          playersMap.set(name, {
+            name,
+            goals: 0,
+            assists: 0
+          });
+        }
+
+        const player = playersMap.get(name);
+        player.goals += goals;
+        player.assists += assists;
       }
-    );
+    }
 
-    const data = await res.json();
+    const players = Array.from(playersMap.values());
 
-    const competitions = (data.response || []).map(item => ({
-      id: item.league.id,
-      name: item.league.name
-    }));
+    const top = players
+      .map(p => ({
+        ...p,
+        ga: p.goals + p.assists
+      }))
+      .sort((a, b) => b.ga - a.ga)[0];
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ competitions })
+      body: JSON.stringify({ top })
     };
-  } catch (error) {
+  } catch (err) {
     return {
       statusCode: 500,
       body: JSON.stringify({
-        error: error.message
+        error: err.message
       })
     };
   }
