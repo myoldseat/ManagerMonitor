@@ -8,11 +8,9 @@ exports.handler = async function () {
     };
   }
 
-  const teamId = 49;
-
   try {
     const res = await fetch(
-      `https://v3.football.api-sports.io/players/squads?team=${teamId}`,
+      "https://v3.football.api-sports.io/standings?league=39&season=2025",
       {
         headers: {
           "x-apisports-key": apiKey
@@ -21,21 +19,24 @@ exports.handler = async function () {
     );
 
     const data = await res.json();
-    const players = data.response?.[0]?.players || [];
 
-    const top5 = players
-      .filter(p => p.position !== "Goalkeeper")
-      .slice(0, 5)
-      .map(p => ({
-        name: p.name,
-        goals: 0,
-        assists: 0,
-        ga: 0
-      }));
+    const table = data?.response?.[0]?.league?.standings?.[0] || [];
+
+    const top7 = table.slice(0, 7).map(team => ({
+      rank: team.rank,
+      team: team.team.name,
+      played: team.all.played,
+      win: team.all.win,
+      draw: team.all.draw,
+      lose: team.all.lose,
+      gd: team.goalsDiff,
+      points: team.points,
+      form: team.form || ""
+    }));
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ top5 })
+      body: JSON.stringify({ top7 })
     };
   } catch (err) {
     return {
