@@ -9,67 +9,27 @@ exports.handler = async function () {
   }
 
   const teamId = 49;
-  const season = 2025;
-  const competitions = [39, 2, 45, 48];
 
   try {
-    const playersMap = new Map();
-
-    for (const leagueId of competitions) {
-      let page = 1;
-      let hasMore = true;
-
-      while (hasMore) {
-        const res = await fetch(
-          `https://v3.football.api-sports.io/players?league=${leagueId}&season=${season}&team=${teamId}&page=${page}`,
-          {
-            headers: {
-              "x-apisports-key": apiKey
-            }
-          }
-        );
-
-        const data = await res.json();
-        const players = data.response || [];
-
-        for (const entry of players) {
-          const name = entry.player?.name;
-          const stats = entry.statistics?.[0];
-
-          if (!name || !stats) continue;
-
-          const goals = stats.goals?.total || 0;
-          const assists = stats.goals?.assists || 0;
-
-          if (!playersMap.has(name)) {
-            playersMap.set(name, {
-              name,
-              goals: 0,
-              assists: 0
-            });
-          }
-
-          const player = playersMap.get(name);
-          player.goals += goals;
-          player.assists += assists;
-        }
-
-        const totalPages = data.paging?.total || 1;
-        page++;
-
-        if (page > totalPages) {
-          hasMore = false;
+    const res = await fetch(
+      `https://v3.football.api-sports.io/players/squads?team=${teamId}`,
+      {
+        headers: {
+          "x-apisports-key": apiKey
         }
       }
-    }
+    );
 
-    const top5 = Array.from(playersMap.values())
-      .map(player => ({
-        ...player,
-        ga: player.goals + player.assists
-      }))
-      .sort((a, b) => b.ga - a.ga)
-      .slice(0, 5);
+    const data = await res.json();
+    const players = data.response?.[0]?.players || [];
+
+    // TEMP FAKE stats just to confirm pipeline
+    const top5 = players.slice(0, 5).map(p => ({
+      name: p.name,
+      goals: 0,
+      assists: 0,
+      ga: 0
+    }));
 
     return {
       statusCode: 200,
