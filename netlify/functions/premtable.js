@@ -1,9 +1,9 @@
 exports.handler = async function () {
   const apiKey = process.env.API_FOOTBALL_KEY;
-
   if (!apiKey) {
     return {
       statusCode: 500,
+      headers: { "Access-Control-Allow-Origin": "*" },
       body: JSON.stringify({ error: "Missing API_FOOTBALL_KEY" })
     };
   }
@@ -18,17 +18,35 @@ exports.handler = async function () {
       }
     );
 
+    if (!res.ok) {
+      return {
+        statusCode: res.status,
+        headers: { "Access-Control-Allow-Origin": "*" },
+        body: JSON.stringify({ error: `API error: ${res.status} ${res.statusText}` })
+      };
+    }
+
     const data = await res.json();
+
+    if (data.errors && Object.keys(data.errors).length > 0) {
+      return {
+        statusCode: 403,
+        headers: { "Access-Control-Allow-Origin": "*" },
+        body: JSON.stringify({ error: data.errors })
+      };
+    }
 
     const table = data?.response?.[0]?.league?.standings?.[0] || [];
 
-    const top7 = table.slice(0, 7).map(team => ({
+    const standings = table.map(team => ({
       rank: team.rank,
       team: team.team.name,
       played: team.all.played,
       win: team.all.win,
       draw: team.all.draw,
       lose: team.all.lose,
+      gf: team.all.goals.for,
+      ga: team.all.goals.against,
       gd: team.goalsDiff,
       points: team.points,
       form: team.form || ""
@@ -36,14 +54,15 @@ exports.handler = async function () {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ top7 })
+      headers: { "Access-Control-Allow-Origin": "*" },
+      body: JSON.stringify({ standings })
     };
+
   } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({
-        error: err.message
-      })
-    };
+      headers: { "Access-Control-Allow-Origin": "*" },
+      body: JSON.stringify({ error: err.message })
+     };
   }
 };
