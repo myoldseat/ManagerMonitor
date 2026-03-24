@@ -1689,6 +1689,17 @@ html {
     </div>
     <a href="https://ko-fi.com/myoldseat" target="_blank" class="kofi-btn-small" id="kofi-strip-btn">☕ Buy me a coffee</a>
   </div>
+ <!-- PL TABLE TILE -->
+  <div style="max-width:480px;width:100%;margin-top:14px;background:rgba(255,255,255,.025);border:1px solid rgba(3,70,148,.34);border-radius:4px;overflow:hidden;">
+    <div style="background:rgba(3,70,148,.12);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(3,70,148,.22);">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#60a5fa;">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League Table</div>
+      <div id="plTableSub" style="font-size:.6rem;color:rgba(255,255,255,.28);">Loading…</div>
+    </div>
+    <div style="padding:10px 16px 12px;">
+      <div id="plTableInner" style="font-size:.68rem;color:rgba(255,255,255,.3);text-align:center;padding:14px 0;">Fetching table…</div>
+    </div>
+  </div>
+
  <!-- MARKET VALUE TILE -->
   <div style="max-width:480px;width:100%;margin-top:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:4px;overflow:hidden;">
 
@@ -3807,6 +3818,54 @@ window.addEventListener('DOMContentLoaded', function(){
   } else {
     syncMoneyIntroFromTable();
   }
+})();
+</script>
+
+<script>
+(function(){
+  async function loadPLTable(){
+    try {
+      const res = await fetch('/.netlify/functions/premtable');
+      const json = await res.json();
+      const plData = json.standings || [];
+      const sub = document.getElementById('plTableSub');
+      if(sub && plData[0]) sub.textContent = 'GW ' + plData[0].played;
+      const el = document.getElementById('plTableInner');
+      if(!el || !plData.length) return;
+      const th = 'padding:0 4px 6px;font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.22);';
+      const rows = plData.slice(0,8).map(t => {
+        const isChelsea = t.team.toLowerCase().includes('chelsea');
+        const gd = t.gd > 0 ? '+'+t.gd : t.gd;
+        const bg      = isChelsea ? 'background:rgba(3,70,148,.15);' : '';
+        const nameCol = isChelsea ? 'color:var(--gold);font-weight:700;' : 'color:rgba(255,255,255,.75);';
+        const posCol  = isChelsea ? 'color:var(--gold);' : 'color:rgba(255,255,255,.28);';
+        const ptsCol  = isChelsea ? 'color:var(--gold);' : 'color:rgba(255,255,255,.9);';
+        const border  = t.rank === 5 ? 'border-bottom:2px solid rgba(74,222,128,.6);' : 'border-bottom:1px solid rgba(255,255,255,.04);';
+        return `<tr style="${bg}${border}">
+          <td style="padding:5px 4px;font-family:'Bebas Neue',sans-serif;font-size:.82rem;${posCol}width:16px;text-align:center;">${t.rank}</td>
+          <td style="padding:5px 6px;font-size:.72rem;${nameCol}text-align:left;">${t.team}</td>
+          <td style="padding:5px 4px;font-size:.65rem;color:rgba(255,255,255,.35);text-align:center;">${t.played}</td>
+          <td style="padding:5px 4px;font-size:.65rem;color:rgba(255,255,255,.35);text-align:center;">${gd}</td>
+          <td style="padding:5px 4px;font-family:'Bebas Neue',sans-serif;font-size:.95rem;${ptsCol}text-align:center;">${t.points}</td>
+        </tr>`;
+      }).join('');
+      el.innerHTML = `
+        <table style="width:100%;border-collapse:collapse;">
+          <thead><tr style="border-bottom:1px solid rgba(255,255,255,.07);">
+            <th style="${th}text-align:left;">#</th>
+            <th style="${th}text-align:left;">Team</th>
+            <th style="${th}text-align:center;">P</th>
+            <th style="${th}text-align:center;">GD</th>
+            <th style="${th}text-align:center;">Pts</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    } catch(e) {
+      const el = document.getElementById('plTableInner');
+      if(el) el.innerHTML = '<div style="font-size:.68rem;color:#f87171;text-align:center;padding:14px 0;">Could not load table</div>';
+    }
+  }
+  loadPLTable();
 })();
 </script>
 
