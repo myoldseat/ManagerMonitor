@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chelsea FC Injury Tracker 2025–26 | hasliamroseniorbeensackedyet.com</title>
+  <meta name="description" content="Every Chelsea FC injury in the 2025–26 season tracked. Club World Cup to now. Days lost, games missed, injury type — player by player.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://hasliamroseniorbeensackedyet.com/injuries">
+
+  <meta property="og:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg">  <meta property="og:title" content="Chelsea FC Injury Tracker 2025–26">
+  <meta property="og:description" content="Every Chelsea injury this season. Days lost. Games missed. The full damage report.">
+  <meta property="og:url" content="https://hasliamroseniorbeensackedyet.com/injuries">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23080810'/%3E%3Ctext x='50' y='72' font-family='Arial Black,sans-serif' font-size='62' font-weight='900' fill='%23cc1100' text-anchor='middle' letter-spacing='-2'%3ENO%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --blue:#034694;--white:#f5f5f0;--gold:#C8A951;--dark:#080810;--red:#cc1100;
+      --green:#4ade80;--amber:#fbbf24;--rose:#f87171;--sky:#60a5fa;
+    }
+    body{background:var(--dark);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+    /* ── Ticker ── */
+    .ticker{background:var(--blue);padding:7px 0;overflow:hidden;border-bottom:2px solid var(--gold);}
+    .ticker-inner{display:flex;animation:ticker 28s linear infinite;white-space:nowrap;}
+    .ticker span{font-family:'Bebas Neue',sans-serif;font-size:.82rem;letter-spacing:.12em;padding:0 28px;color:var(--gold);}
+    .ticker span.bad{color:#ff7070;}
+    .ticker span.sep{color:rgba(255,255,255,.2);}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── Page wrap ── */
+    .page-wrap{display:flex;flex-direction:column;align-items:center;padding:26px 18px 50px;}
+
+    /* ── Back link ── */
+    .back-link{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;align-self:flex-start;}
+    .back-link:hover{color:rgba(255,255,255,.55);}
+
+    /* ── Header ── */
+    .page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,9vw,4.2rem);line-height:.9;letter-spacing:.03em;color:var(--white);margin-bottom:4px;align-self:flex-start;}
+    .page-title span{color:var(--red);-webkit-text-stroke:1px rgba(255,100,100,.4);}
+    .page-sub{font-size:.68rem;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;align-self:flex-start;}
+
+    /* ── Summary bar ── */
+    .summary-bar{max-width:480px;width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px;}
+    .sum-cell{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:10px 8px;text-align:center;cursor:pointer;transition:all .18s;}
+    .sum-cell:hover,.sum-cell.active{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.05);}
+    .sum-val{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;line-height:1;}
+    .sum-lbl{font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:2px;}
+
+    /* ── Controls ── */
+    .controls{max-width:480px;width:100%;display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
+    .ctrl-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:5px 12px;font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);cursor:pointer;transition:all .18s;}
+    .ctrl-btn:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.9);}
+    .filter-wrap{position:relative;}
+    .filter-menu{display:none;position:absolute;top:30px;left:0;background:#0d0d1a;border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:4px;z-index:100;min-width:170px;box-shadow:0 4px 20px rgba(0,0,0,.7);}
+    .filter-menu.open{display:block;}
+    .filter-menu button{display:block;width:100%;text-align:left;padding:7px 12px;font-size:.67rem;color:rgba(255,255,255,.5);background:none;border:none;cursor:pointer;border-radius:3px;transition:all .14s;}
+    .filter-menu button:hover{background:rgba(255,255,255,.07);color:rgba(255,255,255,.9);}
+
+    /* ── Injury list ── */
+    .injury-wrap{max-width:480px;width:100%;display:flex;flex-direction:column;gap:6px;}
+
+    .inj-row{position:relative;overflow:hidden;display:flex;align-items:flex-start;gap:10px;padding:11px 12px;background:rgba(255,255,255,.03);border-radius:3px;border-left:3px solid rgba(255,255,255,.08);transition:background .15s;}
+    .inj-row:hover{background:rgba(255,255,255,.05);}
+    .inj-row>*{position:relative;z-index:1;}
+    .inj-fill{position:absolute;top:0;left:0;height:100%;z-index:0;opacity:.1;}
+
+    .inj-row.sev-critical{border-left-color:#f87171;}
+    .inj-row.sev-major{border-left-color:#fb923c;}
+    .inj-row.sev-moderate{border-left-color:#fbbf24;}
+    .inj-row.sev-minor{border-left-color:#60a5fa;}
+    .inj-row.sev-current{border-left-color:#f87171;}
+
+    .inj-row.sev-critical .inj-fill{background:#f87171;}
+    .inj-row.sev-major .inj-fill{background:#fb923c;}
+    .inj-row.sev-moderate .inj-fill{background:#fbbf24;}
+    .inj-row.sev-minor .inj-fill{background:#60a5fa;}
+    .inj-row.sev-current .inj-fill{background:#f87171;}
+
+    .inj-sev{font-family:'Bebas Neue',sans-serif;font-size:.68rem;letter-spacing:.06em;width:38px;flex-shrink:0;margin-top:2px;}
+    .inj-row.sev-critical .inj-sev{color:#f87171;}
+    .inj-row.sev-major .inj-sev{color:#fb923c;}
+    .inj-row.sev-moderate .inj-sev{color:#fbbf24;}
+    .inj-row.sev-minor .inj-sev{color:#60a5fa;}
+    .inj-row.sev-current .inj-sev{color:#f87171;}
+
+    .inj-content{flex:1;min-width:0;}
+    .inj-name{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.92);margin-bottom:2px;}
+    .inj-type{font-size:.68rem;color:rgba(255,255,255,.38);line-height:1.35;}
+    .inj-meta{font-size:.63rem;margin-top:3px;color:rgba(255,255,255,.28);display:flex;flex-wrap:wrap;gap:6px;}
+    .inj-tag{display:inline-block;padding:1px 6px;border-radius:2px;font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+    .inj-tag.current{background:rgba(248,113,113,.12);color:#f87171;border:1px solid rgba(248,113,113,.2);}
+    .inj-tag.recovered{background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);}
+    .inj-tag.repeat{background:rgba(251,146,60,.1);color:#fb923c;border:1px solid rgba(251,146,60,.2);}
+
+    .inj-stats{flex-shrink:0;text-align:right;margin-left:6px;}
+    .inj-days{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;line-height:1;color:rgba(255,255,255,.85);}
+    .inj-days-lbl{font-size:.52rem;color:rgba(255,255,255,.22);letter-spacing:.08em;text-transform:uppercase;}
+    .inj-games{font-size:.62rem;color:rgba(255,255,255,.28);margin-top:2px;}
+
+    /* ── Section divider ── */
+    .section-div{max-width:480px;width:100%;display:flex;align-items:center;gap:10px;margin:14px 0 8px;}
+    .section-div-label{font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2);white-space:nowrap;}
+    .section-div-line{flex:1;height:1px;background:rgba(255,255,255,.06);}
+
+    /* ── Totals panel ── */
+    .totals-panel{max-width:480px;width:100%;margin-top:16px;background:rgba(255,255,255,.025);border:1px solid rgba(248,113,113,.2);border-radius:4px;overflow:hidden;}
+    .totals-header{background:rgba(248,113,113,.08);padding:9px 14px;border-bottom:1px solid rgba(248,113,113,.15);}
+    .totals-header-title{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#f87171;}
+    .totals-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+    .totals-cell{padding:12px 14px;text-align:center;border-right:1px solid rgba(255,255,255,.05);}
+    .totals-cell:last-child{border-right:none;}
+    .totals-val{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;line-height:1;}
+    .totals-lbl{font-size:.54rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:2px;}
+
+    /* ── Legend ── */
+    .legend{max-width:480px;width:100%;margin-top:10px;font-size:.6rem;color:rgba(255,255,255,.22);line-height:1.9;display:flex;flex-wrap:wrap;gap:6px 16px;}
+    .legend-item{display:flex;align-items:center;gap:5px;}
+    .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+    /* ── Footer ── */
+    .page-footer{max-width:480px;width:100%;text-align:center;padding:18px 0 0;font-size:.6rem;color:rgba(255,255,255,.18);border-top:1px solid rgba(255,255,255,.06);margin-top:16px;line-height:1.8;}
+    .page-footer a{color:#4a90d9;text-decoration:none;}
+  </style>
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>CHELSEA INJURY TRACKER 2025–26</span><span class="sep">◆</span>
+    <span class="bad">CLUB WORLD CUP → NOW</span><span class="sep">◆</span>
+    <span class="bad">COLWILL: ACL · SEASON OVER</span><span class="sep">◆</span>
+    <span class="bad">JAMES: HAMSTRING · ~6 WEEKS</span><span class="sep">◆</span>
+    <span class="bad">CHALOBAH: ANKLE · ~6 WEEKS</span><span class="sep">◆</span>
+    <span>DELAP: 2 INJURIES THIS SEASON</span><span class="sep">◆</span>
+    <span class="bad">MUDRYK: DOPING BAN · SEASON OVER</span><span class="sep">◆</span>
+    <span>CHELSEA INJURY TRACKER 2025–26</span><span class="sep">◆</span>
+    <span class="bad">CLUB WORLD CUP → NOW</span><span class="sep">◆</span>
+    <span class="bad">COLWILL: ACL · SEASON OVER</span><span class="sep">◆</span>
+    <span class="bad">JAMES: HAMSTRING · ~6 WEEKS</span><span class="sep">◆</span>
+    <span class="bad">CHALOBAH: ANKLE · ~6 WEEKS</span><span class="sep">◆</span>
+    <span>DELAP: 2 INJURIES THIS SEASON</span><span class="sep">◆</span>
+    <span class="bad">MUDRYK: DOPING BAN · SEASON OVER</span><span class="sep">◆</span>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <a href="/" class="back-link">← Back to main site</a>
+  <div class="page-title">DAMAGE<br><span>REPORT</span></div>
+  <div class="page-sub">Chelsea FC · 2025–26 · Club World Cup → Mar 2026</div>
+
+  <!-- SUMMARY BAR -->
+  <div class="summary-bar" style="grid-template-columns:repeat(5,1fr);">
+    <div class="sum-cell" data-filter="all">
+      <div class="sum-val" id="sumTotal" style="color:#f87171;">0</div>
+      <div class="sum-lbl">Injuries</div>
+    </div>
+    <div class="sum-cell" data-filter="current">
+      <div class="sum-val" id="sumCurrent" style="color:#f87171;">0</div>
+      <div class="sum-lbl">Out Now</div>
+    </div>
+    <div class="sum-cell" data-filter="ironmen">
+      <div class="sum-val" id="sumIron" style="color:#4ade80;">0</div>
+      <div class="sum-lbl">Iron Men</div>
+    </div>
+    <div class="sum-cell" data-filter="all">
+      <div class="sum-val" id="sumDays" style="color:#fbbf24;">0</div>
+      <div class="sum-lbl">Days Lost</div>
+    </div>
+    <div class="sum-cell" data-filter="all">
+      <div class="sum-val" id="sumGames" style="color:#fb923c;">0</div>
+      <div class="sum-lbl">Games Lost</div>
+    </div>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <button class="ctrl-btn" id="sortBtn">Most Days Lost</button>
+    <div class="filter-wrap">
+      <button class="ctrl-btn" id="filterToggle">Filter ▾</button>
+      <div class="filter-menu" id="filterMenu">
+        <button data-filter="all">All + Iron Men</button>
+        <button data-filter="current">Currently injured</button>
+        <button data-filter="recovered">Recovered</button>
+        <button data-filter="ironmen">💪 Iron Men only</button>
+        <button data-filter="critical">Critical (60+ days)</button>
+        <button data-filter="defenders">Defenders</button>
+        <button data-filter="midfielders">Midfielders</button>
+        <button data-filter="attackers">Attackers</button>
+        <button data-filter="repeat">Repeat injuries</button>
+        <button data-filter="hamstring">Hamstring</button>
+        <button data-filter="cwc">From Club World Cup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INJURY LIST -->
+  <div class="injury-wrap" id="injuryList"></div>
+
+  <!-- TOTALS PANEL -->
+  <div class="totals-panel" id="totalsPanel">
+    <div class="totals-header"><div class="totals-header-title">💀 Season damage — all competitions</div></div>
+    <div class="totals-grid">
+      <div class="totals-cell">
+        <div class="totals-val" style="color:#f87171;" id="tDays">0</div>
+        <div class="totals-lbl">Player-days lost</div>
+      </div>
+      <div class="totals-cell">
+        <div class="totals-val" style="color:#fb923c;" id="tGames">0</div>
+        <div class="totals-lbl">Player-games lost</div>
+      </div>
+      <div class="totals-cell">
+        <div class="totals-val" style="color:#fbbf24;" id="tPlayers">0</div>
+        <div class="totals-lbl">Players affected</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#f87171;"></div>Critical (60+ days)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#fb923c;"></div>Major (30–59 days)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#fbbf24;"></div>Moderate (14–29 days)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#60a5fa;"></div>Minor (&lt;14 days)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4ade80;"></div>Still out</div>
+  </div>
+
+  <div class="page-footer">
+    Sources: Sports Mole · 3 Added Minutes · Yahoo Sports · The Athletic · Chelsea FC · SI.com<br>
+    Days out are approximate. Games missed include all competitions. Updated 22 March 2026.<br>
+    Unofficial fan project · Not affiliated with Chelsea FC ·
+    <a href="/">← hasliamroseniorbeensackedyet.com</a> ·
+    <a href="/deals">Deals</a> ·
+    <a href="/blueco">BlueCo</a>
+  </div>
+</div>
+
+
+
+<div style="max-width:480px;margin:18px auto 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.05);">
+  <div style="font-size:.54rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:8px;">Related analysis</div>
+  <div style="font-size:.66rem;color:rgba(255,255,255,.34);line-height:1.7;">Availability is part of the BlueCo equation too. Long contracts, high wages and transfer fees look very different once recurring absences start wiping out minutes and resale confidence.</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+    <a href="/chelsea-blueco-analysis" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">BlueCo overview</a>
+    <a href="/blueco" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">BlueCo books</a>
+    <a href="/audit" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Squad audit</a>
+    <a href="/wages" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Wages</a>
+    <a href="/deals" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Deals</a>
+  </div>
+</div>
+<script>
+// ── Injury data ──────────────────────────────────────────────────────────────
+// severity: "critical" (60+d), "major" (30-59d), "moderate" (14-29d), "minor" (<14d), "current" (still out)
+// pos: D/M/A (defender/midfielder/attacker)
+// repeat: true if player had 2+ injuries this season
+// cwc: from Club World Cup era
+
+const injuries = [
+
+  // ── CURRENTLY OUT ──────────────────────────────────────────
+  {
+    name: "Levi Colwill",
+    pos: "D",
+    injury: "ACL — right knee",
+    detail: "Sustained in preseason training at Cobham, Aug 2025, after Club World Cup. Surgery successful. Won't return this season.",
+    start: "Aug 2025",
+    returnDate: "Late Apr 2026",
+    days: 240,
+    games: 45,
+    severity: "current",
+    current: true,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Mykhailo Mudryk",
+    pos: "A",
+    injury: "Doping ban — banned substance",
+    detail: "Failed doping test Dec 2024. Provisionally suspended. Expected to miss the entire 2025–26 season.",
+    start: "Dec 2024",
+    returnDate: "Jun 2026",
+    days: 210,
+    games: 40,
+    severity: "current",
+    current: true,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Reece James",
+    pos: "D",
+    injury: "Hamstring — right leg",
+    detail: "Felt hamstring at end of Newcastle defeat (14 Mar). Ruled out of England March internationals. Late April return possible.",
+    start: "14 Mar 2026",
+    returnDate: "Late Apr 2026",
+    days: 40,
+    games: 8,
+    severity: "current",
+    current: true,
+    repeat: false,
+    cwc: false,
+    hamstring: true
+  },
+  {
+    name: "Trevoh Chalobah",
+    pos: "D",
+    injury: "Ankle — stretchered off",
+    detail: "Stretchered off vs PSG (17 Mar). Rosenior 'really worried' but scans showed not as serious as feared. Minor op. ~6 weeks out.",
+    start: "17 Mar 2026",
+    returnDate: "Late Apr 2026",
+    days: 35,
+    games: 7,
+    severity: "current",
+    current: true,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Filip Jörgensen",
+    pos: "D",
+    injury: "Groin — minor operation",
+    detail: "Sustained groin issue after PSG R16 first leg. Underwent minor surgery. Missed Newcastle and PSG home leg. Out ~3 weeks.",
+    start: "13 Mar 2026",
+    returnDate: "Apr 2026",
+    days: 28,
+    games: 5,
+    severity: "current",
+    current: true,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Jamie Gittens",
+    pos: "A",
+    injury: "Hamstring — muscle tear",
+    detail: "Forced off 25 mins into West Ham win (31 Jan). Confirmed muscle tear. Rosenior called it 'long-term'. Had a setback, missed further games.",
+    start: "31 Jan 2026",
+    returnDate: "Apr 2026",
+    days: 50,
+    games: 10,
+    severity: "current",
+    current: true,
+    repeat: false,
+    cwc: false,
+    hamstring: true
+  },
+  {
+    name: "Dário Essugo",
+    pos: "M",
+    injury: "Thigh (surgery) + muscle setback",
+    detail: "Thigh injury on Portugal U21 duty Sep 2025 — surgery. Returned to training Nov, then slipped in training Jan. Still not debuted for Chelsea.",
+    start: "Sep 2025",
+    returnDate: "Apr 2026",
+    days: 195,
+    games: 37,
+    severity: "current",
+    current: true,
+    repeat: true,
+    cwc: false,
+    hamstring: false
+  },
+
+  // ── RECOVERED ──────────────────────────────────────────────
+  {
+    name: "Cole Palmer",
+    pos: "A",
+    injury: "Groin — chronic (+ toe)",
+    detail: "Groin tweak vs West Ham pre-season (Aug). Managed it while playing, worsened. Maresca called it 'chronic'. Out Sep–Dec 2025. Returned Dec, still managing load.",
+    start: "Aug 2025",
+    returnDate: "Dec 2025",
+    days: 65,
+    games: 12,
+    severity: "critical",
+    current: false,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Liam Delap",
+    pos: "A",
+    injury: "Hamstring — right leg",
+    detail: "Chasing a long ball vs Fulham (30 Aug 2025). Immediately withdrawn. Out ~10 weeks until Oct/Nov 2025.",
+    start: "30 Aug 2025",
+    returnDate: "Oct 2025",
+    days: 59,
+    games: 11,
+    severity: "major",
+    current: false,
+    repeat: true,
+    cwc: false,
+    hamstring: true
+  },
+  {
+    name: "Liam Delap",
+    pos: "A",
+    injury: "Shoulder — landed awkwardly",
+    detail: "Senesi landed on his shoulder vs Bournemouth (6 Dec 2025). Arm put in sling. Out ~3 weeks.",
+    start: "6 Dec 2025",
+    returnDate: "Jan 2026",
+    days: 21,
+    games: 4,
+    severity: "moderate",
+    current: false,
+    repeat: true,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Roméo Lavia",
+    pos: "M",
+    injury: "Quadriceps — Club World Cup + recurrence",
+    detail: "Muscle issue from Club World Cup. Brief returns before recurrence vs Qarabag (5 Nov) — quad. Out again ~4–5 weeks. Managing load carefully.",
+    start: "Jun 2025",
+    returnDate: "Jan 2026",
+    days: 120,
+    games: 22,
+    severity: "critical",
+    current: false,
+    repeat: true,
+    cwc: true,
+    hamstring: false
+  },
+  {
+    name: "Benoît Badiashile",
+    pos: "D",
+    injury: "Muscle — Club World Cup + two recurrences",
+    detail: "Picked up unspecified muscle issue at Club World Cup. Returned Oct, re-injured (muscle, missed to Dec). Illness scare Mar 2026.",
+    start: "Jun 2025",
+    returnDate: "Dec 2025",
+    days: 90,
+    games: 17,
+    severity: "critical",
+    current: false,
+    repeat: true,
+    cwc: true,
+    hamstring: false
+  },
+  {
+    name: "Enzo Fernández",
+    pos: "M",
+    injury: "Bone edema — knee",
+    detail: "Admitted he'd been carrying a knee problem for 4 months (Nov 2025). Withdrew from Argentina. Out ~2–3 weeks. Managed back to fitness.",
+    start: "Nov 2025",
+    returnDate: "Dec 2025",
+    days: 21,
+    games: 4,
+    severity: "moderate",
+    current: false,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Marc Cucurella",
+    pos: "D",
+    injury: "Hamstring — left leg",
+    detail: "Forced off at half-time vs Leeds (10 Feb 2026). Rosenior confirmed hamstring. Missed Hull, Arsenal, Wolves, Wrexham, PSG x2, Newcastle, Everton.",
+    start: "10 Feb 2026",
+    returnDate: "Mar 2026",
+    days: 38,
+    games: 8,
+    severity: "major",
+    current: false,
+    repeat: false,
+    cwc: false,
+    hamstring: true
+  },
+  {
+    name: "Estêvão Willian",
+    pos: "A",
+    injury: "Hamstring — training",
+    detail: "Injured in training eve of Burnley draw (Feb 2026). Missed 6 matches. Returned with a cameo vs Everton (21 Mar) — looked sharp. The future of the club.",
+    start: "Feb 2026",
+    returnDate: "21 Mar 2026",
+    days: 28,
+    games: 6,
+    severity: "moderate",
+    current: false,
+    repeat: false,
+    cwc: false,
+    hamstring: true
+  },
+  {
+    name: "Pedro Neto",
+    pos: "A",
+    injury: "Groin — international duty",
+    detail: "Groin injury on Portugal duty Nov 2025. Withdrew from squad. Out ~2 weeks. Returned Dec 2025.",
+    start: "Nov 2025",
+    returnDate: "Dec 2025",
+    days: 14,
+    games: 3,
+    severity: "moderate",
+    current: false,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Andrey Santos",
+    pos: "M",
+    injury: "Knock — unspecified",
+    detail: "Brief knock kept him out late Jan 2026. Short-term absence only.",
+    start: "Jan 2026",
+    returnDate: "Feb 2026",
+    days: 10,
+    games: 2,
+    severity: "minor",
+    current: false,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Joao Pedro",
+    pos: "A",
+    injury: "Groin — managed",
+    detail: "Carrying groin issue Nov 2025. Not 100% vs Brentford. Managed through fixtures by Maresca.",
+    start: "Nov 2025",
+    returnDate: "Dec 2025",
+    days: 7,
+    games: 1,
+    severity: "minor",
+    current: false,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Caleb Wiley",
+    pos: "D",
+    injury: "Muscle — unspecified",
+    detail: "Muscle injury late Jan 2026 after recall from Watford loan. Brief absence.",
+    start: "Jan 2026",
+    returnDate: "Feb 2026",
+    days: 14,
+    games: 3,
+    severity: "moderate",
+    current: false,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+  {
+    name: "Robert Sánchez",
+    pos: "D",
+    injury: "Muscle — unspecified",
+    detail: "Brief muscle issue mid-season. Short absence.",
+    start: "Oct 2025",
+    returnDate: "Nov 2025",
+    days: 14,
+    games: 3,
+    severity: "moderate",
+    current: false,
+    repeat: false,
+    cwc: false,
+    hamstring: false
+  },
+];
+
+// ── Iron men — available all season ─────────────────────────────────────────
+const ironMen = [
+  { name: "Moisés Caicedo",     pos: "M", note: "Ever-present engine. Overused if anything." },
+  { name: "Malo Gusto",         pos: "D", note: "Consistent at RB. Illness scare vs PSG but never injured." },
+  { name: "Tosin Adarabioyo",   pos: "D", note: "Reliable cover. No significant absence." },
+  { name: "Jorrel Hato",        pos: "D", note: "Stepped up admirably when others fell. Stayed fit." },
+  { name: "Mamadou Sarr",       pos: "D", note: "Recalled from Strasbourg Feb. No injuries since joining." },
+  { name: "Josh Acheampong",    pos: "D", note: "Academy graduate. Emerged as cover, never missed a beat." },
+  { name: "João Pedro",         pos: "A", note: "Managed minor groin Nov — never missed significant time." },
+  { name: "Alejandro Garnacho", pos: "A", note: "January arrival. No injuries since joining." },
+  { name: "Marc Guiu",          pos: "A", note: "Recalled from Sunderland. Fit and available throughout." },
+  { name: "Andrey Santos",      pos: "M", note: "Brief knock Jan aside — consistently available." },
+];
+
+// ── Helpers ─────────────────────────────────────────────────────────────────
+function sevLabel(s){
+  return s === "current" ? "OUT" :
+         s === "critical" ? "CRIT" :
+         s === "major" ? "MAJ" :
+         s === "moderate" ? "MOD" : "MIN";
+}
+
+function posLabel(p){ return p === "D" ? "Defender" : p === "M" ? "Midfielder" : "Attacker"; }
+
+function filterMatch(inj, f){
+  switch(f){
+    case "all": return true;
+    case "current": return inj.current;
+    case "recovered": return !inj.current;
+    case "critical": return inj.days >= 60;
+    case "defenders": return inj.pos === "D";
+    case "midfielders": return inj.pos === "M";
+    case "attackers": return inj.pos === "A";
+    case "repeat": return inj.repeat;
+    case "hamstring": return inj.hamstring;
+    case "cwc": return inj.cwc;
+    case "ironmen": return false; // handled separately
+    default: return true;
+  }
+}
+
+// ── Render ───────────────────────────────────────────────────────────────────
+let currentFilter = "all";
+let sortMode = "days"; // days | alpha | games
+
+function render(filter){
+  currentFilter = filter;
+  const list = document.getElementById("injuryList");
+
+  const showIronMenOnly = filter === "ironmen";
+  const showIronMen = filter === "all" || filter === "ironmen";
+
+  const filtered = showIronMenOnly ? [] : injuries
+    .filter(i => filterMatch(i, filter))
+    .sort((a, b) => {
+      if(a.current !== b.current) return a.current ? -1 : 1;
+      if(sortMode === "days") return b.days - a.days;
+      if(sortMode === "games") return b.games - a.games;
+      return a.name.localeCompare(b.name);
+    });
+
+  // Totals
+  const allDays = injuries.reduce((s, i) => s + i.days, 0);
+  const allGames = injuries.reduce((s, i) => s + i.games, 0);
+  const uniquePlayers = [...new Set(injuries.map(i => i.name))].length;
+  const currentCount = injuries.filter(i => i.current).length;
+
+  document.getElementById("sumTotal").textContent = injuries.length;
+  document.getElementById("sumCurrent").textContent = currentCount;
+  document.getElementById("sumIron").textContent = ironMen.length;
+  document.getElementById("sumDays").textContent = allDays;
+  document.getElementById("sumGames").textContent = allGames;
+  document.getElementById("tDays").textContent = allDays;
+  document.getElementById("tGames").textContent = allGames;
+  document.getElementById("tPlayers").textContent = uniquePlayers;
+
+  // Build rows
+  let html = "";
+  let lastGroup = null;
+
+  filtered.forEach(inj => {
+    const group = inj.current ? "current" : "recovered";
+    if(group !== lastGroup && filter === "all"){
+      const label = group === "current" ? "🔴 Currently out" : "✅ Recovered this season";
+      html += `<div class="section-div"><div class="section-div-label">${label}</div><div class="section-div-line"></div></div>`;
+      lastGroup = group;
+    }
+
+    const tags = [];
+    if(inj.current) tags.push(`<span class="inj-tag current">Out now</span>`);
+    else tags.push(`<span class="inj-tag recovered">Recovered</span>`);
+    if(inj.repeat) tags.push(`<span class="inj-tag repeat">Repeat</span>`);
+    if(inj.cwc) tags.push(`<span class="inj-tag repeat" style="color:#fbbf24;border-color:rgba(251,191,36,.2);background:rgba(251,191,36,.08);">CWC</span>`);
+
+    const fillPct = Math.min(100, Math.max(6, (inj.days / 240) * 100));
+
+    html += `<div class="inj-row sev-${inj.severity}">
+      <div class="inj-fill" style="width:${fillPct}%;"></div>
+      <div class="inj-sev">${sevLabel(inj.severity)}</div>
+      <div class="inj-content">
+        <div class="inj-name">${inj.name} <span style="font-size:.6rem;font-weight:400;color:rgba(255,255,255,.25);">${posLabel(inj.pos)}</span></div>
+        <div class="inj-type">${inj.injury}</div>
+        <div class="inj-meta">${tags.join("")} <span>${inj.start} → ${inj.returnDate}</span></div>
+        <div class="inj-meta" style="color:rgba(255,255,255,.22);font-size:.6rem;margin-top:3px;">${inj.detail}</div>
+      </div>
+      <div class="inj-stats">
+        <div class="inj-days">${inj.days}</div>
+        <div class="inj-days-lbl">days</div>
+        <div class="inj-games">~${inj.games} games</div>
+      </div>
+    </div>`;
+  });
+
+  // Iron men section
+  if(showIronMen){
+    html += `<div class="section-div"><div class="section-div-label">💪 Iron men — available all season</div><div class="section-div-line"></div></div>`;
+    ironMen.forEach(p => {
+      html += `<div class="inj-row" style="border-left-color:rgba(74,222,128,.35);background:rgba(74,222,128,.025);">
+        <div class="inj-fill" style="width:100%;background:#4ade80;opacity:.04;"></div>
+        <div class="inj-sev" style="color:#4ade80;">FIT</div>
+        <div class="inj-content">
+          <div class="inj-name">${p.name} <span style="font-size:.6rem;font-weight:400;color:rgba(255,255,255,.25);">${posLabel(p.pos)}</span></div>
+          <div class="inj-meta" style="color:rgba(74,222,128,.5);font-size:.63rem;margin-top:2px;">${p.note}</div>
+        </div>
+        <div class="inj-stats">
+          <div class="inj-days" style="color:#4ade80;">0</div>
+          <div class="inj-days-lbl">days</div>
+          <div class="inj-games" style="color:rgba(74,222,128,.4);">0 games</div>
+        </div>
+      </div>`;
+    });
+  }
+
+  list.innerHTML = html;
+  document.getElementById("sortBtn").textContent =
+    sortMode === "days" ? "Most Days Lost" :
+    sortMode === "games" ? "Most Games Lost" : "A–Z";
+}
+
+// ── Controls ─────────────────────────────────────────────────────────────────
+document.getElementById("sortBtn").addEventListener("click", () => {
+  sortMode = sortMode === "days" ? "games" : sortMode === "games" ? "alpha" : "days";
+  render(currentFilter);
+});
+
+const filterToggle = document.getElementById("filterToggle");
+const filterMenu = document.getElementById("filterMenu");
+filterToggle.addEventListener("click", () => filterMenu.classList.toggle("open"));
+filterMenu.querySelectorAll("button").forEach(btn => {
+  btn.addEventListener("click", () => { render(btn.dataset.filter); filterMenu.classList.remove("open"); });
+});
+document.addEventListener("click", e => {
+  if(!filterToggle.contains(e.target) && !filterMenu.contains(e.target)) filterMenu.classList.remove("open");
+});
+
+document.querySelectorAll(".sum-cell").forEach(cell => {
+  cell.addEventListener("click", () => {
+    document.querySelectorAll(".sum-cell").forEach(c => c.classList.remove("active"));
+    cell.classList.add("active");
+    if(cell.dataset.filter) render(cell.dataset.filter);
+  });
+});
+
+render("all");
+</script>
+</body>
+</html>

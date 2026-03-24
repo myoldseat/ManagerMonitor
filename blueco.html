@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlueCo Books — Chelsea FC Financial Breakdown | hasliamroseniorbeensackedyet.com</title>
+  <meta name="description" content="BlueCo's £1.165B debt, the real cost of missing the Champions League, the shopping spree, and the new SCR financial rules. Chelsea FC finances explained.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://hasliamroseniorbeensackedyet.com/blueco">
+  <meta property="og:title" content="BlueCo Books — Chelsea FC Financial Breakdown">
+  <meta property="og:description" content="£1.165B in debt. £650M net spend. Missing UCL costs ~£98M. The numbers behind the chaos.">
+  <meta property="og:url" content="https://hasliamroseniorbeensackedyet.com/blueco">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23080810'/%3E%3Ctext x='50' y='72' font-family='Arial Black,sans-serif' font-size='62' font-weight='900' fill='%23cc1100' text-anchor='middle' letter-spacing='-2'%3ENO%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{--blue:#034694;--white:#f5f5f0;--gold:#C8A951;--dark:#080810;--red:#cc1100;}
+    body{background:var(--dark);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+    /* ── Ticker ── */
+    .ticker{background:var(--blue);padding:8px 0;overflow:hidden;border-bottom:2px solid var(--gold);}
+    .ticker-inner{display:flex;animation:ticker 30s linear infinite;white-space:nowrap;}
+    .ticker span{font-family:'Bebas Neue',sans-serif;font-size:.85rem;letter-spacing:.12em;padding:0 32px;color:var(--gold);}
+    .ticker span.sep{color:rgba(255,255,255,.22);}
+    .ticker span.bad{color:#ff7070;}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── Page layout ── */
+    .page-wrap{display:flex;flex-direction:column;align-items:center;padding:28px 18px 40px;}
+    .back-link{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;align-self:flex-start;}
+    .back-link:hover{color:rgba(255,255,255,.6);}
+    .page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,8vw,4rem);line-height:.92;letter-spacing:.03em;color:var(--white);margin-bottom:4px;align-self:flex-start;}
+    .page-title span{color:var(--blue);-webkit-text-stroke:1.5px var(--gold);}
+    .page-sub{font-size:.72rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;align-self:flex-start;}
+
+    /* ── Shortcut bar ── */
+    .shortcut-bar{max-width:480px;width:100%;margin-bottom:16px;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;}
+    .shortcut-tile{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:8px 4px;text-align:center;text-decoration:none;cursor:pointer;transition:all .2s;}
+    .shortcut-tile:hover{background:rgba(3,70,148,.15);border-color:rgba(74,144,217,.3);}
+    .shortcut-label{font-family:'Bebas Neue',sans-serif;font-size:.72rem;letter-spacing:.1em;color:rgba(255,255,255,.45);line-height:1.2;display:block;}
+
+    /* ── Tile URL ── */
+    .tile-url{display:block;text-align:center;font-size:.58rem;color:rgba(255,255,255,.12);letter-spacing:.08em;margin-top:10px;}
+
+    /* ── Share button ── */
+    .tile-share-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);cursor:pointer;font-size:.62rem;font-weight:600;letter-spacing:.04em;transition:all .18s;white-space:nowrap;}
+    .tile-share-btn:hover{background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);}
+    .tile-share-btn.ok{color:#4ade80;border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.08);}
+
+    /* ── Money / Cost of failure ── */
+    .money-section{max-width:480px;width:100%;margin-top:14px;background:rgba(255,255,255,.025);border:1px solid rgba(204,17,0,.3);border-radius:4px;overflow:hidden;}
+    .money-header{background:rgba(204,17,0,.12);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(204,17,0,.2);gap:8px;flex-wrap:wrap;}
+    .money-header-title{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#f87171;}
+    .money-header-sub{font-size:.6rem;color:rgba(255,255,255,.3);letter-spacing:.05em;}
+    .money-body{padding:14px 16px;}
+    .money-intro{font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.5;margin-bottom:12px;}
+    .money-intro strong{color:rgba(255,255,255,.7);}
+    .money-rows{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
+    .money-row{display:flex;align-items:center;gap:10px;padding:8px 10px;background:rgba(255,255,255,.03);border-radius:3px;border-left:2px solid rgba(255,255,255,.08);}
+    .money-row.lost{border-left-color:#f87171;}
+    .money-row.note{border-left-color:#fbbf24;}
+    .money-row-label{font-size:.72rem;color:rgba(255,255,255,.55);flex:1;line-height:1.3;}
+    .money-row-label small{display:block;font-size:.6rem;color:rgba(255,255,255,.28);margin-top:1px;}
+    .money-row-val{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.04em;color:#f87171;flex-shrink:0;margin-left:12px;}
+    .money-row.note .money-row-val{color:#fbbf24;}
+    .money-divider{height:1px;background:rgba(255,255,255,.06);margin:10px 0;}
+    .money-total{display:flex;justify-content:space-between;align-items:center;padding:10px;background:rgba(204,17,0,.1);border-radius:3px;border:1px solid rgba(204,17,0,.25);}
+    .money-total-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+    .money-total-val{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:#ef4444;letter-spacing:.03em;}
+    .money-footer{margin-top:10px;font-size:.65rem;color:rgba(255,255,255,.22);line-height:1.5;font-style:italic;}
+    .xpts-bar{margin-top:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:3px;padding:10px 12px;}
+    .xpts-label{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:8px;display:flex;justify-content:space-between;}
+    .xpts-label span{color:rgba(255,255,255,.4);}
+    .xpts-teams{display:flex;flex-direction:column;gap:5px;}
+    .xpts-row{display:flex;align-items:center;gap:8px;font-size:.72rem;}
+    .xpts-pos{font-family:'Bebas Neue',sans-serif;font-size:.9rem;width:18px;text-align:right;color:rgba(255,255,255,.3);flex-shrink:0;}
+    .xpts-name{width:90px;color:rgba(255,255,255,.65);flex-shrink:0;}
+    .xpts-name.chelsea{color:var(--gold);font-weight:700;}
+    .xpts-track{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;}
+    .xpts-fill{height:100%;border-radius:3px;background:rgba(255,255,255,.25);}
+    .xpts-fill.chelsea-fill{background:var(--gold);}
+    .xpts-val{font-family:'Bebas Neue',sans-serif;font-size:.85rem;color:rgba(255,255,255,.4);width:38px;text-align:right;flex-shrink:0;}
+    .xpts-pct{font-size:.62rem;color:rgba(255,255,255,.28);width:50px;text-align:right;flex-shrink:0;}
+    .xpts-pct.good{color:#4ade80;}.xpts-pct.bad{color:#f87171;}
+
+    /* ── Debt mountain ── */
+    .debt-section{max-width:480px;width:100%;margin-top:14px;background:rgba(255,255,255,.025);border:1px solid rgba(200,169,81,.25);border-radius:4px;overflow:hidden;}
+    .debt-header{background:rgba(200,169,81,.08);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(200,169,81,.15);gap:8px;flex-wrap:wrap;}
+    .debt-header-title{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+    .debt-header-sub{font-size:.6rem;color:rgba(255,255,255,.28);}
+    .debt-body{padding:14px 16px;}
+    .debt-intro{font-size:.72rem;color:rgba(255,255,255,.38);line-height:1.55;margin-bottom:12px;}
+    .debt-intro strong{color:rgba(255,255,255,.7);}
+    .debt-loans{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+    .debt-loan{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:3px;padding:12px;position:relative;overflow:hidden;}
+    .debt-loan::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;}
+    .debt-loan.loan1::before{background:#f87171;}
+    .debt-loan.loan2::before{background:var(--gold);}
+    .debt-loan-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+    .debt-loan-name{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.38);}
+    .debt-loan-amount{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.03em;line-height:1;}
+    .debt-loan.loan1 .debt-loan-amount{color:#f87171;}
+    .debt-loan.loan2 .debt-loan-amount{color:var(--gold);}
+    .debt-loan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+    .debt-stat-label{font-size:.54rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:2px;}
+    .debt-stat-val{font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.04em;color:rgba(255,255,255,.7);}
+    .debt-loan-note{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.06);font-size:.68rem;color:rgba(255,255,255,.3);line-height:1.45;}
+    .debt-loan-note strong{color:rgba(255,255,255,.55);}
+    .debt-total{background:rgba(200,169,81,.08);border:1px solid rgba(200,169,81,.2);border-radius:3px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+    .debt-total-left{flex:1;}
+    .debt-total-label{font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);}
+    .debt-total-sub{font-size:.62rem;color:rgba(255,255,255,.22);margin-top:2px;}
+    .debt-total-val{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--gold);letter-spacing:.03em;}
+    .debt-ringfence{background:rgba(74,222,128,.05);border:1px solid rgba(74,222,128,.15);border-radius:3px;padding:10px 12px;font-size:.7rem;color:rgba(255,255,255,.35);line-height:1.5;}
+    .debt-ringfence strong{color:#4ade80;}
+    .debt-footer{margin-top:10px;font-size:.63rem;color:rgba(255,255,255,.18);line-height:1.5;font-style:italic;}
+
+    /* ── Shopping spree ── */
+    .transfer-section{max-width:480px;width:100%;margin-top:14px;background:rgba(255,255,255,.025);border:1px solid rgba(3,70,148,.4);border-radius:4px;overflow:hidden;}
+    .transfer-header{background:rgba(3,70,148,.15);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(3,70,148,.25);gap:8px;flex-wrap:wrap;}
+    .transfer-header-title{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#60a5fa;}
+    .transfer-header-sub{font-size:.6rem;color:rgba(255,255,255,.28);}
+    .transfer-body{padding:14px 16px;}
+    .transfer-intro{font-size:.72rem;color:rgba(255,255,255,.38);line-height:1.55;margin-bottom:14px;}
+    .transfer-intro strong{color:rgba(255,255,255,.75);}
+    .transfer-cols{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+    .transfer-col{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:3px;padding:12px;position:relative;overflow:hidden;}
+    .transfer-col::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+    .transfer-col.bought::before{background:#f87171;}
+    .transfer-col.sold::before{background:#4ade80;}
+    .transfer-col-label{font-size:.54rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:4px;}
+    .transfer-col-players{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:1;margin-bottom:2px;}
+    .transfer-col.bought .transfer-col-players{color:#f87171;}
+    .transfer-col.sold .transfer-col-players{color:#4ade80;}
+    .transfer-col-amount{font-size:.65rem;color:rgba(255,255,255,.28);}
+    .transfer-net{display:flex;justify-content:space-between;align-items:center;background:rgba(3,70,148,.12);border:1px solid rgba(3,70,148,.25);border-radius:3px;padding:10px 12px;margin-bottom:12px;}
+    .transfer-net-label{font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);}
+    .transfer-net-sub{font-size:.62rem;color:rgba(255,255,255,.22);margin-top:2px;}
+    .transfer-net-val{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:#60a5fa;letter-spacing:.03em;}
+    .transfer-quip{font-size:.72rem;color:rgba(255,255,255,.35);line-height:1.5;font-style:italic;}
+    .transfer-quip strong{color:rgba(255,255,255,.65);}
+
+    /* ── SCR rules ── */
+    .scr-section{max-width:480px;width:100%;margin-top:14px;background:rgba(255,255,255,.025);border:1px solid rgba(251,146,60,.25);border-radius:4px;overflow:hidden;}
+    .scr-header{background:rgba(251,146,60,.08);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(251,146,60,.15);gap:8px;flex-wrap:wrap;}
+    .scr-header-title{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fb923c;}
+    .scr-header-sub{font-size:.6rem;color:rgba(255,255,255,.28);}
+    .scr-body{padding:14px 16px;}
+    .scr-intro{font-size:.72rem;color:rgba(255,255,255,.38);line-height:1.55;margin-bottom:12px;}
+    .scr-intro strong{color:rgba(255,255,255,.7);}
+    .scr-zones{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px;}
+    .scr-zone{padding:10px 8px;border-radius:3px;text-align:center;}
+    .scr-zone.green{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);}
+    .scr-zone.amber{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);}
+    .scr-zone.red{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);}
+    .scr-zone-pct{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.03em;line-height:1;margin-bottom:3px;}
+    .scr-zone.green .scr-zone-pct{color:#4ade80;}
+    .scr-zone.amber .scr-zone-pct{color:#fbbf24;}
+    .scr-zone.red .scr-zone-pct{color:#f87171;}
+    .scr-zone-label{font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+    .scr-zone-desc{font-size:.6rem;color:rgba(255,255,255,.25);margin-top:3px;line-height:1.3;}
+    .scr-rows{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
+    .scr-row{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;background:rgba(255,255,255,.03);border-radius:3px;border-left:2px solid rgba(255,255,255,.08);}
+    .scr-row.warn{border-left-color:#fb923c;}
+    .scr-row.bad{border-left-color:#f87171;}
+    .scr-row.good{border-left-color:#4ade80;}
+    .scr-row-icon{font-size:1rem;flex-shrink:0;margin-top:1px;}
+    .scr-row-text{font-size:.72rem;color:rgba(255,255,255,.55);line-height:1.4;}
+    .scr-row-text strong{color:rgba(255,255,255,.8);}
+    .scr-footer{margin-top:10px;font-size:.63rem;color:rgba(255,255,255,.18);line-height:1.5;font-style:italic;}
+
+    /* ── Disclaimer ── */
+    .disclaimer{max-width:480px;width:100%;margin-top:10px;padding:12px 16px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:4px;font-size:.63rem;color:rgba(255,255,255,.22);line-height:1.6;text-align:center;}
+
+    /* ── Stadium ── */
+    .stadium-tile{max-width:480px;width:100%;margin:14px 0 4px;background:rgba(255,255,255,.025);border:1px solid rgba(96,165,250,.25);border-radius:4px;overflow:hidden;}
+    .stadium-header{background:rgba(96,165,250,.08);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(96,165,250,.15);gap:8px;flex-wrap:wrap;}
+    .stadium-header-title{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#60a5fa;}
+    .stadium-header-sub{font-size:.6rem;color:rgba(255,255,255,.28);}
+    .stadium-body{padding:14px 16px;}
+    .stadium-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px;}
+    .stadium-stat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:3px;padding:10px 12px;}
+    .stadium-stat-label{font-size:.54rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:3px;}
+    .stadium-stat-val{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.03em;line-height:1;}
+    .stadium-timeline{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
+    .stadium-event{display:flex;align-items:flex-start;gap:10px;padding:7px 10px;background:rgba(255,255,255,.03);border-radius:3px;border-left:2px solid rgba(255,255,255,.08);font-size:.68rem;}
+    .stadium-event.bad{border-left-color:#f87171;}
+    .stadium-event.warn{border-left-color:#fbbf24;}
+    .stadium-event.ok{border-left-color:#4ade80;}
+    .stadium-event.blue{border-left-color:#60a5fa;}
+    .stadium-year{font-family:'Bebas Neue',sans-serif;font-size:.9rem;color:rgba(255,255,255,.3);width:36px;flex-shrink:0;}
+    .stadium-event-text{color:rgba(255,255,255,.5);line-height:1.35;}
+    .stadium-event-text strong{color:rgba(255,255,255,.78);}
+    .stadium-compare{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px;}
+    .stadium-compare-club{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:3px;padding:8px 10px;text-align:center;}
+    .stadium-compare-name{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:3px;}
+    .stadium-compare-cap{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.03em;}
+    .stadium-compare-note{font-size:.58rem;color:rgba(255,255,255,.22);margin-top:2px;}
+    .stadium-quip{font-size:.7rem;color:rgba(255,255,255,.32);line-height:1.55;font-style:italic;text-align:center;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);}
+    .stadium-footer{margin-top:10px;font-size:.63rem;color:rgba(255,255,255,.18);line-height:1.5;font-style:italic;}
+
+    /* ── Footer ── */
+    .page-footer{text-align:center;padding:20px;font-size:.62rem;color:rgba(255,255,255,.2);border-top:1px solid rgba(255,255,255,.06);max-width:480px;width:100%;}
+    .page-footer a{color:#4a90d9;text-decoration:none;}
+  </style>
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>BLUECO BOOKS</span><span class="sep">◆</span>
+    <span class="bad">£1.165B IN DEBT</span><span class="sep">◆</span>
+    <span class="bad">MISSING UCL COSTS ~£98M</span><span class="sep">◆</span>
+    <span>56 SIGNINGS · ~£650M NET SPEND</span><span class="sep">◆</span>
+    <span class="bad">SCR RULES TIGHTEN FROM 2026–27</span><span class="sep">◆</span>
+    <span>BLUECO OWE £755M BY JUL 2027</span><span class="sep">◆</span>
+    <span>BLUECO BOOKS</span><span class="sep">◆</span>
+    <span class="bad">£1.165B IN DEBT</span><span class="sep">◆</span>
+    <span class="bad">MISSING UCL COSTS ~£98M</span><span class="sep">◆</span>
+    <span>56 SIGNINGS · ~£650M NET SPEND</span><span class="sep">◆</span>
+    <span class="bad">SCR RULES TIGHTEN FROM 2026–27</span><span class="sep">◆</span>
+    <span>BLUECO OWE £755M BY JUL 2027</span><span class="sep">◆</span>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <a href="/" class="back-link">← Back to the main site</a>
+  <div class="page-title">BLUECO<br><span>BOOKS</span></div>
+  <div class="page-sub">Chelsea FC finances · The numbers behind the chaos</div>
+
+  <!-- SHORTCUT BAR -->
+  <!-- SHORTCUT BAR — two rows -->
+  <div style="max-width:480px;width:100%;margin-bottom:16px;">
+    <div style="font-size:.52rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:4px;">Ownership &amp; Legal</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:8px;">
+      <a href="#structure" class="shortcut-tile"><span class="shortcut-label">Structure</span></a>
+      <a href="#timeline" class="shortcut-tile"><span class="shortcut-label">Timeline</span></a>
+      <a href="#exit-facts" class="shortcut-tile"><span class="shortcut-label">Exit</span></a>
+      <a href="#exit-exceptions" class="shortcut-tile"><span class="shortcut-label">Loopholes</span></a>
+      <a href="#post-2032" class="shortcut-tile"><span class="shortcut-label">Post 2032</span></a>
+    </div>
+    <div style="font-size:.52rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:4px;">Finance &amp; Football</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;">
+      <a href="#promises" class="shortcut-tile"><span class="shortcut-label">Promises</span></a>
+      <a href="#debt-mountain" class="shortcut-tile"><span class="shortcut-label">Debt</span></a>
+      <a href="#cost-of-failure" class="shortcut-tile"><span class="shortcut-label">Cost of Failure</span></a>
+      <a href="#shopping-spree" class="shortcut-tile"><span class="shortcut-label">Shopping Spree</span></a>
+      <a href="#scr-rules" class="shortcut-tile"><span class="shortcut-label">SCR Rules</span></a>
+      <a href="#stadium" class="shortcut-tile"><span class="shortcut-label">Stadium</span></a>
+    </div>
+  </div>
+
+  <!-- CORPORATE STRUCTURE — first tile -->
+  <div style="max-width:480px;width:100%;margin-top:14px;background:rgba(255,255,255,.025);border:1px solid rgba(167,139,250,.25);border-radius:4px;overflow:hidden;" id="structure">
+    <div style="background:rgba(167,139,250,.08);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(167,139,250,.15);gap:8px;flex-wrap:wrap;">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#a78bfa;">🏗️ Corporate Structure</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="font-size:.6rem;color:rgba(255,255,255,.28);">BlueCo empire · 2022–present</div>
+        <button onclick="openMap()" style="font-family:'DM Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:3px;border:1px solid rgba(167,139,250,.4);background:rgba(167,139,250,.12);color:#a78bfa;cursor:pointer;transition:all .18s;">🗺 MAP</button>
+      </div>
+    </div>
+    <div style="padding:14px 16px;">
+      <div style="background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.22);border-radius:3px;padding:9px 12px;margin-bottom:12px;display:flex;align-items:flex-start;gap:8px;">
+        <span style="font-size:1rem;flex-shrink:0;">🔒</span>
+        <div>
+          <div style="font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#4ade80;margin-bottom:3px;">The ring-fence</div>
+          <div style="font-size:.68rem;color:rgba(74,222,128,.7);line-height:1.5;">Chelsea FC Holdings is <strong style="color:#4ade80;">legally protected</strong> from the debt above it. The Ares PIK (£410M) sits at 22 HoldCo level. The RCF (£755M) sits at BlueCo 22 level. Neither is at the football club. Unlike Man United, where the Glazers loaded debt directly onto the club, Chelsea FC cannot be made liable for its owners' borrowing.</div>
+        </div>
+      </div>
+      <div style="font-size:.7rem;color:rgba(255,255,255,.35);line-height:1.55;margin-bottom:14px;">The pressure still flows down — miss the UCL and BlueCo's refinancing gets harder. But the legal liability does not. Tap each layer to expand.</div>
+
+      <style>
+        .cs-node{border-radius:3px;margin-bottom:4px;border:1px solid rgba(255,255,255,.08);overflow:hidden;cursor:pointer;}
+        .cs-node-header{display:flex;align-items:center;gap:8px;padding:9px 11px;transition:background .14s;}
+        .cs-node:hover .cs-node-header{background:rgba(255,255,255,.04);}
+        .cs-node.open .cs-node-header{background:rgba(255,255,255,.05);}
+        .cs-node-arrow{font-size:.55rem;color:rgba(255,255,255,.2);margin-left:auto;transition:transform .2s;flex-shrink:0;}
+        .cs-node.open .cs-node-arrow{transform:rotate(180deg);}
+        .cs-node-detail{display:none;padding:8px 11px 10px;border-top:1px solid rgba(255,255,255,.05);font-size:.68rem;color:rgba(255,255,255,.38);line-height:1.55;}
+        .cs-node.open .cs-node-detail{display:block;}
+        .cs-node-detail strong{color:rgba(255,255,255,.7);}
+        .cs-stat{display:inline-block;font-family:'DM Mono',monospace;font-size:.63rem;padding:2px 7px;border-radius:2px;margin:2px 3px 2px 0;border:1px solid;}
+        .cs-badge{font-size:.54rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:2px;border:1px solid;}
+
+        /* MAP MODAL */
+        #map-modal{display:none;position:fixed;inset:0;z-index:9999;background:rgba(4,4,12,.96);overflow-y:auto;-webkit-overflow-scrolling:touch;}
+        #map-modal.open{display:block;}
+        .map-modal-inner{padding:16px 14px 40px;max-width:480px;margin:0 auto;}
+        .map-close{position:sticky;top:12px;float:right;font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.12em;padding:5px 14px;border-radius:3px;border:1px solid rgba(167,139,250,.35);background:rgba(167,139,250,.1);color:#a78bfa;cursor:pointer;z-index:2;}
+
+        /* mind map nodes */
+        .mn{border-radius:4px;margin-bottom:3px;padding:8px 11px;border:1px solid;}
+        .mn-title{font-size:.76rem;font-weight:700;line-height:1.2;}
+        .mn-sub{font-size:.6rem;margin-top:2px;opacity:.6;}
+        .mn-children{margin-left:16px;margin-top:3px;border-left:1px solid rgba(255,255,255,.08);padding-left:10px;}
+        .mn-connector{font-size:.58rem;color:rgba(255,255,255,.15);margin:1px 0 3px 0;}
+
+        .mn-gray{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03);}
+        .mn-gray .mn-title{color:rgba(255,255,255,.75);}
+        .mn-red{border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.06);}
+        .mn-red .mn-title{color:#f87171;}
+        .mn-blue{border-color:rgba(96,165,250,.25);background:rgba(96,165,250,.05);}
+        .mn-blue .mn-title{color:#60a5fa;}
+        .mn-amber{border-color:rgba(251,191,36,.25);background:rgba(251,191,36,.04);}
+        .mn-amber .mn-title{color:#fbbf24;}
+        .mn-green{border-color:rgba(74,222,128,.2);background:rgba(74,222,128,.04);}
+        .mn-green .mn-title{color:#4ade80;}
+        .mn-orange{border-color:rgba(251,146,60,.2);background:rgba(251,146,60,.04);}
+        .mn-orange .mn-title{color:#fb923c;}
+        .mn-purple{border-color:rgba(167,139,250,.25);background:rgba(167,139,250,.05);}
+        .mn-purple .mn-title{color:#a78bfa;}
+
+        .mn-debt-row{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap;}
+        .psr-box{margin-top:10px;padding:9px 11px;border-radius:3px;border:1px solid rgba(248,113,113,.2);background:rgba(248,113,113,.05);}
+        .psr-box-title{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#f87171;margin-bottom:5px;}
+        .psr-box-body{font-size:.66rem;color:rgba(255,255,255,.38);line-height:1.55;}
+        .psr-box-body strong{color:rgba(255,255,255,.65);}
+        .map-source{font-size:.58rem;color:rgba(255,255,255,.16);font-style:italic;margin-top:16px;line-height:1.7;}
+      </style>
+
+      <!-- INVESTORS ROW -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px;">
+        <div class="cs-node" onclick="this.classList.toggle('open')" style="border-color:rgba(255,255,255,.1);">
+          <div class="cs-node-header">
+            <div><div style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.8);">Clearlake Capital</div><div style="font-size:.6rem;color:rgba(255,255,255,.3);margin-top:1px;">61.85% · Class A shares</div></div>
+            <span class="cs-node-arrow">▼</span>
+          </div>
+          <div class="cs-node-detail">Co-founders <strong>Behdad Eghbali</strong> and <strong>José Feliciano</strong>. Vehicle: Blues Investment Midco L.P. Holds <strong>Class A shares</strong> — downside protected. If BlueCo collapses and assets are sold, Class A is repaid first. Class B absorbs losses first. AUM ~$100B. HQ: Santa Monica, CA.</div>
+        </div>
+        <div class="cs-node" onclick="this.classList.toggle('open')" style="border-color:rgba(255,255,255,.1);">
+          <div class="cs-node-header">
+            <div><div style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.8);">Boehly / Walter / Wyss</div><div style="font-size:.6rem;color:rgba(255,255,255,.3);margin-top:1px;">38.15% · Class B shares</div></div>
+            <span class="cs-node-arrow">▼</span>
+          </div>
+          <div class="cs-node-detail">Vehicle: BlueCo 22 Holdings L.P. <strong>Todd Boehly</strong> (Eldridge, ~13%) — chairman, public face, holds veto. <strong>Mark Walter</strong> (Guggenheim, ~13%) — co-owns LA Dodgers. <strong>Hansjörg Wyss</strong> (~13%). Class B shares — absorb losses first if capital returned at a loss.</div>
+        </div>
+      </div>
+      <div style="font-size:.58rem;color:rgba(255,255,255,.2);text-align:center;margin:3px 0;font-style:italic;">Class A (Clearlake) protected on downside · Class B (Boehly group) absorbs losses first</div>
+      <div style="text-align:center;font-size:.58rem;color:rgba(255,255,255,.14);margin:2px 0;">↓ own 100% of</div>
+
+      <!-- 22 HOLDCO -->
+      <div class="cs-node" onclick="this.classList.toggle('open')" style="border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.04);">
+        <div class="cs-node-header">
+          <div style="flex:1;"><div style="font-size:.76rem;font-weight:700;color:#f87171;">22 HoldCo Limited</div><div style="font-size:.6rem;color:rgba(255,255,255,.3);margin-top:1px;">Top of the pyramid · Ares PIK loan here</div></div>
+          <span class="cs-badge" style="color:#fbbf24;border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.06);">£410M PIK</span>
+          <span class="cs-node-arrow">▼</span>
+        </div>
+        <div class="cs-node-detail">The parent entity. The Ares PIK loan sits at this level.<br><br>
+          <span class="cs-stat" style="color:#fbbf24;border-color:rgba(251,191,36,.3);">Ares PIK: £410M · 12.73% compounding · due Aug 2033</span><br><br>
+          Interest 2023/24: <strong>£94M+</strong>. Group loss 2023/24: <strong>£402M</strong>.
+        </div>
+      </div>
+      <div style="text-align:center;font-size:.58rem;color:rgba(255,255,255,.14);margin:2px 0;">↓ owns 100% of</div>
+
+      <!-- BLUECO 22 -->
+      <div class="cs-node" onclick="this.classList.toggle('open')" style="border-color:rgba(96,165,250,.25);background:rgba(96,165,250,.03);">
+        <div class="cs-node-header">
+          <div style="flex:1;"><div style="font-size:.76rem;font-weight:700;color:#60a5fa;">BlueCo 22 Limited</div><div style="font-size:.6rem;color:rgba(255,255,255,.3);margin-top:1px;">Operational vehicle · RCF loan here</div></div>
+          <span class="cs-badge" style="color:#f87171;border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.06);">£755M RCF</span>
+          <span class="cs-node-arrow">▼</span>
+        </div>
+        <div class="cs-node-detail">Incorporated <strong>2 March 2022</strong>. The RCF sits at this level — not at MidCo or the football club.<br><br>
+          <span class="cs-stat" style="color:#f87171;border-color:rgba(248,113,113,.3);">RCF: £755M · SONIA+3.25% · BOA &amp; JPM · due Jul 2027</span><br><br>
+          Splits into 6 subsidiaries: MidCo (football), Properties (hotels), Walsingham, Residential, Stamford Bridge Projects, Data.
+        </div>
+      </div>
+      <div style="text-align:center;font-size:.58rem;color:rgba(255,255,255,.14);margin:2px 0;">↓ splits into 6 subsidiaries</div>
+
+      <!-- SIX ARMS — show the most important 4, rest in expandable -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:4px;">
+        <div class="cs-node" onclick="this.classList.toggle('open')" style="border-color:rgba(96,165,250,.2);">
+          <div class="cs-node-header" style="flex-direction:column;align-items:flex-start;gap:3px;">
+            <div style="font-size:.66rem;font-weight:700;color:#60a5fa;">MidCo</div>
+            <div style="font-size:.58rem;color:rgba(255,255,255,.3);">Football</div>
+            <span class="cs-node-arrow" style="align-self:flex-end;margin-top:-8px;">▼</span>
+          </div>
+          <div class="cs-node-detail">Controls all football assets — Chelsea men, Chelsea Women, RC Strasbourg. Separate from property for regulatory clarity.</div>
+        </div>
+        <div class="cs-node" onclick="this.classList.toggle('open')" style="border-color:rgba(251,191,36,.2);">
+          <div class="cs-node-header" style="flex-direction:column;align-items:flex-start;gap:3px;">
+            <div style="font-size:.66rem;font-weight:700;color:#fbbf24;">Properties</div>
+            <div style="font-size:.58rem;color:rgba(255,255,255,.3);">Hotels</div>
+            <span class="cs-node-arrow" style="align-self:flex-end;margin-top:-8px;">▼</span>
+          </div>
+          <div class="cs-node-detail">Bought M&amp;C hotels from Chelsea FC Holdings for <strong>£76.5M</strong>. PSR trick #1. Also owns <strong>Under the Bridge Ltd</strong> (events venue). Rebranding as Lyf (Ascott). 232 bedrooms.</div>
+        </div>
+        <div class="cs-node" onclick="this.classList.toggle('open')" style="border-color:rgba(251,191,36,.2);">
+          <div class="cs-node-header" style="flex-direction:column;align-items:flex-start;gap:3px;">
+            <div style="font-size:.66rem;font-weight:700;color:#fbbf24;">Other arms</div>
+            <div style="font-size:.58rem;color:rgba(255,255,255,.3);">4 more entities</div>
+            <span class="cs-node-arrow" style="align-self:flex-end;margin-top:-8px;">▼</span>
+          </div>
+          <div class="cs-node-detail"><strong>Walsingham Property Holdings</strong> — leasing. <strong>BlueCo 22 Residential Ltd</strong> — residential property. <strong>Stamford Bridge Projects Ltd</strong> — stadium development (owns Chelsea Leisure Services). <strong>BlueCo Data Ltd</strong> — data/tech entity, purpose unclear.</div>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:.58rem;color:rgba(255,255,255,.14);margin:2px 0;">MidCo ↓ splits into</div>
+
+      <!-- FOOTBALL ENTITIES -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:12px;">
+        <div class="cs-node" onclick="this.classList.toggle('open')" style="border-color:rgba(96,165,250,.25);background:rgba(96,165,250,.04);">
+          <div class="cs-node-header" style="flex-direction:column;align-items:flex-start;gap:3px;">
+            <div style="font-size:.62rem;font-weight:700;color:#60a5fa;">Chelsea FC Holdings</div>
+            <div style="font-size:.56rem;color:rgba(255,255,255,.3);">Men's team</div>
+            <span class="cs-node-arrow" style="align-self:flex-end;margin-top:-8px;">▼</span>
+          </div>
+          <div class="cs-node-detail">Revenue £468.5M (2023/24). Subsidiaries include Chelsea FC Ltd, Chelsea TV Ltd, Stamford Bridge Securities, Chelsea Car Parks, The Hotel at Stamford Bridge, Chelsea FC Pte (Singapore entity). <strong>Ring-fenced from HoldCo debt.</strong></div>
+        </div>
+        <div class="cs-node" onclick="this.classList.toggle('open')" style="border-color:rgba(74,222,128,.2);background:rgba(74,222,128,.03);">
+          <div class="cs-node-header" style="flex-direction:column;align-items:flex-start;gap:3px;">
+            <div style="font-size:.62rem;font-weight:700;color:#4ade80;">BlueCo Women</div>
+            <div style="font-size:.56rem;color:rgba(255,255,255,.3);">Women's team</div>
+            <span class="cs-node-arrow" style="align-self:flex-end;margin-top:-8px;">▼</span>
+          </div>
+          <div class="cs-node-detail">"Sold" internally for <strong>£200M</strong> — PSR trick #2. Valuation under PL review. <strong>Domiciled in the Cayman Islands</strong> — not the UK. ~92% BlueCo, ~8% held by Seven Seven Six Capital (non-BlueCo investor). 5 consecutive WSL titles.</div>
+        </div>
+        <div class="cs-node" onclick="this.classList.toggle('open')" style="border-color:rgba(251,146,60,.2);background:rgba(251,146,60,.03);">
+          <div class="cs-node-header" style="flex-direction:column;align-items:flex-start;gap:3px;">
+            <div style="font-size:.62rem;font-weight:700;color:#fb923c;">BlueCo Alsace</div>
+            <div style="font-size:.56rem;color:rgba(255,255,255,.3);">Strasbourg</div>
+            <span class="cs-node-arrow" style="align-self:flex-end;margin-top:-8px;">▼</span>
+          </div>
+          <div class="cs-node-detail">99.97% of RC Strasbourg. €75M · June 2023. Separate entity for UEFA compliance. ~0.03% held by Seven Seven Six Capital. Fan protests — ultras boycotted matches over BlueCo interference in transfers.</div>
+        </div>
+      </div>
+
+      <div style="background:rgba(248,113,113,.05);border:1px solid rgba(248,113,113,.15);border-radius:3px;padding:10px 12px;margin-bottom:10px;">
+        <div style="font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#f87171;margin-bottom:5px;">⚠️ The PSR tricks</div>
+        <div style="font-size:.67rem;color:rgba(255,255,255,.38);line-height:1.55;">Both sales were <strong style="color:rgba(255,255,255,.62);">intra-group</strong> — BlueCo buying from itself. Without them, Chelsea's 3-year PSR losses = <strong style="color:#f87171;">£358M</strong> — a breach. One set of books shows compliance. The other shows reality.</div>
+        <div style="display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;">
+          <span class="cs-stat" style="color:#fbbf24;border-color:rgba(251,191,36,.3);">Hotels: +£76.5M PSR</span>
+          <span class="cs-stat" style="color:#fbbf24;border-color:rgba(251,191,36,.3);">Women's: +£200M PSR</span>
+          <span class="cs-stat" style="color:#f87171;border-color:rgba(248,113,113,.3);">Both: £0 group income</span>
+        </div>
+      </div>
+
+      <div style="font-size:.6rem;color:rgba(255,255,255,.18);font-style:italic;">Sources: Companies House · The Athletic · Swiss Ramble · Matchday Finance 2024.</div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <!-- MAP MODAL -->
+  <div id="map-modal">
+    <div class="map-modal-inner">
+      <button class="map-close" onclick="closeMap()">✕ CLOSE</button>
+      <div style="padding-top:8px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.04em;color:#a78bfa;margin-bottom:3px;">BLUECO EMPIRE MAP</div>
+        <div style="font-size:.62rem;color:rgba(255,255,255,.28);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Full corporate structure · 2022–present</div>
+
+        <!-- Ring fence callout -->
+        <div style="background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.22);border-radius:3px;padding:9px 12px;margin-bottom:14px;display:flex;align-items:flex-start;gap:8px;">
+          <span style="font-size:.9rem;flex-shrink:0;">🔒</span>
+          <div style="font-size:.67rem;color:rgba(74,222,128,.7);line-height:1.5;"><strong style="color:#4ade80;">The ring-fence:</strong> Chelsea FC Holdings is legally protected from the £1.165B debt. It sits two levels above the club. The club has no net debt of its own.</div>
+        </div>
+
+        <!-- INVESTORS -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
+          <div class="mn mn-gray">
+            <div class="mn-title">Clearlake Capital</div>
+            <div class="mn-sub">61.85% · Blues Investment Midco L.P. · Class A shares · downside protected · Eghbali &amp; Feliciano · ~$100B AUM</div>
+          </div>
+          <div class="mn mn-gray">
+            <div class="mn-title">Boehly / Walter / Wyss</div>
+            <div class="mn-sub">38.15% · BlueCo 22 Holdings L.P. · Class B shares · absorb losses first · Boehly holds chairman veto</div>
+          </div>
+        </div>
+        <div style="font-size:.58rem;color:rgba(255,255,255,.18);text-align:center;margin:2px 0 6px;font-style:italic;">Class A (Clearlake) protected on exit · Class B (Boehly group) absorbs losses first</div>
+        <div class="mn-connector">↓ jointly own 100%</div>
+
+        <!-- 22 HOLDCO -->
+        <div class="mn mn-red">
+          <div class="mn-title">22 HoldCo Limited</div>
+          <div class="mn-sub">TOP OF PYRAMID · Group loss £402M (2023/24) · Interest paid 2024: £94M+</div>
+          <div class="mn-debt-row">
+            <span class="cs-stat" style="color:#fbbf24;border-color:rgba(251,191,36,.3);">Ares PIK £410M · 12.73% · compounds silently · due Aug 2033</span>
+          </div>
+        </div>
+        <div class="mn-connector">↓ owns 100%</div>
+
+        <!-- BLUECO 22 -->
+        <div class="mn mn-blue">
+          <div class="mn-title">BlueCo 22 Limited</div>
+          <div class="mn-sub">Operational vehicle · inc. 2 Mar 2022 · funded by equity · splits into 6 subsidiaries</div>
+          <div class="mn-debt-row">
+            <span class="cs-stat" style="color:#f87171;border-color:rgba(248,113,113,.3);">RCF £755M · SONIA+3.25% · BOA &amp; JPM · due Jul 2027</span>
+          </div>
+        </div>
+        <div class="mn-connector">↓ 6 subsidiaries</div>
+
+        <!-- SIX ARMS -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:5px;">
+          <div class="mn mn-blue">
+            <div class="mn-title">BlueCo 22 MidCo</div>
+            <div class="mn-sub">All football assets</div>
+          </div>
+          <div class="mn mn-amber">
+            <div class="mn-title">BlueCo 22 Properties</div>
+            <div class="mn-sub">Hotels + Under the Bridge Ltd</div>
+          </div>
+          <div class="mn mn-amber">
+            <div class="mn-title">Walsingham Property</div>
+            <div class="mn-sub">Property leasing</div>
+          </div>
+          <div class="mn mn-amber">
+            <div class="mn-title">BlueCo 22 Residential</div>
+            <div class="mn-sub">Residential property</div>
+          </div>
+          <div class="mn mn-amber">
+            <div class="mn-title">Stamford Bridge Projects</div>
+            <div class="mn-sub">Stadium dev · owns Chelsea Leisure Services</div>
+          </div>
+          <div class="mn mn-gray">
+            <div class="mn-title">BlueCo Data Ltd</div>
+            <div class="mn-sub">Data / tech · purpose unclear</div>
+          </div>
+        </div>
+
+        <!-- Properties children -->
+        <div style="margin-bottom:5px;">
+          <div class="mn-connector">Properties ↓ owns</div>
+          <div class="mn mn-amber" style="margin-bottom:0;">
+            <div class="mn-title">M&amp;C Hotels (232 beds) + Under the Bridge</div>
+            <div class="mn-sub">Bought from CFC Holdings for £76.5M · rebranding as Lyf (Ascott) · PSR trick #1</div>
+          </div>
+        </div>
+
+        <div class="mn-connector">MidCo ↓ splits into 3</div>
+
+        <!-- FOOTBALL ENTITIES -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:5px;">
+          <div class="mn mn-blue">
+            <div class="mn-title">Chelsea FC Holdings</div>
+            <div class="mn-sub">Men's team · rev £468.5M · ring-fenced · no net debt</div>
+          </div>
+          <div class="mn mn-green">
+            <div class="mn-title">BlueCo Women Holdings</div>
+            <div class="mn-sub">"Sold" £200M · PSR trick #2 · Cayman Islands domicile · ~92% BlueCo · ~8% Seven Seven Six Capital</div>
+          </div>
+          <div class="mn mn-orange">
+            <div class="mn-title">BlueCo Alsace</div>
+            <div class="mn-sub">RC Strasbourg · 99.97% BlueCo · ~0.03% Seven Seven Six · €75M · June 2023 · fan protests</div>
+          </div>
+        </div>
+
+        <!-- Chelsea FC Holdings children -->
+        <div style="margin-bottom:5px;">
+          <div class="mn-connector">Chelsea FC Holdings ↓ subsidiaries</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;">
+            <div class="mn mn-purple">
+              <div class="mn-title">Chelsea Football Club Ltd</div>
+              <div class="mn-sub">The club itself</div>
+            </div>
+            <div class="mn mn-purple">
+              <div class="mn-title">Chelsea FC Women Ltd</div>
+              <div class="mn-sub">Women's playing entity</div>
+            </div>
+            <div class="mn mn-purple">
+              <div class="mn-title">Chelsea Car Parks</div>
+              <div class="mn-sub">+ TV Ltd · Stamford Bridge Securities · Hotel at SB · CFC Pte (Singapore)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seven Seven Six note -->
+        <div style="margin-top:2px;margin-bottom:8px;padding:8px 11px;border-radius:3px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);font-size:.66rem;color:rgba(255,255,255,.35);line-height:1.55;">
+          <strong style="color:rgba(255,255,255,.55);">Seven Seven Six Capital</strong> — non-BlueCo minority investor. Holds ~8% of BlueCo Women Holdings and ~0.03% of BlueCo Alsace (Strasbourg). Not part of the core BlueCo consortium.
+        </div>
+
+        <!-- PSR box -->
+        <div class="psr-box">
+          <div class="psr-box-title">⚠️ The PSR accounting tricks</div>
+          <div class="psr-box-body">Both asset sales were <strong>intra-group</strong> — BlueCo selling assets to itself. The Premier League allowed both as genuine PSR profit. Without them, Chelsea's 3-year losses = <strong>£358M — a breach.</strong><br><br>
+          Group accounts don't recognise the income. PL compliance books do. Two different realities, one balance sheet. The Women's sale vehicle is domiciled in the <strong>Cayman Islands</strong> — not the UK.</div>
+          <div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap;">
+            <span class="cs-stat" style="color:#fbbf24;border-color:rgba(251,191,36,.3);">Hotels → Properties: +£76.5M PL profit</span>
+            <span class="cs-stat" style="color:#4ade80;border-color:rgba(74,222,128,.3);">Women → MidCo: +£200M PL profit</span>
+            <span class="cs-stat" style="color:#f87171;border-color:rgba(248,113,113,.3);">Group accounts: £0 from either</span>
+          </div>
+        </div>
+
+        <!-- UEFA note -->
+        <div style="margin-top:8px;padding:9px 11px;border-radius:3px;border:1px solid rgba(96,165,250,.18);background:rgba(96,165,250,.04);font-size:.67rem;color:rgba(255,255,255,.38);line-height:1.55;">
+          <strong style="color:#60a5fa;">UEFA compliance:</strong> Chelsea (Chelsea FC Holdings) and Strasbourg (BlueCo Alsace) are kept in separate legal entities per UEFA Article 5 — prevents conflict if both qualify for the same competition.
+        </div>
+
+        <div class="map-source">Structure source: <strong style="color:rgba(255,255,255,.35);">@gregorypcordell</strong> (Substack) — derived from Companies House filings, TISE disclosures &amp; PSR accounts. Additional sources: The Athletic · Swiss Ramble · Matchday Finance · Companies House 2024.</div>
+        <div style="margin-top:10px;padding:8px 11px;border-radius:3px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);font-size:.6rem;color:rgba(255,255,255,.2);line-height:1.65;">
+          <strong style="color:rgba(255,255,255,.3);">Disclaimer:</strong> This map is for informational purposes only. It is based on publicly available filings and third-party analysis and may be incomplete or out of date. It does not constitute financial, legal or investment advice. We are not affiliated with Chelsea FC, BlueCo, Clearlake Capital or any entity described herein. Nothing here should be relied upon for any commercial or legal purpose.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openMap(){document.getElementById('map-modal').classList.add('open');document.body.style.overflow='hidden';}
+    function closeMap(){document.getElementById('map-modal').classList.remove('open');document.body.style.overflow='';}
+    document.getElementById('map-modal').addEventListener('click',function(e){if(e.target===this)closeMap();});
+  </script>
+
+  <!-- TIMELINE TILE -->
+  <div style="max-width:480px;width:100%;margin:14px 0 4px;background:rgba(255,255,255,.025);border:1px solid rgba(96,165,250,.25);border-radius:4px;overflow:hidden;" id="timeline">
+
+    <div style="background:rgba(96,165,250,.07);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(96,165,250,.15);gap:8px;flex-wrap:wrap;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.08em;color:#60a5fa;">📅 BlueCo: 2022 → 2032</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="font-size:.6rem;color:rgba(255,255,255,.28);">Key dates · lock-up to exit</div>
+        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span class="tile-share-label">Share</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="padding:14px 16px;">
+      <div style="font-size:.7rem;color:rgba(255,255,255,.32);line-height:1.55;margin-bottom:16px;">Every significant date from the takeover to the first possible clean exit — sourced from the Articles of Association, Companies House filings, and public records.</div>
+
+      <style>
+        .tl-item{display:flex;gap:12px;margin-bottom:0;}
+        .tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:36px;}
+        .tl-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:3px;}
+        .tl-line{width:1px;flex:1;margin-top:3px;}
+        .tl-right{padding-bottom:16px;flex:1;}
+        .tl-date{font-family:'Bebas Neue',sans-serif;font-size:.78rem;letter-spacing:.1em;}
+        .tl-title{font-size:.72rem;font-weight:700;margin:1px 0 3px;line-height:1.3;}
+        .tl-body{font-size:.65rem;color:rgba(255,255,255,.38);line-height:1.55;}
+        .tl-body strong{color:rgba(255,255,255,.62);}
+        .tl-tag{display:inline-block;font-size:.54rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:1px 6px;border-radius:2px;border:1px solid;margin-bottom:4px;}
+        .tl-now{background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.3);border-radius:3px;padding:6px 10px;margin:4px 0 16px;font-size:.65rem;color:rgba(74,222,128,.8);display:flex;align-items:center;gap:6px;}
+      </style>
+
+      <!-- PAST -->
+
+      <!-- MAY 2022 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:#60a5fa;"></div>
+          <div class="tl-line" style="background:rgba(96,165,250,.2);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:#60a5fa;">30 May 2022</div>
+          <div class="tl-tag" style="color:#60a5fa;border-color:rgba(96,165,250,.3);">TAKEOVER</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.8);">BlueCo completes £4.25B acquisition</div>
+          <div class="tl-body">Articles of Association adopted. <strong>Lock-up clock starts.</strong> 160M Class A shares (Clearlake) and 100M Class B shares (Boehly group) issued at £0.0001 each. Boehly named Chairman — a right he holds for the first 5 years under Article 8.1.</div>
+        </div>
+      </div>
+
+      <!-- JUN 2023 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:#a78bfa;"></div>
+          <div class="tl-line" style="background:rgba(167,139,250,.2);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:#a78bfa;">June 2023</div>
+          <div class="tl-tag" style="color:#a78bfa;border-color:rgba(167,139,250,.3);">EXPANSION</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.8);">RC Strasbourg acquired for €75M</div>
+          <div class="tl-body">Multi-club model begins. BlueCo Alsace holds 99.97%. Strasbourg fans begin protesting. Development loan pipeline from Chelsea established.</div>
+        </div>
+      </div>
+
+      <!-- FY23 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:#fbbf24;"></div>
+          <div class="tl-line" style="background:rgba(251,191,36,.2);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:#fbbf24;">FY June 2023</div>
+          <div class="tl-tag" style="color:#fbbf24;border-color:rgba(251,191,36,.3);">PSR TRICK #1</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.8);">M&amp;C Hotels sold internally for £76.5M</div>
+          <div class="tl-body">Chelsea FC Holdings sells two Stamford Bridge hotels to BlueCo 22 Properties. Counts as <strong>£76.5M Premier League profit</strong>. Zero income in group accounts. PSR breach avoided.</div>
+        </div>
+      </div>
+
+      <!-- FY24 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:#fbbf24;"></div>
+          <div class="tl-line" style="background:rgba(251,191,36,.2);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:#fbbf24;">FY June 2024</div>
+          <div class="tl-tag" style="color:#fbbf24;border-color:rgba(251,191,36,.3);">PSR TRICK #2</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.8);">Chelsea Women "sold" internally for £200M</div>
+          <div class="tl-body">Transferred to BlueCo Women Holdings Ltd — <strong>Cayman Islands domicile</strong>. Counts as £200M PL profit. Valuation under Premier League review. Without both sales, 3-year PSR losses = <strong>£358M</strong> — a breach.</div>
+        </div>
+      </div>
+
+      <!-- AUG 2024 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:#f87171;"></div>
+          <div class="tl-line" style="background:rgba(248,113,113,.2);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:#f87171;">Aug 2024</div>
+          <div class="tl-tag" style="color:#f87171;border-color:rgba(248,113,113,.3);">DEBT</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.8);">Ares PIK loan taken — £410M at 12.73%</div>
+          <div class="tl-body">22 HoldCo borrows £410M from Ares Management. Compounds silently — no cash outflow until 2033. At 12.73%, this loan will be worth <strong>~£860M+ by maturity</strong> if unpaid.</div>
+        </div>
+      </div>
+
+      <!-- SEP 2024 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:#f87171;"></div>
+          <div class="tl-line" style="background:rgba(248,113,113,.2);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:#f87171;">Sep 2024</div>
+          <div class="tl-tag" style="color:#f87171;border-color:rgba(248,113,113,.3);">BREAKDOWN</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.8);">Clearlake–Boehly split becomes public</div>
+          <div class="tl-body">Bloomberg reports both sides exploring buyout options. Clearlake confirms it will not sell. Boehly reportedly wants to buy Clearlake out or sell his stake. <strong>Boardroom deadlock is now public.</strong> Neither can force the other out under the Articles.</div>
+        </div>
+      </div>
+
+      <!-- JAN 2026 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:#f87171;"></div>
+          <div class="tl-line" style="background:rgba(248,113,113,.2);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:#f87171;">Jan 2026</div>
+          <div class="tl-tag" style="color:#f87171;border-color:rgba(248,113,113,.3);">MANAGER</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.8);">Liam Rosenior appointed — fans react badly</div>
+          <div class="tl-body">Eghbali faces hostile chanting at Stamford Bridge. Rosenior appointment widely attributed to Clearlake. Relationship with supporters at low point. Chelsea currently <strong>6th</strong> with 4 losses in a row.</div>
+        </div>
+      </div>
+
+      <!-- NOW MARKER -->
+      <div class="tl-now">
+        <span style="font-size:.7rem;">📍</span>
+        <span><strong style="color:#4ade80;">You are here</strong> — March 2026 · 4 years into the lock-up · 6 years to go</span>
+      </div>
+
+      <!-- FUTURE -->
+
+      <!-- JUL 2027 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:rgba(251,191,36,.5);border:1px dashed rgba(251,191,36,.5);background:transparent;"></div>
+          <div class="tl-line" style="background:rgba(251,191,36,.15);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:rgba(251,191,36,.7);">Jul 2027</div>
+          <div class="tl-tag" style="color:rgba(251,191,36,.7);border-color:rgba(251,191,36,.2);">DEBT DUE</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.6);">RCF £755M matures — refinance or repay</div>
+          <div class="tl-body">The revolving credit facility (BOA &amp; JPM) falls due. BlueCo must refinance or repay. <strong>Missing the Champions League makes refinancing terms significantly worse.</strong> This is the first major financial pressure point.</div>
+        </div>
+      </div>
+
+      <!-- MAY 2027 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:transparent;border:1px dashed rgba(167,139,250,.5);"></div>
+          <div class="tl-line" style="background:rgba(167,139,250,.15);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:rgba(167,139,250,.7);">30 May 2027</div>
+          <div class="tl-tag" style="color:rgba(167,139,250,.7);border-color:rgba(167,139,250,.2);">POWER SHIFT</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.6);">Clearlake can replace Boehly as Chairman</div>
+          <div class="tl-body">Article 8.1: five years from adoption, Clearlake may appoint a new Chairperson <strong>without Boehly's consent</strong>. Eghbali could take the chair. Not an exit — but the most visible power shift since the takeover. Chairmanship then rotates every 5 years.</div>
+        </div>
+      </div>
+
+      <!-- 2026-27 SCR -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:transparent;border:1px dashed rgba(248,113,113,.5);"></div>
+          <div class="tl-line" style="background:rgba(248,113,113,.15);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:rgba(248,113,113,.7);">2026–27</div>
+          <div class="tl-tag" style="color:rgba(248,113,113,.7);border-color:rgba(248,113,113,.2);">RULES CHANGE</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.6);">SCR replaces PSR — loopholes close</div>
+          <div class="tl-body">Squad Cost Ratio enforcement begins. Only pure football revenues count — the hotel and women's team PSR tricks no longer work. Chelsea must stand on their own financial feet. Assessed annually, not over 3 years.</div>
+        </div>
+      </div>
+
+      <!-- AUG 2033 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:transparent;border:1px dashed rgba(251,191,36,.5);"></div>
+          <div class="tl-line" style="background:rgba(251,191,36,.15);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:rgba(251,191,36,.7);">Aug 2033</div>
+          <div class="tl-tag" style="color:rgba(251,191,36,.7);border-color:rgba(251,191,36,.2);">DEBT DUE</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.6);">Ares PIK £410M matures — compounded to ~£860M+</div>
+          <div class="tl-body">The PIK loan falls due. If unpaid throughout, the 12.73% compound rate means the actual repayment could be <strong>double the original principal</strong>. This is the forcing function that ultimately drives a sale — the debt has to be cleared somehow.</div>
+        </div>
+      </div>
+
+      <!-- MAY 2032 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-dot" style="background:rgba(74,222,128,.5);border:1px dashed rgba(74,222,128,.6);"></div>
+          <div class="tl-line" style="background:rgba(74,222,128,.15);"></div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-date" style="color:#4ade80;">30 May 2032</div>
+          <div class="tl-tag" style="color:#4ade80;border-color:rgba(74,222,128,.3);">LOCK-UP ENDS</div>
+          <div class="tl-title" style="color:rgba(255,255,255,.75);">First possible clean exit — 10-year lock-up expires</div>
+          <div class="tl-body">Article 26.1: the lock-up period ends. Share transfers to third parties become permissible subject to Tag-Along rights (Article 28). Both parties can now negotiate a full sale independently. <strong>This is the earliest date a sovereign wealth fund or new owner could complete a clean acquisition of the whole club.</strong></div>
+        </div>
+      </div>
+
+      <!-- BEYOND -->
+      <div style="padding:10px 13px;border-radius:3px;border:1px dashed rgba(255,255,255,.08);font-size:.66rem;color:rgba(255,255,255,.3);line-height:1.6;margin-bottom:12px;">
+        <strong style="color:rgba(255,255,255,.45);">Post-2032:</strong> Drag-Along can be activated jointly. Tag-Along protects minority shareholders. Return of Proceeds waterfall (Article 13) pays Clearlake's Class A shares first. Any buyer must satisfy Premier League owners' and directors' tests. At current debt trajectory the enterprise value including debt repayment could exceed <strong style="color:rgba(255,255,255,.45);">£7–8B</strong> — making Chelsea one of the most expensive asset sales in sports history.
+      </div>
+
+      <div style="font-size:.6rem;color:rgba(255,255,255,.18);line-height:1.7;font-style:italic;">
+        Sources: <strong style="color:rgba(255,255,255,.28);">Articles of Association of Blues Partners Limited</strong> (Co. No. 14075518, adopted 30 May 2022, filed at Companies House) · @gregorypcordell · The Athletic · Companies House filings · Bloomberg · Sky Sports. Not legal advice.
+      </div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <!-- EXIT FACTS TILE -->
+  <div style="max-width:480px;width:100%;margin:14px 0 4px;background:rgba(255,255,255,.025);border:1px solid rgba(96,165,250,.2);border-radius:4px;overflow:hidden;" id="exit-facts">
+    <div style="background:rgba(96,165,250,.06);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(96,165,250,.12);gap:8px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="11" height="11" rx="2" stroke="#60a5fa" stroke-width="1.2"/><line x1="3.5" y1="4.5" x2="9.5" y2="4.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/><line x1="3.5" y1="6.5" x2="9.5" y2="6.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/><line x1="3.5" y1="8.5" x2="7" y2="8.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/></svg>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;color:#60a5fa;">Why They Can't Just Sell</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="font-size:.58rem;color:rgba(255,255,255,.25);letter-spacing:.06em;">Contrary to popular belief</div>
+        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span class="tile-share-label">Share</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="padding:12px 16px;">
+      <div style="font-size:.68rem;color:rgba(255,255,255,.28);line-height:1.55;margin-bottom:12px;">Fans want them out. Boehly reportedly wants to buy or sell. Pundits say "just sell the club." Here's why it's not that simple — straight from the Articles of Association filed at Companies House on 30 May 2022.</div>
+
+      <style>
+        .ef-item{border-radius:3px;margin-bottom:5px;border:1px solid rgba(96,165,250,.12);overflow:hidden;cursor:pointer;transition:border-color .15s;}
+        .ef-item:hover{border-color:rgba(96,165,250,.25);}
+        .ef-item.open{border-color:rgba(96,165,250,.28);}
+        .ef-header{display:flex;align-items:center;gap:10px;padding:9px 12px;transition:background .12s;}
+        .ef-item:hover .ef-header{background:rgba(96,165,250,.04);}
+        .ef-item.open .ef-header{background:rgba(96,165,250,.06);}
+        .ef-num{font-family:'Bebas Neue',sans-serif;font-size:1rem;line-height:1;color:rgba(96,165,250,.3);flex-shrink:0;width:18px;}
+        .ef-title{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.72);flex:1;line-height:1.3;}
+        .ef-chevron{font-size:.5rem;color:rgba(96,165,250,.35);transition:transform .2s;flex-shrink:0;}
+        .ef-item.open .ef-chevron{transform:rotate(180deg);}
+        .ef-body{display:none;padding:0 12px 10px 40px;font-size:.67rem;color:rgba(255,255,255,.38);line-height:1.6;}
+        .ef-item.open .ef-body{display:block;}
+        .ef-body strong{color:rgba(255,255,255,.62);}
+      </style>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">01</span><span class="ef-title">They literally cannot sell. It's written down.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">Article 26.1 of the Articles of Association imposes a hard <strong>10-year lock-up period</strong> running from 30 May 2022 to 30 May 2032. No shareholder may transfer any interest in shares during that period. The only exceptions are internal group restructuring or the <strong>written consent of both Majority Shareholders</strong>. There is no unilateral exit mechanism. This is not a gentlemen's agreement. It is a binding legal document filed at Companies House.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">02</span><span class="ef-title">Clearlake can't sell without Boehly. Boehly can't sell without Clearlake. Both hate each other.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">The Drag-Along clause (Article 27) — the mechanism that would force a full sale — only activates if <strong>both</strong> Majority Shareholders jointly propose to transfer more than 51% to a buyer. Article 9.6 further requires every board resolution to carry the affirmative vote of at least one director from each side. A sale where one party wants out and the other doesn't is not merely unlikely — it is <strong>legally impossible</strong> under the current Articles without written consent.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">03</span><span class="ef-title">Even if they sold tomorrow, Clearlake get paid first. Boehly might get nothing.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">Article 13 establishes a strict Return of Proceeds waterfall on any exit. <strong>Class A shareholders (Clearlake) recover their full subscription price first</strong> — before a single penny flows to Boehly's Class B shares. Only surplus above that threshold splits pro rata. Given the £4.25B acquisition price, £1.165B in borrowings, and accumulated squad spend, Clearlake's minimum acceptable exit price is <strong>well north of £6B</strong>. No football club in history has sold for that. Class B absorbs losses first if the price falls short.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">04</span><span class="ef-title">In 14 months Eghbali can take the chairman's seat and there's nothing Boehly can do about it.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">Article 8.1 provides that the first Chairperson shall be appointed by the Majority B Shareholder — which is why Boehly has been the public face since 2022. However, from five years after the Adoption Date — i.e. <strong>30 May 2027</strong> — Clearlake may appoint a replacement Chairperson <strong>without requiring any action or consent of the Majority B Shareholder</strong>. Eghbali can take the chair unilaterally. This is not a sale. But it is the single most significant power shift available before 2032, and it requires no one's permission.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">05</span><span class="ef-title">The only way out is one of them buying the other. They can't agree on a price. We suffer.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">A Permitted Transfer — a transfer made with the <strong>prior written consent of each other Majority Shareholder</strong> — is available at any time, including during the lock-up. Clearlake acquiring Boehly's ~38% stake would be legally clean, dissolve the governance deadlock, and position Clearlake to pursue a full sale independently after 2032. The obstacle is not legal. It is commercial. Boehly is reported to want a valuation that Clearlake considers excessive. Until both parties agree a number, <strong>the club is structurally paralysed</strong> — not through incompetence, but because the Articles they signed in 2022 were designed for partners who trusted each other.</div>
+      </div>
+
+      <div style="font-size:.58rem;color:rgba(255,255,255,.16);line-height:1.65;font-style:italic;margin-top:8px;">Source: Articles of Association of Blues Partners Limited (Co. No. 14075518) · 30 May 2022 · Companies House. Not legal advice.</div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <!-- ASSET SALE / EXCEPTIONS TILE -->
+  <div style="max-width:480px;width:100%;margin:14px 0 4px;background:rgba(255,255,255,.025);border:1px solid rgba(96,165,250,.2);border-radius:4px;overflow:hidden;" id="exit-exceptions">
+
+    <div style="background:rgba(96,165,250,.06);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(96,165,250,.12);gap:8px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="11" height="11" rx="2" stroke="#60a5fa" stroke-width="1.2"/><line x1="3.5" y1="4.5" x2="9.5" y2="4.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/><line x1="3.5" y1="6.5" x2="9.5" y2="6.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/><line x1="3.5" y1="8.5" x2="7" y2="8.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/></svg>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;color:#60a5fa;">The Loopholes — Can They Get Out Early?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="font-size:.58rem;color:rgba(255,255,255,.25);letter-spacing:.06em;">Lock-up exceptions</div>
+        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span class="tile-share-label">Share</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="padding:12px 16px;">
+      <div style="font-size:.68rem;color:rgba(255,255,255,.28);line-height:1.55;margin-bottom:12px;">The 10-year lock-up sounds absolute. It isn't. The Articles define four exceptions — but every single one hits the same wall. Here's what the document actually says.</div>
+
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">01</span><span class="ef-title">"Just sell the assets then." Doesn't work either. Here's why.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">The Articles define an <strong>Asset Sale</strong> as a sale of all or substantially all of the Group's business, assets and undertakings to a single buyer. It is one of four defined Exit routes. In theory you could sell the football club, the players, the contracts — without touching the shares in the holding company. The lock-up restricts share transfers. Not asset transfers. It sounds like a workaround. It isn't. Article 9.6 still requires every board decision to carry the affirmative vote of at least <strong>one director from each side</strong>. Clearlake cannot direct an Asset Sale over Boehly's objection. Same wall, different door.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">02</span><span class="ef-title">"Restructure the company." They can. But they can't change who owns it.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">A <strong>Reorganisation Transaction</strong> is expressly permitted during the lock-up — but only for the purpose of restructuring the corporate wrapper in preparation for an Exit, refinancing, or acquisition. The critical constraint: shareholders must own shares in the <strong>same proportions on completion as immediately prior</strong> to the reorganisation. You can create a new holding company above Blues Partners. You can consolidate or sub-divide shares. You cannot use the process to alter who owns what. The reorganisation preserves the ownership structure — it does not exit it.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">03</span><span class="ef-title">"Just float it on the stock exchange." In theory, yes. In practice, absolutely not.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">A <strong>Listing Event</strong> — defined as an IPO or business combination with a publicly traded blank-check company — is one of the four Exit routes and is explicitly excluded from the lock-up restriction. The route: effect a Reorganisation Transaction to create a new HoldCo, then list that entity on a recognised exchange. Lock-up obligations would then be governed by standard stock exchange lock-up agreements rather than these Articles. Theoretically the cleanest pre-2032 mechanism. In practice: <strong>both sides must agree</strong> to pursue it, the Premier League's owners' and directors' test creates significant regulatory friction, and no major English football club has successfully completed an IPO in the modern era.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">04</span><span class="ef-title">There is one way Clearlake could act alone. It involves manufacturing a crisis.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">Article 21.4 — the Rescue Issue provision — allows either Majority Shareholder to direct a share issue on an urgent basis if it reasonably believes the company requires funding immediately and the other party is unable or unwilling to participate on the required terms and timeline. If Boehly's group declines or cannot fund their portion, their pre-emption rights are deemed waived. Clearlake issues new shares to itself. <strong>Boehly's proportional stake falls below Majority Shareholder status.</strong> The joint-consent requirement for board decisions and exits dissolves. Clearlake has effective unilateral control. There is no evidence this is being contemplated. But it is in the document. And it is the only route that does not require Boehly's agreement.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">05</span><span class="ef-title">So every loophole is a dead end. Yes. Every single one.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">Asset Sale: requires joint board approval. Reorganisation Transaction: preserves existing ownership proportions. Listing Event: requires both parties to agree. Mutual written consent: requires both parties to agree. The Rescue Issue: the sole unilateral mechanism, requires the manufacture of a demonstrable financial emergency and carries significant legal and reputational risk. The lock-up is not a single clause — it is <strong>reinforced at every level of the governance structure</strong>. The Articles of Association of Blues Partners Limited were drafted for two parties who intended to build something together. They no longer do. The document does not accommodate that reality. And it runs until 30 May 2032.</div>
+      </div>
+
+      <div style="font-size:.58rem;color:rgba(255,255,255,.16);line-height:1.65;font-style:italic;margin-top:8px;">Source: Articles of Association of Blues Partners Limited (Co. No. 14075518) · 30 May 2022 · Companies House. Not legal advice.</div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <!-- 2032 CONTINUATION TILE -->
+  <div style="max-width:480px;width:100%;margin:14px 0 4px;background:rgba(255,255,255,.025);border:1px solid rgba(96,165,250,.2);border-radius:4px;overflow:hidden;" id="post-2032">
+
+    <div style="background:rgba(96,165,250,.06);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(96,165,250,.12);gap:8px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="11" height="11" rx="2" stroke="#60a5fa" stroke-width="1.2"/><line x1="3.5" y1="4.5" x2="9.5" y2="4.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/><line x1="3.5" y1="6.5" x2="9.5" y2="6.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/><line x1="3.5" y1="8.5" x2="7" y2="8.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/></svg>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;color:#60a5fa;">So What Happens After 2032?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="font-size:.58rem;color:rgba(255,255,255,.25);letter-spacing:.06em;">Best guess. No guarantees.</div>
+        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span class="tile-share-label">Share</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="padding:12px 16px;">
+      <div style="font-size:.68rem;color:rgba(255,255,255,.28);line-height:1.55;margin-bottom:12px;">The lock-up expires 30 May 2032. The Ares PIK loan matures August 2033. The RCF was due July 2027 and will almost certainly have been refinanced once already by then. Here's what the situation will most likely look like — and what has to happen next.</div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">01</span><span class="ef-title">The Ares loan will have eaten itself. Someone has to write a very large cheque.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">The Ares PIK loan of £410M, compounding at 12.73% from August 2024, will mature in August 2033. Payment-in-kind means <strong>no cash has left the building</strong> in the intervening years — the interest rolls up silently into the principal. By maturity, the total repayment obligation will be somewhere in the region of <strong>£850M–£900M</strong> on what started as a £410M loan. This is not a footnote. It is a forcing event. Clearlake must either refinance it, sell assets to service it, or sell the club entirely. The Ares maturity date — not the lock-up expiry — may ultimately be the real gun to BlueCo's head.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">02</span><span class="ef-title">If Clearlake and Boehly still hate each other in 2032, the Drag-Along becomes a weapon.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">From 30 May 2032, Article 26.2(d) permits any Majority Shareholder to transfer shares to any person, subject to Tag-Along rights under Article 28. The Drag-Along (Article 27) — which requires both to act jointly — remains available. But here is the shift: if Clearlake has by then acquired Boehly's stake through a pre-2032 Permitted Transfer, they hold <strong>100% and need nobody's consent</strong>. If both parties still hold shares in 2032 and relations remain hostile, a sale still requires joint agreement — but the commercial and reputational pressure to act will be considerably greater. The Ares clock is ticking. The RCF will need refinancing again. <strong>Inaction becomes increasingly expensive.</strong></div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">03</span><span class="ef-title">The stadium has to be resolved before any serious buyer comes near this club.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">Any sophisticated acquirer — sovereign wealth fund, private equity consortium, institutional investor — will conduct full due diligence. A 40,341-seat ground generating ~£80M matchday revenue against rivals with 60,000+ seats and £160M+ will appear on page one of every valuation model as a <strong>structural deficiency</strong>. Stamford Bridge's freehold is owned by Chelsea Pitch Owners, not BlueCo. The new stadium situation — whether a rebuild of the Bridge, a move to a new site, or continued paralysis — will materially affect the exit price. BlueCo promised £1.75B in infrastructure investment at acquisition. A buyer will want to know where that stands. A club without a credible stadium plan in 2032 is <strong>worth measurably less</strong> than one with shovels already in the ground.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">04</span><span class="ef-title">The most likely buyer is a sovereign wealth fund. The price will be eye-watering.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">Clearlake's minimum acceptable exit price — Class A subscription price recovery plus a commercial return on a decade-long investment — is likely to exceed <strong>£6B–£7B</strong> by 2032, potentially higher depending on stadium progress and squad value. The only buyers with both the appetite and the liquidity for an asset at that valuation are sovereign wealth funds (Gulf states being the obvious candidates) or large institutional consortia. Newcastle (PIF), PSG (QSI), and Manchester City (ADUG) have already established the template. The Premier League's Owners' and Directors' Test will apply in full. Regulatory scrutiny — both from the Premier League and potentially the Competition and Markets Authority — will be significant. This is not a transaction that completes in a weekend.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">05</span><span class="ef-title">In the meantime, we just have to watch. Again. Still. Always.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">Between now and 2032 the variables are: whether Clearlake buys Boehly out before the lock-up expires; whether the RCF is refinanced on acceptable terms in 2027; whether the Ares PIK is serviced or allowed to compound; whether a stadium plan is agreed and progressed; and whether the football club qualifies for the Champions League with sufficient regularity to maintain its commercial value and make the eventual exit price defensible. Each of these is a moving part. None of them is in the control of the supporters. We paid our season tickets, we turned up in the rain at Goodison and Selhurst and Turf Moor, and somewhere above us in a corporate structure two men who cannot agree on the price of a football club are <strong>slowly working their way toward a conclusion that has nothing to do with football</strong>. It will take until at least 2032. Probably longer. <em>KTBFFH.</em></div>
+      </div>
+
+      <div style="font-size:.58rem;color:rgba(255,255,255,.16);line-height:1.65;font-style:italic;margin-top:8px;">Analysis based on Articles of Association of Blues Partners Limited · Companies House filings · public debt disclosures. Speculative. Not financial or legal advice.</div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <!-- BLUECO PROMISES TILE -->
+  <div style="max-width:480px;width:100%;margin:14px 0 4px;background:rgba(255,255,255,.025);border:1px solid rgba(96,165,250,.2);border-radius:4px;overflow:hidden;" id="promises">
+
+    <div style="background:rgba(96,165,250,.06);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(96,165,250,.12);gap:8px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="11" height="11" rx="2" stroke="#60a5fa" stroke-width="1.2"/><line x1="3.5" y1="4.5" x2="9.5" y2="4.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/><line x1="3.5" y1="6.5" x2="9.5" y2="6.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/><line x1="3.5" y1="8.5" x2="7" y2="8.5" stroke="#60a5fa" stroke-width="1.1" stroke-linecap="round"/></svg>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;color:#60a5fa;">The £1.75 Billion Promise</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="font-size:.58rem;color:rgba(255,255,255,.25);letter-spacing:.06em;">What they said. What happened.</div>
+        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span class="tile-share-label">Share</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="padding:12px 16px;">
+      <div style="font-size:.68rem;color:rgba(255,255,255,.28);line-height:1.55;margin-bottom:12px;">As a condition of the UK government approving the £4.25B takeover in May 2022, BlueCo committed £1.75B in further investment — to Stamford Bridge, the academy, the women's team, Kingsmeadow, and the Chelsea Foundation. Here's the scorecard four years in.</div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">01</span><span class="ef-title">The stadium. Three years of meetings, one piece of land, zero planning permission.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">The headline commitment was a new or redeveloped Stamford Bridge. In April 2024, BlueCo completed the purchase of the adjacent <strong>Sir Oswald Stoll Mansions site for ~£80M</strong> — a 1.9-acre plot of land housing military veterans, who must be rehoused before Chelsea can take full possession, expected no earlier than 2027. That is the sum total of tangible stadium progress since May 2022. A task force was assembled, then reshuffled. <strong>Janet Marie Smith</strong> — the American architect hired by Boehly in July 2022 to lead the renovation, whose credits include Fenway Park and Dodger Stadium — <strong>quietly stepped down in September 2024</strong> with no public announcement and no official explanation. In May 2025, Boehly told reporters the stadium project could take <strong>"15 to 20 years"</strong>. The ownership group is split: Boehly favours expanding the Bridge; Clearlake is reportedly open to relocating. There is currently no planning application, no architect on record, no approved design, and no agreed site. The most widely cited cost estimate for either option is <strong>upwards of £2B</strong>. As of March 2026, nothing has started. CPO must also approve any significant change to the ground they own.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">02</span><span class="ef-title">The academy. Actually the one area where the money is genuinely going in.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">Cobham has seen genuine investment under BlueCo — additional pitches, upgraded facilities, and a concerted expansion of the academy intake. The U18s are currently top of their Premier League South group. Reggie Walsh made the Conference League squad this season. Chizaram Ezenwata, Ibrahim Rabbaj, and Shumaira Mheuka have all signed first professional contracts in the last six months. The Strasbourg model provides a transparent loan pathway — Abramovich had Vitesse for that, covertly and for free. <strong>This is the one area where BlueCo's stated ambitions and actual actions broadly align</strong> — though critics would note that signing promising teenagers on long contracts also serves the club's PSR amortisation strategy rather neatly.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">03</span><span class="ef-title">The women's team. Separated, sold to a Cayman Islands entity, and called investment.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">The £1.75B commitment explicitly included investment in the women's team and Kingsmeadow. What actually happened: the women's team was <strong>"sold" internally to BlueCo Women Holdings Limited — a Cayman Islands-domiciled entity — for £200M</strong> as part of a PSR compliance manoeuvre. The Premier League approved this as genuine profit for the men's club. Whether it constitutes "investment in the women's team" as promised is a matter of creative interpretation. Kingsmeadow remains at 4,850 capacity. There are no published plans to expand or replace it. The women's team won five consecutive WSL titles under the old structure and continues to perform — but the promised infrastructure investment in their home ground has not visibly materialised.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">04</span><span class="ef-title">The Chelsea Foundation. Quietly continuing. Nobody's really checking.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">The Chelsea Foundation — the club's community arm — was specifically named in the £1.75B commitment. It continues to operate community programmes across west London, including disability football, education initiatives, and the Big Stamford Bridge Sleep Out for Stoll veterans (which carries a certain irony given the club then bought Stoll's land for £80M). No detailed public accounting of Foundation spending under BlueCo has been published. It is unlikely to account for a significant portion of the £1.75B envelope — but its continued operation allows BlueCo to point to community commitment without quantifying it.</div>
+      </div>
+
+      <div class="ef-item" onclick="this.classList.toggle('open')">
+        <div class="ef-header"><span class="ef-num">05</span><span class="ef-title">The honest tally. Most of the £1.75B has gone on players. The rest is mostly promises.</span><span class="ef-chevron">▼</span></div>
+        <div class="ef-body">The £1.75B was committed as a condition of government approval and was <strong>not ring-fenced or independently audited</strong>. BlueCo has spent well over £1.4B on player acquisitions since 2022. One piece of land has been bought for £80M. An architect was hired and has since left. A task force meets. Boehly says it'll take 15-20 years. Kieran Maguire, the football finance lecturer and well-connected commentator, has noted that <strong>"based on current estimates, all of that, and more, would be required just to get the stadium built right"</strong> — meaning the £1.75B total commitment wouldn't cover the stadium alone. The infrastructure promise was real. The infrastructure delivery, four years in, is a piece of land, a departed architect, a split ownership group, and a timeline measured in decades.</div>
+      </div>
+
+      <div style="font-size:.58rem;color:rgba(255,255,255,.16);line-height:1.65;font-style:italic;margin-top:8px;">Sources: UK government takeover approval conditions · The Chelsea Chronicle · Football Ground Guide · The Guardian · Kieran Maguire / Price of Football · Wikipedia · Companies House. Not legal advice.</div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <!-- DEBT MOUNTAIN -->
+  <div class="debt-section" id="debt-mountain">
+    <div class="debt-header">
+      <div class="debt-header-title">🏦 BlueCo's debt mountain</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="debt-header-sub">Source: The Athletic · Companies House</div>
+        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span class="tile-share-label">Share</span>
+        </button>
+      </div>
+    </div>
+    <div class="debt-body">
+      <div class="debt-intro">Chelsea's owners have borrowed <strong>£1.165 billion</strong> across two loans — one at BlueCo 22 Ltd level, one at 22 HoldCo level. Neither sits at Chelsea FC directly. But the pressure they generate flows straight down to the dugout.</div>
+      <div class="debt-loans">
+        <div class="debt-loan loan1">
+          <div class="debt-loan-top">
+            <div class="debt-loan-name">BlueCo 22 Ltd · Revolving Credit Facility · BOA &amp; JPM</div>
+            <div class="debt-loan-amount">£755.2M</div>
+          </div>
+          <div class="debt-loan-grid">
+            <div class="debt-stat"><div class="debt-stat-label">Interest rate</div><div class="debt-stat-val">SONIA+3.25%</div></div>
+            <div class="debt-stat"><div class="debt-stat-label">Annual cost</div><div class="debt-stat-val">~£58M</div></div>
+            <div class="debt-stat"><div class="debt-stat-label">Due</div><div class="debt-stat-val">Jul 2027</div></div>
+          </div>
+          <div class="debt-loan-note">Variable-rate revolving credit facility — secured by company assets, arranged by Bank of America and JPMorgan. With <strong>only 16 months until maturity</strong>, BlueCo must refinance or repay. Missing the Champions League makes refinancing terms worse.</div>
+        </div>
+        <div class="debt-loan loan2">
+          <div class="debt-loan-top">
+            <div class="debt-loan-name">22 HoldCo Ltd · Ares Management (PIK preferred equity)</div>
+            <div class="debt-loan-amount">£410.2M</div>
+          </div>
+          <div class="debt-loan-grid">
+            <div class="debt-stat"><div class="debt-stat-label">PIK rate</div><div class="debt-stat-val">12.73%</div></div>
+            <div class="debt-stat"><div class="debt-stat-label">Total if unpaid</div><div class="debt-stat-val">>£850M</div></div>
+            <div class="debt-stat"><div class="debt-stat-label">Due</div><div class="debt-stat-val">Aug 2033</div></div>
+          </div>
+          <div class="debt-loan-note">Payment-in-kind (PIK) — interest <strong>compounds silently</strong>, no cash outflow until 2033. At 12.73% compounding, it roughly doubles every 6 years. A ticking clock wrapped in accounting fog.</div>
+        </div>
+      </div>
+      <div class="debt-total">
+        <div class="debt-total-left">
+          <div class="debt-total-label">Total borrowing (principal)</div>
+          <div class="debt-total-sub">Plus >£100m interest paid in 2024 alone · PIK total cost >£850m</div>
+        </div>
+        <div class="debt-total-val">£1.165B</div>
+      </div>
+      <div class="debt-ringfence">✅ <strong>The club itself is ring-fenced.</strong> Unlike Man United — where the Glazers loaded debt directly onto the club — Chelsea FC is not legally liable for these loans. However, they create enormous pressure on Clearlake to generate returns, which means pressure on the manager to qualify for the Champions League and sell players at profit.</div>
+      <div class="debt-footer">Sources: The Athletic (Apr 2025) · Companies House filings · EPL Index · Swiss Ramble methodology.</div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <!-- COST OF FAILURE -->
+  <div class="money-section" id="cost-of-failure">
+    <div class="money-header">
+      <div class="money-header-title">💸 The real cost of failure</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="money-header-sub">If Chelsea miss top 5 in 2025–26</div>
+        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span class="tile-share-label">Share</span>
+        </button>
+      </div>
+    </div>
+    <div class="money-body">
+      <div class="money-intro">Chelsea are currently <strong>6th</strong>, with only a <strong>14.29% chance of finishing top 5</strong> (UCL places) per xPTS projections. Here's what missing out costs next season:</div>
+      <div class="xpts-bar">
+        <div class="xpts-label">PREDICTED FINAL STANDINGS (xPTS) <span>UCL %</span></div>
+        <div class="xpts-teams">
+          <div class="xpts-row"><div class="xpts-pos">1</div><div class="xpts-name">Arsenal</div><div class="xpts-track"><div class="xpts-fill" style="width:100%"></div></div><div class="xpts-val">84.81</div><div class="xpts-pct good">97.68%</div></div>
+          <div class="xpts-row"><div class="xpts-pos">2</div><div class="xpts-name">Man City</div><div class="xpts-track"><div class="xpts-fill" style="width:88%"></div></div><div class="xpts-val">74.44</div><div class="xpts-pct good">99.96%</div></div>
+          <div class="xpts-row"><div class="xpts-pos">3</div><div class="xpts-name">Man Utd</div><div class="xpts-track"><div class="xpts-fill" style="width:78%"></div></div><div class="xpts-val">66.09</div><div class="xpts-pct good">86.33%</div></div>
+          <div class="xpts-row"><div class="xpts-pos">4</div><div class="xpts-name">Aston Villa</div><div class="xpts-track"><div class="xpts-fill" style="width:76%"></div></div><div class="xpts-val">64.10</div><div class="xpts-pct good">66.18%</div></div>
+          <div class="xpts-row"><div class="xpts-pos">5</div><div class="xpts-name">Liverpool</div><div class="xpts-track"><div class="xpts-fill" style="width:71%"></div></div><div class="xpts-val">60.57</div><div class="xpts-pct good">28.01%</div></div>
+          <div class="xpts-row"><div class="xpts-pos">6</div><div class="xpts-name chelsea">Chelsea ⚠</div><div class="xpts-track"><div class="xpts-fill chelsea-fill" style="width:69%"></div></div><div class="xpts-val" style="color:var(--gold)">58.66</div><div class="xpts-pct bad">14.29%</div></div>
+        </div>
+        <div style="margin-top:8px;font-size:.58rem;color:rgba(255,255,255,.22);text-align:right;">Source: Opta Analyst</div>
+      </div>
+      <div class="money-divider"></div>
+      <div class="money-rows">
+        <div class="money-row lost"><div class="money-row-label">UCL participation fee<small>€18.6m guaranteed for all 36 clubs</small></div><div class="money-row-val">−£16.2M</div></div>
+        <div class="money-row lost"><div class="money-row-label">Performance bonuses<small>Wins, draws, league phase finishing position</small></div><div class="money-row-val">−£17.5M</div></div>
+        <div class="money-row lost"><div class="money-row-label">Knockout stage earnings<small>R16 worth £9.5m; QF adds £9.4m more</small></div><div class="money-row-val">−£20M+</div></div>
+        <div class="money-row lost"><div class="money-row-label">Matchday revenue<small>UCL home gates avg £4–5m each · 4–6 home games</small></div><div class="money-row-val">−£25M</div></div>
+        <div class="money-row lost"><div class="money-row-label">Commercial uplift<small>Shirt sales, sponsor bonuses, global broadcast reach</small></div><div class="money-row-val">−£20M</div></div>
+        <div class="money-row note"><div class="money-row-label">Value pillar (UEFA coefficient)<small>~£34m pre-allocated regardless of qualification</small></div><div class="money-row-val">SAFE</div></div>
+        <div class="money-row note"><div class="money-row-label">PSR / FFP headroom<small>Missing UCL tightens spending room significantly</small></div><div class="money-row-val">BIG RISK</div></div>
+      </div>
+      <div class="money-total">
+        <div class="money-total-label">Estimated total revenue loss next season</div>
+        <div class="money-total-val">~£98M</div>
+      </div>
+      <div class="money-footer">Sources: UEFA prize money circular · Swiss Ramble · Football365 · The Chelsea Chronicle (Mar 2026).</div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <!-- SHOPPING SPREE -->
+  <div class="transfer-section" id="shopping-spree">
+    <div class="transfer-header">
+      <div class="transfer-header-title">🛒 The BlueCo Shopping Spree</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="transfer-header-sub">May 2022 → present</div>
+        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span class="tile-share-label">Share</span>
+        </button>
+      </div>
+    </div>
+    <div class="transfer-body">
+      <div class="transfer-intro">Since Todd Boehly arrived clutching a calculator that only does addition, Chelsea have signed <strong>56 players</strong> — one new arrival every 25 days. The squad has been rebuilt. Then rebuilt again. Then rebuilt once more, just to be sure. They are currently <strong>6th</strong>.</div>
+      <div class="transfer-cols">
+        <div class="transfer-col bought">
+          <div class="transfer-col-label">Players in</div>
+          <div class="transfer-col-players">56</div>
+          <div class="transfer-col-amount">~£1.4B spent</div>
+        </div>
+        <div class="transfer-col sold">
+          <div class="transfer-col-label">Players out</div>
+          <div class="transfer-col-players">70+</div>
+          <div class="transfer-col-amount">~£750M received</div>
+        </div>
+      </div>
+      <div class="transfer-net">
+        <div class="transfer-net-left">
+          <div class="transfer-net-label">Net spend</div>
+          <div class="transfer-net-sub">More than any club in world football, same period</div>
+        </div>
+        <div class="transfer-net-val">~£650M</div>
+      </div>
+      <div class="transfer-quip">£24m per league win since the takeover. At that rate, the <strong>Champions League trophy costs approximately £864m</strong>. Which, coincidentally, is roughly what they've already spent. So they should be due one any day now.</div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <!-- SCR RULES -->
+  <div class="scr-section" id="scr-rules">
+    <div class="scr-header">
+      <div class="scr-header-title">⚖️ SCR — The New Financial Rules</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="scr-header-sub">Replacing PSR from 2026–27</div>
+        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span class="tile-share-label">Share</span>
+        </button>
+      </div>
+    </div>
+    <div class="scr-body">
+      <div class="scr-intro">The Premier League's <strong>PSR rules</strong> (max £105m losses over 3 years) are being replaced by <strong>Squad Cost Ratio (SCR)</strong> — a harder, cleaner system that limits squad spending to a percentage of revenue. For Chelsea, this could change everything.</div>
+      <div class="scr-zones">
+        <div class="scr-zone green"><div class="scr-zone-pct">≤85%</div><div class="scr-zone-label">🟢 Green</div><div class="scr-zone-desc">Fully compliant. No action.</div></div>
+        <div class="scr-zone amber"><div class="scr-zone-pct">86–115%</div><div class="scr-zone-label">🟡 Amber</div><div class="scr-zone-desc">Financial levy. No points deduction. Yet.</div></div>
+        <div class="scr-zone red"><div class="scr-zone-pct">&gt;115%</div><div class="scr-zone-label">🔴 Red</div><div class="scr-zone-desc">Points deduction. Fixed 6pts + 1pt per £6.5m over.</div></div>
+      </div>
+      <div class="scr-rows">
+        <div class="scr-row bad"><div class="scr-row-icon">🚫</div><div class="scr-row-text"><strong>Chelsea already fined by UEFA</strong> for breaching UEFA's equivalent SCR limit (then 80%) in 2024–25. A warning shot that the new era has real teeth.</div></div>
+        <div class="scr-row bad"><div class="scr-row-icon">🏨</div><div class="scr-row-text"><strong>The loophole is closed.</strong> Chelsea sold two Stamford Bridge hotels for £76.5m and the women's team for £200m to boost PSR compliance. Under SCR, <strong>only pure football revenues count</strong> — those tricks no longer work.</div></div>
+        <div class="scr-row warn"><div class="scr-row-icon">📉</div><div class="scr-row-text"><strong>Missing the Champions League tightens this dramatically.</strong> Lose £98m in UCL income and your squad cost allowance shrinks. Less revenue = less permitted spending = forced sales.</div></div>
+        <div class="scr-row warn"><div class="scr-row-icon">📅</div><div class="scr-row-text"><strong>Assessed every March.</strong> Unlike PSR's 3-year rolling window, SCR is assessed annually. No more smoothing bad years over good ones.</div></div>
+        <div class="scr-row good"><div class="scr-row-icon">🔵</div><div class="scr-row-text"><strong>Currently shadow-running alongside PSR.</strong> Full enforcement begins 2026–27. The clock is ticking.</div></div>
+      </div>
+      <div class="scr-footer">Sources: Premier League official statement (Nov 2025) · Sky Sports · Swiss Ramble · ESPN · UEFA SCR regulations.</div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    ⚠️ <strong style="color:rgba(255,255,255,.35)">Disclaimer (sort of):</strong> All financial figures are based on publicly available sources — Companies House filings, The Athletic, Swiss Ramble. This is commentary and satire, not financial advice. We are not accountants. We are not lawyers. We are Chelsea fans, which is arguably worse.
+  </div>
+
+  <!-- STADIUM PROMISES -->
+  <div class="stadium-tile" id="stadium">
+    <div class="stadium-header">
+      <div class="stadium-header-title">🏟️ Stadium Promises</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="stadium-header-sub">SW6 · Est. 1905 · Unchanged since 2022</div>
+        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span class="tile-share-label">Share</span>
+        </button>
+      </div>
+    </div>
+    <div class="stadium-body">
+
+      <!-- KEY STATS -->
+      <div class="stadium-stat-grid">
+        <div class="stadium-stat">
+          <div class="stadium-stat-label">Current capacity</div>
+          <div class="stadium-stat-val" style="color:#f87171;">40,341</div>
+        </div>
+        <div class="stadium-stat">
+          <div class="stadium-stat-label">Target capacity</div>
+          <div class="stadium-stat-val" style="color:#4ade80;">60,000</div>
+        </div>
+        <div class="stadium-stat">
+          <div class="stadium-stat-label">Seats added since 2022</div>
+          <div class="stadium-stat-val" style="color:#f87171;">0</div>
+        </div>
+        <div class="stadium-stat">
+          <div class="stadium-stat-label">Boehly's timeline</div>
+          <div class="stadium-stat-val" style="color:#fbbf24;font-size:.95rem;">15–20 YRS</div>
+        </div>
+        <div class="stadium-stat">
+          <div class="stadium-stat-label">Land purchased</div>
+          <div class="stadium-stat-val" style="color:#60a5fa;">£80M</div>
+        </div>
+        <div class="stadium-stat">
+          <div class="stadium-stat-label">Est. rebuild cost</div>
+          <div class="stadium-stat-val" style="color:#f87171;">£1B+</div>
+        </div>
+      </div>
+
+      <!-- TIMELINE -->
+      <div style="font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:6px;">Timeline of promises</div>
+      <div class="stadium-timeline">
+        <div class="stadium-event blue"><div class="stadium-year">2014</div><div class="stadium-event-text"><strong>Herzog & De Meuron</strong> design unveiled — cathedral-like 60,000 seat rebuild. Shelved.</div></div>
+        <div class="stadium-event bad"><div class="stadium-year">2017</div><div class="stadium-event-text">Planning permission granted. <strong>Construction never begins.</strong> Permission lapses.</div></div>
+        <div class="stadium-event blue"><div class="stadium-year">2022</div><div class="stadium-event-text">BlueCo takeover. Stadium "a <strong>key priority</strong>" per terms of purchase agreement.</div></div>
+        <div class="stadium-event bad"><div class="stadium-year">2023</div><div class="stadium-event-text">Plans hit roadblock. <strong>Stoll Mansions residents</strong> block land acquisition. Back to square one.</div></div>
+        <div class="stadium-event ok"><div class="stadium-year">2024</div><div class="stadium-event-text">BlueCo complete <strong>£80M purchase</strong> of Sir Oswald Stoll Mansions site. First actual progress.</div></div>
+        <div class="stadium-event bad"><div class="stadium-year">2025</div><div class="stadium-event-text"><strong>Earl's Court option effectively dead.</strong> ECDC approve £10B development without a football stadium. Boehly says "15–20 years."</div></div>
+        <div class="stadium-event warn"><div class="stadium-year">2026</div><div class="stadium-event-text">Capacity: <strong>still 40,341.</strong> Architect hired (Janet Marie Smith). Options: rebuild SB or wait for Earl's Court. No decision made.</div></div>
+      </div>
+
+      <!-- COMPARISON -->
+      <div style="font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:6px;margin-top:12px;">London rivals — stadium capacity</div>
+      <div class="stadium-compare">
+        <div class="stadium-compare-club">
+          <div class="stadium-compare-name">Tottenham</div>
+          <div class="stadium-compare-cap" style="color:#4ade80;">62,850</div>
+          <div class="stadium-compare-note">Opened 2019 · £1B</div>
+        </div>
+        <div class="stadium-compare-club">
+          <div class="stadium-compare-name">Arsenal</div>
+          <div class="stadium-compare-cap" style="color:#4ade80;">60,704</div>
+          <div class="stadium-compare-note">Opened 2006 · £390M</div>
+        </div>
+        <div class="stadium-compare-club">
+          <div class="stadium-compare-name">West Ham</div>
+          <div class="stadium-compare-cap" style="color:#fbbf24;">62,500</div>
+          <div class="stadium-compare-note">Moved 2016 · subsidised</div>
+        </div>
+        <div class="stadium-compare-club" style="border-color:rgba(248,113,113,.2);">
+          <div class="stadium-compare-name" style="color:#f87171;">Chelsea</div>
+          <div class="stadium-compare-cap" style="color:#f87171;">40,341</div>
+          <div class="stadium-compare-note">Since 1997 · 9th in PL</div>
+        </div>
+      </div>
+
+      <!-- MATCHDAY REVENUE -->
+      <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:3px;padding:10px 12px;margin-bottom:12px;font-size:.7rem;color:rgba(255,255,255,.45);line-height:1.5;">
+        Chelsea matchday revenue: <strong style="color:rgba(255,255,255,.75);">£80M/year</strong> — less than <strong style="color:rgba(255,255,255,.75);">half</strong> of Man United's £160M+. A 60,000-seat ground could generate <strong style="color:#4ade80;">~£120M/year</strong>. The difference: <strong style="color:#f87171;">~£40M annually</strong> — money BlueCo is leaving on the table every single season.
+      </div>
+
+      <div class="stadium-quip">"It's the hope that kills you." 💀<br>Chelsea fans have been waiting for a new stadium since Roman Abramovich first promised one. That was 2011.</div>
+      <div class="stadium-footer">Sources: Football Ground Guide · The Athletic · The Chelsea Chronicle · ECDC planning documents · Companies House · May 2025 Boehly interview.</div>
+      <span class="tile-url">hasliamroseniorbeensackedyet.com/blueco</span>
+    </div>
+  </div>
+
+  <div style="max-width:480px;width:100%;margin:10px 0 4px;padding:10px 14px;border-radius:4px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);font-size:.6rem;color:rgba(255,255,255,.2);line-height:1.65;">
+    <strong style="color:rgba(255,255,255,.3);">Disclaimer:</strong> This page is for informational purposes only. It is based on publicly available filings and third-party analysis and may be incomplete or out of date. It does not constitute financial, legal or investment advice. We are not affiliated with Chelsea FC, BlueCo, Clearlake Capital or any entity described herein. Nothing here should be relied upon for any commercial or legal purpose.
+  </div>
+
+  
+
+  <div style="max-width:480px;width:100%;margin:16px 0 8px;padding:12px 0 0;border-top:1px solid rgba(255,255,255,.05);">
+    <div style="font-size:.54rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:8px;">Related analysis</div>
+    <div style="font-size:.67rem;color:rgba(255,255,255,.36);line-height:1.65;">BlueCo at Chelsea is not just spending. It is ownership structure, debt pressure, player trading, wage control and long-contract amortisation working together under PSR and SCR pressure.</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+      <a href="/chelsea-blueco-analysis" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.62rem;color:rgba(255,255,255,.5);">BlueCo overview</a>
+      <a href="/audit" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.62rem;color:rgba(255,255,255,.5);">Squad audit</a>
+      <a href="/wages" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.62rem;color:rgba(255,255,255,.5);">Wages</a>
+      <a href="/deals" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.62rem;color:rgba(255,255,255,.5);">Deals</a>
+      <a href="/injuries" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.62rem;color:rgba(255,255,255,.5);">Injuries</a>
+    </div>
+  </div>
+<div class="page-footer">
+    Unofficial fan project · Not financial advice · Not affiliated with Chelsea FC or BlueCo ·
+    <a href="/">← hasliamroseniorbeensackedyet.com</a> ·
+    <a href="/deals">Deal Verdicts</a>
+    · KTBFFH
+  </div>
+
+</div>
+
+<script>
+  // Share button
+  async function tileShare(btn) {
+    const tile = btn.closest('[id]');
+    const text = tile ? 'Chelsea FC BlueCo finances: ' + document.title + ' — https://hasliamroseniorbeensackedyet.com/blueco' : 'https://hasliamroseniorbeensackedyet.com/blueco';
+    const label = btn.querySelector('.tile-share-label');
+    const old = label ? label.textContent : 'Share';
+    function flash(msg) {
+      if (label) label.textContent = msg;
+      btn.classList.add('ok'); btn.style.pointerEvents = 'none';
+      setTimeout(() => { if (label) label.textContent = old; btn.classList.remove('ok'); btn.style.pointerEvents = ''; }, 2000);
+    }
+    if (navigator.share) {
+      try { await navigator.share({ title: document.title, url: 'https://hasliamroseniorbeensackedyet.com/blueco' }); flash('✓ Shared'); }
+      catch(e) { if (e.name !== 'AbortError') navigator.clipboard.writeText(text).then(() => flash('✓ Copied')); }
+    } else {
+      navigator.clipboard.writeText(text).then(() => flash('✓ Copied')).catch(() => flash('✓ Done'));
+    }
+  }
+</script>
+</body>
+</html>

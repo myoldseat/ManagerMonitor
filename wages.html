@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wage Bill — Every Contract | hasliamroseniorbeensackedyet.com</title>
+<meta name="description" content="Every Chelsea player's weekly wage, annual cost, contract start, expiry and years remaining. Sortable. Painful.">
+<link rel="canonical" href="https://hasliamroseniorbeensackedyet.com/wages">
+
+  <meta property="og:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23080810'/%3E%3Ctext x='50' y='72' font-family='Arial Black,sans-serif' font-size='62' font-weight='900' fill='%23cc1100' text-anchor='middle' letter-spacing='-2'%3ENO%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--blue:#034694;--gold:#C9A84C;--red:#cc1100;--dark:#080810;--surface:#0f0f1a;--border:#1e1e2e;--text:#e8e8f0;--muted:#555570;--green:#4ade80;--amber:#fbbf24;--rose:#f87171;}
+body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+.nav{background:var(--blue);padding:8px 18px;border-bottom:2px solid var(--gold);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.nav a{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);}
+.nav a:hover{color:rgba(255,255,255,.8);}
+.nav .sep{color:rgba(255,255,255,.2);}
+
+.wrap{max-width:480px;margin:0 auto;padding:24px 16px 60px;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;line-height:.9;margin-bottom:6px;}
+h1 em{color:var(--gold);font-style:normal;}
+.sub{font-size:.68rem;color:var(--muted);line-height:1.5;margin-bottom:18px;}
+
+/* totals strip */
+.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05);border-radius:3px;margin-bottom:18px;}
+.tot{background:var(--surface);padding:9px 10px;text-align:center;}
+.tot-val{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;line-height:1;color:var(--gold);}
+.tot-lbl{font-family:'DM Mono',monospace;font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+
+/* sort controls */
+.sort-row{display:flex;align-items:center;gap:5px;margin-bottom:10px;flex-wrap:nowrap;}
+.sort-lbl{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
+.sbtn{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;border-radius:2px;transition:all .14s;white-space:nowrap;flex-shrink:0;}
+.sbtn:hover{border-color:rgba(255,255,255,.14);color:var(--text);}
+.sbtn.on{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.08);}
+.sbtn.on .arr{display:inline;}
+.arr{display:none;font-size:.5rem;margin-left:3px;}
+
+/* player rows */
+.plist{display:flex;flex-direction:column;gap:3px;}
+
+.wrow{border:1px solid var(--border);border-radius:2px;padding:8px 10px;display:grid;grid-template-columns:auto 1fr auto;gap:0 8px;align-items:center;transition:border-color .14s;}
+.wrow:hover{border-color:rgba(255,255,255,.1);}
+
+.wr-left{display:flex;align-items:center;gap:6px;}
+.wr-pos{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.07em;text-transform:uppercase;padding:2px 5px;border:1px solid;border-radius:2px;flex-shrink:0;}
+.pos-DEF{color:#3b82f6;border-color:#3b82f640;}
+.pos-MID{color:#8b5cf6;border-color:#8b5cf640;}
+.pos-FWD{color:#22c55e;border-color:#22c55e40;}
+.pos-GK {color:#f59e0b;border-color:#f59e0b40;}
+
+.wr-name{font-size:.76rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+.wr-right{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
+.wr-wage{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--gold);white-space:nowrap;}
+.wr-annual{font-family:'DM Mono',monospace;font-size:.5rem;color:var(--muted);white-space:nowrap;}
+
+/* contract bar row — spans full width below name/wage */
+.wr-bar-row{grid-column:1/-1;display:flex;align-items:center;gap:6px;margin-top:5px;}
+.wr-bar-start{font-family:'DM Mono',monospace;font-size:.5rem;color:var(--muted);flex-shrink:0;}
+.wr-bar-track{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.07);overflow:hidden;}
+.wr-bar-fill{height:100%;border-radius:2px;}
+.wr-bar-end{font-family:'DM Mono',monospace;font-size:.5rem;flex-shrink:0;white-space:nowrap;}
+
+.source{margin-top:22px;padding-top:14px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:.56rem;color:var(--muted);line-height:1.8;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="/">← hasliamroseniorbeensackedyet.com</a>
+  <span class="sep">·</span>
+  <a href="/audit">Audit</a>
+  <span class="sep">·</span>
+  <a href="/injuries">Injuries</a>
+  <span class="sep">·</span>
+  <a href="/blueco">BlueCo</a>
+</div>
+
+<div class="wrap">
+  <div class="eyebrow">Chelsea FC · 2025/26</div>
+  <h1>The <em>Wage</em> Bill</h1>
+  <p class="sub">Every first-team contract. Weekly cost, annual burn, expiry date. Sort by wage or by how long we're stuck with them.</p>
+
+  <div class="totals" id="totals"></div>
+
+  <div class="sort-row">
+    <span class="sort-lbl">Sort:</span>
+    <button class="sbtn on" id="s-wage" onclick="setSort('wage',this)">Wage <span class="arr">↓</span></button>
+    <button class="sbtn" id="s-expiry" onclick="setSort('expiry',this)">Expiry <span class="arr">↓</span></button>
+    <button class="sbtn" id="s-remaining" onclick="setSort('remaining',this)">Yrs Left <span class="arr">↓</span></button>
+    <button class="sbtn" id="s-annual" onclick="setSort('annual',this)">Annual Cost <span class="arr">↓</span></button>
+  </div>
+
+  <div class="plist" id="plist"></div>
+
+  <div class="source">
+    Wage data: Capology / Spotrac estimates, Mar 2026 · Annual = weekly × 52 · Contract dates from verified salary filings · Market values: Transfermarkt Mar 2026
+  </div>
+</div>
+
+
+
+<div style="max-width:480px;margin:18px auto 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.05);">
+  <div style="font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:8px;">Related analysis</div>
+  <div style="font-size:.66rem;color:rgba(255,255,255,.34);line-height:1.7;">Chelsea's wage bill only makes sense when read beside transfer amortisation, squad value and the BlueCo trading model. Long contracts reduce annual accounting hits, but they also lock in wage risk.</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+    <a href="/chelsea-blueco-analysis" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">BlueCo overview</a>
+    <a href="/blueco" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">BlueCo books</a>
+    <a href="/audit" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Squad audit</a>
+    <a href="/deals" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Deals</a>
+    <a href="/injuries" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Injuries</a>
+  </div>
+</div>
+<script>
+const NOW = 2026;
+
+const P = [
+  // GK
+  {name:"Reece James ★",     pos:"DEF",posL:"RB",  weekly:200000, start:2026, end:2032},
+  {name:"Wesley Fofana",     pos:"DEF",posL:"CB",  weekly:200000, start:2022, end:2029},
+  {name:"Enzo Fernández",    pos:"MID",posL:"CM",  weekly:180000, start:2023, end:2032},
+  {name:"Marc Cucurella",    pos:"DEF",posL:"LB",  weekly:175000, start:2022, end:2028},
+  {name:"Pedro Neto",        pos:"FWD",posL:"RW",  weekly:160000, start:2024, end:2031},
+  {name:"Moisés Caicedo",    pos:"MID",posL:"DM",  weekly:150000, start:2023, end:2031},
+  {name:"Cole Palmer",       pos:"FWD",posL:"AM",  weekly:130000, start:2024, end:2033},
+  {name:"João Pedro",        pos:"FWD",posL:"ST",  weekly:125000, start:2025, end:2033},
+  {name:"Jorrel Hato",       pos:"DEF",posL:"LB",  weekly:120000, start:2025, end:2032},
+  {name:"Tosin Adarabioyo",  pos:"DEF",posL:"CB",  weekly:120000, start:2024, end:2028},
+  {name:"Alejandro Garnacho",pos:"MID",posL:"LW",  weekly:110000, start:2025, end:2032},
+  {name:"Jamie Gittens",     pos:"FWD",posL:"LW",  weekly:108000, start:2025, end:2032},
+  {name:"Mykhailo Mudryk †", pos:"MID",posL:"LW",  weekly:100000, start:2023, end:2031},
+  {name:"Levi Colwill",      pos:"DEF",posL:"CB",  weekly:100000, start:2023, end:2029},
+  {name:"Liam Delap",        pos:"FWD",posL:"ST",  weekly:100000, start:2025, end:2031},
+  {name:"Benoît Badiashile", pos:"DEF",posL:"CB",  weekly:90000,  start:2023, end:2030},
+  {name:"Nicolás Jackson",   pos:"FWD",posL:"ST",  weekly:90000,  start:2023, end:2031},
+  {name:"Roméo Lavia",       pos:"MID",posL:"DM",  weekly:45000,  start:2023, end:2030},
+  {name:"Jamie Gittens",     pos:"FWD",posL:"LW",  weekly:85000,  start:2025, end:2032},
+  {name:"Robert Sánchez",    pos:"GK", posL:"GK",  weekly:60000,  start:2023, end:2030},
+  {name:"Estêvão Willian",   pos:"FWD",posL:"RW",  weekly:60000,  start:2025, end:2033},
+  {name:"Marc Guiu",         pos:"FWD",posL:"ST",  weekly:50000,  start:2024, end:2029},
+  {name:"Trevoh Chalobah",   pos:"DEF",posL:"CB",  weekly:50000,  start:2022, end:2028},
+  {name:"Filip Jörgensen",   pos:"GK", posL:"GK",  weekly:50000,  start:2024, end:2031},
+  {name:"Malo Gusto",        pos:"DEF",posL:"RB",  weekly:45000,  start:2023, end:2030},
+  {name:"Gaga Slonina",      pos:"GK", posL:"GK",  weekly:40000,  start:2022, end:2028},
+  {name:"Dário Essugo",      pos:"MID",posL:"DM",  weekly:40000,  start:2025, end:2033},
+  {name:"Andrey Santos",     pos:"MID",posL:"CM",  weekly:35000,  start:2023, end:2030},
+  {name:"Mamadou Sarr",      pos:"DEF",posL:"CB",  weekly:35000,  start:2025, end:2033},
+  {name:"Josh Acheampong",   pos:"DEF",posL:"RB",  weekly:5000,   start:2024, end:2029},
+];
+
+// deduplicate (Gittens appeared twice above)
+const players = P.filter((p,i,a) => a.findIndex(x=>x.name===p.name)===i);
+
+function fmt(n){
+  if(n>=1000000) return '£'+(n/1000000).toFixed(1)+'M';
+  if(n>=1000) return '£'+(n/1000).toFixed(0)+'K';
+  return '£'+n;
+}
+
+function barColor(remaining){
+  return remaining >= 4 ? '#4ade80' : remaining >= 2 ? '#fbbf24' : '#f87171';
+}
+
+let sortKey = 'wage';
+let sortDir = -1; // -1 = desc, 1 = asc
+
+function setSort(key, btn){
+  if(sortKey === key){
+    sortDir *= -1;
+  } else {
+    sortKey = key;
+    sortDir = key === 'remaining' || key === 'expiry' ? 1 : -1;
+  }
+  document.querySelectorAll('.sbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  btn.querySelector('.arr').textContent = sortDir === -1 ? '↓' : '↑';
+  render();
+}
+
+function render(){
+  const sorted = [...players].sort((a,b)=>{
+    let av, bv;
+    if(sortKey==='wage')      { av=a.weekly;        bv=b.weekly; }
+    if(sortKey==='annual')    { av=a.weekly*52;      bv=b.weekly*52; }
+    if(sortKey==='expiry')    { av=a.end;            bv=b.end; }
+    if(sortKey==='remaining') { av=a.end-NOW;        bv=b.end-NOW; }
+    return (av-bv)*sortDir;
+  });
+
+  // totals
+  const totalWeekly = players.reduce((s,p)=>s+p.weekly,0);
+  const totalAnnual = totalWeekly*52;
+  const avgRemaining = (players.reduce((s,p)=>s+(p.end-NOW),0)/players.length).toFixed(1);
+  document.getElementById('totals').innerHTML = `
+    <div class="tot"><div class="tot-val">${fmt(totalWeekly)}</div><div class="tot-lbl">Per week</div></div>
+    <div class="tot"><div class="tot-val">${fmt(totalAnnual)}</div><div class="tot-lbl">Per year</div></div>
+    <div class="tot"><div class="tot-val">${avgRemaining}y</div><div class="tot-lbl">Avg yrs left</div></div>
+  `;
+
+  document.getElementById('plist').innerHTML = sorted.map(p=>{
+    const remaining = p.end - NOW;
+    const total = p.end - p.start;
+    const pct = Math.max(0, Math.min(100, (remaining/total)*100));
+    const color = barColor(remaining);
+    const remLabel = remaining <= 0 ? 'Expires' : remaining === 1 ? '1 yr' : `${remaining} yrs`;
+    return `<div class="wrow">
+      <div class="wr-left">
+        <span class="wr-pos pos-${p.pos}">${p.posL}</span>
+        <span class="wr-name">${p.name}</span>
+      </div>
+      <div class="wr-right">
+        <span class="wr-wage">${fmt(p.weekly)}<span style="font-size:.55rem;color:var(--muted)">/wk</span></span>
+        <span class="wr-annual">${fmt(p.weekly*52)}/yr</span>
+      </div>
+      <div class="wr-bar-row">
+        <span class="wr-bar-start">${p.start}</span>
+        <div class="wr-bar-track"><div class="wr-bar-fill" style="width:${pct}%;background:${color};"></div></div>
+        <span class="wr-bar-end" style="color:${color};">${p.end} · ${remLabel}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Audit — Wage × Fee × Verdict | hasliamroseniorbeensackedyet.com</title>
+<meta name="description" content="Every Chelsea player: fee paid, book value, market value, weekly wage, fitness, deal verdict. The full financial picture.">
+<link rel="canonical" href="https://hasliamroseniorbeensackedyet.com/audit">
+
+  <meta property="og:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23080810'/%3E%3Ctext x='50' y='72' font-family='Arial Black,sans-serif' font-size='62' font-weight='900' fill='%23cc1100' text-anchor='middle' letter-spacing='-2'%3ENO%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--blue:#034694;--gold:#C9A84C;--red:#cc1100;--dark:#080810;--surface:#0f0f1a;--border:#1e1e2e;--text:#e8e8f0;--muted:#555570;--green:#4ade80;--amber:#fbbf24;--rose:#f87171;}
+body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+/* ── Nav ── */
+.nav{background:var(--blue);padding:8px 18px;border-bottom:2px solid var(--gold);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.nav a{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);}
+.nav a:hover{color:rgba(255,255,255,.8);}
+.nav .sep{color:rgba(255,255,255,.2);}
+
+/* ── Wrap ── */
+.wrap{max-width:480px;margin:0 auto;padding:24px 16px 60px;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;line-height:.9;margin-bottom:6px;}
+h1 em{color:var(--gold);font-style:normal;}
+.sub{font-size:.68rem;color:var(--muted);line-height:1.5;margin-bottom:22px;}
+
+/* ── Ticker ── */
+.ticker{overflow:hidden;margin-bottom:20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:7px 0;}
+.ticker-inner{display:flex;animation:tick 30s linear infinite;white-space:nowrap;}
+.ticker span{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;padding:0 24px;color:var(--muted);}
+.ticker span.hi{color:var(--gold);}
+.ticker span.lo{color:var(--rose);}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── Section label ── */
+.sec-label{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.sec-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06);}
+
+/* ── Style cards ── */
+.style-cards{display:flex;flex-direction:column;gap:5px;margin-bottom:28px;}
+.scard{border-radius:3px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:border-color .15s;}
+.scard-header{padding:11px 13px;display:flex;align-items:center;gap:9px;}
+.scard-icon{font-size:1rem;flex-shrink:0;}
+.scard-info{flex:1;min-width:0;}
+.scard-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.04em;line-height:1;}
+.scard-sub{font-size:.6rem;color:rgba(255,255,255,.28);margin-top:1px;font-family:'DM Mono',monospace;letter-spacing:.05em;}
+.scard-right{text-align:right;flex-shrink:0;}
+.scard-val{font-family:'DM Mono',monospace;font-size:.8rem;font-weight:500;}
+.scard-val-lbl{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:1px;}
+.scard-arrow{font-size:.58rem;color:rgba(255,255,255,.2);margin-left:6px;transition:transform .2s;flex-shrink:0;}
+.scard.open .scard-arrow{transform:rotate(180deg);}
+
+.scard-body{display:none;padding:0 13px 13px;}
+.scard.open .scard-body{display:block;}
+.scard-story{font-size:.69rem;color:rgba(255,255,255,.42);line-height:1.6;margin-bottom:10px;border-left:2px solid rgba(255,255,255,.08);padding-left:10px;}
+
+/* player rows inside style cards */
+.scard-players{display:flex;flex-direction:column;gap:3px;}
+.sp-row{display:flex;align-items:center;gap:7px;padding:6px 8px;background:rgba(255,255,255,.025);border-radius:2px;}
+.sp-name{font-size:.75rem;font-weight:600;flex:1;}
+.sp-wage{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--gold);flex-shrink:0;}
+.sp-book{font-family:'DM Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.3);flex-shrink:0;}
+.sp-mkt{font-family:'DM Mono',monospace;font-size:.6rem;flex-shrink:0;}
+.sp-badge{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;border-radius:2px;border:1px solid;flex-shrink:0;}
+
+/* scard totals bar */
+.scard-totals{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05);border-radius:2px;margin-bottom:10px;}
+.sct{background:var(--surface);padding:7px 8px;text-align:center;}
+.sct-val{font-family:'Bebas Neue',sans-serif;font-size:1rem;line-height:1;}
+.sct-lbl{font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+
+/* card colour themes */
+.scard.t-red   {border-color:rgba(248,113,113,.2);}  .scard.t-red   .scard-header{background:rgba(248,113,113,.05);}  .scard.t-red   .scard-title,.scard.t-red .scard-val{color:#f87171;}
+.scard.t-gold  {border-color:rgba(201,168,76,.2);}   .scard.t-gold  .scard-header{background:rgba(201,168,76,.05);}  .scard.t-gold  .scard-title,.scard.t-gold .scard-val{color:var(--gold);}
+.scard.t-green {border-color:rgba(74,222,128,.18);}  .scard.t-green .scard-header{background:rgba(74,222,128,.04);}  .scard.t-green .scard-title,.scard.t-green .scard-val{color:#4ade80;}
+.scard.t-blue  {border-color:rgba(96,165,250,.18);}  .scard.t-blue  .scard-header{background:rgba(96,165,250,.04);}  .scard.t-blue  .scard-title,.scard.t-blue .scard-val{color:#60a5fa;}
+.scard.t-amber {border-color:rgba(251,191,36,.18);}  .scard.t-amber .scard-header{background:rgba(251,191,36,.04);}  .scard.t-amber .scard-title,.scard.t-amber .scard-val{color:#fbbf24;}
+.scard.t-purple{border-color:rgba(167,139,250,.18);} .scard.t-purple .scard-header{background:rgba(167,139,250,.04);}.scard.t-purple .scard-title,.scard.t-purple .scard-val{color:#a78bfa;}
+
+/* ── Player list ── */
+.filters{display:flex;align-items:center;gap:4px;margin-bottom:10px;flex-wrap:nowrap;}
+.fbtn{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;border-radius:2px;transition:all .14s;white-space:nowrap;flex-shrink:0;}
+.fbtn:hover,.fbtn.on{border-color:var(--blue);color:var(--text);background:rgba(3,70,148,.15);}
+.fbtn.hit-btn{color:#4ade80;border-color:#4ade8030;}.fbtn.hit-btn:hover,.fbtn.hit-btn.on{background:rgba(74,222,128,.12);border-color:#4ade80;color:#4ade80;}
+.fbtn.miss-btn{color:#f87171;border-color:#f8717130;}.fbtn.miss-btn:hover,.fbtn.miss-btn.on{background:rgba(248,113,113,.12);border-color:#f87171;color:#f87171;}
+.fbtn-group{display:flex;}
+.fbtn-group .fbtn{border-radius:0;margin-left:-1px;}
+.fbtn-group .fbtn:first-child{border-radius:2px 0 0 2px;margin-left:0;}
+.fbtn-group .fbtn:last-child{border-radius:0 2px 2px 0;}
+
+.player-list{display:flex;flex-direction:column;gap:3px;}
+
+/* collapsed row */
+.prow{border-radius:2px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:border-color .14s;}
+.prow:hover{border-color:rgba(255,255,255,.14);}
+.prow.open{border-color:rgba(201,168,76,.35);}
+.prow.hidden{display:none;}
+
+.prow-top{display:flex;align-items:center;gap:6px;padding:8px 10px;}
+.prow-pos{font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.07em;text-transform:uppercase;padding:2px 5px;border:1px solid;border-radius:2px;flex-shrink:0;}
+.pos-DEF{color:#3b82f6;border-color:#3b82f640;}
+.pos-MID{color:#8b5cf6;border-color:#8b5cf640;}
+.pos-FWD{color:#22c55e;border-color:#22c55e40;}
+.pos-GK {color:#f59e0b;border-color:#f59e0b40;}
+.prow-name{font-size:.78rem;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.prow-wage{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--gold);flex-shrink:0;}
+.prow-mv{font-family:'DM Mono',monospace;font-size:.65rem;flex-shrink:0;}
+.prow-inj{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;border-radius:2px;border:1px solid;flex-shrink:0;}
+.inj-ok   {color:rgba(255,255,255,.22);border-color:rgba(255,255,255,.08);}
+.inj-out  {color:#f87171;border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.06);}
+.inj-doubt{color:#fbbf24;border-color:rgba(251,191,36,.3);}
+.inj-ban  {color:#a78bfa;border-color:rgba(167,139,250,.3);}
+.prow-arrow{font-size:.58rem;color:rgba(255,255,255,.18);flex-shrink:0;transition:transform .2s;}
+.prow.open .prow-arrow{transform:rotate(180deg);color:var(--gold);}
+
+/* expanded detail */
+.prow-detail{display:none;padding:0 10px 11px;}
+.prow.open .prow-detail{display:block;}
+
+.detail-bar{height:3px;border-radius:2px;overflow:hidden;background:var(--border);margin-bottom:10px;}
+.detail-bar-fill{height:100%;border-radius:2px;}
+
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px;}
+.dcell{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:2px;padding:7px 9px;}
+.dcell-val{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;line-height:1;}
+.dcell-lbl{font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+
+.detail-vrd{display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:6px 9px;border-radius:2px;background:rgba(255,255,255,.02);}
+.vrd-label{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.vrd-val{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:700;margin-left:auto;}
+.vrd-hit  {color:#4ade80;} .vrd-ok{color:#60a5fa;} .vrd-jury{color:var(--muted);} .vrd-miss{color:#f87171;} .vrd-dis{color:#fca5a5;}
+
+.detail-contract{display:flex;align-items:center;gap:8px;margin-bottom:8px;padding:6px 9px;border-radius:2px;background:rgba(255,255,255,.02);}
+.dc-label{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
+.dc-track{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden;}
+.dc-fill{height:100%;border-radius:3px;transition:width .3s;}
+.dc-end{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.06em;color:var(--muted);flex-shrink:0;}
+
+.detail-note{font-size:.67rem;color:rgba(255,255,255,.38);line-height:1.55;padding:8px 9px;background:rgba(255,255,255,.02);border-radius:2px;border-left:2px solid rgba(201,168,76,.25);}
+
+/* source */
+.source{margin-top:22px;padding-top:14px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:.56rem;color:var(--muted);line-height:1.8;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="/">← hasliamroseniorbeensackedyet.com</a>
+</div>
+
+<div class="wrap">
+  <div class="eyebrow">Chelsea FC · Financial Deep Dive · March 2026</div>
+  <h1>THE <em>AUDIT</em></h1>
+  <div class="sub">Fee paid · Book value · Market value · Weekly wage · Fitness · Verdict. Every player, one page.</div>
+
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>Total squad wage bill</span><span class="hi">£2.78M/wk · £144.5M/yr</span>
+      <span class="lo">Wages unavailable (injured/banned)</span><span class="hi">~£515K/wk</span>
+      <span>Total squad market value</span><span class="hi">~£985M</span>
+      <span>Total fees paid (current squad)</span><span class="hi">~£1.05B</span>
+      <span class="lo">Book value vs market value deficit</span><span class="hi">see below</span>
+      <span>Total squad wage bill</span><span class="hi">£2.78M/wk · £144.5M/yr</span>
+      <span class="lo">Wages unavailable (injured/banned)</span><span class="hi">~£515K/wk</span>
+      <span>Total squad market value</span><span class="hi">~£985M</span>
+      <span>Total fees paid (current squad)</span><span class="hi">~£1.05B</span>
+      <span class="lo">Book value vs market value deficit</span><span class="hi">see below</span>
+    </div>
+  </div>
+
+  <!-- STYLE CARDS -->
+  <div class="sec-label">The stories</div>
+  <div class="style-cards" id="styleCards"></div>
+
+  <!-- VALUE EFFICIENCY TILE -->
+  <div class="sec-label" style="margin-top:18px;">Value efficiency</div>
+  <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:4px;overflow:hidden;margin-bottom:18px;">
+
+    <div style="background:rgba(255,255,255,.02);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06);">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;color:var(--text);">Market Value ÷ Annual Wage</div>
+      <div style="font-family:'DM Mono',monospace;font-size:.54rem;color:var(--muted);margin-top:2px;line-height:1.5;">Adjusted score = market value ÷ true annual cost × minutes weight × injury factor. True cost = wage/yr + fee ÷ contract length. Full weight at 900+ mins, linear below. Source: Transfermarkt, all competitions.</div>
+    </div>
+
+    <div style="padding:10px 14px;">
+
+      <div style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:#4ade80;margin-bottom:6px;">▲ Top 5 — getting more than they cost</div>
+      <div id="eff-top" style="display:flex;flex-direction:column;gap:3px;margin-bottom:14px;"></div>
+
+      <div style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:#f87171;margin-bottom:6px;">▼ Bottom 5 — wage outrunning value</div>
+      <div id="eff-bot" style="display:flex;flex-direction:column;gap:3px;margin-bottom:10px;"></div>
+
+      <button onclick="renderFullList();document.getElementById('fullListPopup').style.display='flex';" style="width:100%;padding:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:2px;font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);cursor:pointer;transition:all .15s;margin-bottom:6px;" onmouseover="this.style.borderColor='rgba(255,255,255,.25)';this.style.color='rgba(255,255,255,.65)'" onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.35)'">
+        ↕ Full squad ranking — all eligible players
+      </button>
+
+      <button onclick="renderScatter();document.getElementById('scatterPopup').style.display='flex';" style="width:100%;padding:8px;background:rgba(3,70,148,.08);border:1px solid rgba(3,70,148,.3);border-radius:2px;font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:#60a5fa;cursor:pointer;transition:all .15s;margin-bottom:10px;" onmouseover="this.style.background='rgba(3,70,148,.15)';this.style.borderColor='rgba(3,70,148,.5)'" onmouseout="this.style.background='rgba(3,70,148,.08)';this.style.borderColor='rgba(3,70,148,.3)'">
+        ◎ Fee vs adjusted score — scatter plot
+      </button>
+
+      <div style="font-size:.58rem;color:rgba(255,255,255,.18);line-height:1.6;font-style:italic;padding-top:8px;border-top:1px solid rgba(255,255,255,.05);">
+        <strong style="color:rgba(255,255,255,.3);">Adjusted score</strong> = market value ÷ true annual cost × minutes weight × injury factor. True cost = wage/yr + fee ÷ contract length. Full weight at 900+ mins (≈10 full games), linear below. Minutes: Transfermarkt, all competitions. ·
+        <strong style="color:rgba(255,255,255,.3);">Mudryk excluded</strong> — banned, £0 market value. ·
+        <strong style="color:rgba(255,255,255,.3);">Colwill excluded</strong> — TM value pre-ACL. ·
+        <strong style="color:rgba(255,255,255,.3);">Acheampong, Slonina, Essugo excluded</strong> — academy/unused. · <strong style="color:rgba(255,255,255,.3);">Jörgensen, Guiu excluded</strong> — backup keeper & bit-part; structural low minutes. · <strong style="color:rgba(255,255,255,.3);">Sarr, Jackson excluded</strong> — on loan. ·
+        <strong style="color:rgba(255,255,255,.3);">Hato excluded</strong> — 20yrs, still developing. ·
+        TM values are a guide. PL players routinely sell 20–40% above TM. Read directionally. · <strong style="color:rgba(255,255,255,.25);font-style:normal;">Consume with £1.166B worth of salt.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYER LIST -->
+  <div class="sec-label" style="margin-bottom:10px;">Every player</div>
+  <div class="filters">
+    <button class="fbtn on" onclick="filterList('ALL',this)">All</button>
+    <div class="fbtn-group">
+      <button class="fbtn" onclick="filterList('GK',this)">GK</button>
+      <button class="fbtn" onclick="filterList('DEF',this)">DEF</button>
+      <button class="fbtn" onclick="filterList('MID',this)">MID</button>
+      <button class="fbtn" onclick="filterList('FWD',this)">FWD</button>
+    </div>
+    <button class="fbtn" onclick="filterList('OUT',this)">🚑 Out</button>
+    <button class="fbtn hit-btn" onclick="filterList('HIT',this)">✦ Hits</button>
+    <button class="fbtn miss-btn" onclick="filterList('MISS',this)">✗ Misses</button>
+  </div>
+  <div class="player-list" id="playerList"></div>
+
+  <div class="source">
+    Market values: Transfermarkt (Mar 2026) · Wages: Capology / Spotrac estimates<br>
+    Book value = fee ÷ contract length × remaining years · Academy signings = £0 book value<br>
+    Unofficial fan project · Not financial advice · KTBFFH
+  </div>
+</div>
+
+
+
+<div style="max-width:480px;margin:18px auto 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.05);">
+  <div style="font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:8px;">Related analysis</div>
+  <div style="font-size:.66rem;color:rgba(255,255,255,.34);line-height:1.7;">This audit sits inside the wider BlueCo model: transfer fees, wages, market value, availability and resale pressure all feed into Chelsea's squad-cost story.</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+    <a href="/chelsea-blueco-analysis" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">BlueCo overview</a>
+    <a href="/blueco" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">BlueCo books</a>
+    <a href="/wages" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Wages</a>
+    <a href="/deals" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Deals</a>
+    <a href="/injuries" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Injuries</a>
+  </div>
+</div>
+<script>
+// ─── Player data ───────────────────────────────────────────────────────────
+// bookVal: fee/contractYrs*remainingYrs (£m) — 0 for academy/free
+// mktVal: Transfermarkt Mar 2026 (£m, converted at 0.85)
+const P = [
+  // GK
+  {name:"Robert Sánchez",    pos:"GK", posL:"GK", age:28, fee:20,  bookVal:11, mktVal:19, weekly:60000,  mins:3590, contract:{start:2023,end:2030}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Jury out",  note:"Costly errors have defined his Chelsea career. Improving under Rosenior but Jörgensen pushing hard for the no.1 spot."},
+  {name:"Filip Jörgensen",   pos:"GK", posL:"GK", age:23, fee:21,  bookVal:13, mktVal:13, weekly:50000,  mins:849,  contract:{start:2024,end:2031}, inj:"out",   injL:"Groin op",     vrd:"ok",  vrdL:"Decent",    note:"Minor surgery after PSG. Pushing Sánchez for no.1. Exit rumoured but performing well when called upon."},
+  {name:"Gaga Slonina",      pos:"GK", posL:"GK", age:21, fee:8,   bookVal:4,  mktVal:4,  weekly:40000,  mins:0,    contract:{start:2022,end:2028}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Too early", note:"Third-choice GK, largely unseen. American international. Book value £4m, market agrees. Still young — but Chelsea will likely move him on."},
+
+  // DEF — contract start/end from verified salary table (Spotrac/Capology Mar 2026)
+  {name:"Reece James ★",     pos:"DEF",posL:"RB", age:26, fee:0,   bookVal:0,  mktVal:51, weekly:200000, mins:2520, contract:{start:2026,end:2032}, inj:"out",   injL:"Hamstring",    vrd:"ok",  vrdL:"Solid",     note:"Another hamstring. New 6yr deal signed days before injury. When fit, one of the best RBs in Europe. Untouchable — when he's actually on the pitch."},
+  {name:"Wesley Fofana",     pos:"DEF",posL:"CB", age:25, fee:75,  bookVal:32, mktVal:24, weekly:200000, mins:2095, contract:{start:2022,end:2029}, inj:"ok",    injL:"Available",    vrd:"miss",vrdL:"Miss",      note:"Joint-highest earner at £200K/wk. Pushing to leave. 50 appearances in 4 years. Book value £32m, market value £24m — already underwater."},
+  {name:"Marc Cucurella",    pos:"DEF",posL:"LB", age:27, fee:62,  bookVal:21, mktVal:43, weekly:175000, mins:3077, contract:{start:2022,end:2028}, inj:"ok",    injL:"Returned",     vrd:"ok",  vrdL:"Solid",     note:"Transformed his Chelsea career after a rough start. Key starter when fit. Just returned from hamstring. Market value £43m well above book £21m — a rare BlueCo win."},
+  {name:"Tosin Adarabioyo",  pos:"DEF",posL:"CB", age:28, fee:0,   bookVal:0,  mktVal:15, weekly:120000, mins:1414, contract:{start:2024,end:2028}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Jury out",  note:"Free signing on £120K/wk — premium wages for a squad player. Market value £15m suggests the market agrees. Exit rumoured this summer."},
+  {name:"Benoît Badiashile", pos:"DEF",posL:"CB", age:24, fee:35,  bookVal:20, mktVal:15, weekly:90000,  mins:1070, contract:{start:2023,end:2030}, inj:"ok",    injL:"Available",    vrd:"miss",vrdL:"Miss",      note:"Bit-part player seeking exit. Injury prone. Book value £20m but market has him at £15m. Three years of underperformance."},
+  {name:"Levi Colwill",      pos:"DEF",posL:"CB", age:23, fee:0,   bookVal:0,  mktVal:43, weekly:100000, mins:0,    contract:{start:2023,end:2029}, inj:"out",   injL:"ACL — season", vrd:"ok",  vrdL:"Promising", note:"ACL before a ball kicked in 2025/26. England's best young CB when fit. Untouchable — just needs to stay healthy. Will be crucial next season."},
+  {name:"Malo Gusto",        pos:"DEF",posL:"RB", age:22, fee:17,  bookVal:10, mktVal:30, weekly:45000,  mins:2516, contract:{start:2023,end:2030}, inj:"ok",    injL:"Available",    vrd:"hit", vrdL:"Hit",       note:"£17m fee, market value now £30m. Consistent first-choice right back. The textbook BlueCo signing they somehow never repeated."},
+  {name:"Jorrel Hato",       pos:"DEF",posL:"LB", age:20, fee:38,  bookVal:33, mktVal:30, weekly:120000, mins:1565, contract:{start:2025,end:2032}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Too early", note:"20 years old. Already showing real promise under Rosenior. One error vs PSG — forgivable. Book value above market — needs time to grow into the fee."},
+  {name:"Mamadou Sarr",      pos:"DEF",posL:"CB", age:20, fee:20,  bookVal:18, mktVal:21, weekly:35000,  mins:285,  contract:{start:2025,end:2033}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Too early", note:"20 years old. Composed in most games, costly error vs PSG. Market nearly at book — holding value well. Too early to judge."},
+  {name:"Trevoh Chalobah",   pos:"DEF",posL:"CB", age:26, fee:0,   bookVal:0,  mktVal:34, weekly:50000,  mins:3077, contract:{start:2022,end:2028}, inj:"out",   injL:"Ankle op",     vrd:"ok",  vrdL:"Solid",     note:"Most minutes of any Chelsea player this season. Stretchered off vs PSG — minor op. Academy product, costs nothing. Irreplaceable cover."},
+  {name:"Josh Acheampong",   pos:"DEF",posL:"RB", age:19, fee:0,   bookVal:0,  mktVal:21, weekly:5000,   mins:1199, contract:{start:2024,end:2029}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Too early", note:"19 years old. Started UCL games. Academy product valued at £21m by the market — on £5K/wk. The best free asset on the books."},
+
+  // MID
+  {name:"Enzo Fernández",    pos:"MID",posL:"CM", age:25, fee:107, bookVal:71, mktVal:77, weekly:180000, mins:3661, contract:{start:2023,end:2032}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Jury out",  note:"Record PL fee £107m. Book value £71m, market £77m — close, but trending down. Exit rumours growing. Has quality, lacks consistency."},
+  {name:"Moisés Caicedo",    pos:"MID",posL:"DM", age:24, fee:115, bookVal:72, mktVal:94, weekly:150000, mins:3372, contract:{start:2023,end:2031}, inj:"ok",    injL:"Available",    vrd:"ok",  vrdL:"Decent",    note:"Highest ever PL fee at time of signing. Book value £72m, market £94m — actually appreciating. The engine of Rosenior's midfield."},
+  {name:"Mykhailo Mudryk †", pos:"MID",posL:"LW", age:25, fee:62,  bookVal:39, mktVal:0,  weekly:100000, mins:0,    contract:{start:2023,end:2031}, inj:"ban",   injL:"Banned",       vrd:"dis", vrdL:"Disaster",  note:"Banned since late 2024 for doping. Book value £39m, market value £0. £5.2M/yr wages for zero minutes. The definitive transfer disaster."},
+  {name:"Roméo Lavia",       pos:"MID",posL:"DM", age:22, fee:58,  bookVal:36, mktVal:21, weekly:45000,  mins:458,  contract:{start:2023,end:2030}, inj:"doubt", injL:"Thigh doubt",  vrd:"jury",vrdL:"Too early", note:"Book value £36m, market only £21m — injuries have destroyed his value. 30 games in three seasons. Potential is real. Body won't cooperate."},
+  {name:"Andrey Santos",     pos:"MID",posL:"CM", age:21, fee:12,  bookVal:7,  mktVal:38, weekly:35000,  mins:2044, contract:{start:2023,end:2030}, inj:"ok",    injL:"Available",    vrd:"ok",  vrdL:"Decent",    note:"Bought for £12m, market now £38m — best ratio on the squad. Playing regularly under Rosenior. Book value only £7m. Brilliant piece of business."},
+  {name:"Alejandro Garnacho",pos:"MID",posL:"LW", age:21, fee:40,  bookVal:40, mktVal:34, weekly:110000, mins:1906, contract:{start:2025,end:2032}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Too early", note:"January arrival. Too early to judge. Market at £34m vs book £40m — slight depreciation already. Needs a sustained run under Rosenior."},
+  {name:"Dário Essugo",      pos:"MID",posL:"DM", age:20, fee:18,  bookVal:16, mktVal:14, weekly:40000,  mins:55,   contract:{start:2025,end:2033}, inj:"out",   injL:"Thigh/setback",vrd:"jury",vrdL:"Too early", note:"Not played a single minute for Chelsea. Thigh surgery then Jan setback. 20 years old — too early to judge. Market already below book."},
+
+  // FWD
+  {name:"Pedro Neto",        pos:"FWD",posL:"RW", age:26, fee:54,  bookVal:39, mktVal:51, weekly:160000, mins:3176, contract:{start:2024,end:2031}, inj:"ok",    injL:"Available",    vrd:"ok",  vrdL:"Decent",    note:"Book value £39m, market £51m — appreciating. Consistent when fit, injury history a concern. Important in Rosenior's 4-2-3-1."},
+  {name:"Cole Palmer",       pos:"FWD",posL:"AM", age:23, fee:40,  bookVal:28, mktVal:94, weekly:130000, mins:1733, contract:{start:2024,end:2033}, inj:"ok",    injL:"Available",    vrd:"hit", vrdL:"✦ Hit",     note:"Bought for £40m, market now £94m. Book value £28m — the gap between book and market tells the whole story. Best signing of the era."},
+  {name:"João Pedro",        pos:"FWD",posL:"ST", age:24, fee:55,  bookVal:48, mktVal:64, weekly:125000, mins:3106, contract:{start:2025,end:2033}, inj:"ok",    injL:"Available",    vrd:"ok",  vrdL:"Decent",    note:"Book £48m, market £64m — already appreciating. The no.9 Chelsea had been missing for years. Club World Cup standout. Settling well."},
+  {name:"Liam Delap",        pos:"FWD",posL:"ST", age:23, fee:30,  bookVal:25, mktVal:27, weekly:100000, mins:1254, contract:{start:2025,end:2031}, inj:"ok",    injL:"Available",    vrd:"ok",  vrdL:"Decent",    note:"Book £25m, market £27m — holding value despite two injuries. Good value at £30m. Bright future if he can stay fit."},
+  {name:"Nicolás Jackson",   pos:"FWD",posL:"ST", age:24, fee:32,  bookVal:20, mktVal:25, weekly:90000,  mins:0,    contract:{start:2023,end:2031}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Jury out",  note:"Book £20m, market £25m — modest appreciation. Serie A clubs circling. Inconsistent output. Jury firmly out."},
+  {name:"Jamie Gittens",     pos:"FWD",posL:"LW", age:21, fee:55,  bookVal:47, mktVal:30, weekly:108000, mins:1102, contract:{start:2025,end:2032}, inj:"out",   injL:"Hamstring",    vrd:"jury",vrdL:"Too early", note:"Book £47m, market only £30m — injury has already dented value. Bright start then long-term hamstring tear. Too early to judge."},
+  {name:"Estêvão Willian",   pos:"FWD",posL:"RW", age:18, fee:38,  bookVal:33, mktVal:68, weekly:60000,  mins:1503, contract:{start:2025,end:2033}, inj:"ok",    injL:"Returned",     vrd:"jury",vrdL:"Too early", note:"18 years old. Book £33m, market £68m — already doubled in value. Came back with a sharp cameo vs Everton (21 Mar) after hamstring. The future of the club. Untouchable."},
+  {name:"Marc Guiu",         pos:"FWD",posL:"ST", age:20, fee:5,   bookVal:3,  mktVal:10, weekly:50000,  mins:509,  contract:{start:2024,end:2029}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Too early", note:"£5m fee, book value £3m, market £10m — actually good value. Seeking exit. Hasn't delivered yet but wages manageable."},
+];
+
+const MAX_W = 200000;
+function fmt(n){return n>=1000?'£'+(n/1000).toFixed(0)+'K':'£'+n;}
+function fmtM(n){return n?'£'+n+'m':'—';}
+function pct(n){return Math.round((n/MAX_W)*100);}
+function barCol(n){return n>=150000?'#C9A84C':n>=75000?'#034694':'#555570';}
+
+// ─── Style card data ───────────────────────────────────────────────────────
+const CARDS = [
+  {
+    icon:"🔒", theme:"t-green", title:"THE UNTOUCHABLES",
+    sub:"Not for sale at any price",
+    valKey:"mktVal", valSuffix:"combined mkt value",
+    story:"The core BlueCo will not sell regardless of offer. Palmer is generational. Caicedo is the engine. Gusto the best value signing of the era. Joao Pedro the striker they needed for years. Cucurella transformed from meme to cornerstone. Colwill and James — injury-plagued but irreplaceable. Estevao at 18, already worth £68m, just returned from hamstring with a cameo that reminded everyone why he's here. For once — the right call.",
+    playerNames:["Cole Palmer","Moisés Caicedo","Malo Gusto","João Pedro","Marc Cucurella","Levi Colwill","Reece James ★","Estêvão Willian"]
+  },
+  {
+    icon:"💎", theme:"t-gold", title:"THE BARGAIN BIN",
+    sub:"Fee paid vs market value today",
+    valKey:"mktVal", valSuffix:"combined mkt value",
+    story:"The blueprint BlueCo found and then forgot. Palmer £40m → £94m. Gusto £17m → £30m. Santos £12m → £38m. Acheampong £0 → £21m. Chalobah £0 → £34m. These deals prove the model works. Shame about the other 47 signings.",
+    playerNames:["Cole Palmer","Malo Gusto","Andrey Santos","Josh Acheampong","Trevoh Chalobah"]
+  },
+  {
+    icon:"💀", theme:"t-red", title:"THE DEAD WEIGHT",
+    sub:"Wages paid for nothing in return",
+    valKey:"weekly", valSuffix:"combined wages/wk",
+    story:"Mudryk banned — £5.2M/yr for zero minutes, market value £0. Fofana joint-highest earner at £200K/wk, pushing to leave, book value already above market. Badiashile seeking exit, market below book. Three players, £20M+ per year, collectively worthless to this squad.",
+    playerNames:["Mykhailo Mudryk †","Wesley Fofana","Benoît Badiashile"]
+  },
+  {
+    icon:"🏥", theme:"t-red", title:"THE TREATMENT ROOM TAB",
+    sub:"Wages sitting unavailable this week",
+    valKey:"weekly", valSuffix:"combined wages/wk",
+    story:"Colwill out all season with ACL. James hamstring — again. Chalobah ankle op. Jörgensen post-op. Gittens long-term hamstring tear. Essugo has never played a minute for Chelsea. Combined: more per week than most Premier League clubs pay their entire squad.",
+    playerNames:["Levi Colwill","Reece James ★","Trevoh Chalobah","Filip Jörgensen","Jamie Gittens","Dário Essugo"]
+  },
+  {
+    icon:"🪑", theme:"t-amber", title:"THE EXPENSIVE BENCH",
+    sub:"High wages, low impact",
+    valKey:"weekly", valSuffix:"combined wages/wk",
+    story:"Tosin free from Fulham but £120K/wk — above most starting CBs. Lavia £90K/wk, 30 games in three seasons. Fofana £200K/wk when available. Badiashile £100K/wk rotational. All on wages that demand regular starting football they haven't delivered.",
+    playerNames:["Tosin Adarabioyo","Roméo Lavia","Wesley Fofana","Benoît Badiashile"]
+  },
+  {
+    icon:"⏰", theme:"t-amber", title:"THE TICKING CLOCKS",
+    sub:"Exit rumours, declining book value",
+    valKey:"bookVal", valSuffix:"combined book value",
+    story:"Every month without selling costs BlueCo money. Enzo book £71m, depreciating. Fofana book £32m, market only £24m — already lost money. Jackson and Badiashile both linked with exits. Mudryk book £39m, market £0. The longer they wait, the worse the loss.",
+    playerNames:["Enzo Fernández","Wesley Fofana","Nicolás Jackson","Benoît Badiashile","Mykhailo Mudryk †"]
+  },
+  {
+    icon:"🌱", theme:"t-blue", title:"SQUAD PLAYERS",
+    sub:"Developing — need time and minutes",
+    valKey:"mktVal", valSuffix:"combined mkt value",
+    story:"Hato 20, Sarr 20, Acheampong 19, Essugo 20, Garnacho 21, Guiu 20. None should be judged yet. Some are already appreciating — Acheampong £0 → £21m, Sarr holding at £21m. Garnacho still finding his feet. These are investments that need patience, not panic.",
+    playerNames:["Jorrel Hato","Mamadou Sarr","Josh Acheampong","Dário Essugo","Alejandro Garnacho","Marc Guiu"]
+  },
+];
+
+// ─── Render style cards ────────────────────────────────────────────────────
+function renderCards(){
+  const el = document.getElementById('styleCards');
+  el.innerHTML = CARDS.map((c,i) => {
+    const members = c.playerNames.map(n => P.find(p=>p.name===n)).filter(Boolean);
+    let totalVal = 0;
+    if(c.valKey === 'weekly'){
+      totalVal = members.reduce((s,p)=>s+p.weekly,0);
+    } else {
+      totalVal = members.reduce((s,p)=>s+(p[c.valKey]||0),0);
+    }
+    const totalFee  = members.reduce((s,p)=>s+p.fee,0);
+    const totalBook = members.reduce((s,p)=>s+p.bookVal,0);
+    const totalMkt  = members.reduce((s,p)=>s+p.mktVal,0);
+
+    const displayVal = c.valKey==='weekly' ? fmt(totalVal) : '£'+totalVal+'m';
+
+    const rows = members.map(p => {
+      const mktColor = p.mktVal > p.fee ? '#4ade80' : p.mktVal > 0 ? '#f87171' : '#555570';
+      return `<div class="sp-row">
+        <div class="sp-name">${p.name}</div>
+        <div class="sp-wage">${fmt(p.weekly)}/wk</div>
+        <div class="sp-book" title="Book value">📚${fmtM(p.bookVal)}</div>
+        <div class="sp-mkt" style="color:${mktColor};" title="Market value">📈${fmtM(p.mktVal)}</div>
+      </div>`;
+    }).join('');
+
+    return `<div class="scard ${c.theme}" onclick="toggleCard(${i})">
+      <div class="scard-header">
+        <span class="scard-icon">${c.icon}</span>
+        <div class="scard-info">
+          <div class="scard-title">${c.title}</div>
+          <div class="scard-sub">${c.sub}</div>
+        </div>
+        <div class="scard-right">
+          <div class="scard-val">${displayVal}</div>
+          <div class="scard-val-lbl">${c.valSuffix}</div>
+        </div>
+        <span class="scard-arrow">▼</span>
+      </div>
+      <div class="scard-body">
+        <div class="scard-totals">
+          <div class="sct"><div class="sct-val">£${totalFee}m</div><div class="sct-lbl">Fees paid</div></div>
+          <div class="sct"><div class="sct-val">£${totalBook}m</div><div class="sct-lbl">Book value</div></div>
+          <div class="sct"><div class="sct-val" style="color:${totalMkt>totalFee?'#4ade80':'#f87171'}">£${totalMkt}m</div><div class="sct-lbl">Market value</div></div>
+        </div>
+        <div class="scard-story">${c.story}</div>
+        <div class="scard-players">${rows}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCard(i){
+  const cards = document.querySelectorAll('.scard');
+  const isOpen = cards[i].classList.contains('open');
+  cards.forEach(c=>c.classList.remove('open'));
+  if(!isOpen) cards[i].classList.add('open');
+}
+
+// ─── Render player list ────────────────────────────────────────────────────
+let currentFilter = 'ALL';
+
+function matchFilter(p, f){
+  if(f==='ALL')  return true;
+  if(f==='OUT')  return p.inj==='out'||p.inj==='ban'||p.inj==='doubt';
+  if(f==='HIT')  return p.vrd==='hit';
+  if(f==='MISS') return p.vrd==='miss'||p.vrd==='dis';
+  return p.pos===f;
+}
+
+function renderList(){
+  const sorted = [...P].sort((a,b)=>b.weekly-a.weekly);
+  document.getElementById('playerList').innerHTML = sorted.map((p,i)=>{
+    const mktColor = p.mktVal>p.fee?'#4ade80':p.mktVal>0?'#f87171':'#555570';
+    const barColor = barCol(p.weekly);
+    const show = matchFilter(p, currentFilter);
+    return `<div class="prow${show?'':' hidden'}" data-pos="${p.pos}" data-inj="${p.inj}" data-vrd="${p.vrd}" onclick="toggleRow(${i})">
+      <div class="prow-top">
+        <span class="prow-pos pos-${p.pos}">${p.posL}</span>
+        <span class="prow-name">${p.name}</span>
+        <span class="prow-mv" style="color:${mktColor};">${p.mktVal?'£'+p.mktVal+'m':'—'}</span>
+        <span class="prow-wage">${fmt(p.weekly)}</span>
+        <span class="prow-inj inj-${p.inj}">${p.inj==='ok'?'Fit':p.inj==='out'?'Out':p.inj==='ban'?'Ban':'?'}</span>
+        <span class="prow-arrow">▼</span>
+      </div>
+      <div class="prow-detail">
+        <div class="detail-bar"><div class="detail-bar-fill" style="width:${pct(p.weekly)}%;background:${barColor};"></div></div>
+        <div class="detail-grid">
+          <div class="dcell">
+            <div class="dcell-val" style="color:#C9A84C;">${fmt(p.weekly)}</div>
+            <div class="dcell-lbl">Per week · £${((p.weekly*52)/1e6).toFixed(2)}M/yr · until ${p.contract.end}</div>
+          </div>
+          <div class="dcell">
+            <div class="dcell-val" style="color:rgba(255,255,255,.6);font-size:.9rem;">${p.fee?'£'+p.fee+'m':'Academy/Free'}</div>
+            <div class="dcell-lbl">Fee paid</div>
+          </div>
+          <div class="dcell">
+            <div class="dcell-val" style="color:rgba(255,255,255,.5);font-size:.9rem;">${p.bookVal?'£'+p.bookVal+'m':'£0'}</div>
+            <div class="dcell-lbl">Book value 📚</div>
+          </div>
+          <div class="dcell">
+            <div class="dcell-val" style="color:${mktColor};font-size:.9rem;">${p.mktVal?'£'+p.mktVal+'m':'£0'}</div>
+            <div class="dcell-lbl">Market value 📈</div>
+          </div>
+        </div>
+        <div class="detail-vrd">
+          <span class="vrd-label">Deal verdict</span>
+          <span class="vrd-val vrd-${p.vrd}">${p.vrdL}</span>
+        </div>
+        ${(()=>{
+          const start = p.contract.start;
+          const end = p.contract.end;
+          const now = 2026;
+          const total = end - start;
+          const remaining = end - now;
+          const pct = Math.max(0, Math.min(100, (remaining / total) * 100));
+          const color = remaining >= 3 ? '#4ade80' : remaining >= 2 ? '#fbbf24' : '#f87171';
+          const label = remaining <= 0 ? 'Expires this summer' : remaining === 1 ? '1 yr left' : `${remaining} yrs left`;
+          return `<div class="detail-contract">
+            <span class="dc-label">Contract · ${now}</span>
+            <div class="dc-track"><div class="dc-fill" style="width:${pct}%;background:${color};"></div></div>
+            <span class="dc-end" style="color:${color};">${end} · ${label}</span>
+          </div>`;
+        })()}
+        <div class="detail-note">${p.note}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleRow(i){
+  const rows = document.querySelectorAll('.prow');
+  const isOpen = rows[i].classList.contains('open');
+  rows.forEach(r=>r.classList.remove('open'));
+  if(!isOpen) rows[i].classList.add('open');
+}
+
+function filterList(f, btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  currentFilter = f;
+  document.querySelectorAll('.prow').forEach(r=>{
+    r.classList.toggle('hidden',!matchFilter(
+      {pos:r.dataset.pos,inj:r.dataset.inj,vrd:r.dataset.vrd},f
+    ));
+  });
+}
+
+// ─── Value efficiency tile ─────────────────────────────────────────────────
+function renderEfficiency(){
+  const EXCLUDED = [
+    "Mykhailo Mudryk †","Levi Colwill","Dário Essugo","Josh Acheampong",
+    "Gaga Slonina","Marc Guiu","Filip Jörgensen","Jorrel Hato",
+    "Mamadou Sarr","Nicolás Jackson"
+  ];
+  const INJ_FACTOR = {ok:1.0, doubt:0.75, out:0.5, ban:0};
+  const THRESHOLD = 900;
+  const eligible = P.filter(p => !EXCLUDED.includes(p.name) && p.mktVal > 0 && p.weekly > 0);
+
+  const withRatio = eligible.map(p => {
+    const wageYr    = (p.weekly * 52) / 1e6;
+    const cLen      = p.contract.end - p.contract.start;
+    const amort     = p.fee / cLen;
+    const trueCost  = wageYr + amort;
+    const minW      = p.mins >= THRESHOLD ? 1.0 : p.mins / THRESHOLD;
+    const raw       = p.mktVal / wageYr;
+    const adj       = (p.mktVal / trueCost) * minW;
+    return {...p, wageYr, amort, trueCost, raw, adj};
+  }).sort((a,b) => b.adj - a.adj);
+
+  const maxAdj = withRatio[0].adj;
+
+  function rowHTML(p, rank, isTop){
+    const color  = isTop ? '#4ade80' : '#f87171';
+    const barPct = Math.min(100, (p.adj / maxAdj) * 100);
+    const meta   = `£${p.mktVal}m TM · £${p.wageYr.toFixed(2)}m wage + £${p.amort.toFixed(1)}m amort = £${p.trueCost.toFixed(1)}m/yr · ${p.mins}mins`;
+    return `<div style="display:grid;grid-template-columns:18px 1fr auto;align-items:center;gap:6px;padding:6px 8px;background:rgba(255,255,255,.02);border-radius:2px;border-left:2px solid ${color}40;margin-bottom:3px;">
+      <span style="font-family:'DM Mono',monospace;font-size:.52rem;color:var(--muted);">${rank}</span>
+      <div>
+        <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;">
+          <span style="font-size:.72rem;font-weight:600;">${p.name}</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.48rem;color:var(--muted);">${meta}</span>
+        </div>
+        <div style="height:3px;border-radius:2px;background:rgba(255,255,255,.06);overflow:hidden;">
+          <div style="height:100%;width:${barPct}%;background:${color};border-radius:2px;"></div>
+        </div>
+      </div>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:${color};white-space:nowrap;">${p.adj.toFixed(1)}×</span>
+    </div>`;
+  }
+
+  const top5 = withRatio.slice(0, 5);
+  const bot5 = [...withRatio].slice(-5).reverse();
+
+  document.getElementById('eff-top').innerHTML = top5.map((p,i) => rowHTML(p, i+1, true)).join('');
+  document.getElementById('eff-bot').innerHTML = bot5.map((p,i) => rowHTML(p, i+1, false)).join('');
+}
+
+renderEfficiency();
+renderCards();
+renderList();
+
+function renderFullList() {
+  const EXCLUDED = ["Mykhailo Mudryk †","Levi Colwill","Dário Essugo","Josh Acheampong","Gaga Slonina","Marc Guiu","Filip Jörgensen","Jorrel Hato","Mamadou Sarr","Nicolás Jackson"];
+  const INJ_FACTOR = {ok:1.0, doubt:0.75, out:0.5, ban:0};
+  const all = P.filter(p => p.mktVal > 0 && p.weekly > 0 && !p.name.includes('Mudryk'));
+
+  const ranked = all.map(p => {
+    const wageYr   = (p.weekly * 52) / 1e6;
+    const cLen     = p.contract.end - p.contract.start;
+    const amort    = p.fee / cLen;
+    const trueCost = wageYr + amort;
+    const minW     = p.mins >= 900 ? 1.0 : p.mins / 900;
+    const adj      = (p.mktVal / trueCost) * minW;
+    const excluded = EXCLUDED.includes(p.name);
+    return {...p, wageYr, adj, excluded};
+  }).sort((a,b) => b.adj - a.adj);
+
+  const midpoint = ranked.filter(p => !p.excluded).length / 2;
+
+  const html = ranked.map((p, i) => {
+    const isGreen = p.adj >= 4;
+    const isRed   = p.adj < 2;
+    const color   = p.excluded ? '#555570' : isGreen ? '#4ade80' : isRed ? '#f87171' : 'rgba(255,255,255,.4)';
+    const border  = p.excluded ? 'transparent' : isGreen ? 'rgba(74,222,128,.4)' : isRed ? 'rgba(248,113,113,.4)' : 'transparent';
+    const label   = p.excluded ? `<span style="font-family:'DM Mono',monospace;font-size:.42rem;color:#555570;margin-left:4px;">excl.</span>` : '';
+    return `<div style="display:grid;grid-template-columns:22px 1fr 44px 52px;align-items:center;gap:5px;padding:4px 6px;border-radius:2px;border-left:2px solid ${border};margin-bottom:1px;${p.excluded?'opacity:.45':''}">
+      <span style="font-family:'DM Mono',monospace;font-size:.48rem;color:#555570;text-align:right;">${i+1}</span>
+      <span style="font-size:.68rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:${p.excluded?'#555570':'inherit'};">${p.name}${label}</span>
+      <span style="font-family:'DM Mono',monospace;font-size:.54rem;color:rgba(255,255,255,.25);text-align:right;">£${p.mktVal}m</span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:.95rem;color:${color};text-align:right;">${p.adj.toFixed(1)}×</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('fullListBody').innerHTML = html;
+}
+</script>
+<!-- Full list popup -->
+<div id="fullListPopup" onclick="if(event.target===this){this.style.display='none';}" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center;">
+  <div style="background:#0f0f1a;border:1px solid #2a2a3e;border-radius:4px;width:300px;max-height:82vh;display:flex;flex-direction:column;overflow:hidden;">
+    <div style="background:rgba(255,255,255,.03);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);">Full squad — adjusted score</div>
+        <div style="font-family:'DM Mono',monospace;font-size:.46rem;color:#555570;margin-top:2px;">Sorted best → worst · excluded players dimmed</div>
+      </div>
+      <button onclick="document.getElementById('fullListPopup').style.display='none';" style="font-family:'DM Mono',monospace;font-size:.75rem;color:#555570;background:none;border:none;cursor:pointer;padding:0 4px;line-height:1;">✕</button>
+    </div>
+    <div id="fullListBody" style="overflow-y:auto;padding:8px 14px 12px;"></div>
+  </div>
+</div>
+
+
+<!-- Scatter plot popup -->
+<div id="scatterPopup" onclick="if(event.target===this)this.style.display='none';" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center;">
+  <div style="background:#0f0f1a;border:1px solid #2a2a3e;border-radius:4px;width:min(92vw,560px);max-height:88vh;display:flex;flex-direction:column;overflow:hidden;">
+    <div style="background:rgba(255,255,255,.03);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.08em;color:#e8e8f0;">Fee paid vs adjusted score</div>
+        <div style="font-family:'DM Mono',monospace;font-size:.46rem;color:#555570;margin-top:2px;">Dot size = weekly wage · hover for details</div>
+      </div>
+      <button onclick="document.getElementById('scatterPopup').style.display='none';" style="font-family:'DM Mono',monospace;font-size:.75rem;color:#555570;background:none;border:none;cursor:pointer;padding:0 4px;line-height:1;">✕</button>
+    </div>
+    <div style="padding:10px 14px 6px;flex-shrink:0;">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;font-family:'DM Mono',monospace;font-size:.46rem;letter-spacing:.06em;text-transform:uppercase;color:#555570;">
+        <span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block;"></span>Good (≥4×)</span>
+        <span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:#C9A84C;display:inline-block;"></span>Mid (2–4×)</span>
+        <span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:#f87171;display:inline-block;"></span>Poor (&lt;2×)</span>
+      </div>
+    </div>
+    <div style="padding:0 14px 14px;flex:1;min-height:0;">
+      <div style="position:relative;width:100%;height:400px;">
+        <canvas id="scatterCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+let scatterChartInstance = null;
+
+function renderScatter() {
+  const EXCLUDED = [
+    "Mykhailo Mudryk †","Levi Colwill","Dário Essugo","Josh Acheampong",
+    "Gaga Slonina","Marc Guiu","Filip Jörgensen","Jorrel Hato",
+    "Mamadou Sarr","Nicolás Jackson"
+  ];
+  const INJ_FACTOR = {ok:1.0, doubt:0.75, out:0.5, ban:0};
+  const THRESHOLD = 900;
+
+  const eligible = P.filter(p => !EXCLUDED.includes(p.name) && p.mktVal > 0 && p.weekly > 0);
+  const plotData = eligible.map(p => {
+    const wageYr   = (p.weekly * 52) / 1e6;
+    const cLen     = p.contract.end - p.contract.start;
+    const amort    = p.fee / cLen;
+    const trueCost = wageYr + amort;
+    const minW     = p.mins >= THRESHOLD ? 1.0 : p.mins / THRESHOLD;
+    const injF     = INJ_FACTOR[p.inj] ?? 1.0;
+    const adj      = (p.mktVal / trueCost) * minW * injF;
+    const r        = 4 + ((p.weekly - 35000) / (200000 - 35000)) * 10;
+    return { x: p.fee, y: parseFloat(adj.toFixed(2)), r, label: p.name, weekly: p.weekly, adj, mins: p.mins };
+  });
+
+  function getColor(adj, a) {
+    if (adj >= 4)  return `rgba(74,222,128,${a})`;
+    if (adj >= 2)  return `rgba(201,168,76,${a})`;
+    return `rgba(248,113,113,${a})`;
+  }
+
+  const highlight = ['Cole Palmer','Enzo Fernández','Wesley Fofana','Andrey Santos','Moisés Caicedo','Roméo Lavia','Estêvão Willian','Trevoh Chalobah'];
+
+  if (scatterChartInstance) { scatterChartInstance.destroy(); scatterChartInstance = null; }
+
+  scatterChartInstance = new Chart(document.getElementById('scatterCanvas'), {
+    type: 'bubble',
+    data: {
+      datasets: [{
+        data: plotData,
+        backgroundColor: plotData.map(d => getColor(d.adj, 0.8)),
+        borderColor:     plotData.map(d => getColor(d.adj, 1)),
+        borderWidth: 1.5,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: 24, right: 92, bottom: 20, left: 22 } },
+      scales: {
+        x: {
+          min: -10, max: 130,
+          title: { display: true, text: 'Fee paid (£m)', color: '#555570', font: { size: 10 } },
+          grid: { color: 'rgba(255,255,255,.06)' },
+          ticks: { color: '#555570', font: { size: 10 }, callback: v => v < 0 ? '' : '£'+v+'m' }
+        },
+        y: {
+          min: -1, max: 14,
+          title: { display: true, text: 'Adjusted score', color: '#555570', font: { size: 10 } },
+          grid: { color: 'rgba(255,255,255,.06)' },
+          ticks: { color: '#555570', font: { size: 10 }, callback: v => v < 0 ? '' : v.toFixed(1)+'×' }
+        }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const d = ctx.raw;
+              return [
+                d.label,
+                'Fee: £' + d.x + 'm',
+                'Score: ' + d.adj.toFixed(1) + '×',
+                'Wage: £' + Math.round(d.weekly/1000) + 'K/wk',
+                'Mins: ' + d.mins.toLocaleString(),
+              ];
+            }
+          },
+          backgroundColor: '#0f0f1a',
+          borderColor: '#2a2a3e',
+          borderWidth: 1,
+          titleColor: '#e8e8f0',
+          bodyColor: '#888780',
+          padding: 8,
+          titleFont: { family: 'sans-serif', weight: '600', size: 11 },
+          bodyFont: { family: 'monospace', size: 10 },
+        }
+      }
+    },
+    plugins: [{
+      id: 'scatterLabels',
+      afterDatasetsDraw(chart) {
+        const ctx = chart.ctx;
+        const meta = chart.getDatasetMeta(0);
+        ctx.save();
+        ctx.font = '600 10px sans-serif';
+        ctx.textBaseline = 'middle';
+        const labelTweaks = {
+          'Trevoh Chalobah': { dx: 10, dy: 0, align: 'left' },
+          'Andrey Santos': { dx: 10, dy: -6, align: 'left' },
+          'Estêvão Willian': { dx: 10, dy: -2, align: 'left' },
+          'Cole Palmer': { dx: 10, dy: 10, align: 'left' },
+          'Moisés Caicedo': { dx: -10, dy: 8, align: 'right' },
+          'Enzo Fernández': { dx: -10, dy: 0, align: 'right' },
+          'Roméo Lavia': { dx: 10, dy: 12, align: 'left' },
+          'Wesley Fofana': { dx: 10, dy: 0, align: 'left' }
+        };
+        meta.data.forEach((point, i) => {
+          const d = plotData[i];
+          if (!highlight.includes(d.label)) return;
+          const r = point.options.radius;
+          const tweak = labelTweaks[d.label] || {};
+          const defaultRightSide = d.x > 75;
+          const dx = tweak.dx ?? (defaultRightSide ? -(r + 6) : (r + 6));
+          const dy = tweak.dy ?? 0;
+          ctx.textAlign = tweak.align || (defaultRightSide ? 'right' : 'left');
+          ctx.fillStyle = getColor(d.adj, 1);
+          ctx.fillText(d.label, point.x + dx, point.y + dy);
+        });
+        ctx.restore();
+      }
+    }]
+  });
+}
+</script>
+</body>
+</html>
