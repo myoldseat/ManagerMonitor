@@ -23,13 +23,15 @@ exports.handler = async function () {
     const data = await res.json();
     const players = data.response?.[0]?.players || [];
 
-    // TEMP FAKE stats just to confirm pipeline
-    const top5 = players.slice(0, 5).map(p => ({
-      name: p.name,
-      goals: 0,
-      assists: 0,
-      ga: 0
-    }));
+    const top5 = players
+      .filter(p => p.position !== "Goalkeeper")
+      .slice(0, 5)
+      .map(p => ({
+        name: p.name,
+        goals: 0,
+        assists: 0,
+        ga: 0
+      }));
 
     return {
       statusCode: 200,
