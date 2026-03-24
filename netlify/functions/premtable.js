@@ -1,19 +1,19 @@
 exports.handler = async function () {
-  const apiKey = process.env.API_FOOTBALL_KEY;
+  const apiKey = process.env.FOOTBALL_DATA_KEY;
   if (!apiKey) {
     return {
       statusCode: 500,
       headers: { "Access-Control-Allow-Origin": "*" },
-      body: JSON.stringify({ error: "Missing API_FOOTBALL_KEY" })
+      body: JSON.stringify({ error: "Missing FOOTBALL_DATA_KEY" })
     };
   }
 
   try {
     const res = await fetch(
-      "https://v3.football.api-sports.io/standings?league=39&season=2025",
+      "https://api.football-data.org/v4/competitions/PL/standings",
       {
         headers: {
-          "x-apisports-key": apiKey
+          "X-Auth-Token": apiKey
         }
       }
     );
@@ -27,29 +27,20 @@ exports.handler = async function () {
     }
 
     const data = await res.json();
+    const table = data?.standings?.[0]?.table || [];
 
-    if (data.errors && Object.keys(data.errors).length > 0) {
-      return {
-        statusCode: 403,
-        headers: { "Access-Control-Allow-Origin": "*" },
-        body: JSON.stringify({ error: data.errors })
-      };
-    }
-
-    const table = data?.response?.[0]?.league?.standings?.[0] || [];
-
-    const standings = table.map(team => ({
-      rank: team.rank,
-      team: team.team.name,
-      played: team.all.played,
-      win: team.all.win,
-      draw: team.all.draw,
-      lose: team.all.lose,
-      gf: team.all.goals.for,
-      ga: team.all.goals.against,
-      gd: team.goalsDiff,
-      points: team.points,
-      form: team.form || ""
+    const standings = table.map(entry => ({
+      rank: entry.position,
+      team: entry.team.name,
+      played: entry.playedGames,
+      win: entry.won,
+      draw: entry.draw,
+      lose: entry.lost,
+      gf: entry.goalsFor,
+      ga: entry.goalsAgainst,
+      gd: entry.goalDifference,
+      points: entry.points,
+      form: entry.form || ""
     }));
 
     return {
@@ -63,6 +54,6 @@ exports.handler = async function () {
       statusCode: 500,
       headers: { "Access-Control-Allow-Origin": "*" },
       body: JSON.stringify({ error: err.message })
-     };
+    };
   }
 };
