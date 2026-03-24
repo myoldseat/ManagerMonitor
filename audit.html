@@ -1,19 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>The Audit — Wage × Fee × Verdict | hasliamroseniorbeensackedyet.com</title>
-<meta name="description" content="Every Chelsea player: fee paid, book value, market value, weekly wage, fitness, deal verdict. The full financial picture.">
-<link rel="canonical" href="https://hasliamroseniorbeensackedyet.com/audit">
-
-  <meta property="og:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23080810'/%3E%3Ctext x='50' y='72' font-family='Arial Black,sans-serif' font-size='62' font-weight='900' fill='%23cc1100' text-anchor='middle' letter-spacing='-2'%3ENO%3C/text%3E%3C/svg%3E">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta content="Every Chelsea player: fee paid, book value, market value, weekly wage, fitness, deal verdict. The full financial picture." name="description"/>
+<link href="https://hasliamroseniorbeensackedyet.com/audit" rel="canonical"/>
+<meta content="https://hasliamroseniorbeensackedyet.com/og.jpg" property="og:image"/>
+<meta content="image/jpeg" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://hasliamroseniorbeensackedyet.com/og.jpg" name="twitter:image"/><link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23080810'/%3E%3Ctext x='50' y='72' font-family='Arial Black,sans-serif' font-size='62' font-weight='900' fill='%23cc1100' text-anchor='middle' letter-spacing='-2'%3ENO%3C/text%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Mono:wght@300;400;500&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--blue:#034694;--gold:#C9A84C;--red:#cc1100;--dark:#080810;--surface:#0f0f1a;--border:#1e1e2e;--text:#e8e8f0;--muted:#555570;--green:#4ade80;--amber:#fbbf24;--rose:#f87171;}
@@ -148,109 +148,136 @@ h1 em{color:var(--gold);font-style:normal;}
 
 /* source */
 .source{margin-top:22px;padding-top:14px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:.56rem;color:var(--muted);line-height:1.8;}
+
+
+.shortcut-bar{
+  display:flex;
+  gap:6px;
+  margin:12px 0 18px;
+}
+.shortcut-bar button{
+  flex:1;
+  padding:10px 8px;
+  font-family:'DM Mono',monospace;
+  font-size:.55rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  background:rgba(3,70,148,.05);
+  border:1px solid rgba(3,70,148,.25);
+  color:#60a5fa;
+  border-radius:2px;
+  cursor:pointer;
+  transition:all .18s ease;
+  position:relative;
+}
+.shortcut-bar button::after{
+  content:'';
+  position:absolute;
+  inset:-1px;
+  border-radius:2px;
+  box-shadow:0 0 0px rgba(3,70,148,.0);
+  transition:all .18s ease;
+}
+.shortcut-bar button:hover{
+  background:rgba(3,70,148,.12);
+  border-color:rgba(3,70,148,.5);
+  transform:translateY(-1px);
+}
+.shortcut-bar button:hover::after{
+  box-shadow:0 0 8px rgba(3,70,148,.6);
+}
 </style>
 </head>
 <body>
-
 <div class="nav">
-  <a href="/">← hasliamroseniorbeensackedyet.com</a>
+<a href="/">← hasliamroseniorbeensackedyet.com</a>
+</div>
+<div class="wrap">
+<div class="eyebrow">Chelsea FC · Financial Deep Dive · March 2026</div>
+<h1>THE <em>AUDIT</em></h1>
+<div class="sub">Fee paid · Book value · Market value · Weekly wage · Fitness · Verdict. Every player, one page.</div>
+<div class="ticker">
+<div class="ticker-inner">
+<span>Total squad wage bill</span><span class="hi">£2.78M/wk · £144.5M/yr</span>
+<span class="lo">Wages unavailable (injured/banned)</span><span class="hi">~£515K/wk</span>
+<span>Total squad market value</span><span class="hi">~£985M</span>
+<span>Total fees paid (current squad)</span><span class="hi">~£1.05B</span>
+<span class="lo">Book value vs market value deficit</span><span class="hi">see below</span>
+<span>Total squad wage bill</span><span class="hi">£2.78M/wk · £144.5M/yr</span>
+<span class="lo">Wages unavailable (injured/banned)</span><span class="hi">~£515K/wk</span>
+<span>Total squad market value</span><span class="hi">~£985M</span>
+<span>Total fees paid (current squad)</span><span class="hi">~£1.05B</span>
+<span class="lo">Book value vs market value deficit</span><span class="hi">see below</span>
+</div>
+</div>
+<div class="shortcut-bar">
+<button onclick="scrollToSection('stories')">Stories</button>
+<button onclick="scrollToSection('efficiency')">Value Efficiency</button>
+<button onclick="scrollToSection('squad')">Full Squad Audit</button>
 </div>
 
-<div class="wrap">
-  <div class="eyebrow">Chelsea FC · Financial Deep Dive · March 2026</div>
-  <h1>THE <em>AUDIT</em></h1>
-  <div class="sub">Fee paid · Book value · Market value · Weekly wage · Fitness · Verdict. Every player, one page.</div>
-
-  <div class="ticker">
-    <div class="ticker-inner">
-      <span>Total squad wage bill</span><span class="hi">£2.78M/wk · £144.5M/yr</span>
-      <span class="lo">Wages unavailable (injured/banned)</span><span class="hi">~£515K/wk</span>
-      <span>Total squad market value</span><span class="hi">~£985M</span>
-      <span>Total fees paid (current squad)</span><span class="hi">~£1.05B</span>
-      <span class="lo">Book value vs market value deficit</span><span class="hi">see below</span>
-      <span>Total squad wage bill</span><span class="hi">£2.78M/wk · £144.5M/yr</span>
-      <span class="lo">Wages unavailable (injured/banned)</span><span class="hi">~£515K/wk</span>
-      <span>Total squad market value</span><span class="hi">~£985M</span>
-      <span>Total fees paid (current squad)</span><span class="hi">~£1.05B</span>
-      <span class="lo">Book value vs market value deficit</span><span class="hi">see below</span>
-    </div>
-  </div>
-
-  <!-- STYLE CARDS -->
-  <div class="sec-label">The stories</div>
-  <div class="style-cards" id="styleCards"></div>
-
-  <!-- VALUE EFFICIENCY TILE -->
-  <div class="sec-label" style="margin-top:18px;">Value efficiency</div>
-  <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:4px;overflow:hidden;margin-bottom:18px;">
-
-    <div style="background:rgba(255,255,255,.02);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06);">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;color:var(--text);">Market Value ÷ Annual Wage</div>
-      <div style="font-family:'DM Mono',monospace;font-size:.54rem;color:var(--muted);margin-top:2px;line-height:1.5;">Adjusted score = market value ÷ true annual cost × minutes weight × injury factor. True cost = wage/yr + fee ÷ contract length. Full weight at 900+ mins, linear below. Source: Transfermarkt, all competitions.</div>
-    </div>
-
-    <div style="padding:10px 14px;">
-
-      <div style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:#4ade80;margin-bottom:6px;">▲ Top 5 — getting more than they cost</div>
-      <div id="eff-top" style="display:flex;flex-direction:column;gap:3px;margin-bottom:14px;"></div>
-
-      <div style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:#f87171;margin-bottom:6px;">▼ Bottom 5 — wage outrunning value</div>
-      <div id="eff-bot" style="display:flex;flex-direction:column;gap:3px;margin-bottom:10px;"></div>
-
-      <button onclick="renderFullList();document.getElementById('fullListPopup').style.display='flex';" style="width:100%;padding:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:2px;font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);cursor:pointer;transition:all .15s;margin-bottom:6px;" onmouseover="this.style.borderColor='rgba(255,255,255,.25)';this.style.color='rgba(255,255,255,.65)'" onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.35)'">
+<!-- STYLE CARDS -->
+<div class="sec-label" id="stories">The stories</div>
+<div class="style-cards" id="styleCards"></div>
+<!-- VALUE EFFICIENCY TILE -->
+<div class="sec-label" id="efficiency" style="margin-top:18px;">Value efficiency</div>
+<div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:4px;overflow:hidden;margin-bottom:18px;">
+<div style="background:rgba(255,255,255,.02);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06);">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;color:var(--text);">Market Value ÷ Annual Wage</div>
+<div style="font-family:'DM Mono',monospace;font-size:.54rem;color:var(--muted);margin-top:2px;line-height:1.5;">Adjusted score = market value ÷ true annual cost × minutes weight × injury factor. True cost = wage/yr + fee ÷ contract length. Full weight at 900+ mins, linear below. Source: Transfermarkt, all competitions.</div>
+</div>
+<div style="padding:10px 14px;">
+<div style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:#4ade80;margin-bottom:6px;">▲ Top 5 — getting more than they cost</div>
+<div id="eff-top" style="display:flex;flex-direction:column;gap:3px;margin-bottom:14px;"></div>
+<div style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:#f87171;margin-bottom:6px;">▼ Bottom 5 — wage outrunning value</div>
+<div id="eff-bot" style="display:flex;flex-direction:column;gap:3px;margin-bottom:10px;"></div>
+<button onclick="renderFullList();document.getElementById('fullListPopup').style.display='flex';" onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.35)'" onmouseover="this.style.borderColor='rgba(255,255,255,.25)';this.style.color='rgba(255,255,255,.65)'" style="width:100%;padding:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:2px;font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);cursor:pointer;transition:all .15s;margin-bottom:6px;">
         ↕ Full squad ranking — all eligible players
       </button>
-
-      <button onclick="renderScatter();document.getElementById('scatterPopup').style.display='flex';" style="width:100%;padding:8px;background:rgba(3,70,148,.08);border:1px solid rgba(3,70,148,.3);border-radius:2px;font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:#60a5fa;cursor:pointer;transition:all .15s;margin-bottom:10px;" onmouseover="this.style.background='rgba(3,70,148,.15)';this.style.borderColor='rgba(3,70,148,.5)'" onmouseout="this.style.background='rgba(3,70,148,.08)';this.style.borderColor='rgba(3,70,148,.3)'">
+<button onclick="renderScatter();document.getElementById('scatterPopup').style.display='flex';" onmouseout="this.style.background='rgba(3,70,148,.08)';this.style.borderColor='rgba(3,70,148,.3)'" onmouseover="this.style.background='rgba(3,70,148,.15)';this.style.borderColor='rgba(3,70,148,.5)'" style="width:100%;padding:8px;background:rgba(3,70,148,.08);border:1px solid rgba(3,70,148,.3);border-radius:2px;font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:#60a5fa;cursor:pointer;transition:all .15s;margin-bottom:10px;">
         ◎ Fee vs adjusted score — scatter plot
       </button>
-
-      <div style="font-size:.58rem;color:rgba(255,255,255,.18);line-height:1.6;font-style:italic;padding-top:8px;border-top:1px solid rgba(255,255,255,.05);">
-        <strong style="color:rgba(255,255,255,.3);">Adjusted score</strong> = market value ÷ true annual cost × minutes weight × injury factor. True cost = wage/yr + fee ÷ contract length. Full weight at 900+ mins (≈10 full games), linear below. Minutes: Transfermarkt, all competitions. ·
+<div style="font-size:.58rem;color:rgba(255,255,255,.18);line-height:1.6;font-style:italic;padding-top:8px;border-top:1px solid rgba(255,255,255,.05);">
+<strong style="color:rgba(255,255,255,.3);">Adjusted score</strong> = market value ÷ true annual cost × minutes weight × injury factor. True cost = wage/yr + fee ÷ contract length. Full weight at 900+ mins (≈10 full games), linear below. Minutes: Transfermarkt, all competitions. ·
         <strong style="color:rgba(255,255,255,.3);">Mudryk excluded</strong> — banned, £0 market value. ·
         <strong style="color:rgba(255,255,255,.3);">Colwill excluded</strong> — TM value pre-ACL. ·
-        <strong style="color:rgba(255,255,255,.3);">Acheampong, Slonina, Essugo excluded</strong> — academy/unused. · <strong style="color:rgba(255,255,255,.3);">Jörgensen, Guiu excluded</strong> — backup keeper & bit-part; structural low minutes. · <strong style="color:rgba(255,255,255,.3);">Sarr, Jackson excluded</strong> — on loan. ·
+        <strong style="color:rgba(255,255,255,.3);">Acheampong, Slonina, Essugo excluded</strong> — academy/unused. · <strong style="color:rgba(255,255,255,.3);">Jörgensen, Guiu excluded</strong> — backup keeper &amp; bit-part; structural low minutes. · <strong style="color:rgba(255,255,255,.3);">Sarr, Jackson excluded</strong> — on loan. ·
         <strong style="color:rgba(255,255,255,.3);">Hato excluded</strong> — 20yrs, still developing. ·
         TM values are a guide. PL players routinely sell 20–40% above TM. Read directionally. · <strong style="color:rgba(255,255,255,.25);font-style:normal;">Consume with £1.166B worth of salt.</strong>
-      </div>
-    </div>
-  </div>
-
-  <!-- PLAYER LIST -->
-  <div class="sec-label" style="margin-bottom:10px;">Every player</div>
-  <div class="filters">
-    <button class="fbtn on" onclick="filterList('ALL',this)">All</button>
-    <div class="fbtn-group">
-      <button class="fbtn" onclick="filterList('GK',this)">GK</button>
-      <button class="fbtn" onclick="filterList('DEF',this)">DEF</button>
-      <button class="fbtn" onclick="filterList('MID',this)">MID</button>
-      <button class="fbtn" onclick="filterList('FWD',this)">FWD</button>
-    </div>
-    <button class="fbtn" onclick="filterList('OUT',this)">🚑 Out</button>
-    <button class="fbtn hit-btn" onclick="filterList('HIT',this)">✦ Hits</button>
-    <button class="fbtn miss-btn" onclick="filterList('MISS',this)">✗ Misses</button>
-  </div>
-  <div class="player-list" id="playerList"></div>
-
-  <div class="source">
-    Market values: Transfermarkt (Mar 2026) · Wages: Capology / Spotrac estimates<br>
-    Book value = fee ÷ contract length × remaining years · Academy signings = £0 book value<br>
+</div>
+</div>
+</div>
+<!-- PLAYER LIST -->
+<div class="sec-label" id="squad" style="margin-bottom:10px;">Full Squad Audit</div>
+<div class="filters">
+<button class="fbtn on" onclick="filterList('ALL',this)">All</button>
+<div class="fbtn-group">
+<button class="fbtn" onclick="filterList('GK',this)">GK</button>
+<button class="fbtn" onclick="filterList('DEF',this)">DEF</button>
+<button class="fbtn" onclick="filterList('MID',this)">MID</button>
+<button class="fbtn" onclick="filterList('FWD',this)">FWD</button>
+</div>
+<button class="fbtn" onclick="filterList('OUT',this)">🚑 Out</button>
+<button class="fbtn hit-btn" onclick="filterList('HIT',this)">✦ Hits</button>
+<button class="fbtn miss-btn" onclick="filterList('MISS',this)">✗ Misses</button>
+</div>
+<div class="player-list" id="playerList"></div>
+<div class="source">
+    Market values: Transfermarkt (Mar 2026) · Wages: Capology / Spotrac estimates<br/>
+    Book value = fee ÷ contract length × remaining years · Academy signings = £0 book value<br/>
     Unofficial fan project · Not financial advice · KTBFFH
   </div>
 </div>
-
-
-
 <div style="max-width:480px;margin:18px auto 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.05);">
-  <div style="font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:8px;">Related analysis</div>
-  <div style="font-size:.66rem;color:rgba(255,255,255,.34);line-height:1.7;">This audit sits inside the wider BlueCo model: transfer fees, wages, market value, availability and resale pressure all feed into Chelsea's squad-cost story.</div>
-  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
-    <a href="/chelsea-blueco-analysis" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">BlueCo overview</a>
-    <a href="/blueco" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">BlueCo books</a>
-    <a href="/wages" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Wages</a>
-    <a href="/deals" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Deals</a>
-    <a href="/injuries" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Injuries</a>
-  </div>
+<div style="font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:8px;">Related analysis</div>
+<div style="font-size:.66rem;color:rgba(255,255,255,.34);line-height:1.7;">This audit sits inside the wider BlueCo model: transfer fees, wages, market value, availability and resale pressure all feed into Chelsea's squad-cost story.</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+<a href="/chelsea-blueco-analysis" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">BlueCo overview</a>
+<a href="/blueco" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">BlueCo books</a>
+<a href="/wages" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Wages</a>
+<a href="/deals" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Deals</a>
+<a href="/injuries" style="text-decoration:none;padding:5px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font-size:.6rem;color:rgba(255,255,255,.5);">Injuries</a>
+</div>
 </div>
 <script>
 // ─── Player data ───────────────────────────────────────────────────────────
@@ -281,14 +308,14 @@ const P = [
   {name:"Mykhailo Mudryk †", pos:"MID",posL:"LW", age:25, fee:62,  bookVal:39, mktVal:0,  weekly:100000, mins:0,    contract:{start:2023,end:2031}, inj:"ban",   injL:"Banned",       vrd:"dis", vrdL:"Disaster",  note:"Banned since late 2024 for doping. Book value £39m, market value £0. £5.2M/yr wages for zero minutes. The definitive transfer disaster."},
   {name:"Roméo Lavia",       pos:"MID",posL:"DM", age:22, fee:58,  bookVal:36, mktVal:21, weekly:45000,  mins:458,  contract:{start:2023,end:2030}, inj:"doubt", injL:"Thigh doubt",  vrd:"jury",vrdL:"Too early", note:"Book value £36m, market only £21m — injuries have destroyed his value. 30 games in three seasons. Potential is real. Body won't cooperate."},
   {name:"Andrey Santos",     pos:"MID",posL:"CM", age:21, fee:12,  bookVal:7,  mktVal:38, weekly:35000,  mins:2044, contract:{start:2023,end:2030}, inj:"ok",    injL:"Available",    vrd:"ok",  vrdL:"Decent",    note:"Bought for £12m, market now £38m — best ratio on the squad. Playing regularly under Rosenior. Book value only £7m. Brilliant piece of business."},
-  {name:"Alejandro Garnacho",pos:"MID",posL:"LW", age:21, fee:40,  bookVal:40, mktVal:34, weekly:110000, mins:1906, contract:{start:2025,end:2032}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Too early", note:"January arrival. Too early to judge. Market at £34m vs book £40m — slight depreciation already. Needs a sustained run under Rosenior."},
-  {name:"Dário Essugo",      pos:"MID",posL:"DM", age:20, fee:18,  bookVal:16, mktVal:14, weekly:40000,  mins:55,   contract:{start:2025,end:2033}, inj:"out",   injL:"Thigh/setback",vrd:"jury",vrdL:"Too early", note:"Not played a single minute for Chelsea. Thigh surgery then Jan setback. 20 years old — too early to judge. Market already below book."},
+  {name:"Alejandro Garnacho",pos:"MID",posL:"LW", age:21, fee:40,  bookVal:40, mktVal:34, weekly:110000, mins:1906, contract:{start:2025,end:2032}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Too early", note:"No more than decent. Too early to judge. Market at £34m vs book £40m — slight depreciation already. Needs a sustained run under Rosenior."},
+  {name:"Dário Essugo",      pos:"MID",posL:"DM", age:20, fee:18,  bookVal:16, mktVal:14, weekly:40000,  mins:55,   contract:{start:2025,end:2033}, inj:"out",   injL:"Thigh/setback",vrd:"jury",vrdL:"Too early", note:"Not many minutes for Chelsea. Thigh surgery then Jan setback. 20 years old — too early to judge. Market already below book."},
 
   // FWD
   {name:"Pedro Neto",        pos:"FWD",posL:"RW", age:26, fee:54,  bookVal:39, mktVal:51, weekly:160000, mins:3176, contract:{start:2024,end:2031}, inj:"ok",    injL:"Available",    vrd:"ok",  vrdL:"Decent",    note:"Book value £39m, market £51m — appreciating. Consistent when fit, injury history a concern. Important in Rosenior's 4-2-3-1."},
   {name:"Cole Palmer",       pos:"FWD",posL:"AM", age:23, fee:40,  bookVal:28, mktVal:94, weekly:130000, mins:1733, contract:{start:2024,end:2033}, inj:"ok",    injL:"Available",    vrd:"hit", vrdL:"✦ Hit",     note:"Bought for £40m, market now £94m. Book value £28m — the gap between book and market tells the whole story. Best signing of the era."},
   {name:"João Pedro",        pos:"FWD",posL:"ST", age:24, fee:55,  bookVal:48, mktVal:64, weekly:125000, mins:3106, contract:{start:2025,end:2033}, inj:"ok",    injL:"Available",    vrd:"ok",  vrdL:"Decent",    note:"Book £48m, market £64m — already appreciating. The no.9 Chelsea had been missing for years. Club World Cup standout. Settling well."},
-  {name:"Liam Delap",        pos:"FWD",posL:"ST", age:23, fee:30,  bookVal:25, mktVal:27, weekly:100000, mins:1254, contract:{start:2025,end:2031}, inj:"ok",    injL:"Available",    vrd:"ok",  vrdL:"Decent",    note:"Book £25m, market £27m — holding value despite two injuries. Good value at £30m. Bright future if he can stay fit."},
+  {name:"Liam Delap",        pos:"FWD",posL:"ST", age:23, fee:30,  bookVal:25, mktVal:27, weekly:100000, mins:1254, contract:{start:2025,end:2031}, inj:"ok",    injL:"Available",    vrd:"ok",  vrdL:"Decent",    note:"Book £25m, market £27m — holding value despite two injuries. Looked good value at £30m. Hampered by injuries."},
   {name:"Nicolás Jackson",   pos:"FWD",posL:"ST", age:24, fee:32,  bookVal:20, mktVal:25, weekly:90000,  mins:0,    contract:{start:2023,end:2031}, inj:"ok",    injL:"Available",    vrd:"jury",vrdL:"Jury out",  note:"Book £20m, market £25m — modest appreciation. Serie A clubs circling. Inconsistent output. Jury firmly out."},
   {name:"Jamie Gittens",     pos:"FWD",posL:"LW", age:21, fee:55,  bookVal:47, mktVal:30, weekly:108000, mins:1102, contract:{start:2025,end:2032}, inj:"out",   injL:"Hamstring",    vrd:"jury",vrdL:"Too early", note:"Book £47m, market only £30m — injury has already dented value. Bright start then long-term hamstring tear. Too early to judge."},
   {name:"Estêvão Willian",   pos:"FWD",posL:"RW", age:18, fee:38,  bookVal:33, mktVal:68, weekly:60000,  mins:1503, contract:{start:2025,end:2033}, inj:"ok",    injL:"Returned",     vrd:"jury",vrdL:"Too early", note:"18 years old. Book £33m, market £68m — already doubled in value. Came back with a sharp cameo vs Everton (21 Mar) after hamstring. The future of the club. Untouchable."},
@@ -594,44 +621,41 @@ function renderFullList() {
 </script>
 <!-- Full list popup -->
 <div id="fullListPopup" onclick="if(event.target===this){this.style.display='none';}" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center;">
-  <div style="background:#0f0f1a;border:1px solid #2a2a3e;border-radius:4px;width:300px;max-height:82vh;display:flex;flex-direction:column;overflow:hidden;">
-    <div style="background:rgba(255,255,255,.03);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
-      <div>
-        <div style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);">Full squad — adjusted score</div>
-        <div style="font-family:'DM Mono',monospace;font-size:.46rem;color:#555570;margin-top:2px;">Sorted best → worst · excluded players dimmed</div>
-      </div>
-      <button onclick="document.getElementById('fullListPopup').style.display='none';" style="font-family:'DM Mono',monospace;font-size:.75rem;color:#555570;background:none;border:none;cursor:pointer;padding:0 4px;line-height:1;">✕</button>
-    </div>
-    <div id="fullListBody" style="overflow-y:auto;padding:8px 14px 12px;"></div>
-  </div>
+<div style="background:#0f0f1a;border:1px solid #2a2a3e;border-radius:4px;width:300px;max-height:82vh;display:flex;flex-direction:column;overflow:hidden;">
+<div style="background:rgba(255,255,255,.03);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+<div>
+<div style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);">Full squad — adjusted score</div>
+<div style="font-family:'DM Mono',monospace;font-size:.46rem;color:#555570;margin-top:2px;">Sorted best → worst · excluded players dimmed</div>
 </div>
-
-
+<button onclick="document.getElementById('fullListPopup').style.display='none';" style="font-family:'DM Mono',monospace;font-size:.75rem;color:#555570;background:none;border:none;cursor:pointer;padding:0 4px;line-height:1;">✕</button>
+</div>
+<div id="fullListBody" style="overflow-y:auto;padding:8px 14px 12px;"></div>
+</div>
+</div>
 <!-- Scatter plot popup -->
 <div id="scatterPopup" onclick="if(event.target===this)this.style.display='none';" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center;">
-  <div style="background:#0f0f1a;border:1px solid #2a2a3e;border-radius:4px;width:min(92vw,560px);max-height:88vh;display:flex;flex-direction:column;overflow:hidden;">
-    <div style="background:rgba(255,255,255,.03);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.08em;color:#e8e8f0;">Fee paid vs adjusted score</div>
-        <div style="font-family:'DM Mono',monospace;font-size:.46rem;color:#555570;margin-top:2px;">Dot size = weekly wage · hover for details</div>
-      </div>
-      <button onclick="document.getElementById('scatterPopup').style.display='none';" style="font-family:'DM Mono',monospace;font-size:.75rem;color:#555570;background:none;border:none;cursor:pointer;padding:0 4px;line-height:1;">✕</button>
-    </div>
-    <div style="padding:10px 14px 6px;flex-shrink:0;">
-      <div style="display:flex;flex-wrap:wrap;gap:12px;font-family:'DM Mono',monospace;font-size:.46rem;letter-spacing:.06em;text-transform:uppercase;color:#555570;">
-        <span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block;"></span>Good (≥4×)</span>
-        <span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:#C9A84C;display:inline-block;"></span>Mid (2–4×)</span>
-        <span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:#f87171;display:inline-block;"></span>Poor (&lt;2×)</span>
-      </div>
-    </div>
-    <div style="padding:0 14px 14px;flex:1;min-height:0;">
-      <div style="position:relative;width:100%;height:400px;">
-        <canvas id="scatterCanvas"></canvas>
-      </div>
-    </div>
-  </div>
+<div style="background:#0f0f1a;border:1px solid #2a2a3e;border-radius:4px;width:min(92vw,560px);max-height:88vh;display:flex;flex-direction:column;overflow:hidden;">
+<div style="background:rgba(255,255,255,.03);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+<div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.08em;color:#e8e8f0;">Fee paid vs adjusted score</div>
+<div style="font-family:'DM Mono',monospace;font-size:.46rem;color:#555570;margin-top:2px;">Dot size = weekly wage · hover for details</div>
 </div>
-
+<button onclick="document.getElementById('scatterPopup').style.display='none';" style="font-family:'DM Mono',monospace;font-size:.75rem;color:#555570;background:none;border:none;cursor:pointer;padding:0 4px;line-height:1;">✕</button>
+</div>
+<div style="padding:10px 14px 6px;flex-shrink:0;">
+<div style="display:flex;flex-wrap:wrap;gap:12px;font-family:'DM Mono',monospace;font-size:.46rem;letter-spacing:.06em;text-transform:uppercase;color:#555570;">
+<span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block;"></span>Good (≥4×)</span>
+<span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:#C9A84C;display:inline-block;"></span>Mid (2–4×)</span>
+<span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:#f87171;display:inline-block;"></span>Poor (&lt;2×)</span>
+</div>
+</div>
+<div style="padding:0 14px 14px;flex:1;min-height:0;">
+<div style="position:relative;width:100%;height:400px;">
+<canvas id="scatterCanvas"></canvas>
+</div>
+</div>
+</div>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 let scatterChartInstance = null;
@@ -755,6 +779,13 @@ function renderScatter() {
         ctx.restore();
       }
     }]
+  });
+}
+
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({
+    behavior:'smooth',
+    block:'start'
   });
 }
 </script>

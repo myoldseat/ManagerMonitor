@@ -613,6 +613,57 @@ function filterMatch(inj, f){
 let currentFilter = "all";
 let sortMode = "days"; // days | alpha | games
 
+function mergeInjuriesByPlayer(rows){
+  const map = new Map();
+  rows.forEach(inj => {
+    const key = inj.name;
+    if(!map.has(key)){
+      map.set(key, {
+        ...inj,
+        days: 0,
+        games: 0,
+        injuryList: [],
+        detailList: [],
+        startList: [],
+        returnList: [],
+        seasonCount: 0
+      });
+    }
+
+    const merged = map.get(key);
+    merged.days += inj.days;
+    merged.games += inj.games;
+    merged.current = merged.current || inj.current;
+    merged.repeat = merged.repeat || inj.repeat || (merged.seasonCount >= 1);
+    merged.cwc = merged.cwc || inj.cwc;
+    merged.hamstring = merged.hamstring || inj.hamstring;
+    merged.seasonCount += 1;
+
+    if(!merged.injuryList.includes(inj.injury)) merged.injuryList.push(inj.injury);
+    if(!merged.detailList.includes(inj.detail)) merged.detailList.push(inj.detail);
+    if(!merged.startList.includes(inj.start)) merged.startList.push(inj.start);
+    if(!merged.returnList.includes(inj.returnDate)) merged.returnList.push(inj.returnDate);
+  });
+
+  return [...map.values()].map(inj => {
+    const maxDays = inj.days;
+    let severity = "minor";
+    if(inj.current) severity = "current";
+    else if(maxDays >= 60) severity = "critical";
+    else if(maxDays >= 30) severity = "major";
+    else if(maxDays >= 14) severity = "moderate";
+
+    return {
+      ...inj,
+      severity,
+      injury: inj.injuryList.length > 1 ? `${inj.injuryList.length} injuries — ${inj.injuryList.join(" + ")}` : inj.injuryList[0],
+      detail: inj.detailList.length > 1 ? inj.detailList.join(" ") : inj.detailList[0],
+      start: inj.startList.length > 1 ? `${inj.startList[0]} → ${inj.startList[inj.startList.length - 1]}` : inj.startList[0],
+      returnDate: inj.current ? inj.returnList[inj.returnList.length - 1] : (inj.returnList.length > 1 ? `${inj.returnList[0]} → ${inj.returnList[inj.returnList.length - 1]}` : inj.returnList[0])
+    };
+  });
+}
+
 function render(filter){
   currentFilter = filter;
   const list = document.getElementById("injuryList");
@@ -620,10 +671,11 @@ function render(filter){
   const showIronMenOnly = filter === "ironmen";
   const showIronMen = filter === "all" || filter === "ironmen";
 
-  const filtered = showIronMenOnly ? [] : injuries
+  const mergedInjuries = mergeInjuriesByPlayer(injuries);
+
+  const filtered = showIronMenOnly ? [] : mergedInjuries
     .filter(i => filterMatch(i, filter))
     .sort((a, b) => {
-      if(a.current !== b.current) return a.current ? -1 : 1;
       if(sortMode === "days") return b.days - a.days;
       if(sortMode === "games") return b.games - a.games;
       return a.name.localeCompare(b.name);
@@ -632,8 +684,8 @@ function render(filter){
   // Totals
   const allDays = injuries.reduce((s, i) => s + i.days, 0);
   const allGames = injuries.reduce((s, i) => s + i.games, 0);
-  const uniquePlayers = [...new Set(injuries.map(i => i.name))].length;
-  const currentCount = injuries.filter(i => i.current).length;
+  const uniquePlayers = mergedInjuries.length;
+  const currentCount = mergedInjuries.filter(i => i.current).length;
 
   document.getElementById("sumTotal").textContent = injuries.length;
   document.getElementById("sumCurrent").textContent = currentCount;
@@ -646,20 +698,12 @@ function render(filter){
 
   // Build rows
   let html = "";
-  let lastGroup = null;
 
   filtered.forEach(inj => {
-    const group = inj.current ? "current" : "recovered";
-    if(group !== lastGroup && filter === "all"){
-      const label = group === "current" ? "🔴 Currently out" : "✅ Recovered this season";
-      html += `<div class="section-div"><div class="section-div-label">${label}</div><div class="section-div-line"></div></div>`;
-      lastGroup = group;
-    }
-
     const tags = [];
     if(inj.current) tags.push(`<span class="inj-tag current">Out now</span>`);
     else tags.push(`<span class="inj-tag recovered">Recovered</span>`);
-    if(inj.repeat) tags.push(`<span class="inj-tag repeat">Repeat</span>`);
+    if(inj.seasonCount > 1 || inj.repeat) tags.push(`<span class="inj-tag repeat">${inj.seasonCount} injuries</span>`);
     if(inj.cwc) tags.push(`<span class="inj-tag repeat" style="color:#fbbf24;border-color:rgba(251,191,36,.2);background:rgba(251,191,36,.08);">CWC</span>`);
 
     const fillPct = Math.min(100, Math.max(6, (inj.days / 240) * 100));
