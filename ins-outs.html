@@ -40,12 +40,9 @@
     .rumour-header-tagline{font-size:.7rem;color:rgba(255,255,255,.35)}
     .rumour-body{padding:14px 16px}
     .rumour-intro{font-size:.72rem;color:rgba(255,255,255,.42);line-height:1.55;margin-bottom:14px}
-    .rumour-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px}
+    .rumour-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:12px}
+    .belt-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:12px}
     .rumour-sum-cell{background:rgba(255,255,255,.03);border-radius:3px;padding:7px;text-align:center;border:1px solid transparent;cursor:pointer;transition:all .18s ease;user-select:none}
-    .rumour-sum-cell:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
-    .rumour-sum-cell.active{background:rgba(74,144,217,.09);border-color:rgba(74,144,217,.35);box-shadow:0 0 0 1px rgba(74,144,217,.08) inset}
-    .rumour-header-link{color:#60a5fa;text-decoration:none;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-    .belt-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px}
     .belt-filter-btn{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:3px;padding:10px 8px;text-align:center;cursor:pointer;transition:border-color .18s ease, background .18s ease, transform .18s ease;}
     .belt-filter-btn:hover{border-color:rgba(96,165,250,.35);background:rgba(96,165,250,.08);transform:translateY(-1px)}
     .belt-filter-btn.active{border-color:rgba(96,165,250,.55);background:rgba(96,165,250,.12);box-shadow:inset 0 0 0 1px rgba(96,165,250,.18)}
@@ -56,7 +53,9 @@
     .tile-url{display:block;margin-top:9px;font-size:.58rem;color:rgba(255,255,255,.14);letter-spacing:.11em;text-transform:uppercase;}
     .transfer-host.full .belt-footer-link,.transfer-host.full .tile-url,.transfer-host.full .belt-header-link{display:none;}
     .transfer-host.full .rumour-tile{max-width:560px;width:100%;margin-top:0;}
-    .rumour-footnote{font-size:.68rem;color:rgba(255,255,255,.24);line-height:1.55;padding-top:8px;margin-top:8px;border-top:1px solid rgba(255,255,255,.06);font-style:italic}
+    .belt-watch-dir{width:48px !important;}
+    .rumour-sum-cell:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
+    .rumour-sum-cell.active{background:rgba(74,144,217,.09);border-color:rgba(74,144,217,.35);box-shadow:0 0 0 1px rgba(74,144,217,.08) inset}
     .rumour-sum-val{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;line-height:1;margin-bottom:2px}
     .rumour-sum-lbl{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25)}
     .rumour-list{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
@@ -103,6 +102,26 @@
         const buttons = tile.querySelectorAll('.belt-filter-btn[data-filter]');
         const rows = Array.from(tile.querySelectorAll('.rumour-row[data-group]'));
         const dividers = Array.from(tile.querySelectorAll('.rumour-divider[data-group]'));
+        const labelMap = {1:'Very weak',2:'Soft link',3:'Plausible',4:'Strong',5:'Very strong'};
+
+        rows.forEach(row => {
+          const score = Number(row.dataset.likelihood || 0);
+          const box = row.querySelector('.rumour-score');
+          if (box && score) {
+            box.textContent = String(score);
+            box.setAttribute('title', labelMap[score] || `Likelihood ${score}`);
+            box.setAttribute('aria-label', labelMap[score] || `Likelihood ${score}`);
+          }
+        });
+
+        dividers.forEach(div => {
+          const group = div.dataset.group;
+          const groupRows = rows.filter(row => row.dataset.group === group && row.dataset.likelihood);
+          if (groupRows.length) {
+            groupRows.sort((a,b) => Number(b.dataset.likelihood) - Number(a.dataset.likelihood))
+              .forEach(row => div.insertAdjacentElement('afterend', row));
+          }
+        });
 
         function applyFilter(filter){
           buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));

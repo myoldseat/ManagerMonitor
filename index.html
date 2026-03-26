@@ -372,17 +372,7 @@
     .rumour-intro{font-size:.72rem;color:rgba(255,255,255,.38);line-height:1.55;margin-bottom:14px;}
     .rumour-intro strong{color:rgba(255,255,255,.75);}
     .rumour-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:12px;}
-    .belt-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px;}
     .rumour-sum-cell{background:rgba(255,255,255,.03);border-radius:3px;padding:7px;text-align:center;}
-    .belt-filter-btn{background:rgba(255,255,255,.03);border-radius:3px;padding:7px;text-align:center;border:1px solid transparent;cursor:pointer;transition:all .18s ease;user-select:none;}
-    .belt-filter-btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05);}
-    .belt-filter-btn.active{background:rgba(74,144,217,.09);border-color:rgba(74,144,217,.35);box-shadow:0 0 0 1px rgba(74,144,217,.08) inset;}
-    .belt-hidden{opacity:0;transform:translateY(-4px);max-height:0 !important;margin:0 !important;padding-top:0 !important;padding-bottom:0 !important;pointer-events:none;overflow:hidden;}
-    .belt-header-link,.belt-footer-link{color:#60a5fa;text-decoration:none;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
-    .belt-footer-link{display:inline-flex;margin-top:10px;}
-    .transfer-host.full .belt-footer-link,.transfer-host.full .tile-url,.transfer-host.full .belt-header-link{display:none;}
-    .transfer-host.full .rumour-tile{max-width:560px;width:100%;margin-top:0;}
-    .belt-footnote{font-size:.68rem;color:rgba(255,255,255,.24);line-height:1.55;padding-top:8px;margin-top:8px;border-top:1px solid rgba(255,255,255,.06);font-style:italic;}
     .rumour-sum-val{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;line-height:1;margin-bottom:2px;}
     .rumour-sum-lbl{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);}
     .rumour-list{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
@@ -1639,8 +1629,7 @@ html {
 <!-- SHORTCUT BAR -->
 <div class="shortcut-bar">
 
-  <a href="/ins-outs" class="shortcut-tile"
-     data-target="blueco-belt"
+  <a href="ins-outs.html" class="shortcut-tile"
      data-message="Another one enters the system.">
     <span class="shortcut-label">INS/OUTS</span>
   </a>
@@ -3646,7 +3635,7 @@ html {
         <div class="transfer-net-val">~£650M</div>
       </div>
       <div class="transfer-quip">
-        £24m per league win. That's roughly <strong>ten sold-out Stamford Bridges</strong>. Per. Win.
+        £24m per league win. That's roughly <strong>ten sold-out Stamford Bridges. Per. Win</strong>. 
       </div>
       <span class="tile-url">hasliamroseniorbeensackedyet.com</span>
     </div>
@@ -5117,6 +5106,7 @@ window.addEventListener('DOMContentLoaded', function(){
   }
 })();
 </script>
+
   <script>
     (function(){
       function initSharedTransferTile(host){
@@ -5128,6 +5118,26 @@ window.addEventListener('DOMContentLoaded', function(){
         const buttons = tile.querySelectorAll('.belt-filter-btn[data-filter]');
         const rows = Array.from(tile.querySelectorAll('.rumour-row[data-group]'));
         const dividers = Array.from(tile.querySelectorAll('.rumour-divider[data-group]'));
+        const labelMap = {1:'Very weak',2:'Soft link',3:'Plausible',4:'Strong',5:'Very strong'};
+
+        rows.forEach(row => {
+          const score = Number(row.dataset.likelihood || 0);
+          const box = row.querySelector('.rumour-score');
+          if (box && score) {
+            box.textContent = String(score);
+            box.setAttribute('title', labelMap[score] || `Likelihood ${score}`);
+            box.setAttribute('aria-label', labelMap[score] || `Likelihood ${score}`);
+          }
+        });
+
+        dividers.forEach(div => {
+          const group = div.dataset.group;
+          const groupRows = rows.filter(row => row.dataset.group === group && row.dataset.likelihood);
+          if (groupRows.length) {
+            groupRows.sort((a,b) => Number(b.dataset.likelihood) - Number(a.dataset.likelihood))
+              .forEach(row => div.insertAdjacentElement('afterend', row));
+          }
+        });
 
         function applyFilter(filter){
           buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
@@ -5174,6 +5184,7 @@ window.addEventListener('DOMContentLoaded', function(){
       });
     })();
   </script>
+
 </body>
 
 </html>
