@@ -372,7 +372,17 @@
     .rumour-intro{font-size:.72rem;color:rgba(255,255,255,.38);line-height:1.55;margin-bottom:14px;}
     .rumour-intro strong{color:rgba(255,255,255,.75);}
     .rumour-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:12px;}
+    .belt-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px;}
     .rumour-sum-cell{background:rgba(255,255,255,.03);border-radius:3px;padding:7px;text-align:center;}
+    .belt-filter-btn{background:rgba(255,255,255,.03);border-radius:3px;padding:7px;text-align:center;border:1px solid transparent;cursor:pointer;transition:all .18s ease;user-select:none;}
+    .belt-filter-btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05);}
+    .belt-filter-btn.active{background:rgba(74,144,217,.09);border-color:rgba(74,144,217,.35);box-shadow:0 0 0 1px rgba(74,144,217,.08) inset;}
+    .belt-hidden{opacity:0;transform:translateY(-4px);max-height:0 !important;margin:0 !important;padding-top:0 !important;padding-bottom:0 !important;pointer-events:none;overflow:hidden;}
+    .belt-header-link,.belt-footer-link{color:#60a5fa;text-decoration:none;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+    .belt-footer-link{display:inline-flex;margin-top:10px;}
+    .transfer-host.full .belt-footer-link,.transfer-host.full .tile-url,.transfer-host.full .belt-header-link{display:none;}
+    .transfer-host.full .rumour-tile{max-width:560px;width:100%;margin-top:0;}
+    .belt-footnote{font-size:.68rem;color:rgba(255,255,255,.24);line-height:1.55;padding-top:8px;margin-top:8px;border-top:1px solid rgba(255,255,255,.06);font-style:italic;}
     .rumour-sum-val{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;line-height:1;margin-bottom:2px;}
     .rumour-sum-lbl{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);}
     .rumour-list{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
@@ -1629,10 +1639,10 @@ html {
 <!-- SHORTCUT BAR -->
 <div class="shortcut-bar">
 
-  <a href="#blueco-belt" class="shortcut-tile"
+  <a href="/ins-outs" class="shortcut-tile"
      data-target="blueco-belt"
      data-message="Another one enters the system.">
-    <span class="shortcut-label">WHISPERS</span>
+    <span class="shortcut-label">INS/OUTS</span>
   </a>
 
   <a href="#verdict" class="shortcut-tile"
@@ -1703,1088 +1713,1270 @@ html {
 
  <!-- MVP RACE TILE -->
   <div style="max-width:480px;width:100%;margin-top:14px;">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
     <style>
-      #mvp-race-tile {
-        --black: #000;
-        --blue: #034694;
+      #mvp-clean {
+        --blue:   #034694;
         --yellow: #EAC117;
-        --white: #F2F2F0;
-        --dim: rgba(242,242,240,0.35);
-        --border: rgba(242,242,240,0.09);
-        box-sizing: border-box;
+        --white:  #F2F2F0;
+        --dim:    rgba(242,242,240,0.38);
+        --border: rgba(242,242,240,0.10);
+        --black:  #000;
+        --stats-w: 138px;
+  --mp-col-w: 40px;
         font-family: 'Barlow', sans-serif;
+        color: #F2F2F0;
         width: 100%;
+        box-sizing: border-box;
       }
-      #mvp-race-tile *, #mvp-race-tile *::before, #mvp-race-tile *::after {
+      #mvp-clean *, #mvp-clean *::before, #mvp-clean *::after {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
       }
       
-#mvp-race-tile .card {
-    width: 100%;
-    max-width: 100%;
-    background: var(--black);
-    border: 1px solid var(--border);
-    overflow: hidden;
-    position: relative;
-  }
+#mvp-clean * { box-sizing: border-box; margin: 0; padding: 0; }
 
-#mvp-race-tile .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, var(--blue) 0 65%, var(--yellow) 65% 100%);
-    z-index: 3;
-  }
+#mvp-clean :root {
+  --blue:   #034694;
+  --yellow: #EAC117;
+  --white:  #F2F2F0;
+  --dim:    rgba(242,242,240,0.38);
+  --border: rgba(242,242,240,0.10);
+  --black:  #000;
+  /* stats panel width — 3 columns + right padding */
+  --stats-w: 138px;
+  --mp-col-w: 40px;
+}
 
-#mvp-race-tile /* ── HEADER ── */
-  .header {
-    padding: 24px 28px 16px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
+#mvp-clean /* ── CARD ─────────────────────────────────── */
+.card {
+  width: 100%;
+  max-width: 780px;
+  background: var(--black);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
 
-#mvp-race-tile .eyebrow {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    color: var(--yellow);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
+#mvp-clean .card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 5px;
+  background: linear-gradient(90deg, var(--blue) 65%, var(--yellow) 65%);
+  z-index: 10;
+}
 
-#mvp-race-tile h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(34px, 6vw, 56px);
-    font-weight: 700;
-    line-height: 0.9;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-  }
+#mvp-clean /* ── HEADER ───────────────────────────────── */
+.c-header {
+  padding: 20px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
 
-#mvp-race-tile h1 em { font-style: normal; color: var(--yellow); }
+#mvp-clean .c-header h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
 
-#mvp-race-tile .header-legend {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
-    padding-bottom: 2px;
-  }
+#mvp-clean .c-header h1 em { font-style: normal; color: var(--yellow); }
 
-#mvp-race-tile .hl-row {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--dim);
-  }
+#mvp-clean .eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 5px;
+}
 
-#mvp-race-tile .hl-swatch { width: 24px; height: 7px; border-radius: 1px; }
+#mvp-clean .legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  padding-bottom: 4px;
+}
 
-#mvp-race-tile .hl-swatch.mp { background: rgba(3,70,148,0.75); }
+#mvp-clean .legend-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
 
-#mvp-race-tile .hl-swatch.min { background: rgba(242,242,240,0.35); }
+#mvp-clean .swatch {
+  width: 22px; height: 6px; border-radius: 1px;
+}
 
-#mvp-race-tile /* ── NAV BAR ── */
-  .nav-label {
-    display: none;
-  }
+#mvp-clean .swatch.mp { background: rgba(3,70,148,0.8); }
 
-#mvp-race-tile .nav-bar {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 28px 10px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(255,255,255,0.015);
-  }
+#mvp-clean .swatch.min { background: rgba(242,242,240,0.3); }
 
-#mvp-race-tile /* Competition cycle button */
-  .comp-btn {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--black);
-    background: var(--yellow);
-    border: none;
-    padding: 7px 14px 6px;
-    cursor: pointer;
-    transition: opacity 0.15s;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
+#mvp-clean /* ── NAV ──────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.015);
+}
 
-#mvp-race-tile .comp-btn:hover { opacity: 0.82; }
+#mvp-clean .comp-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
 
-#mvp-race-tile /* Current comp name shown next to button */
-  .comp-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--dim);
-    flex: 1;
-    padding-left: 4px;
-  }
+#mvp-clean .comp-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding-left: 2px;
+}
 
-#mvp-race-tile /* Divider */
-  .nav-divider {
-    width: 1px;
-    height: 22px;
-    background: var(--border);
-    flex-shrink: 0;
-    margin: 0 4px;
-  }
+#mvp-clean .comp-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--yellow);
+  border: none;
+  padding: 7px 14px 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
 
-#mvp-race-tile /* Filter buttons */
-  .filter-btn {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--dim);
-    background: transparent;
-    border: 1px solid var(--border);
-    padding: 6px 12px 5px;
-    cursor: pointer;
-    transition: color 0.15s, border-color 0.15s, background 0.15s;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
+#mvp-clean .comp-btn:hover { opacity: 0.85; }
 
-#mvp-race-tile .filter-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.25); }
+#mvp-clean .nav-div {
+  width: 1px; height: 24px;
+  background: var(--border);
+  margin: 0 2px;
+  flex-shrink: 0;
+}
 
-#mvp-race-tile .filter-btn.active {
-    color: var(--black);
-    background: rgba(3,70,148,0.9);
-    border-color: var(--blue);
-    color: var(--white);
-  }
+#mvp-clean .filter-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 6px 12px 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
 
-#mvp-race-tile /* ── COL HEADER ── */
-  .col-header {
-    display: grid;
-    grid-template-columns: 1fr 58px 58px 62px;
-    padding: 8px 28px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--dim);
-    border-bottom: 1px solid var(--border);
-    background: rgba(255,255,255,0.015);
-  }
+#mvp-clean .filter-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.25); }
 
-#mvp-race-tile .col-header span:not(:first-child) { text-align: right; position: relative; }
+#mvp-clean .filter-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
 
-#mvp-race-tile .col-header span:not(:first-child):not(.ga-col)::after { display: none; }
+#mvp-clean /* ── COL HEADER ───────────────────────────── */
+.col-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
 
-#mvp-race-tile /* ── PLAYER LIST ── */
-  .comp-view { display: none; }
+#mvp-clean .col-player {
+  flex: 1;
+  padding: 7px 10px 7px 20px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
 
-#mvp-race-tile .comp-view.active { display: block; }
+#mvp-clean .col-stats {
+  width: var(--stats-w);
+  display: flex;
+  border-left: 1px solid rgba(255,255,255,0.15);
+}
 
-#mvp-race-tile /* ── PLAYER ROW ── */
-  .player-row {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 58px 58px 62px;
-    align-items: center;
-    min-height: 52px;
-    padding: 0 28px;
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-    animation: slideIn 0.3s ease both;
-  }
+#mvp-clean .col-stat {
+  flex: 1;
+  padding: 7px 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-align: right;
+}
 
-#mvp-race-tile .player-row::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: var(--w-mp);
-    height: 50%;
-    background: rgba(3, 70, 148, 0.42);
-    pointer-events: none;
-  }
+#mvp-clean /* col-header total cell — same as other headers */
+.col-header .col-stat.total {
+  background: rgba(255,255,255,0.04);
+  padding-right: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--dim);
+}
 
-#mvp-race-tile .player-row::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: var(--w-min);
-    height: 50%;
-    background: rgba(242, 242, 240, 0.06);
-    pointer-events: none;
-  }
+#mvp-clean /* ── PLAYER ROW ───────────────────────────── */
+.player-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  min-height: 44px;
+  animation: slideIn 0.3s ease both;
+}
 
-#mvp-race-tile .player-row.top::before { background: rgba(3, 70, 148, 0.55); }
+#mvp-clean .player-row.top { border-left: 4px solid var(--yellow); }
 
-#mvp-race-tile .player-row.top::after { background: rgba(242, 242, 240, 0.09); }
+#mvp-clean .player-row.contender { border-left: 4px solid var(--blue); }
 
-#mvp-race-tile .player-row.top { border-left: 4px solid var(--yellow); }
-
-#mvp-race-tile .player-row.contender { border-left: 4px solid var(--blue); }
-
-#mvp-race-tile .player-row.rest { border-left: 4px solid rgba(255,255,255,0.07); }
-
-#mvp-race-tile .player-row > * { position: relative; z-index: 1; }
-
-#mvp-race-tile /* ── BAR LABELS — inside bar, #mvp-race-tile right-aligned to bar end ── */
-  .bar-meta {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-#mvp-race-tile .bm-mp, #mvp-race-tile .bm-min {
-    position: absolute;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-#mvp-race-tile .bm-mp {
-    top: 25%;
-    transform: translateY(-50%);
-    /* For short bars: sit just right of the bar end.
-       For long bars (>80%): anchor to right edge, sit inside */
-    left: min(var(--w-min), calc(100% - 140px));
-    padding-left: 5px;
-    color: rgba(140, 180, 255, 0.55);
-    max-width: 56px;
-    overflow: hidden;
-    text-overflow: clip;
-    font-size: 8px;
-  }
-
-#mvp-race-tile .bm-min {
-    top: 75%;
-    transform: translateY(-50%);
-    left: min(var(--w-min), calc(100% - 140px));
-    padding-left: 5px;
-    color: rgba(242,242,240,0.32);
-    max-width: 56px;
-    overflow: hidden;
-    text-overflow: clip;
-    font-size: 8px;
-  }
-
-#mvp-race-tile /* ── PLAYER INFO ── */
-  .player-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    padding: 10px 10px 10px 0;
-  }
-
-#mvp-race-tile .rank {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--dim);
-  }
-
-#mvp-race-tile .player-row.top .rank { color: var(--yellow); opacity: 1; }
-
-#mvp-race-tile .player-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    line-height: 1.05;
-    color: var(--white);
-  }
-
-#mvp-race-tile .player-row.top .player-name { color: var(--white); }
-
-#mvp-race-tile .verdict {
-    font-size: 10px;
-    font-weight: 400;
-    color: var(--dim);
-    margin-top: 2px;
-    line-height: 1.3;
-  }
-
-#mvp-race-tile /* ── STATS ── */
-  .stat {
-    text-align: right;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 28px;
-    letter-spacing: -0.01em;
-    line-height: 1;
-    color: var(--white);
-    position: relative;
-  }
-
-#mvp-race-tile .stat::after { display: none; }
-
-#mvp-race-tile /* stat highlight — white */
-  .stat.hi { color: var(--white); }
-
-#mvp-race-tile .stat.dim { color: rgba(242,242,240,0.22); font-size: 24px; }
-
-#mvp-race-tile .ga {
-    text-align: right;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 34px;
-    letter-spacing: -0.01em;
-    line-height: 1;
-    color: var(--white);
-    background: rgba(255,255,255,0.04);
-    position: relative;
-    z-index: 2;
-  }
-
-#mvp-race-tile .ga.hi { color: var(--white); background: rgba(255,255,255,0.07); }
-
-#mvp-race-tile .ga.dim { color: rgba(242,242,240,0.20); font-size: 28px; }
-
-#mvp-race-tile /* G+A col header highlight */
-  .col-header .ga-col {
-    background: rgba(255,255,255,0.04);
-    position: relative;
-  }
-
-#mvp-race-tile /* ── FOOTER ── */
-  .footer {
-    padding: 11px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--dim);
-    border-top: 1px solid var(--border);
-  }
-
-#mvp-race-tile .legend { display: flex; gap: 18px; }
-
-#mvp-race-tile .leg { display: flex; align-items: center; gap: 6px; }
-
-#mvp-race-tile .dot { width: 7px; height: 7px; border-radius: 50%; }
-
-#mvp-race-tile .dot.y { background: var(--white); }
-
-#mvp-race-tile .dot.b { background: var(--blue); }
+#mvp-clean .player-row.rest { border-left: 4px solid rgba(255,255,255,0.07); }
 
 @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-8px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-
-#mvp-race-tile .player-row:nth-child(1) {animation-delay:.03s}
-
-#mvp-race-tile .player-row:nth-child(2) {animation-delay:.06s}
-
-#mvp-race-tile .player-row:nth-child(3) {animation-delay:.09s}
-
-#mvp-race-tile .player-row:nth-child(4) {animation-delay:.12s}
-
-#mvp-race-tile .player-row:nth-child(5) {animation-delay:.15s}
-
-#mvp-race-tile .player-row:nth-child(6) {animation-delay:.18s}
-
-#mvp-race-tile .player-row:nth-child(7) {animation-delay:.21s}
-
-#mvp-race-tile .player-row:nth-child(8) {animation-delay:.24s}
-
-@media(max-width:520px) {
-#mvp-race-tile .player-row, #mvp-race-tile .col-header {grid-template-columns:1fr 40px 40px 46px;padding:0 10px}
-
-#mvp-race-tile .header, #mvp-race-tile .footer {padding-left:12px;padding-right:12px}
-
-#mvp-race-tile .col-header {padding-left:10px;padding-right:10px}
-
-#mvp-race-tile .nav-bar {padding:0 10px 8px}
-
-#mvp-race-tile .nav-label {padding:8px 10px 4px}
-
-#mvp-race-tile .stat {font-size:20px}
-
-#mvp-race-tile .ga {font-size:23px}
-
-#mvp-race-tile .player-name {font-size:15px}
-
-#mvp-race-tile .verdict {font-size:8.5px}
-
-#mvp-race-tile .player-info {padding:8px 6px 8px 0}
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
-      #mvp-race-tile .card { max-width: 100%; background: var(--black); border-radius: 4px; }
+
+#mvp-clean /* ── PLAYER COLUMN — bars live here ──────── */
+.player-col {
+  flex: 1;
+  position: relative;     /* bars positioned relative to this */
+  overflow: hidden;       /* bars CANNOT escape this box */
+  padding: 7px 8px 7px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  z-index: 0;
+}
+
+#mvp-clean /* MP bar — top half */
+.bar-mp {
+  position: absolute;
+  top: 0; left: 0;
+  width: var(--mp);        /* set inline on each row */
+  height: 50%;
+  background: rgba(3, 70, 148, 0.45);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#mvp-clean .player-row.top .bar-mp { background: rgba(3, 70, 148, 0.58); }
+
+#mvp-clean /* Minutes bar — bottom half */
+.bar-min {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: var(--min);       /* set inline on each row */
+  height: 50%;
+  background: rgba(242, 242, 240, 0.07);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#mvp-clean .player-row.top .bar-min { background: rgba(242, 242, 240, 0.11); }
+
+#mvp-clean /* Bar labels — outside bar when short, #mvp-clean inside when long */
+.bar-labels {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#mvp-clean .lbl-mp, #mvp-clean .lbl-min {
+  position: absolute;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#mvp-clean .lbl-mp {
+  top: 25%;
+  transform: translateY(-50%);
+  /* For short bars: sits just right of end. For long bars: clamp inside */
+  left: min(var(--mp), calc(100% - 36px));
+  padding-left: 5px;
+  color: rgba(120, 170, 255, 0.70);
+}
+
+#mvp-clean .lbl-min {
+  top: 75%;
+  transform: translateY(-50%);
+  left: min(var(--min), calc(100% - 36px));
+  padding-left: 5px;
+  color: rgba(242,242,240,0.45);
+}
+
+#mvp-clean /* Text content above bars */
+.player-col > .rank, #mvp-clean .player-col > .name {
+  position: relative;
+  z-index: 1;
+}
+
+#mvp-clean .rank {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+#mvp-clean .player-row.top .rank { color: rgba(234,193,23,0.8); }
+
+#mvp-clean .name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--white);
+}
+
+#mvp-clean .player-row.top .name { color: var(--yellow); }
+
+
+#mvp-clean .mp-col {
+  width: var(--mp-col-w);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 6px 0 4px;
+  border-left: 1px solid rgba(255,255,255,0.08);
+  gap: 2px;
+}
+#mvp-clean .mp-col .mc-mp {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(120,170,255,0.85);
+  white-space: nowrap;
+}
+#mvp-clean .mp-col .mc-min {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(242,242,240,0.55);
+  white-space: nowrap;
+}
+#mvp-clean .col-mp {
+  width: var(--mp-col-w);
+  flex-shrink: 0;
+  padding: 7px 6px 7px 4px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-align: right;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+#mvp-clean /* ── STATS COLUMN — completely separate DOM from bars ── */
+.stats-col {
+  width: var(--stats-w);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-left: 1px solid rgba(255,255,255,0.15);
+}
+
+#mvp-clean .s {
+  flex: 1;
+  border-left: 1px solid rgba(255,255,255,0.08);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-align: right;
+  padding: 0 5px;
+  color: var(--white);
+}
+
+#mvp-clean .s.dim { color: var(--white); }
+
+#mvp-clean .total {
+  flex: 1;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-align: right;
+  padding: 0 14px 0 5px;
+  color: var(--white);
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: stretch;
+}
+
+#mvp-clean .total.dim { color: var(--white); }
+
+#mvp-clean /* ── FOOTER ───────────────────────────────── */
+.c-footer {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-top: 1px solid var(--border);
+}
+
+#mvp-clean .dot-row { display: flex; gap: 16px; }
+
+#mvp-clean .dot-item { display: flex; align-items: center; gap: 5px; }
+
+#mvp-clean .dot { width: 7px; height: 7px; border-radius: 50%; }
+
+#mvp-clean .dot.y { background: var(--yellow); }
+
+#mvp-clean .dot.b { background: var(--blue); }
+
+#mvp-clean /* ── VIEW SWITCHING ───────────────────────── */
+.view { display: none; }
+
+#mvp-clean .view.active { display: block; }
+
+#mvp-clean /* ── RESPONSIVE ───────────────────────────── */
+@media (max-width: 480px) {
+  :root { --stats-w: 138px; --mp-col-w: 40px; }
+  .c-header h1 { font-size: 36px; }
+  .name { font-size: 14px; }
+  .s { font-size: 18px; padding: 0 5px; }
+  .total { font-size: 21px; padding: 0 12px 0 5px; }
+  .player-col { padding: 7px 6px 7px 12px; }
+  .col-player { padding-left: 12px; }
+  
+}
+      #mvp-clean .card { max-width: 100%; border-radius: 4px; }
+      @media(max-width:480px) {
+        #mvp-clean { --stats-w: 138px; --mp-col-w: 40px; }
+      }
     </style>
-    <div id="mvp-race-tile">
+    <div id="mvp-clean">
       <div class="card">
 
-  <div class="header">
+  <!-- HEADER -->
+  <div class="c-header">
     <div>
       <div class="eyebrow">Chelsea FC · 2025/26</div>
       <h1>MVP<br><em>Race</em></h1>
     </div>
-    <div class="header-legend">
-      <div class="hl-row"><div class="hl-swatch mp"></div>Matches played</div>
-      <div class="hl-row"><div class="hl-swatch min"></div>Minutes played</div>
+    <div class="legend">
+      <div class="legend-row"><div class="swatch mp"></div>Matches played</div>
+      <div class="legend-row"><div class="swatch min"></div>Minutes played</div>
     </div>
   </div>
 
-  <!-- NAV: competition cycle + filter buttons -->
-  <div class="nav-bar">
-    <div style="display:flex;flex-direction:column;gap:3px;flex-shrink:0;">
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--dim);padding-left:2px;">Competitions</span>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="comp-wrap">
+      <span class="comp-label">Competitions</span>
       <button class="comp-btn" id="compBtn">All Comps</button>
     </div>
-    <span class="comp-name" id="compName"></span>
-    <div class="nav-divider"></div>
-    <button class="filter-btn active" id="filterAll">All</button>
-    <button class="filter-btn" id="filterDef">Defensive</button>
-    <button class="filter-btn" id="filterAtk">Attacking</button>
+    <div class="nav-div"></div>
+    <button class="filter-btn active" id="fAll">All</button>
+    <button class="filter-btn" id="fDef">Defensive</button>
+    <button class="filter-btn" id="fAtk">Attacking</button>
   </div>
 
+  <!-- COL HEADER -->
   <div class="col-header" id="colHeader">
-    <span>Player</span>
-    <span>Gls</span>
-    <span>Ast</span>
-    <span class="ga-col">G+A</span>
-  </div>
-
-  <!-- ══ DEFENSIVE VIEWS — per competition, top 8 by TklW ══ -->
-  <!-- Sorted by TklW desc. Bars scaled to max TklW in that comp. -->
-
-  <!-- ALL COMPS: sorted by Tkl+Int combined desc: 129,82,79,74,68,60,51,25 -->
-  <div class="def-view" id="def-all" style="display:none">
-    <div class="player-row top" style="--w-mp:100%;--w-min:100%">
-      <div class="player-info"><span class="rank">Def MVP · #1</span><span class="player-name">Moisés Caicedo</span></div>
-      <span class="stat hi">64</span><span class="stat hi">65</span><span class="ga hi">129</span>
-      <div class="bar-meta"><span class="bm-mp">41 MP</span><span class="bm-min">3,368'</span></div>
-    </div>
-    <div class="player-row contender" style="--w-mp:59.4%;--w-min:68.9%">
-      <div class="player-info"><span class="rank">Def Candidate · #2</span><span class="player-name">Reece James</span></div>
-      <span class="stat">38</span><span class="stat">44</span><span class="ga">82</span>
-      <div class="bar-meta"><span class="bm-mp">36 MP</span><span class="bm-min">2,518'</span></div>
-    </div>
-    <div class="player-row contender" style="--w-mp:78.1%;--w-min:75%">
-      <div class="player-info"><span class="rank">Def Candidate · #3</span><span class="player-name">Marc Cucurella</span></div>
-      <span class="stat">50</span><span class="stat">29</span><span class="ga">79</span>
-      <div class="bar-meta"><span class="bm-mp">41 MP</span><span class="bm-min">3,076'</span></div>
-    </div>
-    <div class="player-row contender" style="--w-mp:62.5%;--w-min:68.7%">
-      <div class="player-info"><span class="rank">Def Candidate · #4</span><span class="player-name">Malo Gusto</span></div>
-      <span class="stat">32</span><span class="stat">42</span><span class="ga">74</span>
-      <div class="bar-meta"><span class="bm-mp">40 MP</span><span class="bm-min">2,511'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:89.1%;--w-min:93%">
-      <div class="player-info"><span class="rank">CB anchor</span><span class="player-name">Trevoh Chalobah</span></div>
-      <span class="stat dim">24</span><span class="stat dim">44</span><span class="ga dim">68</span>
-      <div class="bar-meta"><span class="bm-mp">41 MP</span><span class="bm-min">3,399'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:51.6%;--w-min:56.2%">
-      <div class="player-info"><span class="rank">Unsung hero</span><span class="player-name">Andrey Santos</span></div>
-      <span class="stat dim">33</span><span class="stat dim">27</span><span class="ga dim">60</span>
-      <div class="bar-meta"><span class="bm-mp">37 MP</span><span class="bm-min">2,049'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:100%;--w-min:100%">
-      <div class="player-info"><span class="rank">Workhorse</span><span class="player-name">Enzo Fernández</span></div>
-      <span class="stat dim">33</span><span class="stat dim">18</span><span class="ga dim">51</span>
-      <div class="bar-meta"><span class="bm-mp">46 MP</span><span class="bm-min">3,654'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:93.5%;--w-min:84.6%">
-      <div class="player-info"><span class="rank">Press machine</span><span class="player-name">João Pedro</span></div>
-      <span class="stat dim">18</span><span class="stat dim">7</span><span class="ga dim">25</span>
-      <div class="bar-meta"><span class="bm-mp">43 MP</span><span class="bm-min">3,092'</span></div>
+    <div class="col-player">Player</div>
+    <div class="col-stats">
+      <div class="col-stat">Gls</div>
+      <div class="col-stat">Ast</div>
+      <div class="col-stat total">G+A</div>
     </div>
   </div>
 
-  <!-- PREMIER LEAGUE: max TklW=43 (Caicedo) -->
-  <div class="def-view" id="def-pl" style="display:none">
-    <div class="player-row top" style="--w-mp:100%;--w-min:100%">
-      <div class="player-info"><span class="rank">PL Def MVP · #1</span><span class="player-name">Moisés Caicedo</span></div>
-      <span class="stat hi">43</span><span class="stat hi">51</span><span class="ga hi">94</span>
-      <div class="bar-meta"><span class="bm-mp">26 MP</span><span class="bm-min">2,181'</span></div>
-    </div>
-    <div class="player-row contender" style="--w-mp:74.4%;--w-min:73.6%">
-      <div class="player-info"><span class="rank">PL Def · #2</span><span class="player-name">Reece James</span></div>
-      <span class="stat">32</span><span class="stat">31</span><span class="ga">63</span>
-      <div class="bar-meta"><span class="bm-mp">27 MP</span><span class="bm-min">1,896'</span></div>
-    </div>
-    <div class="player-row contender" style="--w-mp:67.4%;--w-min:89%">
-      <div class="player-info"><span class="rank">PL Def · #3</span><span class="player-name">Trevoh Chalobah</span></div>
-      <span class="stat">22</span><span class="stat">35</span><span class="ga">57</span>
-      <div class="bar-meta"><span class="bm-mp">29 MP</span><span class="bm-min">2,550'</span></div>
-    </div>
-    <div class="player-row contender" style="--w-mp:74.4%;--w-min:98.9%">
-      <div class="player-info"><span class="rank">PL Def · #4</span><span class="player-name">Marc Cucurella</span></div>
-      <span class="stat">32</span><span class="stat">21</span><span class="ga">53</span>
-      <div class="bar-meta"><span class="bm-mp">27 MP</span><span class="bm-min">2,077'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:53.5%;--w-min:67.5%">
-      <div class="player-info"><span class="rank">Quietly excellent</span><span class="player-name">Malo Gusto</span></div>
-      <span class="stat dim">21</span><span class="stat dim">23</span><span class="ga dim">44</span>
-      <div class="bar-meta"><span class="bm-mp">28 MP</span><span class="bm-min">1,741'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:100%;--w-min:100%">
-      <div class="player-info"><span class="rank">Midfield engine</span><span class="player-name">Enzo Fernández</span></div>
-      <span class="stat dim">23</span><span class="stat dim">16</span><span class="ga dim">39</span>
-      <div class="bar-meta"><span class="bm-mp">30 MP</span><span class="bm-min">2,578'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:30.2%;--w-min:49.5%">
-      <div class="player-info"><span class="rank">Pressing forward</span><span class="player-name">João Pedro</span></div>
-      <span class="stat dim">15</span><span class="stat dim">5</span><span class="ga dim">20</span>
-      <div class="bar-meta"><span class="bm-mp">31 MP</span><span class="bm-min">2,311'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:25.6%;--w-min:55.1%">
-      <div class="player-info"><span class="rank">CB cover</span><span class="player-name">Wesley Fofana</span></div>
-      <span class="stat dim">11</span><span class="stat dim">25</span><span class="ga dim">36</span>
-      <div class="bar-meta"><span class="bm-mp">19 MP</span><span class="bm-min">1,276'</span></div>
-    </div>
-  </div>
+  <!-- ═══════════════════════════════
+       ALL COMPS  (max: 46 MP / 3654')
+       sorted by G+A desc
+       ═══════════════════════════════ -->
+  <div class="view active" id="view-all">
 
-  <!-- CHAMPIONS LEAGUE: max TklW=16 (Caicedo) -->
-  <div class="def-view" id="def-ucl" style="display:none">
-    <div class="player-row top" style="--w-mp:100%;--w-min:87.4%">
-      <div class="player-info"><span class="rank">UCL Def MVP · #1</span><span class="player-name">Moisés Caicedo</span></div>
-      <span class="stat hi">16</span><span class="stat hi">9</span><span class="ga hi">25</span>
-      <div class="bar-meta"><span class="bm-mp">9 MP</span><span class="bm-min">851'</span></div>
-    </div>
-    <div class="player-row contender" style="--w-mp:100%;--w-min:84.8%">
-      <div class="player-info"><span class="rank">UCL Def · #2</span><span class="player-name">Marc Cucurella</span></div>
-      <span class="stat">14</span><span class="stat">7</span><span class="ga">21</span>
-      <div class="bar-meta"><span class="bm-mp">8 MP</span><span class="bm-min">721'</span></div>
-    </div>
-    <div class="player-row contender" style="--w-mp:77.8%;--w-min:55.7%">
-      <div class="player-info"><span class="rank">UCL Def · #3</span><span class="player-name">Malo Gusto</span></div>
-      <span class="stat">7</span><span class="stat">13</span><span class="ga">20</span>
-      <div class="bar-meta"><span class="bm-mp">6 MP</span><span class="bm-min">474'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:66.7%;--w-min:62.3%">
-      <div class="player-info"><span class="rank">Midfield shield</span><span class="player-name">Enzo Fernández</span></div>
-      <span class="stat dim">6</span><span class="stat dim">2</span><span class="ga dim">8</span>
-      <div class="bar-meta"><span class="bm-mp">9 MP</span><span class="bm-min">744'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:33.3%;--w-min:66.2%">
-      <div class="player-info"><span class="rank">Intercept king</span><span class="player-name">Reece James</span></div>
-      <span class="stat dim">5</span><span class="stat dim">12</span><span class="ga dim">17</span>
-      <div class="bar-meta"><span class="bm-mp">7 MP</span><span class="bm-min">563'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:33.3%;--w-min:56.4%">
-      <div class="player-info"><span class="rank">Midfield cover</span><span class="player-name">Andrey Santos</span></div>
-      <span class="stat dim">6</span><span class="stat dim">8</span><span class="ga dim">14</span>
-      <div class="bar-meta"><span class="bm-mp">3 MP</span><span class="bm-min">306'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:55.6%;--w-min:56.4%">
-      <div class="player-info"><span class="rank">CB wall</span><span class="player-name">Wesley Fofana</span></div>
-      <span class="stat dim">2</span><span class="stat dim">11</span><span class="ga dim">13</span>
-      <div class="bar-meta"><span class="bm-mp">5 MP</span><span class="bm-min">480'</span></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:44.4%;--w-min:39.7%">
-      <div class="player-info"><span class="rank">CB partner</span><span class="player-name">Trevoh Chalobah</span></div>
-      <span class="stat dim">1</span><span class="stat dim">7</span><span class="ga dim">8</span>
-      <div class="bar-meta"><span class="bm-mp">6 MP</span><span class="bm-min">572'</span></div>
-    </div>
-  </div>
-
-  <!-- FA CUP: max TklW=7 (Santos) — thin numbers, note it -->
-  <div class="def-view" id="def-fac" style="display:none">
-    <div class="player-row top" style="--w-mp:80%;--w-min:60%">
-      <div class="player-info"><span class="rank">FA Cup Def MVP</span><span class="player-name">Andrey Santos</span></div>
-      <span class="stat hi">7</span><span class="stat hi">1</span><span class="ga hi">8</span>
-      <div class="bar-meta"></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:60%;--w-min:50%">
-      <div class="player-info"><span class="rank">Contributor</span><span class="player-name">Benoît Badiashile</span></div>
-      <span class="stat dim">2</span><span class="stat dim">3</span><span class="ga dim">5</span>
-      <div class="bar-meta"></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:55%;--w-min:45%">
-      <div class="player-info"><span class="rank">Cup cover</span><span class="player-name">Moisés Caicedo</span></div>
-      <span class="stat dim">3</span><span class="stat dim">3</span><span class="ga dim">6</span>
-      <div class="bar-meta"></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:55%;--w-min:40%">
-      <div class="player-info"><span class="rank">Reads the game</span><span class="player-name">Tosin Adarabioyo</span></div>
-      <span class="stat dim">0</span><span class="stat dim">4</span><span class="ga dim">4</span>
-      <div class="bar-meta"></div>
-    </div>
-  </div>
-
-  <!-- EFL CUP: max TklW=7 (Santos) -->
-  <div class="def-view" id="def-efl" style="display:none">
-    <div class="player-row top" style="--w-mp:80%;--w-min:65%">
-      <div class="player-info"><span class="rank">EFL Def MVP</span><span class="player-name">Andrey Santos</span></div>
-      <span class="stat hi">7</span><span class="stat hi">1</span><span class="ga hi">8</span>
-      <div class="bar-meta"></div>
-    </div>
-    <div class="player-row contender" style="--w-mp:65%;--w-min:50%">
-      <div class="player-info"><span class="rank">EFL Def · #2</span><span class="player-name">Malo Gusto</span></div>
-      <span class="stat">4</span><span class="stat">5</span><span class="ga">9</span>
-      <div class="bar-meta"></div>
-    </div>
-    <div class="player-row contender" style="--w-mp:60%;--w-min:42%">
-      <div class="player-info"><span class="rank">EFL Def · #3</span><span class="player-name">Marc Cucurella</span></div>
-      <span class="stat">4</span><span class="stat">1</span><span class="ga">5</span>
-      <div class="bar-meta"></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:55%;--w-min:38%">
-      <div class="player-info"><span class="rank">Cup rotation</span><span class="player-name">Enzo Fernández</span></div>
-      <span class="stat dim">4</span><span class="stat dim">0</span><span class="ga dim">4</span>
-      <div class="bar-meta"></div>
-    </div>
-    <div class="player-row rest" style="--w-mp:50%;--w-min:38%">
-      <div class="player-info"><span class="rank">Reads well</span><span class="player-name">Jorrel Hato</span></div>
-      <span class="stat dim">1</span><span class="stat dim">3</span><span class="ga dim">4</span>
-      <div class="bar-meta"></div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       ALL COMPETITIONS (max: 46 MP, 3654 min)
-       ══════════════════════════════════════════ -->
-  <div class="comp-view active" id="view-all">
-
-    <!-- G+A order: 24, 18, 16, 13, 11, 9, 8, 5 -->
-
-    <!-- #1 João Pedro: 24 G+A -->
-    <div class="player-row top" style="--w-mp:93.5%;--w-min:84.6%">
-      <div class="player-info">
+    <!-- João Pedro: 43/46 MP = 93.5%, 3092/3654 = 84.6% -->
+    <div class="player-row top">
+      <div class="player-col" style="--mp:93.5%;--min:84.6%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
         <span class="rank">MVP · #1</span>
-        <span class="player-name">João Pedro</span>
+        <span class="name">João Pedro</span>
       </div>
-      <span class="stat hi">18</span><span class="stat hi">6</span><span class="ga hi">24</span>
-      <div class="bar-meta"><span class="bm-mp">43 MP</span><span class="bm-min">3,092'</span></div>
+      <div class="mp-col"><span class="mc-mp">43 MP</span><span class="mc-min">3,092'</span></div>
+      <div class="stats-col">
+        <span class="s">18</span>
+        <span class="s">6</span>
+        <span class="total">24</span>
+      </div>
     </div>
 
-    <!-- #2 Enzo: 18 G+A -->
-    <div class="player-row contender" style="--w-mp:100%;--w-min:100%">
-      <div class="player-info">
+    <!-- Enzo: 46/46=100%, 3654/3654=100% -->
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:100%;--min:100%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
         <span class="rank">Candidate · #2</span>
-        <span class="player-name">Enzo Fernández</span>
+        <span class="name">Enzo Fernández</span>
       </div>
-      <span class="stat">12</span><span class="stat">6</span><span class="ga">18</span>
-      <div class="bar-meta"><span class="bm-mp">46 MP</span><span class="bm-min">3,654'</span></div>
+      <div class="mp-col"><span class="mc-mp">46 MP</span><span class="mc-min">3,654'</span></div>
+      <div class="stats-col">
+        <span class="s">12</span>
+        <span class="s">6</span>
+        <span class="total">18</span>
+      </div>
     </div>
 
-    <!-- #3 Pedro Neto: 16 G+A -->
-    <div class="player-row contender" style="--w-mp:95.7%;--w-min:86.7%">
-      <div class="player-info">
+    <!-- Pedro Neto: 44/46=95.7%, 3167/3654=86.7% -->
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:95.7%;--min:86.7%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
         <span class="rank">Candidate · #3</span>
-        <span class="player-name">Pedro Neto</span>
+        <span class="name">Pedro Neto</span>
       </div>
-      <span class="stat">10</span><span class="stat">6</span><span class="ga">16</span>
-      <div class="bar-meta"><span class="bm-mp">44 MP</span><span class="bm-min">3,167'</span></div>
+      <div class="mp-col"><span class="mc-mp">44 MP</span><span class="mc-min">3,167'</span></div>
+      <div class="stats-col">
+        <span class="s">10</span>
+        <span class="s">6</span>
+        <span class="total">16</span>
+      </div>
     </div>
 
-    <!-- #4 Cole Palmer: 13 G+A -->
-    <div class="player-row contender" style="--w-mp:54.3%;--w-min:47.1%">
-      <div class="player-info">
+    <!-- Cole Palmer: 25/46=54.3%, 1723/3654=47.1% -->
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:54.3%;--min:47.1%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
         <span class="rank">Injury caveat · #4</span>
-        <span class="player-name">Cole Palmer</span>
+        <span class="name">Cole Palmer</span>
       </div>
-      <span class="stat">10</span><span class="stat">3</span><span class="ga">13</span>
-      <div class="bar-meta"><span class="bm-mp">25 MP</span><span class="bm-min">1,723'</span></div>
+      <div class="mp-col"><span class="mc-mp">25 MP</span><span class="mc-min">1,723'</span></div>
+      <div class="stats-col">
+        <span class="s">10</span>
+        <span class="s">3</span>
+        <span class="total">13</span>
+      </div>
     </div>
 
-    <!-- #5 Garnacho: 11 G+A -->
-    <div class="player-row rest" style="--w-mp:78.3%;--w-min:52.1%">
-      <div class="player-info">
+    <!-- Garnacho: 36/46=78.3%, 1904/3654=52.1% -->
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:78.3%;--min:52.1%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
         <span class="rank">Impact sub</span>
-        <span class="player-name">Alejandro Garnacho</span>
+        <span class="name">Alejandro Garnacho</span>
       </div>
-      <span class="stat dim">7</span><span class="stat dim">4</span><span class="ga dim">11</span>
-      <div class="bar-meta"><span class="bm-mp">36 MP</span><span class="bm-min">1,904'</span></div>
+      <div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">1,904'</span></div>
+      <div class="stats-col">
+        <span class="s dim">7</span>
+        <span class="s dim">4</span>
+        <span class="total dim">11</span>
+      </div>
     </div>
 
-    <!-- #6 Estêvão: 9 G+A -->
-    <div class="player-row rest" style="--w-mp:71.7%;--w-min:41.2%">
-      <div class="player-info">
+    <!-- Estêvão: 33/46=71.7%, 1507/3654=41.2% -->
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:71.7%;--min:41.2%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
         <span class="rank">Emerging</span>
-        <span class="player-name">Estêvão Willian</span>
+        <span class="name">Estêvão Willian</span>
       </div>
-      <span class="stat dim">7</span><span class="stat dim">2</span><span class="ga dim">9</span>
-      <div class="bar-meta"><span class="bm-mp">33 MP</span><span class="bm-min">1,507'</span></div>
+      <div class="mp-col"><span class="mc-mp">33 MP</span><span class="mc-min">1,507'</span></div>
+      <div class="stats-col">
+        <span class="s dim">7</span>
+        <span class="s dim">2</span>
+        <span class="total dim">9</span>
+      </div>
     </div>
 
-    <!-- #7 Reece James: 8 G+A -->
-    <div class="player-row rest" style="--w-mp:78.3%;--w-min:68.9%">
-      <div class="player-info">
+    <!-- Reece James: 36/46=78.3%, 2518/3654=68.9% -->
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:78.3%;--min:68.9%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
         <span class="rank">When fit</span>
-        <span class="player-name">Reece James</span>
+        <span class="name">Reece James</span>
       </div>
-      <span class="stat dim">2</span><span class="stat dim">6</span><span class="ga dim">8</span>
-      <div class="bar-meta"><span class="bm-mp">36 MP</span><span class="bm-min">2,518'</span></div>
+      <div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">2,518'</span></div>
+      <div class="stats-col">
+        <span class="s dim">2</span>
+        <span class="s dim">6</span>
+        <span class="total dim">8</span>
+      </div>
     </div>
 
-    <!-- #8 Caicedo: 5 G+A -->
-    <div class="player-row rest" style="--w-mp:89.1%;--w-min:92.2%">
-      <div class="player-info">
+    <!-- Caicedo: 41/46=89.1%, 3368/3654=92.2% -->
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:89.1%;--min:92.2%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
         <span class="rank">Defensive anchor</span>
-        <span class="player-name">Moisés Caicedo</span>
+        <span class="name">Moisés Caicedo</span>
       </div>
-      <span class="stat dim">4</span><span class="stat dim">1</span><span class="ga dim">5</span>
-      <div class="bar-meta"><span class="bm-mp">41 MP</span><span class="bm-min">3,368'</span></div>
+      <div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,368'</span></div>
+      <div class="stats-col">
+        <span class="s dim">4</span>
+        <span class="s dim">1</span>
+        <span class="total dim">5</span>
+      </div>
     </div>
 
-  </div>
+  </div><!-- /view-all -->
 
-  <!-- ══════════════════════════════════════════
-       PREMIER LEAGUE (max: 31 MP, 2578 min)
-       João Pedro: 31 MP, 2311 min — 14g 5a 19ga
-       Cole Palmer: 20 MP, 1417 min — 9g 1a 10ga
-       Enzo: 30 MP, 2578 min — 8g 3a 11ga
-       Pedro Neto: 29 MP, 2209 min — 5g 4a 9ga
-       ══════════════════════════════════════════ -->
-  <div class="comp-view" id="view-pl">
+  <!-- ═══════════════════════════════
+       PREMIER LEAGUE
+       ═══════════════════════════════ -->
+  <div class="view" id="view-pl">
 
-    <div class="player-row top" style="--w-mp:100%;--w-min:89.6%">
-      <div class="player-info">
-        <span class="rank">PL MVP · #1</span>
-        <span class="player-name">João Pedro</span>
+    <div class="player-row top">
+      <div class="player-col" style="--mp:100%;--min:89.6%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">PL MVP · #1</span><span class="name">João Pedro</span>
       </div>
-      <span class="stat hi">14</span><span class="stat hi">5</span><span class="ga hi">19</span>
-      <div class="bar-meta"><span class="bm-mp">31 MP</span><span class="bm-min">2,311'</span></div>
+      <div class="mp-col"><span class="mc-mp">31 MP</span><span class="mc-min">2,311'</span></div>
+      <div class="stats-col"><span class="s">14</span><span class="s">5</span><span class="total">19</span></div>
     </div>
 
-    <div class="player-row contender" style="--w-mp:96.8%;--w-min:100%">
-      <div class="player-info">
-        <span class="rank">Workhorse</span>
-        <span class="player-name">Enzo Fernández</span>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:96.8%;--min:100%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Workhorse</span><span class="name">Enzo Fernández</span>
       </div>
-      <span class="stat">8</span><span class="stat">3</span><span class="ga">11</span>
-      <div class="bar-meta"><span class="bm-mp">30 MP</span><span class="bm-min">2,578'</span></div>
+      <div class="mp-col"><span class="mc-mp">30 MP</span><span class="mc-min">2,578'</span></div>
+      <div class="stats-col"><span class="s">8</span><span class="s">3</span><span class="total">11</span></div>
     </div>
 
-    <div class="player-row contender" style="--w-mp:64.5%;--w-min:55.0%">
-      <div class="player-info">
-        <span class="rank">Injury caveat</span>
-        <span class="player-name">Cole Palmer</span>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:64.5%;--min:55%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Injury caveat</span><span class="name">Cole Palmer</span>
       </div>
-      <span class="stat">9</span><span class="stat">1</span><span class="ga">10</span>
-      <div class="bar-meta"><span class="bm-mp">20 MP</span><span class="bm-min">1,417'</span></div>
+      <div class="mp-col"><span class="mc-mp">20 MP</span><span class="mc-min">1,417'</span></div>
+      <div class="stats-col"><span class="s">9</span><span class="s">1</span><span class="total">10</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:93.5%;--w-min:85.7%">
-      <div class="player-info">
-        <span class="rank">Wide threat</span>
-        <span class="player-name">Pedro Neto</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:93.5%;--min:85.7%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Wide threat</span><span class="name">Pedro Neto</span>
       </div>
-      <span class="stat dim">5</span><span class="stat dim">4</span><span class="ga dim">9</span>
-      <div class="bar-meta"><span class="bm-mp">29 MP</span><span class="bm-min">2,209'</span></div>
+      <div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,209'</span></div>
+      <div class="stats-col"><span class="s dim">5</span><span class="s dim">4</span><span class="total dim">9</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:83.9%;--w-min:84.6%">
-      <div class="player-info">
-        <span class="rank">Defensive anchor</span>
-        <span class="player-name">Moisés Caicedo</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:83.9%;--min:84.6%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Defensive anchor</span><span class="name">Moisés Caicedo</span>
       </div>
-      <span class="stat dim">3</span><span class="stat dim">1</span><span class="ga dim">4</span>
-      <div class="bar-meta"><span class="bm-mp">26 MP</span><span class="bm-min">2,181'</span></div>
+      <div class="mp-col"><span class="mc-mp">26 MP</span><span class="mc-min">2,181'</span></div>
+      <div class="stats-col"><span class="s dim">3</span><span class="s dim">1</span><span class="total dim">4</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:93.5%;--w-min:98.9%">
-      <div class="player-info">
-        <span class="rank">Unsung hero</span>
-        <span class="player-name">Trevoh Chalobah</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:93.5%;--min:98.9%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Unsung hero</span><span class="name">Trevoh Chalobah</span>
       </div>
-      <span class="stat dim">3</span><span class="stat dim">0</span><span class="ga dim">3</span>
-      <div class="bar-meta"><span class="bm-mp">29 MP</span><span class="bm-min">2,550'</span></div>
+      <div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,550'</span></div>
+      <div class="stats-col"><span class="s dim">3</span><span class="s dim">0</span><span class="total dim">3</span></div>
     </div>
 
-  </div>
+  </div><!-- /view-pl -->
 
-  <!-- ══════════════════════════════════════════
-       CHAMPIONS LEAGUE (max: 9 MP, 851 min)
-       Enzo: 9 MP, 744 min — 3g 2a 5ga
-       João Pedro: 6 MP, 530 min — 3g 0a 3ga
-       Estêvão: 4 MP, 426 min — 3g 0a 3ga
-       Caicedo: 9 MP, 851 min — 1g 0a 1ga
-       ══════════════════════════════════════════ -->
-  <div class="comp-view" id="view-ucl">
+  <!-- ═══════════════════════════════
+       CHAMPIONS LEAGUE
+       ═══════════════════════════════ -->
+  <div class="view" id="view-ucl">
 
-    <div class="player-row top" style="--w-mp:100%;--w-min:87.4%">
-      <div class="player-info">
-        <span class="rank">UCL MVP · #1</span>
-        <span class="player-name">Enzo Fernández</span>
+    <div class="player-row top">
+      <div class="player-col" style="--mp:100%;--min:87.4%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">UCL MVP · #1</span><span class="name">Enzo Fernández</span>
       </div>
-      <span class="stat hi">3</span><span class="stat hi">2</span><span class="ga hi">5</span>
-      <div class="bar-meta"><span class="bm-mp">9 MP</span><span class="bm-min">744'</span></div>
+      <div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">744'</span></div>
+      <div class="stats-col"><span class="s">3</span><span class="s">2</span><span class="total">5</span></div>
     </div>
 
-    <div class="player-row contender" style="--w-mp:66.7%;--w-min:62.3%">
-      <div class="player-info">
-        <span class="rank">Joint top scorer</span>
-        <span class="player-name">João Pedro</span>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:66.7%;--min:62.3%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Joint top scorer</span><span class="name">João Pedro</span>
       </div>
-      <span class="stat">3</span><span class="stat">0</span><span class="ga">3</span>
-      <div class="bar-meta"><span class="bm-mp">6 MP</span><span class="bm-min">530'</span></div>
+      <div class="mp-col"><span class="mc-mp">6 MP</span><span class="mc-min">530'</span></div>
+      <div class="stats-col"><span class="s">3</span><span class="s">0</span><span class="total">3</span></div>
     </div>
 
-    <div class="player-row contender" style="--w-mp:44.4%;--w-min:50.1%">
-      <div class="player-info">
-        <span class="rank">Breakout · UCL</span>
-        <span class="player-name">Estêvão Willian</span>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:44.4%;--min:50.1%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Breakout · UCL</span><span class="name">Estêvão Willian</span>
       </div>
-      <span class="stat">3</span><span class="stat">0</span><span class="ga">3</span>
-      <div class="bar-meta"><span class="bm-mp">4 MP</span><span class="bm-min">426'</span></div>
+      <div class="mp-col"><span class="mc-mp">4 MP</span><span class="mc-min">426'</span></div>
+      <div class="stats-col"><span class="s">3</span><span class="s">0</span><span class="total">3</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:66.7%;--w-min:71.9%">
-      <div class="player-info">
-        <span class="rank">Assist machine</span>
-        <span class="player-name">Reece James</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:66.7%;--min:71.9%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Assist machine</span><span class="name">Reece James</span>
       </div>
-      <span class="stat dim">0</span><span class="stat dim">2</span><span class="ga dim">2</span>
-      <div class="bar-meta"><span class="bm-mp">7 MP</span><span class="bm-min">563'</span></div>
+      <div class="mp-col"><span class="mc-mp">7 MP</span><span class="mc-min">563'</span></div>
+      <div class="stats-col"><span class="s dim">0</span><span class="s dim">2</span><span class="total dim">2</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:100%;--w-min:100%">
-      <div class="player-info">
-        <span class="rank">Midfield wall</span>
-        <span class="player-name">Moisés Caicedo</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:100%;--min:100%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Midfield wall</span><span class="name">Moisés Caicedo</span>
       </div>
-      <span class="stat dim">1</span><span class="stat dim">0</span><span class="ga dim">1</span>
-      <div class="bar-meta"><span class="bm-mp">9 MP</span><span class="bm-min">851'</span></div>
+      <div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">851'</span></div>
+      <div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
     </div>
 
-  </div>
+  </div><!-- /view-ucl -->
 
-  <!-- ══════════════════════════════════════════
-       FA CUP (max: Pedro Neto 4g leads)
-       Pedro Neto: 4g 0a — dominant
-       Others on 1g
-       ══════════════════════════════════════════ -->
-  <div class="comp-view" id="view-fac">
+  <!-- ═══════════════════════════════
+       FA CUP
+       ═══════════════════════════════ -->
+  <div class="view" id="view-fac">
 
-    <div class="player-row top" style="--w-mp:80%;--w-min:75%">
-      <div class="player-info">
-        <span class="rank">FA Cup MVP</span>
-        <span class="player-name">Pedro Neto</span>
+    <div class="player-row top">
+      <div class="player-col" style="--mp:100%;--min:100%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">FA Cup MVP</span><span class="name">Pedro Neto</span>
       </div>
-      <span class="stat hi">4</span><span class="stat hi">0</span><span class="ga hi">4</span>
-      <div class="bar-meta"></div>
+      <div class="mp-col"><span class="mc-mp">5 apps</span><span class="mc-min">~450'</span></div>
+      <div class="stats-col"><span class="s">4</span><span class="s">0</span><span class="total">4</span></div>
     </div>
 
-    <div class="player-row contender" style="--w-mp:55%;--w-min:50%">
-      <div class="player-info">
-        <span class="rank">Contributor</span>
-        <span class="player-name">Liam Delap</span>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:80%;--min:40%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Contributor</span><span class="name">Liam Delap</span>
       </div>
-      <span class="stat">0</span><span class="stat">3</span><span class="ga">3</span>
-      <div class="bar-meta"></div>
+      <div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~180'</span></div>
+      <div class="stats-col"><span class="s">0</span><span class="s">3</span><span class="total">3</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:55%;--w-min:42%">
-      <div class="player-info">
-        <span class="rank">Contributor</span>
-        <span class="player-name">Enzo Fernández</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:60%;--min:60%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Contributor</span><span class="name">Enzo Fernández</span>
       </div>
-      <span class="stat dim">1</span><span class="stat dim">1</span><span class="ga dim">2</span>
-      <div class="bar-meta"></div>
+      <div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~270'</span></div>
+      <div class="stats-col"><span class="s dim">1</span><span class="s dim">1</span><span class="total dim">2</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:55%;--w-min:40%">
-      <div class="player-info">
-        <span class="rank">Contributor</span>
-        <span class="player-name">Alejandro Garnacho</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:60%;--min:44%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Contributor</span><span class="name">Alejandro Garnacho</span>
       </div>
-      <span class="stat dim">1</span><span class="stat dim">0</span><span class="ga dim">1</span>
-      <div class="bar-meta"></div>
+      <div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~200'</span></div>
+      <div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:55%;--w-min:45%">
-      <div class="player-info">
-        <span class="rank">Contributor</span>
-        <span class="player-name">Estêvão Willian</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:60%;--min:42%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Contributor</span><span class="name">Estêvão Willian</span>
       </div>
-      <span class="stat dim">1</span><span class="stat dim">0</span><span class="ga dim">1</span>
-      <div class="bar-meta"></div>
+      <div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~190'</span></div>
+      <div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
     </div>
 
-  </div>
+  </div><!-- /view-fac -->
 
-  <!-- ══════════════════════════════════════════
+  <!-- ═══════════════════════════════
        EFL CUP
-       Garnacho leads: 4g
-       Tyrique George: 2g 1a
-       ══════════════════════════════════════════ -->
-  <div class="comp-view" id="view-efl">
+       ═══════════════════════════════ -->
+  <div class="view" id="view-efl">
 
-    <div class="player-row top" style="--w-mp:80%;--w-min:70%">
-      <div class="player-info">
-        <span class="rank">EFL Cup MVP</span>
-        <span class="player-name">Alejandro Garnacho</span>
+    <div class="player-row top">
+      <div class="player-col" style="--mp:80%;--min:70%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">EFL Cup MVP</span><span class="name">Alejandro Garnacho</span>
       </div>
-      <span class="stat hi">4</span><span class="stat hi">0</span><span class="ga hi">4</span>
-      <div class="bar-meta"></div>
+      <div class="mp-col"><span class="mc-mp">5 apps</span><span class="mc-min">~450'</span></div>
+      <div class="stats-col"><span class="s">4</span><span class="s">0</span><span class="total">4</span></div>
     </div>
 
-    <div class="player-row contender" style="--w-mp:60%;--w-min:45%">
-      <div class="player-info">
-        <span class="rank">Breakthrough</span>
-        <span class="player-name">Tyrique George</span>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:60%;--min:45%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Breakthrough</span><span class="name">Tyrique George</span>
       </div>
-      <span class="stat">2</span><span class="stat">1</span><span class="ga">3</span>
-      <div class="bar-meta"></div>
+      <div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~300'</span></div>
+      <div class="stats-col"><span class="s">2</span><span class="s">1</span><span class="total">3</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:55%;--w-min:40%">
-      <div class="player-info">
-        <span class="rank">Contributor</span>
-        <span class="player-name">Andrey Santos</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:55%;--min:40%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Contributor</span><span class="name">Andrey Santos</span>
       </div>
-      <span class="stat dim">1</span><span class="stat dim">2</span><span class="ga dim">3</span>
-      <div class="bar-meta"></div>
+      <div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~280'</span></div>
+      <div class="stats-col"><span class="s dim">1</span><span class="s dim">2</span><span class="total dim">3</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:50%;--w-min:38%">
-      <div class="player-info">
-        <span class="rank">Contributor</span>
-        <span class="player-name">Jamie Gittens</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:50%;--min:38%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Contributor</span><span class="name">Jamie Gittens</span>
       </div>
-      <span class="stat dim">1</span><span class="stat dim">2</span><span class="ga dim">3</span>
-      <div class="bar-meta"></div>
+      <div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~220'</span></div>
+      <div class="stats-col"><span class="s dim">1</span><span class="s dim">2</span><span class="total dim">3</span></div>
     </div>
 
-    <div class="player-row rest" style="--w-mp:55%;--w-min:35%">
-      <div class="player-info">
-        <span class="rank">Contributor</span>
-        <span class="player-name">Pedro Neto</span>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:60%;--min:42%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Contributor</span><span class="name">Pedro Neto</span>
       </div>
-      <span class="stat dim">1</span><span class="stat dim">1</span><span class="ga dim">2</span>
-      <div class="bar-meta"></div>
+      <div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~190'</span></div>
+      <div class="stats-col"><span class="s dim">1</span><span class="s dim">1</span><span class="total dim">2</span></div>
     </div>
 
+  </div><!-- /view-efl -->
+
+  <!-- ═══════════════════════════════
+       DEFENSIVE VIEWS
+       ═══════════════════════════════ -->
+  <div class="def-view" id="def-all" style="display:none">
+    <div class="player-row top">
+      <div class="player-col" style="--mp:100%;--min:100%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Def MVP · #1</span><span class="name">Moisés Caicedo</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,368'</span></div>
+      <div class="stats-col"><span class="s">64</span><span class="s">65</span><span class="total">129</span></div>
+    </div>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:59.4%;--min:68.9%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Def · #2</span><span class="name">Reece James</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">2,518'</span></div>
+      <div class="stats-col"><span class="s">38</span><span class="s">44</span><span class="total">82</span></div>
+    </div>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:78.1%;--min:75%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Def · #3</span><span class="name">Marc Cucurella</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,076'</span></div>
+      <div class="stats-col"><span class="s">50</span><span class="s">29</span><span class="total">79</span></div>
+    </div>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:62.5%;--min:68.7%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Def · #4</span><span class="name">Malo Gusto</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">40 MP</span><span class="mc-min">2,511'</span></div>
+      <div class="stats-col"><span class="s">32</span><span class="s">42</span><span class="total">74</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:89.1%;--min:93%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">CB anchor</span><span class="name">Trevoh Chalobah</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,399'</span></div>
+      <div class="stats-col"><span class="s dim">24</span><span class="s dim">44</span><span class="total dim">68</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:51.6%;--min:56.2%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Unsung hero</span><span class="name">Andrey Santos</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">37 MP</span><span class="mc-min">2,049'</span></div>
+      <div class="stats-col"><span class="s dim">33</span><span class="s dim">27</span><span class="total dim">60</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:100%;--min:100%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Workhorse</span><span class="name">Enzo Fernández</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">46 MP</span><span class="mc-min">3,654'</span></div>
+      <div class="stats-col"><span class="s dim">33</span><span class="s dim">18</span><span class="total dim">51</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:93.5%;--min:84.6%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Press machine</span><span class="name">João Pedro</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">43 MP</span><span class="mc-min">3,092'</span></div>
+      <div class="stats-col"><span class="s dim">18</span><span class="s dim">7</span><span class="total dim">25</span></div>
+    </div>
   </div>
 
-  <div class="footer">
-    <div class="legend">
-      <div class="leg"><div class="dot y"></div>MVP candidate</div>
-      <div class="leg"><div class="dot b"></div>Contender</div>
+  <!-- def-pl, def-ucl, def-fac, def-efl omitted for brevity — same pattern -->
+  <div class="def-view" id="def-pl" style="display:none">
+    <div class="player-row top">
+      <div class="player-col" style="--mp:100%;--min:100%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">PL Def MVP · #1</span><span class="name">Moisés Caicedo</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">26 MP</span><span class="mc-min">2,181'</span></div>
+      <div class="stats-col"><span class="s">43</span><span class="s">51</span><span class="total">94</span></div>
+    </div>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:74.4%;--min:73.6%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">PL Def · #2</span><span class="name">Reece James</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">27 MP</span><span class="mc-min">1,896'</span></div>
+      <div class="stats-col"><span class="s">32</span><span class="s">31</span><span class="total">63</span></div>
+    </div>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:67.4%;--min:89%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">PL Def · #3</span><span class="name">Trevoh Chalobah</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,550'</span></div>
+      <div class="stats-col"><span class="s">22</span><span class="s">35</span><span class="total">57</span></div>
+    </div>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:74.4%;--min:98.9%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">PL Def · #4</span><span class="name">Marc Cucurella</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">27 MP</span><span class="mc-min">2,077'</span></div>
+      <div class="stats-col"><span class="s">32</span><span class="s">21</span><span class="total">53</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:53.5%;--min:67.5%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Quietly excellent</span><span class="name">Malo Gusto</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">28 MP</span><span class="mc-min">1,741'</span></div>
+      <div class="stats-col"><span class="s dim">21</span><span class="s dim">23</span><span class="total dim">44</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:100%;--min:100%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Midfield engine</span><span class="name">Enzo Fernández</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">30 MP</span><span class="mc-min">2,578'</span></div>
+      <div class="stats-col"><span class="s dim">23</span><span class="s dim">16</span><span class="total dim">39</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:25.6%;--min:55.1%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">CB cover</span><span class="name">Wesley Fofana</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">19 MP</span><span class="mc-min">1,276'</span></div>
+      <div class="stats-col"><span class="s dim">11</span><span class="s dim">25</span><span class="total dim">36</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:30.2%;--min:49.5%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Pressing forward</span><span class="name">João Pedro</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">31 MP</span><span class="mc-min">2,311'</span></div>
+      <div class="stats-col"><span class="s dim">15</span><span class="s dim">5</span><span class="total dim">20</span></div>
+    </div>
+  </div>
+
+  <div class="def-view" id="def-ucl" style="display:none">
+    <div class="player-row top">
+      <div class="player-col" style="--mp:100%;--min:87.4%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">UCL Def MVP · #1</span><span class="name">Moisés Caicedo</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">851'</span></div>
+      <div class="stats-col"><span class="s">16</span><span class="s">9</span><span class="total">25</span></div>
+    </div>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:100%;--min:84.8%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">UCL Def · #2</span><span class="name">Marc Cucurella</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">8 MP</span><span class="mc-min">721'</span></div>
+      <div class="stats-col"><span class="s">14</span><span class="s">7</span><span class="total">21</span></div>
+    </div>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:77.8%;--min:55.7%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">UCL Def · #3</span><span class="name">Malo Gusto</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">6 MP</span><span class="mc-min">474'</span></div>
+      <div class="stats-col"><span class="s">7</span><span class="s">13</span><span class="total">20</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:33.3%;--min:66.2%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Intercept king</span><span class="name">Reece James</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">7 MP</span><span class="mc-min">563'</span></div>
+      <div class="stats-col"><span class="s dim">5</span><span class="s dim">12</span><span class="total dim">17</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:33.3%;--min:35.9%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Midfield cover</span><span class="name">Andrey Santos</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">3 MP</span><span class="mc-min">306'</span></div>
+      <div class="stats-col"><span class="s dim">6</span><span class="s dim">8</span><span class="total dim">14</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:55.6%;--min:56.4%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">CB wall</span><span class="name">Wesley Fofana</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">5 MP</span><span class="mc-min">480'</span></div>
+      <div class="stats-col"><span class="s dim">2</span><span class="s dim">11</span><span class="total dim">13</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:66.7%;--min:62.3%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Midfield shield</span><span class="name">Enzo Fernández</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">744'</span></div>
+      <div class="stats-col"><span class="s dim">6</span><span class="s dim">2</span><span class="total dim">8</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:44.4%;--min:39.7%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">CB partner</span><span class="name">Trevoh Chalobah</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp">6 MP</span><span class="mc-min">572'</span></div>
+      <div class="stats-col"><span class="s dim">1</span><span class="s dim">7</span><span class="total dim">8</span></div>
+    </div>
+  </div>
+
+  <div class="def-view" id="def-fac" style="display:none">
+    <div class="player-row top">
+      <div class="player-col" style="--mp:80%;--min:60%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">FA Cup Def MVP</span><span class="name">Andrey Santos</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+      <div class="stats-col"><span class="s">7</span><span class="s">1</span><span class="total">8</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:55%;--min:45%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Cup cover</span><span class="name">Moisés Caicedo</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+      <div class="stats-col"><span class="s dim">3</span><span class="s dim">3</span><span class="total dim">6</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:60%;--min:50%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Contributor</span><span class="name">Benoît Badiashile</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+      <div class="stats-col"><span class="s dim">2</span><span class="s dim">3</span><span class="total dim">5</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:55%;--min:40%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Reads well</span><span class="name">Tosin Adarabioyo</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+      <div class="stats-col"><span class="s dim">0</span><span class="s dim">4</span><span class="total dim">4</span></div>
+    </div>
+  </div>
+
+  <div class="def-view" id="def-efl" style="display:none">
+    <div class="player-row top">
+      <div class="player-col" style="--mp:80%;--min:65%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">EFL Def MVP</span><span class="name">Andrey Santos</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+      <div class="stats-col"><span class="s">7</span><span class="s">1</span><span class="total">8</span></div>
+    </div>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:65%;--min:50%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">EFL Def · #2</span><span class="name">Malo Gusto</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+      <div class="stats-col"><span class="s">4</span><span class="s">5</span><span class="total">9</span></div>
+    </div>
+    <div class="player-row contender">
+      <div class="player-col" style="--mp:60%;--min:42%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">EFL Def · #3</span><span class="name">Marc Cucurella</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+      <div class="stats-col"><span class="s">4</span><span class="s">1</span><span class="total">5</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:55%;--min:38%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Cup rotation</span><span class="name">Enzo Fernández</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+      <div class="stats-col"><span class="s dim">4</span><span class="s dim">0</span><span class="total dim">4</span></div>
+    </div>
+    <div class="player-row rest">
+      <div class="player-col" style="--mp:50%;--min:38%">
+        <div class="bar-mp"></div><div class="bar-min"></div>
+        <span class="rank">Reads well</span><span class="name">Jorrel Hato</span>
+      </div>
+      <div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+      <div class="stats-col"><span class="s dim">1</span><span class="s dim">3</span><span class="total dim">4</span></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="c-footer">
+    <div class="dot-row">
+      <div class="dot-item"><div class="dot y"></div>MVP candidate</div>
+      <div class="dot-item"><div class="dot b"></div>Contender</div>
     </div>
     <span>FBref · 2025/26</span>
   </div>
 
-</div>
+</div><!-- /card -->
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const comps = [
-    { id: 'all', label: 'All Competitions' },
-    { id: 'pl',  label: 'Premier League' },
-    { id: 'ucl', label: 'Champions League' },
-    { id: 'fac', label: 'FA Cup' },
-    { id: 'efl', label: 'EFL Cup' },
-  ];
+(function() {
+  function initMVP() {
+    var mvp = document.getElementById('mvp-clean');
+    if (!mvp) return;
 
-  const defensiveNames = ['caicedo','james','chalobah','fofana','sánchez','cucurella','gusto','hato','adarabioyo','santos'];
+    var mvpComps = [
+      { id: 'all', label: 'All Competitions' },
+      { id: 'pl',  label: 'Premier League' },
+      { id: 'ucl', label: 'Champions League' },
+      { id: 'fac', label: 'FA Cup' },
+      { id: 'efl', label: 'EFL Cup' },
+    ];
+    var mvpDefNames = ['caicedo','james','chalobah','fofana','sánchez','cucurella','gusto','hato','adarabioyo','santos'];
 
-  let currentComp   = 0;
-  let currentFilter = 'all';
+    var mvpComp = 0;
+    var mvpFilter = 'all';
 
-  const compBtn   = document.getElementById('compBtn');
-  const compName  = document.getElementById('compName');
-  const colHeader = document.getElementById('colHeader');
-  const compViews = document.querySelectorAll('.comp-view');
-  const defViews  = document.querySelectorAll('.def-view');
+    var compBtn  = mvp.querySelector('#compBtn');
+    var colHdr   = mvp.querySelector('#colHeader');
+    var allViews = mvp.querySelectorAll('.view');
+    var allDefs  = mvp.querySelectorAll('.def-view');
 
-  function animateRows(container) {
-    container.querySelectorAll('.player-row').forEach((row, i) => {
-      row.style.animation = 'none';
-      row.offsetHeight;
-      row.style.animation = '';
-      row.style.animationDelay = (i * 0.05) + 's';
-    });
-  }
+    if (!compBtn || !colHdr) return;
 
-  function showComp(idx) {
-    currentComp = ((idx % comps.length) + comps.length) % comps.length;
-    compViews.forEach(v => v.classList.remove('active'));
-    const view = document.getElementById('view-' + comps[currentComp].id);
-    view.classList.add('active');
-    compBtn.textContent = currentComp === 0 ? 'All Comps' : comps[currentComp].label;
-    compName.textContent = '';
-    return view;
-  }
-
-  function applyFilter(filter) {
-    currentFilter = filter;
-
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(
-      filter === 'defensive' ? 'filterDef' : filter === 'attacking' ? 'filterAtk' : 'filterAll'
-    ).classList.add('active');
-
-    if (filter === 'defensive') {
-      compViews.forEach(v => v.style.display = 'none');
-      defViews.forEach(v => v.style.display = 'none');
-      colHeader.innerHTML = '<span>Player</span><span>TklW</span><span>Int</span><span class="ga-col">Tkl+Int</span>';
-
-      // Show the defensive view matching current competition
-      const defId = 'def-' + comps[currentComp].id;
-      const activeDefView = document.getElementById(defId);
-      if (activeDefView) {
-        activeDefView.style.display = 'block';
-        animateRows(activeDefView);
-      }
-
-    } else {
-      defViews.forEach(v => v.style.display = 'none');
-      compViews.forEach(v => v.style.display = '');
-      colHeader.innerHTML = '<span>Player</span><span>Gls</span><span>Ast</span><span class="ga-col">G+A</span>';
-
-      const activeView = document.getElementById('view-' + comps[currentComp].id);
-      compViews.forEach(v => v.classList.remove('active'));
-      activeView.classList.add('active');
-
-      activeView.querySelectorAll('.player-row').forEach(row => {
-        const name = row.querySelector('.player-name').textContent.toLowerCase();
-        const isDef = defensiveNames.some(d => name.includes(d));
-        row.style.display = (filter === 'attacking' && isDef) ? 'none' : '';
+    function animate(el) {
+      el.querySelectorAll('.player-row').forEach(function(r, i) {
+        r.style.animation = 'none';
+        r.offsetHeight;
+        r.style.animation = '';
+        r.style.animationDelay = (i * 0.04) + 's';
       });
-
-      animateRows(activeView);
     }
+
+    function render() {
+      allViews.forEach(function(v) { v.classList.remove('active'); });
+      allDefs.forEach(function(v) { v.style.display = 'none'; });
+
+      compBtn.textContent = mvpComp === 0 ? 'All Comps' : mvpComps[mvpComp].label;
+
+      if (mvpFilter === 'defensive') {
+        var dv = mvp.querySelector('#def-' + mvpComps[mvpComp].id);
+        if (dv) { dv.style.display = 'block'; animate(dv); }
+        colHdr.innerHTML =
+          '<div class="col-player">Player</div>' +
+          '<div class="col-mp">MP/M</div>' +
+          '<div class="col-stats">' +
+            '<div class="col-stat">TklW</div>' +
+            '<div class="col-stat">Int</div>' +
+            '<div class="col-stat total">Tkl+Int</div>' +
+          '</div>';
+      } else {
+        colHdr.innerHTML =
+          '<div class="col-player">Player</div>' +
+          '<div class="col-mp">MP/M</div>' +
+          '<div class="col-stats">' +
+            '<div class="col-stat">Gls</div>' +
+            '<div class="col-stat">Ast</div>' +
+            '<div class="col-stat total">G+A</div>' +
+          '</div>';
+        var cv = mvp.querySelector('#view-' + mvpComps[mvpComp].id);
+        if (cv) {
+          cv.classList.add('active');
+          cv.querySelectorAll('.player-row').forEach(function(r) {
+            var n = r.querySelector('.name') ? r.querySelector('.name').textContent.toLowerCase() : '';
+            var isDef = mvpDefNames.some(function(d) { return n.indexOf(d) !== -1; });
+            r.style.display = (mvpFilter === 'attacking' && isDef) ? 'none' : '';
+          });
+          animate(cv);
+        }
+      }
+    }
+
+    compBtn.addEventListener('click', function() {
+      mvpComp = (mvpComp + 1) % mvpComps.length;
+      render();
+    });
+
+    function setMvpFilter(f) {
+      mvpFilter = f;
+      mvp.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      var activeBtn = mvp.querySelector('#f' + f.charAt(0).toUpperCase() + f.slice(1));
+      if (activeBtn) activeBtn.classList.add('active');
+      render();
+    }
+
+    var btnAll = mvp.querySelector('#fAll');
+    var btnDef = mvp.querySelector('#fDef');
+    var btnAtk = mvp.querySelector('#fAtk');
+    if (btnAll) btnAll.addEventListener('click', function() { setMvpFilter('all'); });
+    if (btnDef) btnDef.addEventListener('click', function() { setMvpFilter('defensive'); });
+    if (btnAtk) btnAtk.addEventListener('click', function() { setMvpFilter('attacking'); });
+
+    render();
   }
 
-  compBtn.addEventListener('click', () => {
-    showComp(currentComp + 1);
-    applyFilter(currentFilter);
-  });
-
-  document.getElementById('filterAll').addEventListener('click',  () => applyFilter('all'));
-  document.getElementById('filterDef').addEventListener('click',  () => applyFilter('defensive'));
-  document.getElementById('filterAtk').addEventListener('click',  () => applyFilter('attacking'));
-
-  showComp(0);
-  applyFilter('all');
-}); // end DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMVP);
+  } else {
+    initMVP();
+  }
+})();
 </script>
     </div>
   </div>
 
- <!-- MARKET VALUE TILE -->
+ 
+
+<!-- MARKET VALUE TILE -->
   <div style="max-width:480px;width:100%;margin-top:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:4px;overflow:hidden;">
 
     <!-- Header -->
@@ -3454,7 +3646,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="transfer-net-val">~£650M</div>
       </div>
       <div class="transfer-quip">
-        £24m per league win. That's <strong>ten sold-out Stamford Bridges.</strong>. Per. Win.
+        £24m per league win since the takeover. At that rate, the <strong>Champions League trophy costs approximately £864m</strong>. Which, coincidentally, is roughly what they've already spent. So they should be due one any day now.
       </div>
       <span class="tile-url">hasliamroseniorbeensackedyet.com</span>
     </div>
@@ -3613,50 +3805,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </div>
 
   <!-- TRANSFER RUMOUR TILE -->
-  <div class="rumour-tile" id="blueco-belt">
-    <div class="rumour-header">
-      <div class="rumour-header-title-wrap">
-  <div class="rumour-header-title">
-    <span class="repeat-icon">🔁</span>
-    THE BLUECO BELT
-  </div>
-  <div class="rumour-header-tagline">Buy. Loan. Flip. Profit.</div>
-</div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <div class="rumour-header-sub">Sky Sports · Romano · Football Insider</div>
-        <button class="tile-share-btn" onclick="tileShare(this)" aria-label="Share">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-          <span class="tile-share-label">Share</span>
-        </button>
-      </div>
-    </div>
-    <div class="rumour-body">
-      <div class="rumour-intro">Chelsea will be <strong>very busy this summer.</strong> Again. As always. Todd Boehly's calculator remains addition-only. Here is the current state of the carousel.</div>
-      <div class="rumour-summary">
-        <div class="rumour-sum-cell"><div class="rumour-sum-val" style="color:#4ade80">3</div><div class="rumour-sum-lbl">Confirmed In</div></div>
-        <div class="rumour-sum-cell"><div class="rumour-sum-val" style="color:#f87171">4+</div><div class="rumour-sum-lbl">Likely Out</div></div>
-        <div class="rumour-sum-cell"><div class="rumour-sum-val" style="color:#fbbf24">8+</div><div class="rumour-sum-lbl">Being Linked</div></div>
-      </div>
-      <div class="rumour-list">
-        <div class="rumour-divider">✅ Confirmed arrivals</div>
-        <div class="rumour-row rm-in"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Emmanuel Emegha</div><div class="rumour-detail">Strasbourg · Summer 2026 · <strong>Dutch international striker</strong></div></div><div class="rumour-heat"><div class="heat heat-done">Done</div></div></div>
-        <div class="rumour-row rm-in"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Geovany Quenda</div><div class="rumour-detail">Sporting CP · Summer 2026 · <strong>Stays in Portugal for now</strong></div></div><div class="rumour-heat"><div class="heat heat-done">Done</div></div></div>
-        <div class="rumour-row rm-in"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Dastan Satpayev</div><div class="rumour-detail">Kairat · Summer 2026 · <strong>Kazakhstani wonderkid</strong></div></div><div class="rumour-heat"><div class="heat heat-done">Done</div></div></div>
-        <div class="rumour-divider">🔥 Targets being chased</div>
-        <div class="rumour-row rm-in"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Julian Alvarez</div><div class="rumour-detail">Atletico Madrid · <strong>>€100m</strong> · Arsenal also keen. Prefers Barcelona.</div></div><div class="rumour-heat"><div class="heat heat-warm">Warm</div></div></div>
-        <div class="rumour-row rm-in"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Valentin Barco</div><div class="rumour-detail">Strasbourg · <strong>"Very close"</strong> per Guillem Balague.</div></div><div class="rumour-heat"><div class="heat heat-hot">Certain</div></div></div>
-        <div class="rumour-row rm-in"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Robin Roefs</div><div class="rumour-detail">Goalkeeper · <strong>£50m.</strong> Because two unreliable keepers wasn't enough.</div></div><div class="rumour-heat"><div class="heat heat-warm">Active</div></div></div>
-	<div class="rumour-row rm-in"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Fawkin An-Eone</div><div class="rumour-detail">Strasbourg · <strong>"Dead certain"</strong> A young defender to block Acheampong .</div></div><div class="rumour-heat"><div class="heat heat-hot">Certain</div></div></div>
-        <div class="rumour-divider">🚪 Expected departures</div>
-	<div class="rumour-row rm-out"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Enzo Fernandez</div><div class="rumour-detail"> "and then we’ll see" <strong>Real Madrid hot on heals</strong> Arrived for £106m. 2023.</div></div><div class="rumour-heat"><div class="heat heat-hot">Likely</div></div></div>
-        <div class="rumour-row rm-out"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Liam Delap</div><div class="rumour-detail">2 goals in 25 apps. <strong>Listening to offers.</strong> Arrived for £45m. Last summer.</div></div><div class="rumour-heat"><div class="heat heat-hot">Likely</div></div></div>
-        <div class="rumour-row rm-out"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Alejandro Garnacho</div><div class="rumour-detail">131 PL minutes since January. <strong>Already being offloaded.</strong> One season.</div></div><div class="rumour-heat"><div class="heat heat-hot">Likely</div></div></div>
-        <div class="rumour-row rm-out"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Nicolas Jackson</div><div class="rumour-detail">Juventus, Milan, Inter all keen. <strong>Could still be useful</strong></div></div><div class="rumour-heat"><div class="heat heat-warm">Possible</div></div></div>
-      </div>
-      <div class="rumour-quip">Chelsea have no players out of contract in 2026 or 2027 — because every signing gets <strong>a seven-year deal.</strong> The contracts outlast the managers. The managers outlast the patience. The cycle continues.</div>
-      <span class="tile-url">hasliamroseniorbeensackedyet.com</span>
-    </div>
-  </div>
+  <div class="transfer-host preview" id="transfers-host-home" data-mode="preview" data-default-filter="linked" data-preview-limit="4" data-source="transfers.html"></div>
 
 
 <!-- BREAKING: DEFENSIVE CORE INJURY TILE -->
@@ -4968,6 +5117,63 @@ window.addEventListener('DOMContentLoaded', function(){
   }
 })();
 </script>
+  <script>
+    (function(){
+      function initSharedTransferTile(host){
+        const mode = host.dataset.mode || 'preview';
+        const defaultFilter = host.dataset.defaultFilter || (mode === 'full' ? 'all' : 'linked');
+        const previewLimit = Number(host.dataset.previewLimit || 4);
+        const tile = host.querySelector('.rumour-tile');
+        if (!tile) return;
+        const buttons = tile.querySelectorAll('.belt-filter-btn[data-filter]');
+        const rows = Array.from(tile.querySelectorAll('.rumour-row[data-group]'));
+        const dividers = Array.from(tile.querySelectorAll('.rumour-divider[data-group]'));
+
+        function applyFilter(filter){
+          buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
+          const groupedVisibleCounts = {};
+
+          rows.forEach(row => {
+            const group = row.dataset.group;
+            const matches = filter === 'all' || group === filter;
+            if (!matches) {
+              row.classList.add('belt-hidden');
+              return;
+            }
+            groupedVisibleCounts[group] = groupedVisibleCounts[group] || 0;
+            const limitReached = mode === 'preview' && groupedVisibleCounts[group] >= previewLimit;
+            row.classList.toggle('belt-hidden', limitReached);
+            if (!limitReached) groupedVisibleCounts[group] += 1;
+          });
+
+          dividers.forEach(div => {
+            const group = div.dataset.group;
+            const groupHasVisibleRows = rows.some(row => row.dataset.group === group && !row.classList.contains('belt-hidden'));
+            const shouldShow = filter === 'all' ? groupHasVisibleRows : (group === filter && groupHasVisibleRows);
+            div.classList.toggle('belt-hidden', !shouldShow);
+          });
+        }
+
+        buttons.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
+        applyFilter(defaultFilter);
+      }
+
+      document.querySelectorAll('.transfer-host[data-source]').forEach(host => {
+        fetch(host.dataset.source)
+          .then(res => {
+            if (!res.ok) throw new Error('Failed to load shared transfer tile');
+            return res.text();
+          })
+          .then(html => {
+            host.innerHTML = html;
+            initSharedTransferTile(host);
+          })
+          .catch(() => {
+            host.innerHTML = '<div class="rumour-tile"><div class="rumour-body"><div class="rumour-intro">Transfer module failed to load. Re-upload transfers.html and redeploy.</div></div></div>';
+          });
+      });
+    })();
+  </script>
 </body>
 
 </html>

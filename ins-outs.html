@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ins/Outs | Chelsea transfer tracker</title>
-  <meta name="description" content="Chelsea ins and outs tracker. Confirmed arrivals, likely exits and targets being chased.">
+  <meta name="description" content="Chelsea ins and outs tracker. Confirmed arrivals, likely exits, wants out cases and targets being chased.">
   <link rel="canonical" href="https://hasliamroseniorbeensackedyet.com/ins-outs">
 
   <!-- Open Graph (Social Preview) -->
   <meta property="og:title" content="Ins/Outs | Chelsea transfer tracker">
-  <meta property="og:description" content="Confirmed arrivals, likely exits and targets being chased. The Chelsea transfer carousel in one place.">
+  <meta property="og:description" content="Confirmed arrivals, likely exits, wants out cases and targets being chased. The Chelsea transfer carousel in one place.">
   <meta property="og:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://hasliamroseniorbeensackedyet.com/ins-outs">
   <meta name="twitter:title" content="Ins/Outs | Chelsea transfer tracker">
-  <meta name="twitter:description" content="Confirmed arrivals, likely exits and targets being chased. The Chelsea transfer carousel in one place.">
+  <meta name="twitter:description" content="Confirmed arrivals, likely exits, wants out cases and targets being chased. The Chelsea transfer carousel in one place.">
   <meta name="twitter:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg">
 
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -40,10 +40,23 @@
     .rumour-header-tagline{font-size:.7rem;color:rgba(255,255,255,.35)}
     .rumour-body{padding:14px 16px}
     .rumour-intro{font-size:.72rem;color:rgba(255,255,255,.42);line-height:1.55;margin-bottom:14px}
-    .rumour-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:12px}
+    .rumour-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px}
     .rumour-sum-cell{background:rgba(255,255,255,.03);border-radius:3px;padding:7px;text-align:center;border:1px solid transparent;cursor:pointer;transition:all .18s ease;user-select:none}
     .rumour-sum-cell:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
     .rumour-sum-cell.active{background:rgba(74,144,217,.09);border-color:rgba(74,144,217,.35);box-shadow:0 0 0 1px rgba(74,144,217,.08) inset}
+    .rumour-header-link{color:#60a5fa;text-decoration:none;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .belt-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px}
+    .belt-filter-btn{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:3px;padding:10px 8px;text-align:center;cursor:pointer;transition:border-color .18s ease, background .18s ease, transform .18s ease;}
+    .belt-filter-btn:hover{border-color:rgba(96,165,250,.35);background:rgba(96,165,250,.08);transform:translateY(-1px)}
+    .belt-filter-btn.active{border-color:rgba(96,165,250,.55);background:rgba(96,165,250,.12);box-shadow:inset 0 0 0 1px rgba(96,165,250,.18)}
+    .belt-hidden{opacity:0;transform:translateY(-4px);max-height:0 !important;margin:0 !important;padding-top:0 !important;padding-bottom:0 !important;pointer-events:none;overflow:hidden}
+    .belt-header-link,.belt-footer-link{color:#60a5fa;text-decoration:none;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+    .belt-footer-link{display:inline-flex;margin-top:10px;}
+    .rumour-header-title-wrap{display:flex;flex-direction:column;gap:2px;}
+    .tile-url{display:block;margin-top:9px;font-size:.58rem;color:rgba(255,255,255,.14);letter-spacing:.11em;text-transform:uppercase;}
+    .transfer-host.full .belt-footer-link,.transfer-host.full .tile-url,.transfer-host.full .belt-header-link{display:none;}
+    .transfer-host.full .rumour-tile{max-width:560px;width:100%;margin-top:0;}
+    .rumour-footnote{font-size:.68rem;color:rgba(255,255,255,.24);line-height:1.55;padding-top:8px;margin-top:8px;border-top:1px solid rgba(255,255,255,.06);font-style:italic}
     .rumour-sum-val{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;line-height:1;margin-bottom:2px}
     .rumour-sum-lbl{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25)}
     .rumour-list{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
@@ -64,41 +77,8 @@
     <a href="/" class="back-link">← Back to main site</a>
     <div class="topline">Chelsea Counter</div>
     <h1 class="page-title">Ins/Outs</h1>
-    <p class="page-sub">The transfer carousel on its own page. Filter the lane you want: confirmed arrivals, targets being chased, or likely exits.</p>
-    <div class="rumour-tile" id="blueco-belt-page">
-      <div class="rumour-header">
-        <div>
-          <div class="rumour-header-title">The BlueCo Belt</div>
-          <div class="rumour-header-tagline">Buy. Loan. Flip. Profit.</div>
-        </div>
-        <div class="rumour-header-tagline">Sky Sports · Romano · Football Insider</div>
-      </div>
-      <div class="rumour-body">
-        <div class="rumour-intro">Chelsea will be <strong>very busy this summer.</strong> Again. Click the counters to isolate one lane.</div>
-        <div class="rumour-summary">
-          <div class="rumour-sum-cell" data-filter="confirmed"><div class="rumour-sum-val" style="color:#4ade80">3</div><div class="rumour-sum-lbl">Confirmed In</div></div>
-          <div class="rumour-sum-cell" data-filter="out"><div class="rumour-sum-val" style="color:#f87171">4+</div><div class="rumour-sum-lbl">Likely Out</div></div>
-          <div class="rumour-sum-cell active" data-filter="linked"><div class="rumour-sum-val" style="color:#fbbf24">8+</div><div class="rumour-sum-lbl">Being Linked</div></div>
-        </div>
-        <div class="rumour-list">
-          <div class="rumour-divider" data-group="confirmed">✅ Confirmed arrivals</div>
-          <div class="rumour-row rm-in" data-group="confirmed"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Emmanuel Emegha</div><div class="rumour-detail">Strasbourg · Summer 2026 · <strong>Dutch international striker</strong></div></div><div class="rumour-heat"><div class="heat heat-done">Done</div></div></div>
-          <div class="rumour-row rm-in" data-group="confirmed"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Geovany Quenda</div><div class="rumour-detail">Sporting CP · Summer 2026 · <strong>Stays in Portugal for now</strong></div></div><div class="rumour-heat"><div class="heat heat-done">Done</div></div></div>
-          <div class="rumour-row rm-in" data-group="confirmed"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Dastan Satpayev</div><div class="rumour-detail">Kairat · Summer 2026 · <strong>Kazakhstani wonderkid</strong></div></div><div class="rumour-heat"><div class="heat heat-done">Done</div></div></div>
-          <div class="rumour-divider" data-group="linked">🔥 Targets being chased</div>
-          <div class="rumour-row rm-in" data-group="linked"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Julian Alvarez</div><div class="rumour-detail">Atletico Madrid · <strong>>€100m</strong> · Arsenal also keen. Prefers Barcelona.</div></div><div class="rumour-heat"><div class="heat heat-warm">Warm</div></div></div>
-          <div class="rumour-row rm-in" data-group="linked"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Valentin Barco</div><div class="rumour-detail">Strasbourg · <strong>"Very close"</strong> per Guillem Balague.</div></div><div class="rumour-heat"><div class="heat heat-hot">Certain</div></div></div>
-          <div class="rumour-row rm-in" data-group="linked"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Robin Roefs</div><div class="rumour-detail">Goalkeeper · <strong>£50m.</strong> Because two unreliable keepers wasn't enough.</div></div><div class="rumour-heat"><div class="heat heat-warm">Active</div></div></div>
-          <div class="rumour-row rm-in" data-group="linked"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Fawkin An-Eone</div><div class="rumour-detail">Strasbourg · <strong>"Dead certain"</strong> A young defender to block Acheampong.</div></div><div class="rumour-heat"><div class="heat heat-hot">Certain</div></div></div>
-          <div class="rumour-divider" data-group="out">🚪 Expected departures</div>
-          <div class="rumour-row rm-out" data-group="out"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Enzo Fernandez</div><div class="rumour-detail">"and then we'll see" <strong>Real Madrid hot on heels</strong> · Arrived for £106m in 2023.</div></div><div class="rumour-heat"><div class="heat heat-hot">Likely</div></div></div>
-          <div class="rumour-row rm-out" data-group="out"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Liam Delap</div><div class="rumour-detail">2 goals in 25 apps. <strong>Listening to offers.</strong> Arrived for £45m last summer.</div></div><div class="rumour-heat"><div class="heat heat-hot">Likely</div></div></div>
-          <div class="rumour-row rm-out" data-group="out"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Alejandro Garnacho</div><div class="rumour-detail">131 PL minutes since January. <strong>Already being offloaded.</strong> One season.</div></div><div class="rumour-heat"><div class="heat heat-hot">Likely</div></div></div>
-          <div class="rumour-row rm-out" data-group="out"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Nicolas Jackson</div><div class="rumour-detail">Juventus, Milan, Inter all keen. <strong>Could still be useful.</strong></div></div><div class="rumour-heat"><div class="heat heat-warm">Possible</div></div></div>
-        </div>
-        <div class="rumour-quip">Chelsea have no players out of contract in 2026 or 2027 — because every signing gets a seven-year deal.</div>
-      </div>
-    </div>
+    <p class="page-sub">The transfer carousel on its own page. Filter the lane you want: confirmed arrivals, likely exits, wants out, or targets being chased.</p>
+    <div class="transfer-host full" id="transfers-host-full" data-mode="full" data-default-filter="all" data-source="transfers.html"></div>
     <div style="max-width:480px;width:100%;margin:16px 0 8px;padding:12px 0 0;border-top:1px solid rgba(255,255,255,.05);">
       <div style="font-size:.54rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:8px;">Related analysis</div>
       <div style="font-size:.67rem;color:rgba(255,255,255,.36);line-height:1.65;">Chelsea transfer churn does not sit on its own. It feeds the wider BlueCo model: deal churn, wage pressure, squad imbalance, pathway blocking and the permanent search for the next flip.</div>
@@ -114,17 +94,59 @@
   </div>
   <script>
     (function(){
-      const tile = document.getElementById('blueco-belt-page');
-      const buttons = tile.querySelectorAll('.rumour-sum-cell[data-filter]');
-      const rows = tile.querySelectorAll('.rumour-row[data-group]');
-      const dividers = tile.querySelectorAll('.rumour-divider[data-group]');
-      function applyFilter(filter){
-        buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
-        rows.forEach(row => row.classList.toggle('hidden', row.dataset.group !== filter));
-        dividers.forEach(div => div.classList.toggle('hidden', div.dataset.group !== filter));
+      function initSharedTransferTile(host){
+        const mode = host.dataset.mode || 'preview';
+        const defaultFilter = host.dataset.defaultFilter || (mode === 'full' ? 'all' : 'linked');
+        const previewLimit = Number(host.dataset.previewLimit || 4);
+        const tile = host.querySelector('.rumour-tile');
+        if (!tile) return;
+        const buttons = tile.querySelectorAll('.belt-filter-btn[data-filter]');
+        const rows = Array.from(tile.querySelectorAll('.rumour-row[data-group]'));
+        const dividers = Array.from(tile.querySelectorAll('.rumour-divider[data-group]'));
+
+        function applyFilter(filter){
+          buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
+          const groupedVisibleCounts = {};
+
+          rows.forEach(row => {
+            const group = row.dataset.group;
+            const matches = filter === 'all' || group === filter;
+            if (!matches) {
+              row.classList.add('belt-hidden');
+              return;
+            }
+            groupedVisibleCounts[group] = groupedVisibleCounts[group] || 0;
+            const limitReached = mode === 'preview' && groupedVisibleCounts[group] >= previewLimit;
+            row.classList.toggle('belt-hidden', limitReached);
+            if (!limitReached) groupedVisibleCounts[group] += 1;
+          });
+
+          dividers.forEach(div => {
+            const group = div.dataset.group;
+            const groupHasVisibleRows = rows.some(row => row.dataset.group === group && !row.classList.contains('belt-hidden'));
+            const shouldShow = filter === 'all' ? groupHasVisibleRows : (group === filter && groupHasVisibleRows);
+            div.classList.toggle('belt-hidden', !shouldShow);
+          });
+        }
+
+        buttons.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
+        applyFilter(defaultFilter);
       }
-      buttons.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
-      applyFilter('linked');
+
+      document.querySelectorAll('.transfer-host[data-source]').forEach(host => {
+        fetch(host.dataset.source)
+          .then(res => {
+            if (!res.ok) throw new Error('Failed to load shared transfer tile');
+            return res.text();
+          })
+          .then(html => {
+            host.innerHTML = html;
+            initSharedTransferTile(host);
+          })
+          .catch(() => {
+            host.innerHTML = '<div class="rumour-tile"><div class="rumour-body"><div class="rumour-intro">Transfer module failed to load. Re-upload transfers.html and redeploy.</div></div></div>';
+          });
+      });
     })();
   </script>
 </body>
