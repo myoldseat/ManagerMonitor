@@ -372,17 +372,7 @@
     .rumour-intro{font-size:.72rem;color:rgba(255,255,255,.38);line-height:1.55;margin-bottom:14px;}
     .rumour-intro strong{color:rgba(255,255,255,.75);}
     .rumour-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:12px;}
-    .belt-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px;}
     .rumour-sum-cell{background:rgba(255,255,255,.03);border-radius:3px;padding:7px;text-align:center;}
-    .belt-filter-btn{background:rgba(255,255,255,.03);border-radius:3px;padding:7px;text-align:center;border:1px solid transparent;cursor:pointer;transition:all .18s ease;user-select:none;}
-    .belt-filter-btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05);}
-    .belt-filter-btn.active{background:rgba(74,144,217,.09);border-color:rgba(74,144,217,.35);box-shadow:0 0 0 1px rgba(74,144,217,.08) inset;}
-    .belt-hidden{opacity:0;transform:translateY(-4px);max-height:0 !important;margin:0 !important;padding-top:0 !important;padding-bottom:0 !important;pointer-events:none;overflow:hidden;}
-    .belt-header-link,.belt-footer-link{color:#60a5fa;text-decoration:none;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
-    .belt-footer-link{display:inline-flex;margin-top:10px;}
-    .transfer-host.full .belt-footer-link,.transfer-host.full .tile-url,.transfer-host.full .belt-header-link{display:none;}
-    .transfer-host.full .rumour-tile{max-width:560px;width:100%;margin-top:0;}
-    .belt-footnote{font-size:.68rem;color:rgba(255,255,255,.24);line-height:1.55;padding-top:8px;margin-top:8px;border-top:1px solid rgba(255,255,255,.06);font-style:italic;}
     .rumour-sum-val{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;line-height:1;margin-bottom:2px;}
     .rumour-sum-lbl{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);}
     .rumour-list{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
@@ -1639,8 +1629,7 @@ html {
 <!-- SHORTCUT BAR -->
 <div class="shortcut-bar">
 
-  <a href="/ins-outs" class="shortcut-tile"
-     data-target="blueco-belt"
+  <a href="ins-outs.html" class="shortcut-tile"
      data-message="Another one enters the system.">
     <span class="shortcut-label">INS/OUTS</span>
   </a>
@@ -1708,6 +1697,134 @@ html {
     </div>
     <div style="padding:10px 16px 12px;">
       <div id="plTableInner" style="font-size:.68rem;color:rgba(255,255,255,.3);text-align:center;padding:14px 0;">Fetching table…</div>
+    </div>
+  </div>
+
+ <!-- BLUECO YEAR 4 TILE -->
+  <div id="blueco-tile" style="max-width:480px;width:100%;margin-top:14px;">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Anton&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+      #blueco-tile {
+        --bc-bg: #0f0f13;
+        --bc-surface: #16161d;
+        --bc-border: #32323f;
+        --bc-muted: #4a4a5a;
+        --bc-mono: #9090a8;
+        --bc-text: #dedad2;
+        --bc-bright: #f0ece4;
+        --bc-red: #d03020;
+        --bc-blue: #4a7dd0;
+        --bc-gold: #b8962a;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      #blueco-tile * { box-sizing: border-box; margin: 0; padding: 0; }
+      #blueco-tile .bc-card { width:100%; background:var(--bc-surface); border:1px solid var(--bc-border); overflow:hidden; }
+      #blueco-tile .bc-header { padding:20px 24px 16px; border-bottom:1px solid var(--bc-border); position:relative; }
+      #blueco-tile .bc-header::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--bc-blue) 40%,var(--bc-red)); }
+      #blueco-tile .bc-eyebrow { font-size:9px; letter-spacing:.3em; text-transform:uppercase; color:var(--bc-mono); margin-bottom:8px; }
+      #blueco-tile .bc-title { font-family:'Anton',sans-serif; font-size:clamp(44px,11vw,60px); color:var(--bc-bright); line-height:.9; letter-spacing:.01em; }
+      #blueco-tile .bc-title .bc-accent { color:var(--bc-red); }
+      #blueco-tile .bc-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14px; color:var(--bc-mono); margin-top:8px; line-height:1.4; }
+      #blueco-tile .bc-tl { padding:14px 24px; border-bottom:1px solid var(--bc-border); }
+      #blueco-tile .bc-tl-track { height:4px; background:var(--bc-muted); position:relative; margin-bottom:6px; }
+      #blueco-tile .bc-tl-fill { position:absolute; left:0; top:0; bottom:0; width:40%; background:var(--bc-blue); }
+      #blueco-tile .bc-tl-now { position:absolute; left:40%; top:-5px; width:1px; height:14px; background:var(--bc-red); }
+      #blueco-tile .bc-tl-labels { display:flex; justify-content:space-between; font-size:9px; color:var(--bc-mono); letter-spacing:.06em; }
+      #blueco-tile .bc-tl-labels .bc-now { color:var(--bc-red); }
+      #blueco-tile .bc-tl-labels .bc-exit { color:var(--bc-gold); }
+      #blueco-tile .bc-sec { font-size:8px; letter-spacing:.35em; text-transform:uppercase; color:var(--bc-mono); padding:8px 24px; border-bottom:1px solid var(--bc-border); background:var(--bc-bg); }
+      #blueco-tile .bc-clocks { display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--bc-border); }
+      #blueco-tile .bc-clock { padding:14px 16px 14px 24px; }
+      #blueco-tile .bc-clock:last-child { padding-left:16px; border-left:1px solid var(--bc-border); }
+      #blueco-tile .bc-clock-head { font-size:9px; letter-spacing:.25em; text-transform:uppercase; margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--bc-border); }
+      #blueco-tile .bc-clock-head.fan { color:var(--bc-red); }
+      #blueco-tile .bc-clock-head.pe  { color:var(--bc-blue); }
+      #blueco-tile .bc-cr { margin-bottom:8px; }
+      #blueco-tile .bc-cr-lbl { font-size:8px; letter-spacing:.18em; text-transform:uppercase; color:var(--bc-mono); margin-bottom:2px; }
+      #blueco-tile .bc-cr-val { font-size:12px; color:var(--bc-bright); line-height:1.4; }
+      #blueco-tile .bc-cr-val em { font-style:italic; color:#a0a0b8; font-size:11px; }
+      #blueco-tile .bc-rupture { background:var(--bc-bg); border-bottom:1px solid var(--bc-border); padding:14px 24px; display:grid; grid-template-columns:1fr 1fr; gap:12px; align-items:center; }
+      #blueco-tile .bc-rstat { text-align:center; }
+      #blueco-tile .bc-rnum { font-family:'Anton',sans-serif; font-size:32px; line-height:1; }
+      #blueco-tile .bc-rnum.r { color:var(--bc-red); }
+      #blueco-tile .bc-rnum.b { color:var(--bc-blue); }
+      #blueco-tile .bc-rlbl { font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--bc-mono); margin-top:3px; line-height:1.4; }
+      #blueco-tile .bc-rline { grid-column:1/-1; border-top:1px solid var(--bc-border); padding-top:12px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:var(--bc-bright); text-align:center; line-height:1.5; }
+      #blueco-tile .bc-rline strong { color:var(--bc-gold); font-style:normal; }
+      #blueco-tile .bc-matrix { border-bottom:1px solid var(--bc-border); width:100%; border-collapse:collapse; }
+      #blueco-tile .bc-matrix thead tr { background:var(--bc-bg); }
+      #blueco-tile .bc-matrix th { font-size:8px; letter-spacing:.25em; text-transform:uppercase; padding:8px 12px 8px 24px; text-align:left; border-bottom:1px solid var(--bc-border); font-weight:500; }
+      #blueco-tile .bc-matrix th:first-child { color:var(--bc-mono); width:28%; }
+      #blueco-tile .bc-matrix th.th-pe { color:var(--bc-blue); border-left:1px solid var(--bc-border); }
+      #blueco-tile .bc-matrix th.th-fc { color:var(--bc-red); border-left:1px solid var(--bc-border); }
+      #blueco-tile .bc-matrix td { font-size:11px; color:var(--bc-text); padding:8px 12px 8px 24px; border-bottom:1px solid var(--bc-muted); line-height:1.4; vertical-align:top; }
+      #blueco-tile .bc-matrix td:first-child { font-size:8px; letter-spacing:.12em; text-transform:uppercase; color:var(--bc-mono); }
+      #blueco-tile .bc-matrix td.td-pe { border-left:1px solid var(--bc-border); color:#a8a8c0; font-style:italic; }
+      #blueco-tile .bc-matrix td.td-fc { border-left:1px solid var(--bc-border); color:var(--bc-text); }
+      #blueco-tile .bc-matrix td.neg { text-decoration:line-through; text-decoration-color:#e05040; text-decoration-thickness:2px; color:#888898; }
+      #blueco-tile .bc-matrix tr:last-child td { border-bottom:none; }
+      #blueco-tile .bc-verdict { padding:16px 24px; border-bottom:1px solid var(--bc-border); border-left:2px solid var(--bc-red); }
+      #blueco-tile .bc-verdict-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(14px,2.8vw,16px); color:var(--bc-text); line-height:1.65; }
+      #blueco-tile .bc-verdict-text strong { color:var(--bc-bright); font-style:normal; }
+      #blueco-tile .bc-footer { padding:10px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; }
+      #blueco-tile .bc-footer-l { font-size:9px; color:var(--bc-mono); letter-spacing:.06em; line-height:1.6; }
+      #blueco-tile .bc-footer-r { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:11px; color:var(--bc-mono); text-align:right; line-height:1.5; }
+    </style>
+    <div class="bc-card">
+      <div class="bc-header">
+        <div class="bc-eyebrow">BlueCo · Clearlake Capital · Chelsea FC · Investment Year 4</div>
+        <div class="bc-title">YEAR <span class="bc-accent">4</span><br>OF 10.</div>
+        <div class="bc-subtitle">A PE firm is running our football club.<br>They are not building for Saturday. They are building for 2032.</div>
+      </div>
+      <div class="bc-tl">
+        <div class="bc-tl-track">
+          <div class="bc-tl-fill"></div>
+          <div class="bc-tl-now"></div>
+        </div>
+        <div class="bc-tl-labels">
+          <span>2022 — Acquired</span>
+          <span class="bc-now">◂ 2026 Now</span>
+          <span class="bc-exit">2030–32 Exit?</span>
+        </div>
+      </div>
+      <div class="bc-sec">⚡ Temporal misalignment</div>
+      <div class="bc-clocks">
+        <div class="bc-clock">
+          <div class="bc-clock-head fan">Fan time</div>
+          <div class="bc-cr"><div class="bc-cr-lbl">Unit</div><div class="bc-cr-val">The season.<br><em>August to May. Urgent.</em></div></div>
+          <div class="bc-cr"><div class="bc-cr-lbl">4 years =</div><div class="bc-cr-val">4 seasons lived.<br><em>Tuchel. Potter. Poch. Maresca.</em></div></div>
+          <div class="bc-cr"><div class="bc-cr-lbl">Now means</div><div class="bc-cr-val">Late March.<br><em>Season gone. Again.</em></div></div>
+        </div>
+        <div class="bc-clock">
+          <div class="bc-clock-head pe">Clearlake time</div>
+          <div class="bc-cr"><div class="bc-cr-lbl">Unit</div><div class="bc-cr-val">The fund cycle.<br><em>A decade. Patient.</em></div></div>
+          <div class="bc-cr"><div class="bc-cr-lbl">4 years =</div><div class="bc-cr-val">Not yet halfway.<br><em>Still acquiring. Still building.</em></div></div>
+          <div class="bc-cr"><div class="bc-cr-lbl">Now means</div><div class="bc-cr-val">Not yet Christmas.<br><em>Relax. It's Q4 of Year 1.</em></div></div>
+        </div>
+      </div>
+      <div class="bc-rupture">
+        <div class="bc-rstat"><div class="bc-rnum r">4</div><div class="bc-rlbl">Seasons a fan<br>has lived and lost</div></div>
+        <div class="bc-rstat"><div class="bc-rnum b">~40%</div><div class="bc-rlbl">Of Clearlake's<br>ownership clock used</div></div>
+        <div class="bc-rline">We are watching a <strong>season</strong>. They are watching a <strong>decade</strong>.<br>We do not share a clock. We do not share a language.</div>
+      </div>
+      <div class="bc-sec">The experienced CB, age 28–33 — two readings of the same player</div>
+      <table class="bc-matrix">
+        <thead><tr><th></th><th class="th-pe">Clearlake sees</th><th class="th-fc">Football needs</th></tr></thead>
+        <tbody>
+          <tr><td>Ideal buy</td><td class="td-pe">Age 17–22, long contract. Appreciates.</td><td class="td-fc">Fits the system. Available Saturday.</td></tr>
+          <tr><td>Resale value</td><td class="td-pe neg">Gone before exit. Skip.</td><td class="td-fc">Irrelevant. He wins headers.</td></tr>
+          <tr><td>On the pitch</td><td class="td-pe neg">Doesn't feature in thesis.</td><td class="td-fc">Organises. Communicates. Steadies Fofana. Teaches Hato.</td></tr>
+          <tr><td>Contract length</td><td class="td-pe neg">Ends before 2032. Worthless.</td><td class="td-fc">3 years is plenty.</td></tr>
+          <tr><td>Value</td><td class="td-pe neg">Does not compute.</td><td class="td-fc">Exactly what we needed.</td></tr>
+        </tbody>
+      </table>
+      <div class="bc-verdict">
+        <div class="bc-verdict-text">Not buying an experienced CB was a <strong>rational PE decision</strong>. He depreciates toward the exit. He doesn't show on the balance sheet. We buried four managers and watched the back four collapse. <strong>In Clearlake's calendar, it is not yet Christmas.</strong> We are shouting about Saturday. They are reading a document that does not contain the word <strong>"Saturday."</strong></div>
+      </div>
+      <div class="bc-footer">
+        <div class="bc-footer-l">BlueCo · Chelsea FC · Acquired May 2022 · £4.25bn<br>Clearlake ~61.5% · Fans consulted: none</div>
+        <div class="bc-footer-r">"Clearlake considers an investment's exit<br>as a critical factor." — Clearlake.com</div>
+      </div>
     </div>
   </div>
 
@@ -3646,7 +3763,7 @@ html {
         <div class="transfer-net-val">~£650M</div>
       </div>
       <div class="transfer-quip">
-        £24m per league win since the takeover. At that rate, the <strong>Champions League trophy costs approximately £864m</strong>. Which, coincidentally, is roughly what they've already spent. So they should be due one any day now.
+        £24m per league win. That's roughly <strong>ten sold-out Stamford Bridges. Per. Win</strong>. 
       </div>
       <span class="tile-url">hasliamroseniorbeensackedyet.com</span>
     </div>
@@ -5117,6 +5234,7 @@ window.addEventListener('DOMContentLoaded', function(){
   }
 })();
 </script>
+
   <script>
     (function(){
       function initSharedTransferTile(host){
@@ -5128,6 +5246,26 @@ window.addEventListener('DOMContentLoaded', function(){
         const buttons = tile.querySelectorAll('.belt-filter-btn[data-filter]');
         const rows = Array.from(tile.querySelectorAll('.rumour-row[data-group]'));
         const dividers = Array.from(tile.querySelectorAll('.rumour-divider[data-group]'));
+        const labelMap = {1:'Very weak',2:'Soft link',3:'Plausible',4:'Strong',5:'Very strong'};
+
+        rows.forEach(row => {
+          const score = Number(row.dataset.likelihood || 0);
+          const box = row.querySelector('.rumour-score');
+          if (box && score) {
+            box.textContent = String(score);
+            box.setAttribute('title', labelMap[score] || `Likelihood ${score}`);
+            box.setAttribute('aria-label', labelMap[score] || `Likelihood ${score}`);
+          }
+        });
+
+        dividers.forEach(div => {
+          const group = div.dataset.group;
+          const groupRows = rows.filter(row => row.dataset.group === group && row.dataset.likelihood);
+          if (groupRows.length) {
+            groupRows.sort((a,b) => Number(b.dataset.likelihood) - Number(a.dataset.likelihood))
+              .forEach(row => div.insertAdjacentElement('afterend', row));
+          }
+        });
 
         function applyFilter(filter){
           buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
@@ -5174,6 +5312,7 @@ window.addEventListener('DOMContentLoaded', function(){
       });
     })();
   </script>
+
 </body>
 
 </html>
