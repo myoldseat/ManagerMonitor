@@ -1,31 +1,281 @@
+<!--
+╔══════════════════════════════════════════════════════════════╗
+║  BLUECO BELT — TRANSFER DATA                                 ║
+║  Edit ONLY the TRANSFERS array below.                        ║
+║  Do NOT touch anything below the closing ];                  ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  FIELDS:                                                     ║
+║  name       → Player name                                    ║
+║  detail     → Context. Wrap key words in <b>bold</b>         ║
+║  source     → Where it came from                             ║
+║  direction  → "in" or "out"                                  ║
+║  group      → "confirmed" / "linked" / "out" / "wants-out"  ║
+║  likelihood → 1–10  (bar fill — 10 = done deal)              ║
+║  signal     → "weak" / "monitor" / "medium" / "strong"      ║
+║               weak    = Twitter noise / trust me bro         ║
+║               monitor = worth watching, soft sourcing        ║
+║               medium  = multiple outlets, credible           ║
+║               strong  = tier 1 journalist, close to done     ║
+║  link       → (optional) "https://..." makes card clickable  ║
+║               leave out entirely if no link needed           ║
+║                                                              ║
+║  TO ADD:    copy any block { ... }, paste before the ];      ║
+║  TO REMOVE: delete the block from { to the closing },        ║
+║  TO TWEAK:  change likelihood number or signal word only     ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+-->
+<script>
+const TRANSFERS = [
+
+  /* ── CONFIRMED ARRIVALS ─────────────────────────────────── */
+  {
+    name:       "Emmanuel Emegha",
+    detail:     "Strasbourg · Summer 2026 · <b>Dutch international striker</b>",
+    source:     "Official",
+    direction:  "in",
+    group:      "confirmed",
+    likelihood: 10,
+    signal:     "strong"
+  },
+  {
+    name:       "Geovany Quenda",
+    detail:     "Sporting CP · Summer 2026 · <b>Stays in Portugal for now</b>",
+    source:     "Official",
+    direction:  "in",
+    group:      "confirmed",
+    likelihood: 10,
+    signal:     "strong"
+  },
+  {
+    name:       "Dastan Satpayev",
+    detail:     "Kairat · Summer 2026 · <b>Kazakhstani wonderkid</b>",
+    source:     "Official",
+    direction:  "in",
+    group:      "confirmed",
+    likelihood: 10,
+    signal:     "strong"
+  },
+
+  /* ── TARGETS BEING CHASED ───────────────────────────────── */
+  {
+    name:       "Fawkin An-Eone",
+    detail:     "Strasbourg · <b>\"Dead certain\"</b> A young defender to block Acheampong.",
+    source:     "Trust me bro",
+    direction:  "in",
+    group:      "linked",
+    likelihood: 8,
+    signal:     "strong"
+  },
+  {
+    name:       "Valentin Barco",
+    detail:     "Strasbourg · <b>\"Very close\"</b> per Guillem Balague.",
+    source:     "Balague",
+    direction:  "in",
+    group:      "linked",
+    likelihood: 7,
+    signal:     "strong"
+  },
+  {
+    name:       "Ian Subiabre",
+    detail:     "<b>Watch this space.</b> River Plate link louder — strategic partnership and first-refusal chatter.",
+    source:     "SI · Chelsea News · chatter",
+    direction:  "in",
+    group:      "linked",
+    likelihood: 5,
+    signal:     "monitor",
+    link:       "https://www.si.com/soccer/chelsea"
+  },
+  {
+    name:       "Karim Coulibaly",
+    detail:     "Werder Bremen defender · <b>Serious talks</b> being pushed in Germany, then echoed in England.",
+    source:     "Bild · Metro · chatter",
+    direction:  "in",
+    group:      "linked",
+    likelihood: 5,
+    signal:     "medium"
+  },
+  {
+    name:       "Said Remadnia",
+    detail:     "Marseille academy winger · <b>Fresh Chelsea whispers.</b> BlueCo can never have too many teenagers.",
+    source:     "Standard · chatter",
+    direction:  "in",
+    group:      "linked",
+    likelihood: 3,
+    signal:     "weak"
+  },
+  {
+    name:       "Robin Roefs",
+    detail:     "Goalkeeper · <b>£50m.</b> Because two unreliable keepers wasn't enough.",
+    source:     "Chatter",
+    direction:  "in",
+    group:      "linked",
+    likelihood: 3,
+    signal:     "weak"
+  },
+  {
+    name:       "Julian Alvarez",
+    detail:     "Atletico Madrid · <b>&gt;€100m</b> · Arsenal also keen. Prefers Barcelona.",
+    source:     "Chatter",
+    direction:  "in",
+    group:      "linked",
+    likelihood: 2,
+    signal:     "weak"
+  },
+
+  /* ── LIKELY DEPARTURES ──────────────────────────────────── */
+  {
+    name:       "Enzo Fernandez",
+    detail:     "\"And then we'll see.\" <b>Real Madrid hot on his heels.</b> Arrived for £106m in 2023.",
+    source:     "Madrid noise · player unrest",
+    direction:  "out",
+    group:      "out",
+    likelihood: 7,
+    signal:     "medium"
+  },
+  {
+    name:       "Alejandro Garnacho",
+    detail:     "131 PL minutes since January. <b>Already being offloaded.</b> One season.",
+    source:     "Minutes collapse · market noise",
+    direction:  "out",
+    group:      "out",
+    likelihood: 7,
+    signal:     "medium"
+  },
+  {
+    name:       "Liam Delap",
+    detail:     "2 goals in 25 apps. <b>Listening to offers.</b> Arrived for £45m last summer.",
+    source:     "Performance · market",
+    direction:  "out",
+    group:      "out",
+    likelihood: 5,
+    signal:     "medium"
+  },
+  {
+    name:       "Nicolas Jackson",
+    detail:     "Juventus, Milan, Inter all keen. <b>Could still be useful.</b>",
+    source:     "Italy chatter",
+    direction:  "out",
+    group:      "out",
+    likelihood: 3,
+    signal:     "weak"
+  },
+
+  /* ── WANTS OUT ──────────────────────────────────────────── */
+  {
+    name:       "Enzo Fernandez",
+    detail:     "\"And then we'll see.\" <b>Restless.</b> Real Madrid noise remains the obvious pull.",
+    source:     "Madrid noise · player unrest",
+    direction:  "out",
+    group:      "wants-out",
+    likelihood: 7,
+    signal:     "medium"
+  }
+
+]; /* ← DO NOT DELETE THIS LINE */
+</script>
+
+<!-- ══════════════════════════════════════════════════════════
+     STOP EDITING HERE. Everything below renders automatically.
+     ══════════════════════════════════════════════════════════ -->
 <style>
-  #blueco-belt .belt-header-meta{display:flex;flex-direction:column;align-items:flex-end;gap:3px;}
-  #blueco-belt .belt-source-line{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(148,163,184,.38);text-align:right;line-height:1.15;max-width:260px;}
-  #blueco-belt .rumour-source-note{margin-top:4px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(148,163,184,.38);}
-  #blueco-belt .belt-footnote{font-size:10px;line-height:1.35;color:rgba(148,163,184,.44);font-style:italic;margin-top:10px;text-align:center;}
-  #blueco-belt .belt-legend{margin:-2px 0 12px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(148,163,184,.34);}
-  #blueco-belt .rumour-row{position:relative;overflow:hidden;}
-  #blueco-belt .rumour-row::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;}
-  #blueco-belt .signal-weak::after{background:linear-gradient(90deg, rgba(148,163,184,.18), rgba(148,163,184,0));}
-  #blueco-belt .signal-monitor::after{background:linear-gradient(90deg, rgba(96,165,250,.26), rgba(96,165,250,0));}
-  #blueco-belt .signal-medium::after{background:linear-gradient(90deg, rgba(250,204,21,.22), rgba(250,204,21,0));}
-  #blueco-belt .signal-strong::after{background:linear-gradient(90deg, rgba(248,113,113,.22), rgba(248,113,113,0));}
-  #blueco-belt .signal-weak{opacity:.8;}
-  #blueco-belt .signal-medium,#blueco-belt .signal-monitor,#blueco-belt .signal-strong{opacity:1;}
-  #blueco-belt .rumour-score{display:flex;align-items:center;justify-content:center;min-width:34px;height:34px;border-radius:10px;font-size:15px;font-weight:800;line-height:1;color:#e5e7eb;border:1px solid rgba(148,163,184,.28);background:rgba(15,23,42,.48);position:relative;z-index:1;}
-  #blueco-belt .signal-weak .rumour-score{color:rgba(226,232,240,.72);border-color:rgba(148,163,184,.18);}
-  #blueco-belt .signal-monitor .rumour-score{color:#93c5fd;border-color:rgba(96,165,250,.38);}
-  #blueco-belt .signal-medium .rumour-score{color:#fde68a;border-color:rgba(250,204,21,.34);}
-  #blueco-belt .signal-strong .rumour-score{color:#fca5a5;border-color:rgba(248,113,113,.34);}
-  #blueco-belt .rumour-heat{display:flex;align-items:center;gap:8px;position:relative;z-index:1;}
+  #blueco-belt { font-family:'DM Sans',sans-serif; background:#080810; padding:4px; }
+  #blueco-belt .belt-header-meta { display:flex; flex-direction:column; align-items:flex-end; gap:3px; }
+  #blueco-belt .belt-source-line { font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(148,163,184,.38); text-align:right; line-height:1.15; max-width:260px; }
+  #blueco-belt .belt-legend { margin:-2px 0 12px; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(148,163,184,.34); }
+  #blueco-belt .belt-summary { display:grid; grid-template-columns:repeat(5,1fr); gap:4px; margin-bottom:12px; }
+  #blueco-belt .belt-filter-btn { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:3px; padding:10px 8px; text-align:center; cursor:pointer; transition:border-color .18s,background .18s,transform .18s; }
+  #blueco-belt .belt-filter-btn:hover { border-color:rgba(96,165,250,.35); background:rgba(96,165,250,.08); transform:translateY(-1px); }
+  #blueco-belt .belt-filter-btn.active { border-color:rgba(96,165,250,.55); background:rgba(96,165,250,.12); }
+  #blueco-belt .rumour-sum-val { font-family:'Bebas Neue',sans-serif; font-size:1.2rem; line-height:1; margin-bottom:2px; }
+  #blueco-belt .rumour-sum-lbl { font-size:.55rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.25); }
+  #blueco-belt .rumour-divider { font-size:.55rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.28); margin:10px 0 5px; }
+  /* Card — whole card is the bar via ::before fill */
+  #blueco-belt .transfer-card {
+    border-radius:3px;
+    overflow:hidden;
+    margin-bottom:4px;
+    position:relative;
+    text-decoration:none;
+    display:block;
+  }
+  /* The ::before is the filled portion — width set inline via style */
+  #blueco-belt .transfer-card::before {
+    content:'';
+    position:absolute;
+    top:0; left:0; bottom:0;
+    width:var(--fill,100%);
+    pointer-events:none;
+    z-index:0;
+    transition:width .3s ease;
+  }
+  /* All content sits above the fill */
+  #blueco-belt .card-body { position:relative; z-index:1; display:flex; align-items:flex-start; gap:10px; padding:10px 12px 10px; }
+  #blueco-belt .card-dir { font-family:'Bebas Neue',sans-serif; font-size:.68rem; letter-spacing:.06em; width:32px; flex-shrink:0; margin-top:2px; }
+  #blueco-belt .card-content { flex:1; min-width:0; }
+  #blueco-belt .card-name { font-size:.82rem; font-weight:600; color:rgba(255,255,255,.88); margin-bottom:2px; }
+  #blueco-belt .card-detail { font-size:.68rem; color:rgba(255,255,255,.4); line-height:1.4; }
+  #blueco-belt .card-detail b { color:rgba(255,255,255,.62); }
+  #blueco-belt .card-source { font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; margin-top:3px; }
+  #blueco-belt .card-right { display:flex; flex-direction:column; align-items:flex-end; gap:4px; flex-shrink:0; }
+  #blueco-belt .card-likelihood { font-family:'Bebas Neue',sans-serif; font-size:.78rem; letter-spacing:.04em; opacity:.6; }
+  #blueco-belt .card-done { display:flex; align-items:center; }
+  #blueco-belt .heat-done { font-family:'Bebas Neue',sans-serif; font-size:.62rem; letter-spacing:.08em; padding:3px 7px; border-radius:2px; background:rgba(74,222,128,.15); color:#4ade80; border:1px solid rgba(74,222,128,.3); }
+  /* Link cards */
+  #blueco-belt a.transfer-card { cursor:pointer; }
+  #blueco-belt a.transfer-card:hover { filter:brightness(1.12); }
+  #blueco-belt .card-link-icon { font-size:.6rem; color:rgba(255,255,255,.25); margin-top:2px; }
+
+  /* IN — green, 4 signal levels. Card bg = unfilled, ::before = filled tint */
+  #blueco-belt .card-in-weak    { background:rgba(74,222,128,.02); border:1px solid rgba(74,222,128,.10); border-left:3px solid rgba(74,222,128,.18); opacity:.65; }
+  #blueco-belt .card-in-monitor { background:rgba(74,222,128,.03); border:1px solid rgba(74,222,128,.18); border-left:3px solid rgba(74,222,128,.32); opacity:.80; }
+  #blueco-belt .card-in-medium  { background:rgba(74,222,128,.04); border:1px solid rgba(74,222,128,.26); border-left:3px solid rgba(74,222,128,.50); opacity:.92; }
+  #blueco-belt .card-in-strong  { background:rgba(74,222,128,.05); border:1px solid rgba(74,222,128,.38); border-left:3px solid rgba(74,222,128,.72); opacity:1; }
+  #blueco-belt .card-in-weak::before    { background:rgba(74,222,128,.06); }
+  #blueco-belt .card-in-monitor::before { background:rgba(74,222,128,.09); }
+  #blueco-belt .card-in-medium::before  { background:rgba(74,222,128,.13); }
+  #blueco-belt .card-in-strong::before  { background:rgba(74,222,128,.18); }
+  #blueco-belt .card-in-weak .card-dir, #blueco-belt .card-in-monitor .card-dir,
+  #blueco-belt .card-in-medium .card-dir, #blueco-belt .card-in-strong .card-dir { color:#4ade80; }
+  #blueco-belt .card-in-weak .card-source, #blueco-belt .card-in-monitor .card-source,
+  #blueco-belt .card-in-medium .card-source, #blueco-belt .card-in-strong .card-source { color:rgba(74,222,128,.4); }
+  #blueco-belt .card-in-weak .card-likelihood, #blueco-belt .card-in-monitor .card-likelihood,
+  #blueco-belt .card-in-medium .card-likelihood, #blueco-belt .card-in-strong .card-likelihood { color:rgba(74,222,128,.7); }
+
+  /* Confirmed — full fill, solid */
+  #blueco-belt .card-confirmed { background:rgba(74,222,128,.1); border:1px solid rgba(74,222,128,.32); border-left:3px solid rgba(74,222,128,.75); }
+  #blueco-belt .card-confirmed::before { display:none; }
+  #blueco-belt .card-confirmed .card-dir { color:#4ade80; }
+  #blueco-belt .card-confirmed .card-source { color:rgba(74,222,128,.45); }
+
+  /* OUT — red, 4 signal levels */
+  #blueco-belt .card-out-weak    { background:rgba(248,113,113,.02); border:1px solid rgba(248,113,113,.10); border-left:3px solid rgba(248,113,113,.18); opacity:.65; }
+  #blueco-belt .card-out-monitor { background:rgba(248,113,113,.03); border:1px solid rgba(248,113,113,.18); border-left:3px solid rgba(248,113,113,.32); opacity:.80; }
+  #blueco-belt .card-out-medium  { background:rgba(248,113,113,.04); border:1px solid rgba(248,113,113,.26); border-left:3px solid rgba(248,113,113,.50); opacity:.92; }
+  #blueco-belt .card-out-strong  { background:rgba(248,113,113,.05); border:1px solid rgba(248,113,113,.38); border-left:3px solid rgba(248,113,113,.72); opacity:1; }
+  #blueco-belt .card-out-weak::before    { background:rgba(248,113,113,.06); }
+  #blueco-belt .card-out-monitor::before { background:rgba(248,113,113,.09); }
+  #blueco-belt .card-out-medium::before  { background:rgba(248,113,113,.13); }
+  #blueco-belt .card-out-strong::before  { background:rgba(248,113,113,.18); }
+  #blueco-belt .card-out-weak .card-dir, #blueco-belt .card-out-monitor .card-dir,
+  #blueco-belt .card-out-medium .card-dir, #blueco-belt .card-out-strong .card-dir { color:#f87171; }
+  #blueco-belt .card-out-weak .card-source, #blueco-belt .card-out-monitor .card-source,
+  #blueco-belt .card-out-medium .card-source, #blueco-belt .card-out-strong .card-source { color:rgba(248,113,113,.4); }
+  #blueco-belt .card-out-weak .card-likelihood, #blueco-belt .card-out-monitor .card-likelihood,
+  #blueco-belt .card-out-medium .card-likelihood, #blueco-belt .card-out-strong .card-likelihood { color:rgba(248,113,113,.7); }
+
+  #blueco-belt .belt-hidden { display:none !important; }
+  #blueco-belt .rumour-quip { font-size:.7rem; color:rgba(255,255,255,.28); line-height:1.55; border-top:1px solid rgba(255,255,255,.06); padding-top:10px; font-style:italic; margin-top:8px; }
+  #blueco-belt .belt-footnote { font-size:10px; line-height:1.35; color:rgba(148,163,184,.44); font-style:italic; margin-top:10px; text-align:center; }
+  #blueco-belt .belt-footer-link { display:inline-flex; margin-top:10px; color:#60a5fa; text-decoration:none; font-size:.66rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+  #blueco-belt .tile-url { display:block; margin-top:9px; font-size:.58rem; color:rgba(255,255,255,.14); letter-spacing:.11em; text-transform:uppercase; }
 </style>
+
 <div class="rumour-tile belt-tile" id="blueco-belt">
   <div class="rumour-header">
     <div class="rumour-header-title-wrap">
-      <div class="rumour-header-title">
-        <span class="repeat-icon">🔁</span>
-        THE BLUECO BELT
-      </div>
+      <div class="rumour-header-title">🔁 THE BLUECO BELT</div>
       <div class="rumour-header-tagline">Buy. Loan. Flip. Profit.</div>
     </div>
     <div class="belt-header-meta">
@@ -35,41 +285,106 @@
   </div>
   <div class="rumour-body">
     <div class="rumour-intro">Chelsea will be <strong>very busy this summer.</strong> Again. As always. Todd Boehly's calculator remains addition-only.</div>
-    <div class="belt-legend">Likelihood 1–5 · Source strength shown by tone</div>
-    <div class="belt-summary">
-      <button type="button" class="belt-filter-btn" data-filter="all"><div class="rumour-sum-val belt-all-val">ALL</div><div class="rumour-sum-lbl">Show all</div></button>
-      <button type="button" class="belt-filter-btn" data-filter="confirmed"><div class="rumour-sum-val" style="color:#4ade80">3</div><div class="rumour-sum-lbl">Confirmed In</div></button>
-      <button type="button" class="belt-filter-btn" data-filter="out"><div class="rumour-sum-val" style="color:#f87171">4</div><div class="rumour-sum-lbl">Likely Out</div></button>
-      <button type="button" class="belt-filter-btn" data-filter="wants-out"><div class="rumour-sum-val" style="color:#f87171">1</div><div class="rumour-sum-lbl">Wants Out</div></button>
-      <button type="button" class="belt-filter-btn" data-filter="linked"><div class="rumour-sum-val" style="color:#fbbf24">7</div><div class="rumour-sum-lbl">Being Linked</div></button>
-    </div>
-    <div class="rumour-list">
-      <div class="rumour-divider" data-group="confirmed">✅ Confirmed arrivals</div>
-      <div class="rumour-row rm-in" data-group="confirmed"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Emmanuel Emegha</div><div class="rumour-detail">Strasbourg · Summer 2026 · <strong>Dutch international striker</strong></div></div><div class="rumour-heat"><div class="heat heat-done">Done</div></div></div>
-      <div class="rumour-row rm-in" data-group="confirmed"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Geovany Quenda</div><div class="rumour-detail">Sporting CP · Summer 2026 · <strong>Stays in Portugal for now</strong></div></div><div class="rumour-heat"><div class="heat heat-done">Done</div></div></div>
-      <div class="rumour-row rm-in" data-group="confirmed"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Dastan Satpayev</div><div class="rumour-detail">Kairat · Summer 2026 · <strong>Kazakhstani wonderkid</strong></div></div><div class="rumour-heat"><div class="heat heat-done">Done</div></div></div>
-
-      <div class="rumour-divider" data-group="linked">🔥 Targets being chased</div>
-      <div class="rumour-row rm-in signal-strong" data-group="linked" data-likelihood="5"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Fawkin An-Eone</div><div class="rumour-detail">Strasbourg · <strong>"Dead certain"</strong> A young defender to block Acheampong.</div><div class="rumour-source-note">trust me bro</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-      <div class="rumour-row rm-in signal-strong" data-group="linked" data-likelihood="4"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Valentin Barco</div><div class="rumour-detail">Strasbourg · <strong>"Very close"</strong> per Guillem Balague.</div><div class="rumour-source-note">Balague</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-      <div class="rumour-row rm-in signal-monitor" data-group="linked" data-likelihood="3"><div class="rumour-dir belt-watch-dir">WATCH</div><div class="rumour-content"><div class="rumour-name">Ian Subiabre</div><div class="rumour-detail"><strong>Watch this space.</strong> River Plate link feels louder with the reported strategic partnership and first-refusal chatter.</div><div class="rumour-source-note">SI · Chelsea News · chatter</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-      <div class="rumour-row rm-in signal-medium" data-group="linked" data-likelihood="3"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Karim Coulibaly</div><div class="rumour-detail">Werder Bremen defender · <strong>Serious talks</strong> being pushed in Germany, then echoed in England.</div><div class="rumour-source-note">Bild · Metro · chatter</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-      <div class="rumour-row rm-in signal-weak" data-group="linked" data-likelihood="2"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Said Remadnia</div><div class="rumour-detail">Marseille academy winger · <strong>Fresh Chelsea whispers from multiple outlets.</strong> BlueCo can never have too many teenagers.</div><div class="rumour-source-note">Standard · chatter</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-      <div class="rumour-row rm-in signal-weak" data-group="linked" data-likelihood="2"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Robin Roefs</div><div class="rumour-detail">Goalkeeper · <strong>£50m.</strong> Because two unreliable keepers wasn't enough.</div><div class="rumour-source-note">chatter</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-      <div class="rumour-row rm-in signal-weak" data-group="linked" data-likelihood="1"><div class="rumour-dir">IN</div><div class="rumour-content"><div class="rumour-name">Julian Alvarez</div><div class="rumour-detail">Atletico Madrid · <strong>&gt;€100m</strong> · Arsenal also keen. Prefers Barcelona.</div><div class="rumour-source-note">chatter</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-
-      <div class="rumour-divider" data-group="out">🚪 Likely departures</div>
-      <div class="rumour-row rm-out signal-medium" data-group="out" data-likelihood="4"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Enzo Fernandez</div><div class="rumour-detail">"And then we’ll see." <strong>Real Madrid hot on his heels.</strong> Arrived for £106m in 2023.</div><div class="rumour-source-note">Madrid noise · player unrest</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-      <div class="rumour-row rm-out signal-medium" data-group="out" data-likelihood="4"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Alejandro Garnacho</div><div class="rumour-detail">131 PL minutes since January. <strong>Already being offloaded.</strong> One season.</div><div class="rumour-source-note">minutes collapse · market noise</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-      <div class="rumour-row rm-out signal-medium" data-group="out" data-likelihood="3"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Liam Delap</div><div class="rumour-detail">2 goals in 25 apps. <strong>Listening to offers.</strong> Arrived for £45m last summer.</div><div class="rumour-source-note">performance · market</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-      <div class="rumour-row rm-out signal-weak" data-group="out" data-likelihood="2"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Nicolas Jackson</div><div class="rumour-detail">Juventus, Milan, Inter all keen. <strong>Could still be useful.</strong></div><div class="rumour-source-note">Italy chatter</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-
-      <div class="rumour-divider" data-group="wants-out">👀 Wants out</div>
-      <div class="rumour-row rm-out signal-medium" data-group="wants-out" data-likelihood="4"><div class="rumour-dir">OUT</div><div class="rumour-content"><div class="rumour-name">Enzo Fernandez</div><div class="rumour-detail">"And then we’ll see." <strong>Restless.</strong> Real Madrid noise remains the obvious pull.</div><div class="rumour-source-note">Madrid noise · player unrest</div></div><div class="rumour-heat"><div class="rumour-score"></div></div></div>
-    </div>
+    <div class="belt-legend">Bar = likelihood 1–10 · Colour intensity = source strength</div>
+    <div class="belt-summary" id="belt-filters"></div>
+    <div class="rumour-list" id="belt-list"></div>
     <div class="belt-footnote">*Enzo Fernández has been seen shaking bum recently.</div>
     <div class="rumour-quip">Chelsea have no players out of contract in 2026 or 2027 — because every signing gets <strong>a seven-year deal.</strong> The contracts outlast the managers. The managers outlast the patience. The cycle continues.</div>
     <a href="ins-outs.html" class="belt-footer-link">View full INS / OUTS →</a>
     <span class="tile-url">hasliamroseniorbeensackedyet.com</span>
   </div>
 </div>
+
+<script>
+(function(){
+  const GROUPS = [
+    { key:'all',       label:'Show all',     color:'rgba(255,255,255,.7)' },
+    { key:'confirmed', label:'Confirmed In', color:'#4ade80' },
+    { key:'out',       label:'Likely Out',   color:'#f87171' },
+    { key:'wants-out', label:'Wants Out',    color:'#f87171' },
+    { key:'linked',    label:'Being Linked', color:'#fbbf24' }
+  ];
+
+  const GROUP_LABELS = {
+    'confirmed':  '✅ Confirmed arrivals',
+    'linked':     '🔥 Targets being chased',
+    'out':        '🚪 Likely departures',
+    'wants-out':  '👀 Wants out'
+  };
+
+  const GROUP_ORDER = ['confirmed','linked','out','wants-out'];
+
+  // Count per group (auto — no need to update manually)
+  const counts = {};
+  TRANSFERS.forEach(t => { counts[t.group] = (counts[t.group]||0)+1; });
+
+  // Build filter buttons
+  const filterWrap = document.getElementById('belt-filters');
+  GROUPS.forEach(g => {
+    const count = g.key==='all' ? TRANSFERS.length : (counts[g.key]||0);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'belt-filter-btn';
+    btn.dataset.filter = g.key;
+    btn.innerHTML = `<div class="rumour-sum-val" style="color:${g.color}">${g.key==='all'?'ALL':count}</div><div class="rumour-sum-lbl">${g.label}</div>`;
+    filterWrap.appendChild(btn);
+  });
+
+  // Build cards
+  const list = document.getElementById('belt-list');
+  GROUP_ORDER.forEach(groupKey => {
+    const items = TRANSFERS.filter(t => t.group===groupKey);
+    if (!items.length) return;
+
+    const divEl = document.createElement('div');
+    divEl.className = 'rumour-divider';
+    divEl.dataset.group = groupKey;
+    divEl.textContent = GROUP_LABELS[groupKey]||groupKey;
+    list.appendChild(divEl);
+
+    items.forEach(t => {
+      const isConfirmed = t.group==='confirmed';
+      const cls = isConfirmed ? 'card-confirmed' : `card-${t.direction}-${t.signal}`;
+      const pct = Math.round((t.likelihood/10)*100);
+      const tag = t.link ? 'a' : 'div';
+      const card = document.createElement(tag);
+      card.className = `transfer-card ${cls}`;
+      card.dataset.group = t.group;
+      if (!isConfirmed) card.style.setProperty('--fill', pct + '%');
+      if (t.link) { card.href = t.link; card.target = '_blank'; card.rel = 'noopener'; }
+      card.innerHTML = `
+        <div class="card-body">
+          <div class="card-dir">${t.direction==='in'?'IN':'OUT'}</div>
+          <div class="card-content">
+            <div class="card-name">${t.name}</div>
+            <div class="card-detail">${t.detail}</div>
+            <div class="card-source">${t.source}</div>
+          </div>
+          <div class="card-right">
+            ${isConfirmed
+              ? '<div class="card-done"><div class="heat-done">Done</div></div>'
+              : `<div class="card-likelihood">${t.likelihood}/10</div>`
+            }
+            ${t.link ? '<div class="card-link-icon">↗</div>' : ''}
+          </div>
+        </div>
+      `;
+      list.appendChild(card);
+    });
+  });
+
+  // Filter
+  function applyFilter(f){
+    document.querySelectorAll('#blueco-belt .belt-filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.filter===f));
+    document.querySelectorAll('#belt-list .transfer-card').forEach(c=>c.classList.toggle('belt-hidden',f!=='all'&&c.dataset.group!==f));
+    document.querySelectorAll('#belt-list .rumour-divider').forEach(d=>{
+      const g=d.dataset.group;
+      const vis=[...document.querySelectorAll(`#belt-list .transfer-card[data-group="${g}"]`)].some(c=>!c.classList.contains('belt-hidden'));
+      d.classList.toggle('belt-hidden',!vis);
+    });
+  }
+
+  document.querySelectorAll('#blueco-belt .belt-filter-btn').forEach(b=>b.addEventListener('click',()=>applyFilter(b.dataset.filter)));
+  applyFilter('all');
+})();
+</script>
