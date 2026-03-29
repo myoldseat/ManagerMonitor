@@ -6277,74 +6277,24 @@ window.addEventListener('DOMContentLoaded', function(){
 </script>
 <script>
     (function(){
-      function initSharedTransferTile(host){
-        const mode = host.dataset.mode || 'preview';
-        const defaultFilter = host.dataset.defaultFilter || (mode === 'full' ? 'all' : 'linked');
-        const previewLimit = Number(host.dataset.previewLimit || 4);
-        const tile = host.querySelector('.rumour-tile');
-        if (!tile) return;
-        const buttons = tile.querySelectorAll('.belt-filter-btn[data-filter]');
-        const rows = Array.from(tile.querySelectorAll('.rumour-row[data-group]'));
-        const dividers = Array.from(tile.querySelectorAll('.rumour-divider[data-group]'));
-        const labelMap = {1:'Very weak',2:'Soft link',3:'Plausible',4:'Strong',5:'Very strong'};
-
-        rows.forEach(row => {
-          const score = Number(row.dataset.likelihood || 0);
-          const box = row.querySelector('.rumour-score');
-          if (box && score) {
-            box.textContent = String(score);
-            box.setAttribute('title', labelMap[score] || `Likelihood ${score}`);
-            box.setAttribute('aria-label', labelMap[score] || `Likelihood ${score}`);
-          }
+      function executeScripts(container) {
+        Array.from(container.querySelectorAll('script')).forEach(oldScript => {
+          const newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+          newScript.textContent = oldScript.textContent;
+          oldScript.parentNode.replaceChild(newScript, oldScript);
         });
-
-        dividers.forEach(div => {
-          const group = div.dataset.group;
-          const groupRows = rows.filter(row => row.dataset.group === group && row.dataset.likelihood);
-          if (groupRows.length) {
-            groupRows.sort((a,b) => Number(b.dataset.likelihood) - Number(a.dataset.likelihood))
-              .forEach(row => div.insertAdjacentElement('afterend', row));
-          }
-        });
-
-        function applyFilter(filter){
-          buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
-          const groupedVisibleCounts = {};
-
-          rows.forEach(row => {
-            const group = row.dataset.group;
-            const matches = filter === 'all' || group === filter;
-            if (!matches) {
-              row.classList.add('belt-hidden');
-              return;
-            }
-            groupedVisibleCounts[group] = groupedVisibleCounts[group] || 0;
-            const limitReached = mode === 'preview' && groupedVisibleCounts[group] >= previewLimit;
-            row.classList.toggle('belt-hidden', limitReached);
-            if (!limitReached) groupedVisibleCounts[group] += 1;
-          });
-
-          dividers.forEach(div => {
-            const group = div.dataset.group;
-            const groupHasVisibleRows = rows.some(row => row.dataset.group === group && !row.classList.contains('belt-hidden'));
-            const shouldShow = filter === 'all' ? groupHasVisibleRows : (group === filter && groupHasVisibleRows);
-            div.classList.toggle('belt-hidden', !shouldShow);
-          });
-        }
-
-        buttons.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
-        applyFilter(defaultFilter);
       }
 
       document.querySelectorAll('.transfer-host[data-source]').forEach(host => {
         fetch(host.dataset.source)
           .then(res => {
-            if (!res.ok) throw new Error('Failed to load shared transfer tile');
+            if (!res.ok) throw new Error('Failed to load transfers.html');
             return res.text();
           })
           .then(html => {
             host.innerHTML = html;
-            initSharedTransferTile(host);
+            executeScripts(host);
           })
           .catch(() => {
             host.innerHTML = '<div class="rumour-tile"><div class="rumour-body"><div class="rumour-intro">Transfer module failed to load. Re-upload transfers.html and redeploy.</div></div></div>';

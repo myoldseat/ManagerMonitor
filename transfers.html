@@ -243,11 +243,11 @@ const TRANSFERS = [
   #blueco-belt .card-in-weak .card-likelihood, #blueco-belt .card-in-monitor .card-likelihood,
   #blueco-belt .card-in-medium .card-likelihood, #blueco-belt .card-in-strong .card-likelihood { color:rgba(74,222,128,.7); }
 
-  /* Confirmed — full fill, solid */
-  #blueco-belt .card-confirmed { background:rgba(74,222,128,.1); border:1px solid rgba(74,222,128,.32); border-left:3px solid rgba(74,222,128,.75); }
-  #blueco-belt .card-confirmed::before { display:none; }
+  /* Confirmed — 100% green fill */
+  #blueco-belt .card-confirmed { background:rgba(74,222,128,.04); border:1px solid rgba(74,222,128,.4); border-left:3px solid rgba(74,222,128,.9); }
+  #blueco-belt .card-confirmed::before { background:rgba(74,222,128,.22); width:100% !important; }
   #blueco-belt .card-confirmed .card-dir { color:#4ade80; }
-  #blueco-belt .card-confirmed .card-source { color:rgba(74,222,128,.45); }
+  #blueco-belt .card-confirmed .card-source { color:rgba(74,222,128,.5); }
 
   /* OUT — red, 4 signal levels */
   #blueco-belt .card-out-weak    { background:rgba(248,113,113,.02); border:1px solid rgba(248,113,113,.10); border-left:3px solid rgba(248,113,113,.18); opacity:.65; }
@@ -279,7 +279,7 @@ const TRANSFERS = [
       <div class="rumour-header-tagline">Buy. Loan. Flip. Profit.</div>
     </div>
     <div class="belt-header-meta">
-      <a href="ins-outs.html" class="belt-header-link">INS / OUTS →</a>
+      <a href="/ins-outs" class="belt-header-link">INS / OUTS →</a>
       <div class="belt-source-line">Bild · Metro · Sky · Standard · ESPN · SI · Romano · Mail</div>
     </div>
   </div>
@@ -290,7 +290,7 @@ const TRANSFERS = [
     <div class="rumour-list" id="belt-list"></div>
     <div class="belt-footnote">*Enzo Fernández has been seen shaking bum recently.</div>
     <div class="rumour-quip">Chelsea have no players out of contract in 2026 or 2027 — because every signing gets <strong>a seven-year deal.</strong> The contracts outlast the managers. The managers outlast the patience. The cycle continues.</div>
-    <a href="ins-outs.html" class="belt-footer-link">View full INS / OUTS →</a>
+    <a href="/ins-outs" class="belt-footer-link">View full INS / OUTS →</a>
     <span class="tile-url">hasliamroseniorbeensackedyet.com</span>
   </div>
 </div>
