@@ -1,31 +1,143 @@
-<!--
-╔══════════════════════════════════════════════════════════════╗
-║  BLUECO BELT — TRANSFER DATA                                 ║
-║  Edit ONLY the TRANSFERS array below.                        ║
-║  Do NOT touch anything below the closing ];                  ║
-╠══════════════════════════════════════════════════════════════╣
-║                                                              ║
-║  FIELDS:                                                     ║
-║  name       → Player name                                    ║
-║  detail     → Context. Wrap key words in <b>bold</b>         ║
-║  source     → Where it came from                             ║
-║  direction  → "in" or "out"                                  ║
-║  group      → "confirmed" / "linked" / "out" / "wants-out"  ║
-║  likelihood → 1–10  (bar fill — 10 = done deal)              ║
-║  signal     → "weak" / "monitor" / "medium" / "strong"      ║
-║               weak    = Twitter noise / trust me bro         ║
-║               monitor = worth watching, soft sourcing        ║
-║               medium  = multiple outlets, credible           ║
-║               strong  = tier 1 journalist, close to done     ║
-║  link       → (optional) "https://..." makes card clickable  ║
-║               leave out entirely if no link needed           ║
-║                                                              ║
-║  TO ADD:    copy any block { ... }, paste before the ];      ║
-║  TO REMOVE: delete the block from { to the closing },        ║
-║  TO TWEAK:  change likelihood number or signal word only     ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
--->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BlueCo Belt – fixed subtle glow</title>
+<style>
+  body { margin:0; background:#080810; }
+  .rumour-tile { max-width: 760px; margin: 20px auto; border-radius: 8px; background:#080810; color:#fff; }
+  .rumour-header { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; padding:14px 16px 10px; border-bottom:1px solid rgba(255,255,255,.06); }
+  .rumour-header-title { font-family:'Arial Black', Impact, sans-serif; font-size:1.5rem; letter-spacing:.04em; }
+  .rumour-header-tagline { font-size:.8rem; color:rgba(255,255,255,.55); margin-top:2px; }
+  .belt-header-link { color:#60a5fa; text-decoration:none; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+  .rumour-body { padding:12px 16px 18px; font-family:Arial, sans-serif; }
+  .rumour-intro { font-size:.84rem; color:rgba(255,255,255,.78); line-height:1.45; margin-bottom:10px; }
+  #blueco-belt { font-family:'DM Sans',Arial,sans-serif; background:#080810; padding:4px; }
+  #blueco-belt .belt-header-meta { display:flex; flex-direction:column; align-items:flex-end; gap:3px; }
+  #blueco-belt .belt-source-line { font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(148,163,184,.38); text-align:right; line-height:1.15; max-width:260px; }
+  #blueco-belt .belt-legend { margin:-2px 0 12px; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(148,163,184,.34); }
+  #blueco-belt .belt-summary { display:grid; grid-template-columns:repeat(5,1fr); gap:4px; margin-bottom:12px; }
+  #blueco-belt .belt-filter-btn { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:3px; padding:10px 8px; text-align:center; cursor:pointer; transition:border-color .18s,background .18s,transform .18s; color:#fff; }
+  #blueco-belt .belt-filter-btn:hover { border-color:rgba(96,165,250,.35); background:rgba(96,165,250,.08); transform:translateY(-1px); }
+  #blueco-belt .belt-filter-btn.active { border-color:rgba(96,165,250,.55); background:rgba(96,165,250,.12); }
+  #blueco-belt .rumour-sum-val { font-family:'Arial Black', Impact, sans-serif; font-size:1.2rem; line-height:1; margin-bottom:2px; }
+  #blueco-belt .rumour-sum-lbl { font-size:.55rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.25); }
+  #blueco-belt .rumour-divider {
+    font-size:.68rem;
+    font-weight:800;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.72);
+    margin:14px 0 6px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    padding-bottom:4px;
+  }
+
+  /* Card — whole card is the bar via ::before fill */
+  #blueco-belt .transfer-card {
+    border-radius:3px;
+    overflow:hidden;
+    margin-bottom:4px;
+    position:relative;
+    text-decoration:none;
+    display:block;
+  }
+  #blueco-belt .transfer-card::before {
+    content:'';
+    position:absolute;
+    top:0; left:0; bottom:0;
+    width:var(--fill,100%);
+    pointer-events:none;
+    z-index:0;
+    transition:width .3s ease;
+  }
+  #blueco-belt .card-body { position:relative; z-index:1; display:flex; align-items:flex-start; gap:10px; padding:10px 12px 10px; }
+  #blueco-belt .card-dir { font-family:'Arial Black', Impact, sans-serif; font-size:.68rem; letter-spacing:.06em; width:32px; flex-shrink:0; margin-top:2px; }
+  #blueco-belt .card-content { flex:1; min-width:0; }
+  #blueco-belt .card-name { font-size:.82rem; font-weight:600; color:rgba(255,255,255,.88); margin-bottom:2px; }
+  #blueco-belt .card-detail { font-size:.68rem; color:rgba(255,255,255,.4); line-height:1.4; }
+  #blueco-belt .card-detail b { color:rgba(255,255,255,.62); }
+  #blueco-belt .card-source { font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; margin-top:3px; }
+  #blueco-belt .card-right { display:flex; flex-direction:column; align-items:flex-end; gap:4px; flex-shrink:0; }
+  #blueco-belt .card-likelihood { font-family:'Arial Black', Impact, sans-serif; font-size:.78rem; letter-spacing:.04em; opacity:.6; }
+  #blueco-belt .card-done { display:flex; align-items:center; }
+  #blueco-belt .heat-done { font-family:'Arial Black', Impact, sans-serif; font-size:.62rem; letter-spacing:.08em; padding:3px 7px; border-radius:2px; background:rgba(74,222,128,.15); color:#4ade80; border:1px solid rgba(74,222,128,.3); }
+  #blueco-belt a.transfer-card { cursor:pointer; }
+  #blueco-belt a.transfer-card:hover { filter:brightness(1.06); }
+  #blueco-belt .card-link-icon { font-size:.6rem; color:rgba(255,255,255,.25); margin-top:2px; }
+
+  /* IN */
+  #blueco-belt .card-in-weak    { background:rgba(74,222,128,.02); border:1px solid rgba(74,222,128,.10); border-left:3px solid rgba(74,222,128,.18); opacity:.65; }
+  #blueco-belt .card-in-monitor { background:rgba(74,222,128,.03); border:1px solid rgba(74,222,128,.18); border-left:3px solid rgba(74,222,128,.32); opacity:.80; }
+  #blueco-belt .card-in-medium  { background:rgba(74,222,128,.04); border:1px solid rgba(74,222,128,.26); border-left:3px solid rgba(74,222,128,.50); opacity:.92; }
+  #blueco-belt .card-in-strong  { background:rgba(74,222,128,.05); border:1px solid rgba(74,222,128,.38); border-left:3px solid rgba(74,222,128,.72); opacity:1; }
+  #blueco-belt .card-in-weak::before    { background:rgba(74,222,128,.06); }
+  #blueco-belt .card-in-monitor::before { background:rgba(74,222,128,.09); }
+  #blueco-belt .card-in-medium::before  { background:rgba(74,222,128,.13); }
+  #blueco-belt .card-in-strong::before  { background:rgba(74,222,128,.18); }
+  #blueco-belt .card-in-weak .card-dir { color:#4ade80; }
+  #blueco-belt .card-in-monitor .card-dir { color:#4ade80; }
+  #blueco-belt .card-in-medium .card-dir { color:#4ade80; }
+  #blueco-belt .card-in-strong .card-dir { color:#4ade80; }
+  #blueco-belt .card-in-weak .card-source, #blueco-belt .card-in-monitor .card-source,
+  #blueco-belt .card-in-medium .card-source, #blueco-belt .card-in-strong .card-source { color:rgba(74,222,128,.4); }
+  #blueco-belt .card-in-weak .card-likelihood, #blueco-belt .card-in-monitor .card-likelihood,
+  #blueco-belt .card-in-medium .card-likelihood, #blueco-belt .card-in-strong .card-likelihood { color:rgba(74,222,128,.75); }
+
+  /* Confirmed */
+  #blueco-belt .card-confirmed { background:rgba(74,222,128,.04); border:1px solid rgba(74,222,128,.4); border-left:3px solid rgba(74,222,128,.9); }
+  #blueco-belt .card-confirmed::before { background:rgba(74,222,128,.22); width:100% !important; }
+  #blueco-belt .card-confirmed .card-dir { color:#4ade80; }
+  #blueco-belt .card-confirmed .card-source { color:rgba(74,222,128,.5); }
+
+  /* OUT — darker weak, brighter strong */
+  #blueco-belt .card-out-weak    { background:rgba(127,29,29,.03); border:1px solid rgba(127,29,29,.15); border-left:3px solid rgba(127,29,29,.25); opacity:.65; }
+  #blueco-belt .card-out-monitor { background:rgba(153,27,27,.05); border:1px solid rgba(153,27,27,.25); border-left:3px solid rgba(153,27,27,.45); opacity:.80; }
+  #blueco-belt .card-out-medium  { background:rgba(220,38,38,.08); border:1px solid rgba(220,38,38,.45); border-left:3px solid rgba(220,38,38,.65); opacity:.95; }
+  #blueco-belt .card-out-strong  { background:rgba(239,68,68,.14); border:1px solid rgba(239,68,68,.70); border-left:3px solid rgba(239,68,68,1); opacity:1; }
+  #blueco-belt .card-out-weak::before    { background:rgba(127,29,29,.08); }
+  #blueco-belt .card-out-monitor::before { background:rgba(153,27,27,.12); }
+  #blueco-belt .card-out-medium::before  { background:rgba(220,38,38,.18); }
+  #blueco-belt .card-out-strong::before  { background:rgba(239,68,68,.24); }
+  #blueco-belt .card-out-weak .card-dir { color:#7f1d1d; }
+  #blueco-belt .card-out-monitor .card-dir { color:#b91c1c; }
+  #blueco-belt .card-out-medium .card-dir { color:#dc2626; }
+  #blueco-belt .card-out-strong .card-dir { color:#ef4444; }
+  #blueco-belt .card-out-weak .card-source, #blueco-belt .card-out-monitor .card-source,
+  #blueco-belt .card-out-medium .card-source, #blueco-belt .card-out-strong .card-source { color:rgba(248,113,113,.56); }
+  #blueco-belt .card-out-weak .card-likelihood, #blueco-belt .card-out-monitor .card-likelihood,
+  #blueco-belt .card-out-medium .card-likelihood, #blueco-belt .card-out-strong .card-likelihood { color:rgba(248,113,113,.82); }
+
+  /* subtle glow only for 8+ */
+  #blueco-belt .transfer-card.hot { box-shadow: 0 0 0 1px rgba(255,255,255,.03); }
+  #blueco-belt .card-in-strong.hot {
+    box-shadow: 0 0 0 1px rgba(74,222,128,.18), 0 0 8px rgba(74,222,128,.10);
+  }
+  #blueco-belt .card-out-strong.hot {
+    box-shadow: 0 0 0 1px rgba(239,68,68,.22), 0 0 8px rgba(239,68,68,.12);
+  }
+  #blueco-belt .card-in-strong.hot::before {
+    background: linear-gradient(90deg, rgba(74,222,128,.24) 0%, rgba(74,222,128,.20) 100%);
+  }
+  #blueco-belt .card-out-strong.hot::before {
+    background: linear-gradient(90deg, rgba(239,68,68,.30) 0%, rgba(239,68,68,.24) 100%);
+  }
+
+  #blueco-belt .belt-hidden { display:none !important; }
+  #blueco-belt .rumour-quip { font-size:.7rem; color:rgba(255,255,255,.28); line-height:1.55; border-top:1px solid rgba(255,255,255,.06); padding-top:10px; font-style:italic; margin-top:8px; }
+  #blueco-belt .belt-footnote { font-size:10px; line-height:1.35; color:rgba(148,163,184,.44); font-style:italic; margin-top:10px; text-align:center; }
+  #blueco-belt .belt-footer-link { display:inline-flex; margin-top:10px; color:#60a5fa; text-decoration:none; font-size:.66rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+  #blueco-belt .tile-url { display:block; margin-top:9px; font-size:.58rem; color:rgba(255,255,255,.14); letter-spacing:.11em; text-transform:uppercase; }
+
+  @media (max-width: 640px) {
+    .rumour-tile { margin: 0; border-radius: 0; }
+    #blueco-belt .belt-summary { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
 <script>
 const TRANSFERS = [
 
@@ -57,17 +169,17 @@ const TRANSFERS = [
     likelihood: 10,
     signal:     "strong"
   },
-
-  /* ── TARGETS BEING CHASED ───────────────────────────────── */
   {
-    name:       "Fawkin An-Eone",
-    detail:     "Strasbourg · <b>\"Dead certain\"</b> A young defender to block Acheampong.",
-    source:     "Trust me bro",
+    name:       "Denner Evangelista",
+    detail:     "Corinthians · Summer 2026 · <b>Brazilian left-back</b>",
+    source:     "Official",
     direction:  "in",
-    group:      "linked",
-    likelihood: 8,
+    group:      "confirmed",
+    likelihood: 10,
     signal:     "strong"
   },
+
+  /* ── TARGETS BEING CHASED ───────────────────────────────── */
   {
     name:       "Valentin Barco",
     detail:     "Strasbourg · <b>\"Very close\"</b> per Guillem Balague.",
@@ -85,7 +197,7 @@ const TRANSFERS = [
     group:      "linked",
     likelihood: 5,
     signal:     "monitor",
-    link:       "https://www.fotmob.com/players/1582679/ian-subiabre"
+    link:       "https://www.si.com/soccer/chelsea"
   },
   {
     name:       "Karim Coulibaly",
@@ -95,6 +207,24 @@ const TRANSFERS = [
     group:      "linked",
     likelihood: 5,
     signal:     "medium"
+  },
+  {
+    name:       "Said El Mala",
+    detail:     "FC Köln winger · <b>Confirmed Chelsea interest.</b> Development profile.",
+    source:     "Romano · multiple",
+    direction:  "in",
+    group:      "linked",
+    likelihood: 6,
+    signal:     "medium"
+  },
+  {
+    name:       "Strahinja Pavlovic",
+    detail:     "CB · <b>Scouted / opportunistic.</b> Physical profile fits rotation.",
+    source:     "FootballTransfers · aggregate",
+    direction:  "in",
+    group:      "linked",
+    likelihood: 4,
+    signal:     "monitor"
   },
   {
     name:       "Said Remadnia",
@@ -123,16 +253,25 @@ const TRANSFERS = [
     likelihood: 2,
     signal:     "weak"
   },
+  {
+    name:       "Nathan Ake",
+    detail:     "Manchester City · <b>Return rumours.</b> Based more on location than football logic.",
+    source:     "Tabloid",
+    direction:  "in",
+    group:      "linked",
+    likelihood: 2,
+    signal:     "weak"
+  },
 
   /* ── LIKELY DEPARTURES ──────────────────────────────────── */
   {
     name:       "Enzo Fernandez",
-    detail:     "\"And then we'll see.\" <b>Real Madrid hot on his heels.</b> Arrived for £106m in 2023.",
-    source:     "Madrid noise · player unrest",
+    detail:     "\"And then we'll see.\" <b>Real Madrid pressure building.</b> <b>£100m+ only.</b>",
+    source:     "Jacobs · tier 1 · multiple",
     direction:  "out",
     group:      "out",
-    likelihood: 7,
-    signal:     "medium"
+    likelihood: 9,
+    signal:     "strong"
   },
   {
     name:       "Alejandro Garnacho",
@@ -161,116 +300,47 @@ const TRANSFERS = [
     likelihood: 3,
     signal:     "weak"
   },
+  {
+    name:       "Trevoh Chalobah",
+    detail:     "Sellable asset · <b>Pure profit candidate.</b> Market interest expected.",
+    source:     "Club model · secondary links",
+    direction:  "out",
+    group:      "out",
+    likelihood: 5,
+    signal:     "monitor"
+  },
+  {
+    name:       "Benoit Badiashile",
+    detail:     "Depth CB · <b>Could be sacrificed.</b> Value + squad balancing.",
+    source:     "Model logic · low noise",
+    direction:  "out",
+    group:      "out",
+    likelihood: 4,
+    signal:     "monitor"
+  },
+  {
+    name:       "Cole Palmer",
+    detail:     "<b>Media noise only.</b> No credible exit pathway.",
+    source:     "Pundits · tabloids",
+    direction:  "out",
+    group:      "out",
+    likelihood: 2,
+    signal:     "weak"
+  },
 
   /* ── WANTS OUT ──────────────────────────────────────────── */
   {
     name:       "Enzo Fernandez",
-    detail:     "\"And then we'll see.\" <b>Restless.</b> Real Madrid noise remains the obvious pull.",
-    source:     "Madrid noise · player unrest",
+    detail:     "\"And then we'll see.\" <b>Open to Madrid.</b> Door clearly open. <b>£100m+ only.</b>",
+    source:     "Jacobs · tier 1 · multiple",
     direction:  "out",
     group:      "wants-out",
-    likelihood: 7,
-    signal:     "medium"
+    likelihood: 9,
+    signal:     "strong"
   }
 
-]; /* ← DO NOT DELETE THIS LINE */
+];
 </script>
-
-<!-- ══════════════════════════════════════════════════════════
-     STOP EDITING HERE. Everything below renders automatically.
-     ══════════════════════════════════════════════════════════ -->
-<style>
-  #blueco-belt { font-family:'DM Sans',sans-serif; background:#080810; padding:4px; }
-  #blueco-belt .belt-header-meta { display:flex; flex-direction:column; align-items:flex-end; gap:3px; }
-  #blueco-belt .belt-source-line { font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(148,163,184,.38); text-align:right; line-height:1.15; max-width:260px; }
-  #blueco-belt .belt-legend { margin:-2px 0 12px; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(148,163,184,.34); }
-  #blueco-belt .belt-summary { display:grid; grid-template-columns:repeat(5,1fr); gap:4px; margin-bottom:12px; }
-  #blueco-belt .belt-filter-btn { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:3px; padding:10px 8px; text-align:center; cursor:pointer; transition:border-color .18s,background .18s,transform .18s; }
-  #blueco-belt .belt-filter-btn:hover { border-color:rgba(96,165,250,.35); background:rgba(96,165,250,.08); transform:translateY(-1px); }
-  #blueco-belt .belt-filter-btn.active { border-color:rgba(96,165,250,.55); background:rgba(96,165,250,.12); }
-  #blueco-belt .rumour-sum-val { font-family:'Bebas Neue',sans-serif; font-size:1.2rem; line-height:1; margin-bottom:2px; }
-  #blueco-belt .rumour-sum-lbl { font-size:.55rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.25); }
-  #blueco-belt .rumour-divider { font-size:.55rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.28); margin:10px 0 5px; }
-  /* Card — whole card is the bar via ::before fill */
-  #blueco-belt .transfer-card {
-    border-radius:3px;
-    overflow:hidden;
-    margin-bottom:4px;
-    position:relative;
-    text-decoration:none;
-    display:block;
-  }
-  /* The ::before is the filled portion — width set inline via style */
-  #blueco-belt .transfer-card::before {
-    content:'';
-    position:absolute;
-    top:0; left:0; bottom:0;
-    width:var(--fill,100%);
-    pointer-events:none;
-    z-index:0;
-    transition:width .3s ease;
-  }
-  /* All content sits above the fill */
-  #blueco-belt .card-body { position:relative; z-index:1; display:flex; align-items:flex-start; gap:10px; padding:10px 12px 10px; }
-  #blueco-belt .card-dir { font-family:'Bebas Neue',sans-serif; font-size:.68rem; letter-spacing:.06em; width:32px; flex-shrink:0; margin-top:2px; }
-  #blueco-belt .card-content { flex:1; min-width:0; }
-  #blueco-belt .card-name { font-size:.82rem; font-weight:600; color:rgba(255,255,255,.88); margin-bottom:2px; }
-  #blueco-belt .card-detail { font-size:.68rem; color:rgba(255,255,255,.4); line-height:1.4; }
-  #blueco-belt .card-detail b { color:rgba(255,255,255,.62); }
-  #blueco-belt .card-source { font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; margin-top:3px; }
-  #blueco-belt .card-right { display:flex; flex-direction:column; align-items:flex-end; gap:4px; flex-shrink:0; }
-  #blueco-belt .card-likelihood { font-family:'Bebas Neue',sans-serif; font-size:.78rem; letter-spacing:.04em; opacity:.6; }
-  #blueco-belt .card-done { display:flex; align-items:center; }
-  #blueco-belt .heat-done { font-family:'Bebas Neue',sans-serif; font-size:.62rem; letter-spacing:.08em; padding:3px 7px; border-radius:2px; background:rgba(74,222,128,.15); color:#4ade80; border:1px solid rgba(74,222,128,.3); }
-  /* Link cards */
-  #blueco-belt a.transfer-card { cursor:pointer; }
-  #blueco-belt a.transfer-card:hover { filter:brightness(1.12); }
-  #blueco-belt .card-link-icon { font-size:.6rem; color:rgba(255,255,255,.25); margin-top:2px; }
-
-  /* IN — green, 4 signal levels. Card bg = unfilled, ::before = filled tint */
-  #blueco-belt .card-in-weak    { background:rgba(74,222,128,.02); border:1px solid rgba(74,222,128,.10); border-left:3px solid rgba(74,222,128,.18); opacity:.65; }
-  #blueco-belt .card-in-monitor { background:rgba(74,222,128,.03); border:1px solid rgba(74,222,128,.18); border-left:3px solid rgba(74,222,128,.32); opacity:.80; }
-  #blueco-belt .card-in-medium  { background:rgba(74,222,128,.04); border:1px solid rgba(74,222,128,.26); border-left:3px solid rgba(74,222,128,.50); opacity:.92; }
-  #blueco-belt .card-in-strong  { background:rgba(74,222,128,.05); border:1px solid rgba(74,222,128,.38); border-left:3px solid rgba(74,222,128,.72); opacity:1; }
-  #blueco-belt .card-in-weak::before    { background:rgba(74,222,128,.06); }
-  #blueco-belt .card-in-monitor::before { background:rgba(74,222,128,.09); }
-  #blueco-belt .card-in-medium::before  { background:rgba(74,222,128,.13); }
-  #blueco-belt .card-in-strong::before  { background:rgba(74,222,128,.18); }
-  #blueco-belt .card-in-weak .card-dir, #blueco-belt .card-in-monitor .card-dir,
-  #blueco-belt .card-in-medium .card-dir, #blueco-belt .card-in-strong .card-dir { color:#4ade80; }
-  #blueco-belt .card-in-weak .card-source, #blueco-belt .card-in-monitor .card-source,
-  #blueco-belt .card-in-medium .card-source, #blueco-belt .card-in-strong .card-source { color:rgba(74,222,128,.4); }
-  #blueco-belt .card-in-weak .card-likelihood, #blueco-belt .card-in-monitor .card-likelihood,
-  #blueco-belt .card-in-medium .card-likelihood, #blueco-belt .card-in-strong .card-likelihood { color:rgba(74,222,128,.7); }
-
-  /* Confirmed — 100% green fill */
-  #blueco-belt .card-confirmed { background:rgba(74,222,128,.04); border:1px solid rgba(74,222,128,.4); border-left:3px solid rgba(74,222,128,.9); }
-  #blueco-belt .card-confirmed::before { background:rgba(74,222,128,.22); width:100% !important; }
-  #blueco-belt .card-confirmed .card-dir { color:#4ade80; }
-  #blueco-belt .card-confirmed .card-source { color:rgba(74,222,128,.5); }
-
-  /* OUT — red, 4 signal levels */
-  #blueco-belt .card-out-weak    { background:rgba(248,113,113,.02); border:1px solid rgba(248,113,113,.10); border-left:3px solid rgba(248,113,113,.18); opacity:.65; }
-  #blueco-belt .card-out-monitor { background:rgba(248,113,113,.03); border:1px solid rgba(248,113,113,.18); border-left:3px solid rgba(248,113,113,.32); opacity:.80; }
-  #blueco-belt .card-out-medium  { background:rgba(248,113,113,.04); border:1px solid rgba(248,113,113,.26); border-left:3px solid rgba(248,113,113,.50); opacity:.92; }
-  #blueco-belt .card-out-strong  { background:rgba(248,113,113,.05); border:1px solid rgba(248,113,113,.38); border-left:3px solid rgba(248,113,113,.72); opacity:1; }
-  #blueco-belt .card-out-weak::before    { background:rgba(248,113,113,.06); }
-  #blueco-belt .card-out-monitor::before { background:rgba(248,113,113,.09); }
-  #blueco-belt .card-out-medium::before  { background:rgba(248,113,113,.13); }
-  #blueco-belt .card-out-strong::before  { background:rgba(248,113,113,.18); }
-  #blueco-belt .card-out-weak .card-dir, #blueco-belt .card-out-monitor .card-dir,
-  #blueco-belt .card-out-medium .card-dir, #blueco-belt .card-out-strong .card-dir { color:#f87171; }
-  #blueco-belt .card-out-weak .card-source, #blueco-belt .card-out-monitor .card-source,
-  #blueco-belt .card-out-medium .card-source, #blueco-belt .card-out-strong .card-source { color:rgba(248,113,113,.4); }
-  #blueco-belt .card-out-weak .card-likelihood, #blueco-belt .card-out-monitor .card-likelihood,
-  #blueco-belt .card-out-medium .card-likelihood, #blueco-belt .card-out-strong .card-likelihood { color:rgba(248,113,113,.7); }
-
-  #blueco-belt .belt-hidden { display:none !important; }
-  #blueco-belt .rumour-quip { font-size:.7rem; color:rgba(255,255,255,.28); line-height:1.55; border-top:1px solid rgba(255,255,255,.06); padding-top:10px; font-style:italic; margin-top:8px; }
-  #blueco-belt .belt-footnote { font-size:10px; line-height:1.35; color:rgba(148,163,184,.44); font-style:italic; margin-top:10px; text-align:center; }
-  #blueco-belt .belt-footer-link { display:inline-flex; margin-top:10px; color:#60a5fa; text-decoration:none; font-size:.66rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
-  #blueco-belt .tile-url { display:block; margin-top:9px; font-size:.58rem; color:rgba(255,255,255,.14); letter-spacing:.11em; text-transform:uppercase; }
-</style>
 
 <div class="rumour-tile belt-tile" id="blueco-belt">
   <div class="rumour-header">
@@ -306,19 +376,17 @@ const TRANSFERS = [
   ];
 
   const GROUP_LABELS = {
-    'confirmed':  '✅ Confirmed arrivals',
-    'linked':     '🔥 Targets being chased',
-    'out':        '🚪 Likely departures',
-    'wants-out':  '👀 Wants out'
+    'confirmed':  'Confirmed arrivals',
+    'linked':     'Targets being chased',
+    'out':        'Likely departures',
+    'wants-out':  'Wants out'
   };
 
   const GROUP_ORDER = ['confirmed','linked','out','wants-out'];
 
-  // Count per group (auto — no need to update manually)
   const counts = {};
   TRANSFERS.forEach(t => { counts[t.group] = (counts[t.group]||0)+1; });
 
-  // Build filter buttons
   const filterWrap = document.getElementById('belt-filters');
   GROUPS.forEach(g => {
     const count = g.key==='all' ? TRANSFERS.length : (counts[g.key]||0);
@@ -330,10 +398,9 @@ const TRANSFERS = [
     filterWrap.appendChild(btn);
   });
 
-  // Build cards
   const list = document.getElementById('belt-list');
   GROUP_ORDER.forEach(groupKey => {
-    const items = TRANSFERS.filter(t => t.group===groupKey);
+    const items = TRANSFERS.filter(t => t.group===groupKey).sort((a,b)=>b.likelihood-a.likelihood);
     if (!items.length) return;
 
     const divEl = document.createElement('div');
@@ -348,7 +415,8 @@ const TRANSFERS = [
       const pct = Math.round((t.likelihood/10)*100);
       const tag = t.link ? 'a' : 'div';
       const card = document.createElement(tag);
-      card.className = `transfer-card ${cls}`;
+      const isHot = t.likelihood >= 8;
+      card.className = `transfer-card ${cls} ${isHot ? 'hot' : ''}`;
       card.dataset.group = t.group;
       if (!isConfirmed) card.style.setProperty('--fill', pct + '%');
       if (t.link) { card.href = t.link; card.target = '_blank'; card.rel = 'noopener'; }
@@ -373,7 +441,6 @@ const TRANSFERS = [
     });
   });
 
-  // Filter
   function applyFilter(f){
     document.querySelectorAll('#blueco-belt .belt-filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.filter===f));
     document.querySelectorAll('#belt-list .transfer-card').forEach(c=>c.classList.toggle('belt-hidden',f!=='all'&&c.dataset.group!==f));
@@ -388,3 +455,6 @@ const TRANSFERS = [
   applyFilter('all');
 })();
 </script>
+
+</body>
+</html>
