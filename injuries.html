@@ -16,7 +16,10 @@
   <meta name="twitter:image" content="https://hasliamroseniorbeensackedyet.com/og.jpg">  <meta property="og:title" content="Chelsea FC Injury Tracker 2025–26">
   <meta property="og:description" content="Every Chelsea injury this season. Days lost. Games missed. The full damage report.">
   <meta property="og:url" content="https://hasliamroseniorbeensackedyet.com/injuries">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23080810'/%3E%3Ctext x='50' y='72' font-family='Arial Black,sans-serif' font-size='62' font-weight='900' fill='%23cc1100' text-anchor='middle' letter-spacing='-2'%3ENO%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
@@ -42,12 +45,14 @@
     .back-link:hover{color:rgba(255,255,255,.55);}
 
     /* ── Header ── */
-    .page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,9vw,4.2rem);line-height:.9;letter-spacing:.03em;color:var(--white);margin-bottom:4px;align-self:flex-start;}
+    .page-hero{max-width:480px;width:100%;text-align:center;margin-bottom:20px;padding:22px 0 18px;border-bottom:1px solid rgba(255,255,255,.07);position:relative;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(204,17,0,.06) 0%,transparent 70%);pointer-events:none;}
+    .page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.2rem,14vw,6rem);line-height:.88;letter-spacing:.04em;color:var(--white);margin-bottom:4px;}
     .page-title span{color:var(--red);-webkit-text-stroke:1px rgba(255,100,100,.4);}
-    .page-sub{font-size:.68rem;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;align-self:flex-start;}
+    .page-sub{font-size:.68rem;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;margin-top:6px;}
 
     /* ── Summary bar ── */
-    .summary-bar{max-width:480px;width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px;}
+    .summary-bar{max-width:480px;width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px;margin-top:4px;}
     .sum-cell{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:10px 8px;text-align:center;cursor:pointer;transition:all .18s;}
     .sum-cell:hover,.sum-cell.active{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.05);}
     .sum-val{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;line-height:1;}
@@ -104,7 +109,13 @@
     .inj-days-lbl{font-size:.52rem;color:rgba(255,255,255,.22);letter-spacing:.08em;text-transform:uppercase;}
     .inj-games{font-size:.62rem;color:rgba(255,255,255,.28);margin-top:2px;}
 
-    /* ── Section divider ── */
+    /* ── Live counter ── */
+    .live-counter{max-width:480px;width:100%;margin-bottom:12px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.15);border-radius:4px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+    .live-counter-label{font-size:.56rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(248,113,113,.6);flex:1;}
+    .live-counter-val{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;color:#f87171;letter-spacing:.02em;}
+    .live-counter-sub{font-size:.54rem;color:rgba(255,255,255,.22);margin-top:1px;text-align:right;}
+    .live-dot{width:7px;height:7px;border-radius:50%;background:#f87171;animation:pulse 1.4s ease-in-out infinite;flex-shrink:0;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
     .section-div{max-width:480px;width:100%;display:flex;align-items:center;gap:10px;margin:14px 0 8px;}
     .section-div-label{font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2);white-space:nowrap;}
     .section-div-line{flex:1;height:1px;background:rgba(255,255,255,.06);}
@@ -152,8 +163,22 @@
 
 <div class="page-wrap">
   <a href="/" class="back-link">← Back to main site</a>
-  <div class="page-title">DAMAGE<br><span>REPORT</span></div>
-  <div class="page-sub">Chelsea FC · 2025–26 · Club World Cup → Mar 2026</div>
+  <div class="page-hero">
+    <div class="page-title">DAMAGE<br><span>REPORT</span></div>
+    <div class="page-sub">Chelsea FC · 2025–26 · Club World Cup → Mar 2026</div>
+  </div>
+
+  <!-- LIVE COUNTER -->
+  <div class="live-counter">
+    <div class="live-dot"></div>
+    <div style="flex:1;">
+      <div class="live-counter-label">Live — total player-days lost this season</div>
+      <div class="live-counter-sub" id="liveNote">Calculating…</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="live-counter-val" id="liveDays">—</div>
+    </div>
+  </div>
 
   <!-- SUMMARY BAR -->
   <div class="summary-bar" style="grid-template-columns:repeat(5,1fr);">
@@ -233,7 +258,7 @@
 
   <div class="page-footer">
     Sources: Sports Mole · 3 Added Minutes · Yahoo Sports · The Athletic · Chelsea FC · SI.com<br>
-    Days out are approximate. Games missed include all competitions. Updated 22 March 2026.<br>
+    Days out are approximate. Games missed include all competitions. Updated 30 March 2026.<br>
     Unofficial fan project · Not affiliated with Chelsea FC ·
     <a href="/">← hasliamroseniorbeensackedyet.com</a> ·
     <a href="/deals">Deals</a> ·
@@ -271,8 +296,8 @@ const injuries = [
     detail: "Sustained in preseason training at Cobham, Aug 2025, after Club World Cup. Surgery successful. Won't return this season.",
     start: "Aug 2025",
     returnDate: "Late Apr 2026",
-    days: 240,
-    games: 45,
+    days: 248,
+    games: 46,
     severity: "current",
     current: true,
     repeat: false,
@@ -286,8 +311,8 @@ const injuries = [
     detail: "Failed doping test Dec 2024. Provisionally suspended. Expected to miss the entire 2025–26 season.",
     start: "Dec 2024",
     returnDate: "Jun 2026",
-    days: 210,
-    games: 40,
+    days: 218,
+    games: 41,
     severity: "current",
     current: true,
     repeat: false,
@@ -301,8 +326,8 @@ const injuries = [
     detail: "Felt hamstring at end of Newcastle defeat (14 Mar). Ruled out of England March internationals. Late April return possible.",
     start: "14 Mar 2026",
     returnDate: "Late Apr 2026",
-    days: 40,
-    games: 8,
+    days: 48,
+    games: 9,
     severity: "current",
     current: true,
     repeat: false,
@@ -316,8 +341,8 @@ const injuries = [
     detail: "Stretchered off vs PSG (17 Mar). Rosenior 'really worried' but scans showed not as serious as feared. Minor op. ~6 weeks out.",
     start: "17 Mar 2026",
     returnDate: "Late Apr 2026",
-    days: 35,
-    games: 7,
+    days: 43,
+    games: 8,
     severity: "current",
     current: true,
     repeat: false,
@@ -331,8 +356,8 @@ const injuries = [
     detail: "Sustained groin issue after PSG R16 first leg. Underwent minor surgery. Missed Newcastle and PSG home leg. Out ~3 weeks.",
     start: "13 Mar 2026",
     returnDate: "Apr 2026",
-    days: 28,
-    games: 5,
+    days: 36,
+    games: 6,
     severity: "current",
     current: true,
     repeat: false,
@@ -346,8 +371,8 @@ const injuries = [
     detail: "Forced off 25 mins into West Ham win (31 Jan). Confirmed muscle tear. Rosenior called it 'long-term'. Had a setback, missed further games.",
     start: "31 Jan 2026",
     returnDate: "Apr 2026",
-    days: 50,
-    games: 10,
+    days: 58,
+    games: 11,
     severity: "current",
     current: true,
     repeat: false,
@@ -358,12 +383,12 @@ const injuries = [
     name: "Dário Essugo",
     pos: "M",
     injury: "Thigh (surgery) + muscle setback",
-    detail: "Thigh injury on Portugal U21 duty Sep 2025 — surgery. Returned to training Nov, then slipped in training Jan.",
+    detail: "Thigh injury on Portugal U21 duty Sep 2025 — surgery. Returned to training Nov, then slipped in training Jan. Finally made his Chelsea debut late Mar 2026.",
     start: "Sep 2025",
-    returnDate: "Apr 2026",
+    returnDate: "Mar 2026",
     days: 195,
     games: 37,
-    severity: "recovered",
+    severity: "critical",
     current: false,
     repeat: true,
     cwc: false,
@@ -572,12 +597,12 @@ const injuries = [
 const ironMen = [
   { name: "Moisés Caicedo",     pos: "M", note: "Ever-present engine. Overused if anything." },
   { name: "Malo Gusto",         pos: "D", note: "Consistent at RB. Illness scare vs PSG but never injured." },
-  { name: "Tosin Adarabioyo",   pos: "D", note: "Reliable cover (body). No significant absence." },
+  { name: "Tosin Adarabioyo",   pos: "D", note: "Reliable cover. No significant absence." },
   { name: "Jorrel Hato",        pos: "D", note: "Stepped up admirably when others fell. Stayed fit." },
   { name: "Mamadou Sarr",       pos: "D", note: "Recalled from Strasbourg Feb. No injuries since joining." },
   { name: "Josh Acheampong",    pos: "D", note: "Academy graduate. Emerged as cover, never missed a beat." },
   { name: "João Pedro",         pos: "A", note: "Managed minor groin Nov — never missed significant time." },
-  { name: "Alejandro Garnacho", pos: "A", note: "No injuries since joining." },
+  { name: "Alejandro Garnacho", pos: "A", note: "January arrival. No injuries since joining." },
   { name: "Marc Guiu",          pos: "A", note: "Recalled from Sunderland. Fit and available throughout." },
   { name: "Andrey Santos",      pos: "M", note: "Brief knock Jan aside — consistently available." },
 ];
@@ -690,10 +715,6 @@ function render(filter){
   document.getElementById("sumTotal").textContent = injuries.length;
   document.getElementById("sumCurrent").textContent = currentCount;
   document.getElementById("sumIron").textContent = ironMen.length;
-  document.getElementById("sumDays").textContent = allDays;
-  document.getElementById("sumGames").textContent = allGames;
-  document.getElementById("tDays").textContent = allDays;
-  document.getElementById("tGames").textContent = allGames;
   document.getElementById("tPlayers").textContent = uniquePlayers;
 
   // Build rows
@@ -752,16 +773,18 @@ function render(filter){
 }
 
 // ── Controls ─────────────────────────────────────────────────────────────────
+function renderAndSync(filter) { render(filter); updateLiveCounter(); }
+
 document.getElementById("sortBtn").addEventListener("click", () => {
   sortMode = sortMode === "days" ? "games" : sortMode === "games" ? "alpha" : "days";
-  render(currentFilter);
+  renderAndSync(currentFilter);
 });
 
 const filterToggle = document.getElementById("filterToggle");
 const filterMenu = document.getElementById("filterMenu");
 filterToggle.addEventListener("click", () => filterMenu.classList.toggle("open"));
 filterMenu.querySelectorAll("button").forEach(btn => {
-  btn.addEventListener("click", () => { render(btn.dataset.filter); filterMenu.classList.remove("open"); });
+  btn.addEventListener("click", () => { renderAndSync(btn.dataset.filter); filterMenu.classList.remove("open"); });
 });
 document.addEventListener("click", e => {
   if(!filterToggle.contains(e.target) && !filterMenu.contains(e.target)) filterMenu.classList.remove("open");
@@ -771,11 +794,91 @@ document.querySelectorAll(".sum-cell").forEach(cell => {
   cell.addEventListener("click", () => {
     document.querySelectorAll(".sum-cell").forEach(c => c.classList.remove("active"));
     cell.classList.add("active");
-    if(cell.dataset.filter) render(cell.dataset.filter);
+    if(cell.dataset.filter) renderAndSync(cell.dataset.filter);
   });
 });
 
+// ── Live days calculator ─────────────────────────────────────────────────────
+// Parse a start string like "14 Mar 2026", "Mar 2026", "Aug 2025", "Jun 2025"
+function parseStartDate(s) {
+  const months = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+  const parts = s.trim().split(" ");
+  if(parts.length === 3) {
+    // "14 Mar 2026"
+    return new Date(parseInt(parts[2]), months[parts[1]], parseInt(parts[0]));
+  } else if(parts.length === 2) {
+    // "Mar 2026" — use 1st of the month
+    return new Date(parseInt(parts[1]), months[parts[0]], 1);
+  }
+  return null;
+}
+
+function calcLiveTotals() {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  let totalDays = 0;
+  let totalGames = 0;
+  let currentNames = [];
+
+  injuries.forEach(inj => {
+    if(inj.current) {
+      const start = parseStartDate(inj.start);
+      if(start) {
+        const actualDays = Math.round((today - start) / 86400000);
+        totalDays += actualDays;
+        // Static games covers the congested early period accurately.
+        // For any days beyond the static estimate, add 1 game per 7 days (PL only now).
+        const extraDays = Math.max(0, actualDays - inj.days);
+        totalGames += inj.games + Math.round(extraDays / 7);
+        if(!currentNames.includes(inj.name)) currentNames.push(inj.name);
+      } else {
+        totalDays += inj.days;
+        totalGames += inj.games;
+      }
+    } else {
+      totalDays += inj.days;
+      totalGames += inj.games;
+    }
+  });
+
+  return { totalDays, totalGames, currentCount: currentNames.length };
+}
+
+function animateCounter(el, target, duration) {
+  const start = performance.now();
+  const from = 0;
+  function step(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.round(from + (target - from) * ease).toLocaleString();
+    if(t < 1) requestAnimationFrame(step);
+    else el.textContent = target.toLocaleString();
+  }
+  requestAnimationFrame(step);
+}
+
+function updateLiveCounter() {
+  const { totalDays, totalGames, currentCount } = calcLiveTotals();
+  const el = document.getElementById("liveDays");
+  const note = document.getElementById("liveNote");
+  animateCounter(el, totalDays, 1200);
+  note.textContent = `${currentCount} players currently out · as of today`;
+  document.getElementById("sumDays").textContent = totalDays;
+  document.getElementById("tDays").textContent = totalDays;
+  document.getElementById("sumGames").textContent = "~" + totalGames;
+  document.getElementById("tGames").textContent = "~" + totalGames;
+}
+
 render("all");
+updateLiveCounter();
+
+// Re-run at midnight so the day ticks over without a page reload
+(function scheduleMidnightRefresh() {
+  const now = new Date();
+  const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+  const msUntilMidnight = midnight - now;
+  setTimeout(() => { updateLiveCounter(); scheduleMidnightRefresh(); }, msUntilMidnight);
+})();
 </script>
 </body>
 </html>
