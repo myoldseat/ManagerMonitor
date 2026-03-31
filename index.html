@@ -1580,17 +1580,43 @@ html {
 <div class="pressure-label">
 <div class="pressure-title">⚡ Sack Pressure Meter</div>
 <div style="display:flex;align-items:center;gap:8px;">
-<div class="pressure-val">BEYOND CRITICAL</div>
+<div class="pressure-val" id="mgr-status">BEYOND CRITICAL</div>
 <button aria-label="Share" class="tile-share-btn" onclick="tileShare(this)">
 <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" x2="12" y1="2" y2="15"></line></svg>
 <span class="tile-share-label">Share</span>
 </button>
 </div>
 </div>
-<div class="bar-track"><div class="bar-fill" id="pressureBar"></div></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+  <span style="font-family:'Bebas Neue',sans-serif;font-size:2.4rem;line-height:1;letter-spacing:0.02em;" id="mgr-score">0</span>
+  <span style="font-family:'Bebas Neue',sans-serif;font-size:0.9rem;color:rgba(255,255,255,0.25);"> / 100</span>
+</div>
+<div class="bar-track"><div style="height:100%;border-radius:4px;background:linear-gradient(90deg,#22c55e 0%,#f59e0b 50%,#ef4444 100%);width:0;transition:width 2.5s ease-out;" id="pressureBar"></div></div>
+<div style="display:flex;justify-content:space-between;margin:6px 0 10px;">
+  <div style="font-size:0.56rem;color:rgba(255,255,255,0.28);text-align:center;">Fine<br>0–30</div>
+  <div style="font-size:0.56rem;color:rgba(255,255,255,0.28);text-align:center;">Elevated<br>31–55</div>
+  <div style="font-size:0.56rem;color:rgba(255,255,255,0.28);text-align:center;">Critical<br>56–75</div>
+  <div style="font-size:0.56rem;color:#f87171;text-align:center;">Beyond Critical<br>76–99</div>
+  <div style="font-size:0.56rem;color:#c0392b;font-weight:500;text-align:center;">Sacked<br>100</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px;">
+  <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:3px;padding:6px 8px;text-align:center;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;line-height:1;color:#ef4444;" id="mgr-triggered">0</div>
+    <div style="font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-top:2px;">Triggered</div>
+  </div>
+  <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:3px;padding:6px 8px;text-align:center;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;line-height:1;color:rgba(255,255,255,0.4);" id="mgr-pending">0</div>
+    <div style="font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-top:2px;">Pending</div>
+  </div>
+</div>
 <div class="pressure-note">
 <strong> No goals scored in 3 games </strong> <strong>12 goals conceded </strong> in the last 4.  Average conceded <strong>three goals a game</strong> <strong>2-12 goals</strong> for and against <strong>this is not Chels</strong>
 </div>
+<button onclick="(function(){var l=document.getElementById('mgr-list'),a=document.getElementById('mgr-arrow');var o=l.style.display==='flex';l.style.display=o?'none':'flex';a.style.transform=o?'':'rotate(180deg)';document.getElementById('mgr-btn-label').textContent=o?'View pressure breakdown':'Hide pressure breakdown';})()" style="width:100%;background:transparent;border:none;border-top:1px solid rgba(255,255,255,0.06);margin-top:10px;padding:8px 0 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:rgba(255,255,255,0.25);font-family:'Bebas Neue',sans-serif;font-size:0.62rem;letter-spacing:0.18em;" id="mgr-expand-btn">
+  <span id="mgr-btn-label">View pressure breakdown</span>
+  <span id="mgr-arrow" style="transition:transform 0.2s;font-size:0.6rem;">▼</span>
+</button>
+<div id="mgr-list" style="display:none;flex-direction:column;gap:3px;margin-top:8px;"></div>
 <div class="experience-footer">
 <div class="experience-label">Choose your experience</div>
 <div class="experience-buttons">
@@ -1602,6 +1628,85 @@ html {
 </div>
 <span class="tile-url">hasliamroseniorbeensackedyet.com</span>
 </div>
+<script>
+(function(){
+  var MM=[
+    {tier:'Minor',   label:'Team news leaked from within the camp',                     points:5,  triggered:true,  date:'Confirmed by Rosenior, Mar 2026'},
+    {tier:'Minor',   label:'Players publicly contradicting manager on tactics',          points:5,  triggered:true,  date:'Fernández — "outplayed tactically" · ESPN Argentina'},
+    {tier:'Medium',  label:'4+ game winless run',                                        points:10, triggered:true,  date:'Mar 2026 — W0 D1 L3'},
+    {tier:'Medium',  label:'UCL elimination',                                            points:10, triggered:true,  date:'Knocked out by PSG in last 16'},
+    {tier:'Medium',  label:'Players openly questioning board and identity of club',      points:10, triggered:true,  date:'Cucurella + Fernández · Mar 2026'},
+    {tier:'Major',   label:'Underwhelming appointment — Championship CV for a CL club', points:20, triggered:true,  date:'Rosenior appointed Jan 2026'},
+    {tier:'Major',   label:'8-2 aggregate defeat — historically worst European result', points:20, triggered:true,  date:'PSG 8 Chelsea 2 · Mar 2026'},
+    {tier:'Major',   label:'Dressing room unrest — multiple players speaking out',       points:15, triggered:true,  date:'Cucurella · Fernández · Mar 2026'},
+    {tier:'Medium',  label:'Lost all three games to a direct rival in one season',       points:10, triggered:false, date:null},
+    {tier:'Release', label:'3+ consecutive wins',                                        points:5,  triggered:false, date:null, release:true},
+    {tier:'Release', label:'Clean sheet run — 3+ games',                                 points:5,  triggered:false, date:null, release:true},
+    {tier:'Release', label:'Cup final reached',                                          points:5,  triggered:false, date:null, release:true},
+    {tier:'Release', label:'Top 5 secured',                                              points:10, triggered:false, date:null, release:true},
+    {tier:'Release', label:'Full pre-season given',                                      points:10, triggered:false, date:null, release:true},
+    {tier:'Release', label:'Board gives public backing — on record',                     points:5,  triggered:false, date:null, release:true},
+  ];
+  var score=MM.filter(function(m){return m.triggered&&!m.release;}).reduce(function(s,m){return s+m.points;},0);
+  var released=MM.filter(function(m){return m.triggered&&m.release;}).reduce(function(s,m){return s+m.points;},0);
+  score=Math.max(0,score-released);
+  var pct=Math.min(score,100);
+
+  function getStatus(s){
+    if(s<=30) return 'FINE';
+    if(s<=55) return 'ELEVATED';
+    if(s<=75) return 'CRITICAL';
+    if(s<=99) return 'BEYOND CRITICAL';
+    return 'SACKED';
+  }
+  document.getElementById('mgr-status').textContent=getStatus(score);
+  document.getElementById('mgr-triggered').textContent=MM.filter(function(m){return m.triggered&&!m.release;}).length;
+  document.getElementById('mgr-pending').textContent=MM.filter(function(m){return !m.triggered&&!m.release;}).length;
+
+  var bar=document.getElementById('pressureBar');
+  bar.style.width='0';
+  setTimeout(function(){
+    bar.style.width=pct+'%';
+    var el=document.getElementById('mgr-score');
+    var cur=0;
+    var step=Math.ceil(score/40);
+    var iv=setInterval(function(){
+      cur=Math.min(cur+step,score);
+      el.textContent=cur;
+      el.style.color=cur<=30?'#4ade80':cur<=55?'#f59e0b':cur<=75?'#fb923c':'#ef4444';
+      if(cur>=score)clearInterval(iv);
+    },40);
+  },400);
+
+  var tiers=['Minor','Medium','Major','Release'];
+  var pts={Minor:'+5',Medium:'+10',Major:'+20'};
+  var html='';
+  tiers.forEach(function(tier){
+    var items=MM.filter(function(m){return m.tier===tier;});
+    if(!items.length) return;
+    var isRelease=tier==='Release';
+    var tierColor=isRelease?'#4ade80':'rgba(255,255,255,0.2)';
+    var tierLabel=isRelease?'Pressure Release — reduces meter':tier+' — '+(tier==='Minor'?'+5':tier==='Medium'?'+10':'+20')+' each';
+    html+='<div style="font-family:\'Bebas Neue\',sans-serif;font-size:0.58rem;letter-spacing:0.18em;color:'+tierColor+';margin-top:0.5rem;margin-bottom:0.25rem;display:flex;align-items:center;gap:0.4rem;">'+tierLabel+' <span style="flex:1;height:1px;background:rgba(255,255,255,0.06);display:block;"></span></div>';
+    items.forEach(function(m){
+      var bg=isRelease?(m.triggered?'rgba(74,222,128,0.08)':'rgba(255,255,255,0.015)'):(m.triggered?'rgba(248,113,113,0.06)':'rgba(255,255,255,0.015)');
+      var bc=isRelease?(m.triggered?'rgba(74,222,128,0.2)':'rgba(255,255,255,0.04)'):(m.triggered?'rgba(248,113,113,0.18)':'rgba(255,255,255,0.04)');
+      var dot=isRelease?(m.triggered?'#4ade80':'rgba(255,255,255,0.12)'):(m.triggered?'#ef4444':'rgba(255,255,255,0.12)');
+      var lc=m.triggered?'rgba(220,228,245,0.9)':'rgba(107,122,150,0.7)';
+      var dc=isRelease?(m.triggered?'#4ade80':'rgba(107,122,150,0.5)'):(m.triggered?'#f87171':'rgba(107,122,150,0.5)');
+      var meta=m.triggered?(m.date||'Triggered'):'Pending';
+      var badge=isRelease?(m.triggered?'−'+m.points:'−'+m.points):(m.triggered?'+'+m.points:'+'+m.points);
+      var bc2=isRelease?(m.triggered?'color:#4ade80;background:rgba(74,222,128,0.12);':'color:rgba(107,122,150,0.6);background:rgba(255,255,255,0.03);'):(m.triggered?'color:#f87171;background:rgba(248,113,113,0.12);':'color:rgba(107,122,150,0.6);background:rgba(255,255,255,0.03);');
+      html+='<div style="display:flex;gap:0.55rem;align-items:flex-start;padding:5px 7px;border-radius:2px;border:1px solid '+bc+';background:'+bg+';">';
+      html+='<div style="width:5px;height:5px;border-radius:50%;background:'+dot+';flex-shrink:0;margin-top:5px;"></div>';
+      html+='<div style="flex:1;"><div style="font-size:0.72rem;color:'+lc+';line-height:1.3;">'+m.label+'</div><div style="font-size:0.62rem;color:'+dc+';margin-top:1px;">'+meta+'</div></div>';
+      html+='<div style="font-family:\'Bebas Neue\',sans-serif;font-size:0.68rem;padding:1px 4px;border-radius:2px;margin-top:1px;flex-shrink:0;'+bc2+'">'+badge+'</div>';
+      html+='</div>';
+    });
+  });
+  document.getElementById('mgr-list').innerHTML=html;
+})();
+</script>
 <!-- SHORTCUT BAR -->
 <div class="shortcut-bar">
 <a class="shortcut-tile" data-message="Another one enters the system." href="ins-outs.html">
@@ -1776,6 +1881,102 @@ html {
     </div>
 <a class="kofi-btn-small" href="https://ko-fi.com/myoldseat" id="kofi-strip-btn" target="_blank">☕ Buy me a coffee</a>
 </div>
+<!-- PROTEST COUNTDOWN TILE -->
+<div style="max-width:480px;width:100%;margin-top:14px;background:#1a2235;border:1px solid rgba(192,57,43,0.5);border-radius:4px;overflow:hidden;">
+  <div style="background:#a01020;padding:0.9rem 1.25rem 0.8rem;border-bottom:3px solid #C9A84C;display:flex;justify-content:space-between;align-items:center;gap:0.75rem;">
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.65rem;letter-spacing:0.22em;color:rgba(255,255,255,0.75);margin-bottom:0.15rem;">Fan Action · April 2026</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.05em;color:#fff;line-height:1;">BlueCo Out — The March</div>
+    </div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:0.6rem;letter-spacing:0.15em;padding:0.2rem 0.55rem;border-radius:2px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:5px;">
+      <div style="width:6px;height:6px;border-radius:50%;background:#fff;animation:blink 1.4s ease-in-out infinite;"></div>
+      Confirmed
+    </div>
+  </div>
+  <div style="padding:1.1rem 1.25rem 1rem;border-bottom:1px solid rgba(192,57,43,0.25);text-align:center;background:rgba(160,16,32,0.12);">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:0.65rem;letter-spacing:0.22em;color:#6b7a96;margin-bottom:0.75rem;">Time Until The Protest</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:0.65rem;">
+      <div style="background:rgba(160,16,32,0.2);border:1px solid rgba(192,57,43,0.35);border-radius:3px;padding:8px 4px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;color:#ef4444;letter-spacing:-0.01em;" id="p-days">00</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:0.55rem;letter-spacing:0.18em;color:#6b7a96;margin-top:2px;">Days</div>
+      </div>
+      <div style="background:rgba(160,16,32,0.2);border:1px solid rgba(192,57,43,0.35);border-radius:3px;padding:8px 4px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;color:#ef4444;letter-spacing:-0.01em;" id="p-hours">00</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:0.55rem;letter-spacing:0.18em;color:#6b7a96;margin-top:2px;">Hours</div>
+      </div>
+      <div style="background:rgba(160,16,32,0.2);border:1px solid rgba(192,57,43,0.35);border-radius:3px;padding:8px 4px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;color:#ef4444;letter-spacing:-0.01em;" id="p-mins">00</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:0.55rem;letter-spacing:0.18em;color:#6b7a96;margin-top:2px;">Mins</div>
+      </div>
+      <div style="background:rgba(160,16,32,0.2);border:1px solid rgba(192,57,43,0.35);border-radius:3px;padding:8px 4px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;color:#ef4444;letter-spacing:-0.01em;" id="p-secs">00</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:0.55rem;letter-spacing:0.18em;color:#6b7a96;margin-top:2px;">Secs</div>
+      </div>
+    </div>
+    <div style="font-size:0.75rem;color:rgba(208,216,232,0.6);font-weight:300;"><strong style="color:#e8edf5;font-weight:500;">Saturday 18 April 2026</strong> · Before Chelsea vs Man Utd</div>
+  </div>
+  <div style="display:flex;flex-direction:column;">
+    <div style="display:flex;gap:0.75rem;align-items:flex-start;padding:0.7rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.58rem;letter-spacing:0.1em;flex-shrink:0;padding:2px 0;border-radius:2px;margin-top:1px;white-space:nowrap;width:52px;text-align:center;color:#C9A84C;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);">Who</div>
+      <div style="flex:1;">
+        <div style="font-size:0.78rem;font-weight:500;color:#e8edf5;line-height:1.3;margin-bottom:0.2rem;">Chelsea &amp; Strasbourg supporters — united</div>
+        <div style="font-size:0.7rem;font-weight:300;color:rgba(208,216,232,0.6);line-height:1.45;">Ultra Boys 90 · Kop Ciel et Blanc · Fédération des Supporters du RCS · Pariser — flying from France to London.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:0.75rem;align-items:flex-start;padding:0.7rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.58rem;letter-spacing:0.1em;flex-shrink:0;padding:2px 0;border-radius:2px;margin-top:1px;white-space:nowrap;width:52px;text-align:center;color:#60a5fa;background:rgba(96,165,250,0.08);border:1px solid rgba(96,165,250,0.18);">Where</div>
+      <div style="flex:1;">
+        <div style="font-size:0.78rem;font-weight:500;color:#e8edf5;line-height:1.3;margin-bottom:0.2rem;">March to Stamford Bridge</div>
+        <div style="font-size:0.7rem;font-weight:300;color:rgba(208,216,232,0.6);line-height:1.45;">Protest march towards the ground ahead of kick-off. All supporters welcome.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:0.75rem;align-items:flex-start;padding:0.7rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.58rem;letter-spacing:0.1em;flex-shrink:0;padding:2px 0;border-radius:2px;margin-top:1px;white-space:nowrap;width:52px;text-align:center;color:#f87171;background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.2);">Message</div>
+      <div style="flex:1;">
+        <div style="font-size:0.78rem;font-weight:500;color:#e8edf5;line-height:1.3;margin-bottom:0.2rem;">"The continued erosion of values at both clubs"</div>
+        <div style="font-size:0.7rem;font-weight:300;color:rgba(208,216,232,0.6);line-height:1.45;">Multi-club ownership, identity loss, mismanagement. One unified message: BlueCo Out.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:0.75rem;align-items:flex-start;padding:0.7rem 1.25rem;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.58rem;letter-spacing:0.1em;flex-shrink:0;padding:2px 0;border-radius:2px;margin-top:1px;white-space:nowrap;width:52px;text-align:center;color:#4ade80;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.18);">By</div>
+      <div style="flex:1;">
+        <div style="font-size:0.78rem;font-weight:500;color:#e8edf5;line-height:1.3;margin-bottom:0.2rem;">@NotAProjectCFC</div>
+        <div style="font-size:0.7rem;font-weight:300;color:rgba(208,216,232,0.6);line-height:1.45;">Follow and support the organisers directly on X. Full details at <a href="https://notaprojectcfc.com/" target="_blank" style="color:#4ade80;text-decoration:none;">notaprojectcfc.com</a></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:0.65rem 1.25rem;border-top:1px solid rgba(201,168,76,0.2);display:flex;justify-content:space-between;align-items:center;">
+    <div style="font-size:0.68rem;color:#6b7a96;font-style:italic;font-weight:300;">We support <span style="color:#C9A84C;font-style:normal;">freedom of speech.</span> We count the days.</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:0.6rem;letter-spacing:0.12em;color:#C9A84C;opacity:0.65;">@TheManagerMeter</div>
+  </div>
+</div>
+<script>
+(function(){
+  var protest=new Date('2026-04-18T12:00:00');
+  function pad(n){return n<10?'0'+n:String(n);}
+  function tick(){
+    var now=new Date();
+    var diff=protest-now;
+    if(diff<=0){
+      document.getElementById('p-days').textContent='00';
+      document.getElementById('p-hours').textContent='00';
+      document.getElementById('p-mins').textContent='00';
+      document.getElementById('p-secs').textContent='00';
+      return;
+    }
+    var d=Math.floor(diff/(1000*60*60*24));
+    var h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    var m=Math.floor((diff%(1000*60*60))/(1000*60));
+    var s=Math.floor((diff%(1000*60))/1000);
+    document.getElementById('p-days').textContent=pad(d);
+    document.getElementById('p-hours').textContent=pad(h);
+    document.getElementById('p-mins').textContent=pad(m);
+    document.getElementById('p-secs').textContent=pad(s);
+  }
+  tick();
+  setInterval(tick,1000);
+})();
+</script>
 <!-- PL TABLE TILE -->
 <div style="max-width:480px;width:100%;margin-top:14px;background:rgba(255,255,255,.025);border:1px solid rgba(3,70,148,.34);border-radius:4px;overflow:hidden;">
 <div style="background:rgba(3,70,148,.12);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(3,70,148,.22);">
