@@ -214,13 +214,28 @@ h1 em{color:var(--gold);font-style:normal;}
 </div>
 <div class="shortcut-bar">
 <button onclick="scrollToSection('stories')">Stories</button>
-<button onclick="scrollToSection('efficiency')">Value Efficiency</button>
 <button onclick="scrollToSection('squad')">Full Squad Audit</button>
+<button onclick="scrollToSection('efficiency')">Value Efficiency</button>
 </div>
 
 <!-- STYLE CARDS -->
 <div class="sec-label" id="stories">The stories</div>
 <div class="style-cards" id="styleCards"></div>
+<!-- PLAYER LIST -->
+<div class="sec-label" id="squad" style="margin-top:18px;margin-bottom:10px;">Full Squad Audit</div>
+<div class="filters">
+<button class="fbtn on" onclick="filterList('ALL',this)">All</button>
+<div class="fbtn-group">
+<button class="fbtn" onclick="filterList('GK',this)">GK</button>
+<button class="fbtn" onclick="filterList('DEF',this)">DEF</button>
+<button class="fbtn" onclick="filterList('MID',this)">MID</button>
+<button class="fbtn" onclick="filterList('FWD',this)">FWD</button>
+</div>
+<button class="fbtn" onclick="filterList('OUT',this)">🚑 Out</button>
+<button class="fbtn hit-btn" onclick="filterList('HIT',this)">✦ Hits</button>
+<button class="fbtn miss-btn" onclick="filterList('MISS',this)">✗ Misses</button>
+</div>
+<div class="player-list" id="playerList"></div>
 <!-- VALUE EFFICIENCY TILE -->
 <div class="sec-label" id="efficiency" style="margin-top:18px;">Value efficiency</div>
 <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:4px;overflow:hidden;margin-bottom:18px;">
@@ -249,21 +264,6 @@ h1 em{color:var(--gold);font-style:normal;}
 </div>
 </div>
 </div>
-<!-- PLAYER LIST -->
-<div class="sec-label" id="squad" style="margin-bottom:10px;">Full Squad Audit</div>
-<div class="filters">
-<button class="fbtn on" onclick="filterList('ALL',this)">All</button>
-<div class="fbtn-group">
-<button class="fbtn" onclick="filterList('GK',this)">GK</button>
-<button class="fbtn" onclick="filterList('DEF',this)">DEF</button>
-<button class="fbtn" onclick="filterList('MID',this)">MID</button>
-<button class="fbtn" onclick="filterList('FWD',this)">FWD</button>
-</div>
-<button class="fbtn" onclick="filterList('OUT',this)">🚑 Out</button>
-<button class="fbtn hit-btn" onclick="filterList('HIT',this)">✦ Hits</button>
-<button class="fbtn miss-btn" onclick="filterList('MISS',this)">✗ Misses</button>
-</div>
-<div class="player-list" id="playerList"></div>
 <div class="source">
     Market values: Transfermarkt (Mar 2026) · Wages: Capology (estimates)<br/>
     Book value = fee ÷ contract length × remaining years · Academy/free signings = £0 book value<br/>
