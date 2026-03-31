@@ -1644,6 +1644,130 @@ html {
 </a>
 </div>
 </div>
+<!-- BLUECO PRESSURE METER -->
+<div style="max-width:480px;width:100%;margin-top:14px;background:rgba(3,70,148,0.08);border:1px solid rgba(3,70,148,0.4);border-radius:4px;overflow:hidden;">
+  <div style="background:rgba(3,70,148,0.15);padding:1rem 1.25rem 0.85rem;border-bottom:1px solid rgba(3,70,148,0.4);display:flex;justify-content:space-between;align-items:flex-start;">
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.68rem;letter-spacing:0.22em;color:#C9A84C;opacity:0.7;margin-bottom:0.2rem;">Ownership Watch</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.05em;color:#fff;line-height:1;">BlueCo Pressure Meter</div>
+    </div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:0.6rem;letter-spacing:0.15em;padding:0.2rem 0.55rem;border-radius:2px;background:rgba(3,70,148,0.3);color:#60a5fa;border:1px solid rgba(96,165,250,0.25);white-space:nowrap;margin-top:2px;">Boehly · Clearlake</div>
+  </div>
+  <div style="padding:1.1rem 1.25rem;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.3rem;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.65rem;letter-spacing:0.2em;color:rgba(96,165,250,0.6);">Pressure Index</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.08em;color:#f87171;" id="bc-status">IRREVERSIBLE</div>
+    </div>
+    <div style="margin-bottom:0.4rem;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:2.8rem;line-height:1;letter-spacing:0.02em;" id="bc-score">0</span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;color:rgba(96,165,250,0.35);"> / 100</span>
+    </div>
+    <div style="height:8px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;margin-bottom:0.5rem;">
+      <div id="bc-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#034694 0%,#2563eb 40%,#f59e0b 70%,#ef4444 100%);width:0;transition:width 2.5s ease-out;"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:0.9rem;">
+      <div style="font-size:0.58rem;color:#6b7a96;text-align:center;">Concerned<br>0–30</div>
+      <div style="font-size:0.58rem;color:#6b7a96;text-align:center;">Alarmed<br>31–55</div>
+      <div style="font-size:0.58rem;color:#6b7a96;text-align:center;">Critical<br>56–75</div>
+      <div style="font-size:0.58rem;color:#f87171;text-align:center;">Irreversible<br>76–99</div>
+      <div style="font-size:0.58rem;color:#c0392b;font-weight:500;text-align:center;">Gone<br>100</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:0.9rem;">
+      <div style="background:rgba(3,70,148,0.12);border:1px solid rgba(3,70,148,0.25);border-radius:3px;padding:6px 8px;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;line-height:1;color:#60a5fa;" id="bc-triggered">0</div>
+        <div style="font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:#6b7a96;margin-top:2px;">Triggered</div>
+      </div>
+      <div style="background:rgba(3,70,148,0.12);border:1px solid rgba(3,70,148,0.25);border-radius:3px;padding:6px 8px;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;line-height:1;color:#60a5fa;" id="bc-pending">0</div>
+        <div style="font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:#6b7a96;margin-top:2px;">Pending</div>
+      </div>
+    </div>
+  </div>
+  <button onclick="(function(){var l=document.getElementById('bc-list'),b=document.getElementById('bc-btn'),a=document.getElementById('bc-arrow');var o=l.style.display==='flex';l.style.display=o?'none':'flex';b.querySelector('span').textContent=o?'View milestone breakdown':'Hide milestone breakdown';a.style.transform=o?'':'rotate(180deg)';})()" style="width:100%;background:transparent;border:none;border-top:1px solid rgba(3,70,148,0.4);padding:0.65rem 1.25rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:rgba(96,165,250,0.6);font-family:'Bebas Neue',sans-serif;font-size:0.65rem;letter-spacing:0.18em;" id="bc-btn">
+    <span>View milestone breakdown</span>
+    <span id="bc-arrow" style="transition:transform 0.2s;">▼</span>
+  </button>
+  <div id="bc-list" style="display:none;flex-direction:column;gap:3px;padding:0.75rem 1.25rem 1rem;border-top:1px solid rgba(3,70,148,0.4);"></div>
+  <div style="padding:0.6rem 1.25rem;border-top:1px solid rgba(3,70,148,0.4);font-size:0.65rem;color:#6b7a96;font-style:italic;font-weight:300;">
+    Meter rises as milestones trigger, falls when BlueCo act. Resets to <span style="color:#60a5fa;font-style:normal;">zero</span> only if they sell.
+  </div>
+</div>
+<script>
+(function(){
+  var BM=[
+    {tier:'Minor',  label:'Manager publicly undermined before sacking',       points:5,  triggered:true,  date:'Maresca, Jan 2026'},
+    {tier:'Minor',  label:'Manager briefed against after sacking',            points:5,  triggered:true,  date:'Tuchel, Potter, Maresca'},
+    {tier:'Minor',  label:'Footballing needs ignored — no senior GK or CB signed when squad clearly required one', points:5, triggered:true, date:'Multiple windows'},
+    {tier:'Minor',  label:'Stadium announced with no planning permission submitted', points:5, triggered:true, date:'Stamford Bridge — ongoing'},
+    {tier:'Medium', label:'Manager sacked mid-season',                        points:10, triggered:true,  date:'Tuchel Sep 2022 · Potter Apr 2023 · Maresca Jan 2026'},
+    {tier:'Medium', label:'Player sold to direct rival',                      points:10, triggered:true,  date:'Mount → Man Utd 2023 · Havertz → Arsenal 2023 · Madueke → Arsenal 2025'},
+    {tier:'Medium', label:'UEFA / PSR financial breach',                      points:10, triggered:true,  date:'UEFA settlement, 2024'},
+    {tier:'Medium', label:'Academy senior leadership cleared out',            points:10, triggered:true,  date:'Bath, Fraser, Grace — Jul 2024'},
+    {tier:'Medium', label:'Fan voice systematically ignored',                 points:10, triggered:true,  date:'Online · board meeting ignored · protest planned 18 Apr 2026'},
+    {tier:'Medium', label:'Naming rights sold on stadium or training ground', points:10, triggered:false, date:null},
+    {tier:'Major',  label:'Senior players publicly criticise board decisions',points:20, triggered:true,  date:'Cucurella + Fernández · The Athletic / TUDN · Mar 2026'},
+    {tier:'Major',  label:'Stadium timeline publicly delayed or revised',     points:20, triggered:false, date:null},
+    {tier:'Major',  label:'Stadium project abandoned or naming rights sold',  points:20, triggered:false, date:null},
+    {tier:'Major',  label:'Star player forced out against their will',        points:20, triggered:false, date:null},
+    {tier:'Major',  label:'Points deduction',                                 points:20, triggered:false, date:null},
+    {tier:'Major',  label:'Exit process confirmed — refinancing or formal sale', points:20, triggered:false, date:null},
+    {tier:'Terminal',label:'Club sold — meter resets to zero',                points:40, triggered:false, date:null, reset:true},
+    {tier:'Release', label:'Long-term contract signed with key player',       points:5,  triggered:true,  date:'Reece James — Mar 2026', release:true},
+    {tier:'Release', label:'Experienced senior signing — age 27+ in position of need', points:10, triggered:false, date:null, release:true},
+    {tier:'Release', label:'UCL football secured next season',                points:5,  triggered:false, date:null, release:true},
+    {tier:'Release', label:'Stadium planning permission formally submitted',  points:10, triggered:false, date:null, release:true},
+    {tier:'Release', label:'Qualified football person appointed to senior role', points:5, triggered:false, date:null, release:true},
+  ];
+  var score=BM.filter(function(m){return m.triggered&&!m.reset&&!m.release;}).reduce(function(s,m){return s+m.points;},0);
+  var released=BM.filter(function(m){return m.triggered&&m.release;}).reduce(function(s,m){return s+m.points;},0);
+  score=Math.max(0,score-released);
+  var triggered=BM.filter(function(m){return m.triggered&&!m.release;}).length;
+  var pending=BM.filter(function(m){return !m.triggered&&!m.release;}).length;
+  document.getElementById('bc-triggered').textContent=triggered;
+  document.getElementById('bc-pending').textContent=pending;
+  var pct=Math.min(score,100);
+  setTimeout(function(){
+    document.getElementById('bc-bar').style.width=pct+'%';
+    var el=document.getElementById('bc-score');
+    var cur=0;
+    var step=Math.ceil(score/40);
+    var iv=setInterval(function(){
+      cur=Math.min(cur+step,score);
+      el.textContent=cur;
+      el.style.color=cur<=30?'#60a5fa':cur<=55?'#f59e0b':cur<=75?'#fb923c':'#ef4444';
+      if(cur>=score)clearInterval(iv);
+    },40);
+  },300);
+  var tiers=['Minor','Medium','Major','Terminal','Release'];
+  var pts={Minor:'+5',Medium:'+10',Major:'+20',Terminal:'+40',Release:'−pts'};
+  var html='';
+  tiers.forEach(function(tier){
+    var items=BM.filter(function(m){return m.tier===tier;});
+    if(!items.length) return;
+    var tierColor=tier==='Release'?'#4ade80':'#6b7a96';
+    var tierLabel=tier==='Release'?'Pressure Release':'';
+    var tierPts=tier==='Release'?'reduces meter':pts[tier];
+    html+='<div style="font-family:\'Bebas Neue\',sans-serif;font-size:0.62rem;letter-spacing:0.2em;color:'+tierColor+';margin-top:0.6rem;margin-bottom:0.3rem;display:flex;align-items:center;gap:0.4rem;">'+(tierLabel||tier)+' — '+tierPts+' <span style="flex:1;height:1px;background:rgba(3,70,148,0.4);display:block;"></span></div>';
+    items.forEach(function(m){
+      var isRelease=m.release;
+      var bg=isRelease?(m.triggered?'rgba(74,222,128,0.08)':'rgba(255,255,255,0.02)'):(m.triggered?'rgba(192,57,43,0.08)':'rgba(255,255,255,0.02)');
+      var bc=isRelease?(m.triggered?'rgba(74,222,128,0.25)':'rgba(255,255,255,0.05)'):(m.triggered?'rgba(192,57,43,0.2)':'rgba(255,255,255,0.05)');
+      var dc=isRelease?(m.triggered?'#4ade80':'rgba(107,122,150,0.6)'):(m.triggered?'#f87171':'rgba(107,122,150,0.6)');
+      var lc=m.triggered?'#e8edf5':'#6b7a96';
+      var dot=isRelease?(m.triggered?'#4ade80':'rgba(255,255,255,0.15)'):(m.triggered?'#c0392b':'rgba(255,255,255,0.15)');
+      var meta=m.triggered?(m.date||'Triggered'):(m.reset?'Resets meter to zero':'Pending');
+      var pts2=m.reset?'RESET':(isRelease?(m.triggered?'−'+m.points:'−'+m.points):(m.triggered?'+'+m.points:'+'+m.points));
+      var pc=isRelease?(m.triggered?'color:#4ade80;background:rgba(74,222,128,0.12);':'color:#6b7a96;background:rgba(255,255,255,0.04);'):(m.triggered?'color:#f87171;background:rgba(192,57,43,0.15);':'color:#6b7a96;background:rgba(255,255,255,0.04);');
+      html+='<div style="display:flex;gap:0.6rem;align-items:flex-start;padding:6px 8px;border-radius:3px;border:1px solid '+bc+';background:'+bg+';">';
+      html+='<div style="width:6px;height:6px;border-radius:50%;background:'+dot+';flex-shrink:0;margin-top:4px;"></div>';
+      html+='<div style="flex:1;"><div style="font-size:0.75rem;color:'+lc+';line-height:1.35;">'+m.label+'</div><div style="font-size:0.65rem;color:'+dc+';margin-top:2px;">'+meta+'</div></div>';
+      html+='<div style="font-family:\'Bebas Neue\',sans-serif;font-size:0.7rem;padding:1px 5px;border-radius:2px;margin-top:2px;'+pc+'">'+pts2+'</div>';
+      html+='</div>';
+    });
+  });
+  document.getElementById('bc-list').innerHTML=html;
+})();
+</script>
 <!-- KO-FI TOP STRIP — show/hide via --kofi-display in :root -->
 <div class="kofi-strip">
 <div class="kofi-strip-text">
