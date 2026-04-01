@@ -2078,11 +2078,13 @@ html {
     </div>
   </div>
 
-  <!-- Footnote -->
-  <div style="padding:10px 16px;background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.05);display:flex;gap:8px;align-items:flex-start;">
-    <div style="width:2px;min-height:32px;background:#C9A84C;border-radius:1px;flex-shrink:0;margin-top:2px;opacity:.5;"></div>
-    <div style="font-size:.62rem;color:rgba(255,255,255,.28);line-height:1.6;">
-      <strong style="color:rgba(255,255,255,.45);">Why two sets of accounts?</strong> CFC Holdings files under Chelsea's own name. 22 Holdco Ltd (co. 14075518) is the consolidated group — it includes debt interest, Racing Club de Strasbourg, and Chelsea Women. Same club, different entity, very different numbers. <strong style="color:rgba(255,255,255,.45);">Debt structure:</strong> ~£500m term loan at 22 Holdco level (SONIA + 7.50% PIK, 12.96% as at Jun 2024, Ares originated, Aug 2033 maturity) + ~£702m at Blueco 22 Ltd level (SONIA + 3.25%, BOA/JPM, Jul 2027 maturity). Total debt ~£1.2bn confirmed from filed Blueco 22 Ltd accounts. PIK interest rolls up rather than being paid in cash — compounding the debt load silently. Ownership structure diagram credit: @gregorypcordell. <strong style="color:rgba(255,255,255,.45);">Ownership note:</strong> Blues Investment Midco Ltd (co. 14091439) — original UK purchase vehicle holding Clearlake's Class A shares — dissolved 3 April 2024. Interests moved to Blues Investment Holdings L.P., registered in the Cayman Islands. Majority ownership of Chelsea FC no longer traceable through UK public records.
+  <!-- Footnote collapsible -->
+  <div style="padding:8px 16px;background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.05);">
+    <button onclick="var el=document.getElementById('blueco-disclaimer');var btn=this;if(el.style.display==='none'){el.style.display='block';btn.textContent='▲ Methodology & Sources';}else{el.style.display='none';btn.textContent='▼ Methodology & Sources';}" style="background:transparent;border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:4px 10px;font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;width:100%;text-align:left;">▼ Methodology & Sources</button>
+    <div id="blueco-disclaimer" style="display:none;margin-top:8px;display:none;gap:8px;align-items:flex-start;padding-top:6px;border-top:1px solid rgba(255,255,255,.05);">
+      <div style="font-size:.62rem;color:rgba(255,255,255,.28);line-height:1.6;">
+        <strong style="color:rgba(255,255,255,.45);">Why two sets of accounts?</strong> CFC Holdings files under Chelsea's own name. 22 Holdco Ltd (co. 14075518) is the consolidated group — it includes debt interest, Racing Club de Strasbourg, and Chelsea Women. Same club, different entity, very different numbers. <strong style="color:rgba(255,255,255,.45);">Debt structure:</strong> ~£500m term loan at 22 Holdco level (SONIA + 7.50% PIK, 12.96% as at Jun 2024, Ares originated, Aug 2033 maturity) + ~£702m at Blueco 22 Ltd level (SONIA + 3.25%, BOA/JPM, Jul 2027 maturity). Total debt ~£1.2bn confirmed from filed Blueco 22 Ltd accounts. PIK interest rolls up rather than being paid in cash — compounding the debt load silently. Ownership structure diagram credit: @gregorypcordell. <strong style="color:rgba(255,255,255,.45);">Ownership note:</strong> Blues Investment Midco Ltd (co. 14091439) — original UK purchase vehicle holding Clearlake's Class A shares — dissolved 3 April 2024. Interests moved to Blues Investment Holdings L.P., registered in the Cayman Islands. Majority ownership of Chelsea FC no longer traceable through UK public records.
+      </div>
     </div>
   </div>
 
@@ -2198,10 +2200,12 @@ html {
     <div style="font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:rgba(255,255,255,.4);text-align:right;">8.9%</div>
   </div>
 
-  <div style="padding:10px 16px;background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.05);display:flex;gap:8px;align-items:flex-start;">
-    <div style="width:2px;min-height:28px;background:#C9A84C;border-radius:1px;flex-shrink:0;margin-top:2px;opacity:.5;"></div>
-    <div style="font-size:.62rem;color:rgba(255,255,255,.28);line-height:1.6;">
-      <strong style="color:rgba(255,255,255,.45);">The real story isn't the rate — it's the volume.</strong> Chelsea's 11.8% is close to the PL average of 8.9%. Their record absolute fee is driven by £550.7m in total transfer activity — 2nd only to Liverpool. Aston Villa's 40.7% is the true outlier. Agent fees also cover contract renewals and loan arrangements — not just permanent transfers. Source: FA agent fee disclosure · Transfer volumes via FootballTransfers/Transfermarkt.
+  <div style="padding:8px 16px;background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.05);">
+    <button onclick="var el=document.getElementById('agent-disclaimer');var btn=this;if(el.style.display==='none'){el.style.display='block';btn.textContent='▲ Methodology & Sources';}else{el.style.display='none';btn.textContent='▼ Methodology & Sources';}" style="background:transparent;border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:4px 10px;font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;width:100%;text-align:left;">▼ Methodology & Sources</button>
+    <div id="agent-disclaimer" style="display:none;margin-top:8px;padding-top:6px;border-top:1px solid rgba(255,255,255,.05);">
+      <div style="font-size:.62rem;color:rgba(255,255,255,.28);line-height:1.6;">
+        <strong style="color:rgba(255,255,255,.45);">The real story isn't the rate — it's the volume.</strong> Chelsea's 11.8% is calculated against total transfer activity (spend + sales combined, ~£550.7m). Agent fees are paid on both incoming and outgoing deals — not just purchases. This makes the % an estimate rather than a precise figure: the true denominator depends on which transactions generated fees and at what rate. Chelsea's record absolute total is driven by the sheer volume of deals — 2nd only to Liverpool in total activity. Aston Villa's 40.7% against a much smaller base is the true rate outlier. Source: FA agent fee disclosure · Transfer volumes via FootballTransfers/Transfermarkt · Spend+sales methodology.
+      </div>
     </div>
   </div>
 
