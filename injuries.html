@@ -80,12 +80,15 @@
     .inj-row.sev-moderate{border-left-color:#fbbf24;}
     .inj-row.sev-minor{border-left-color:#60a5fa;}
     .inj-row.sev-current{border-left-color:#f87171;}
+    .inj-row.sev-suspended{border-left-color:#ff2200;background:rgba(255,34,0,.04);animation:suspendGlow 1.8s ease-in-out infinite;}
+    @keyframes suspendGlow{0%,100%{box-shadow:0 0 0px rgba(255,34,0,0);border-left-color:#ff2200;}50%{box-shadow:inset 0 0 18px rgba(255,34,0,.10), 0 0 12px rgba(255,34,0,.18);border-left-color:#ff6644;}}
 
     .inj-row.sev-critical .inj-fill{background:#f87171;}
     .inj-row.sev-major .inj-fill{background:#fb923c;}
     .inj-row.sev-moderate .inj-fill{background:#fbbf24;}
     .inj-row.sev-minor .inj-fill{background:#60a5fa;}
     .inj-row.sev-current .inj-fill{background:#f87171;}
+    .inj-row.sev-suspended .inj-fill{background:#ff2200;}
 
     .inj-sev{font-family:'Bebas Neue',sans-serif;font-size:.68rem;letter-spacing:.06em;width:38px;flex-shrink:0;margin-top:2px;}
     .inj-row.sev-critical .inj-sev{color:#f87171;}
@@ -93,6 +96,8 @@
     .inj-row.sev-moderate .inj-sev{color:#fbbf24;}
     .inj-row.sev-minor .inj-sev{color:#60a5fa;}
     .inj-row.sev-current .inj-sev{color:#f87171;}
+    .inj-row.sev-suspended .inj-sev{color:#ff2200;animation:suspendBlink 1.8s ease-in-out infinite;}
+    @keyframes suspendBlink{0%,100%{opacity:1;}50%{opacity:.3;}}
 
     .inj-content{flex:1;min-width:0;}
     .inj-name{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.92);margin-bottom:2px;}
@@ -100,6 +105,7 @@
     .inj-meta{font-size:.63rem;margin-top:3px;color:rgba(255,255,255,.28);display:flex;flex-wrap:wrap;gap:6px;}
     .inj-tag{display:inline-block;padding:1px 6px;border-radius:2px;font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
     .inj-tag.current{background:rgba(248,113,113,.12);color:#f87171;border:1px solid rgba(248,113,113,.2);}
+    .inj-tag.suspended{background:rgba(255,34,0,.14);color:#ff4422;border:1px solid rgba(255,34,0,.4);animation:suspendBlink 1.8s ease-in-out infinite;}
     .inj-tag.recovered{background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);}
     .inj-tag.repeat{background:rgba(251,146,60,.1);color:#fb923c;border:1px solid rgba(251,146,60,.2);}
 
@@ -150,6 +156,7 @@
     <span class="bad">CHALOBAH: ANKLE · ~6 WEEKS</span><span class="sep">◆</span>
     <span>DELAP: 2 INJURIES THIS SEASON</span><span class="sep">◆</span>
     <span class="bad">MUDRYK: DOPING BAN · SEASON OVER</span><span class="sep">◆</span>
+    <span style="color:#C8A951;">ENZO FERNÁNDEZ: CLUB SUSPENSION · BACK 13 APR</span><span class="sep">◆</span>
     <span>CHELSEA INJURY TRACKER 2025–26</span><span class="sep">◆</span>
     <span class="bad">CLUB WORLD CUP → NOW</span><span class="sep">◆</span>
     <span class="bad">COLWILL: ACL · SEASON OVER</span><span class="sep">◆</span>
@@ -157,6 +164,7 @@
     <span class="bad">CHALOBAH: ANKLE · ~6 WEEKS</span><span class="sep">◆</span>
     <span>DELAP: 2 INJURIES THIS SEASON</span><span class="sep">◆</span>
     <span class="bad">MUDRYK: DOPING BAN · SEASON OVER</span><span class="sep">◆</span>
+    <span style="color:#C8A951;">ENZO FERNÁNDEZ: CLUB SUSPENSION · BACK 13 APR</span><span class="sep">◆</span>
   </div>
 </div>
 
@@ -253,6 +261,7 @@
 
   <!-- LEGEND -->
   <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#C8A951;"></div>Club suspension</div>
     <div class="legend-item"><div class="legend-dot" style="background:#f87171;"></div>Critical (60+ days)</div>
     <div class="legend-item"><div class="legend-dot" style="background:#fb923c;"></div>Major (30–59 days)</div>
     <div class="legend-item"><div class="legend-dot" style="background:#fbbf24;"></div>Moderate (14–29 days)</div>
@@ -294,13 +303,30 @@ const injuries = [
 
   // ── CURRENTLY OUT ──────────────────────────────────────────
   {
+    name: "Enzo Fernández",
+    pos: "M",
+    injury: "Club suspension — Real Madrid comments",
+    detail: "Rosenior confirmed suspension after Enzo publicly discussed Real Madrid interest during the international break. Misses Port Vale (FA Cup QF, 4 Apr) and Manchester City (PL, 12 Apr). No fine reported. Chelsea's record signing — £107m — unavailable for the two most important games of the run-in.",
+    start: "3 Apr 2026",
+    returnDate: "13 Apr 2026",
+    days: 10,
+    games: 2,
+    severity: "suspended",
+    current: true,
+    suspended: true,
+    repeat: false,
+    cwc: false,
+    hamstring: false,
+    shirtNumber: 8
+  },
+  {
     name: "Levi Colwill",
     pos: "D",
     injury: "ACL — right knee",
     detail: "Sustained in preseason training at Cobham, Aug 2025, after Club World Cup. Surgery successful. Won't return this season.",
-    start: "25 Jul 2025",
+    start: "4 Aug 2025",
     returnDate: "Late Apr 2026",
-    days: 248,
+    days: 242,
     games: 46,
     severity: "current",
     current: true,
@@ -613,7 +639,8 @@ const ironMen = [
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 function sevLabel(s){
-  return s === "current" ? "OUT" :
+  return s === "suspended" ? "SUS" :
+         s === "current" ? "OUT" :
          s === "critical" ? "CRIT" :
          s === "major" ? "MAJ" :
          s === "moderate" ? "MOD" : "MIN";
@@ -625,7 +652,7 @@ function filterMatch(inj, f){
   switch(f){
     case "all": return true;
     case "current": return inj.current;
-    case "recovered": return !inj.current;
+    case "recovered": return !inj.current && !inj.suspended;
     case "critical": return inj.days >= 60;
     case "defenders": return inj.pos === "D";
     case "midfielders": return inj.pos === "M";
@@ -741,7 +768,8 @@ function render(filter){
 
   filtered.forEach(inj => {
     const tags = [];
-    if(inj.current) tags.push(`<span class="inj-tag current">Out now</span>`);
+    if(inj.suspended) tags.push(`<span class="inj-tag suspended">Club suspension</span>`);
+    else if(inj.current) tags.push(`<span class="inj-tag current">Out now</span>`);
     else tags.push(`<span class="inj-tag recovered">Recovered</span>`);
     if(inj.seasonCount > 1 || inj.repeat) tags.push(`<span class="inj-tag repeat">${inj.seasonCount} injuries</span>`);
     if(inj.cwc) tags.push(`<span class="inj-tag repeat" style="color:#fbbf24;border-color:rgba(251,191,36,.2);background:rgba(251,191,36,.08);">CWC</span>`);
@@ -749,7 +777,7 @@ function render(filter){
     // For current injuries, calculate live days purely from start date
     let displayDays = inj.days;
     let displayGames = inj.games;
-    if(inj.current) {
+    if(inj.current && !inj.suspended) {
       const startStr = inj.startList ? inj.startList[0] : inj.start;
       const start = parseStartDate(startStr);
       if(start) {
