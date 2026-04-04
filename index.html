@@ -1571,9 +1571,9 @@ html {
 <!-- RIGHT: Days since last win -->
 <div class="twin-tile" style="align-items:center;text-align:center;">
 <div class="twin-tile-label">Days since last win</div>
-<div class="twin-tile-big" id="daysSinceWin">0</div>
-<div class="twin-tile-sub">Last win: Wrexham 4–2</div>
-<div class="twin-tile-sub">FAC · 7 Mar 2026</div>
+<div class="twin-tile-big" id="daysSinceWin" style="color:#4ade80;">0</div>
+<div class="twin-tile-sub">Last win: Port Vale 7–0</div>
+<div class="twin-tile-sub">FAC QF · 4 Apr 2026</div>
 </div>
 </div>
 <div class="pressure-section">
@@ -1610,7 +1610,7 @@ html {
   </div>
 </div>
 <div class="pressure-note">
-<strong> No goals scored in 3 games </strong> <strong>12 goals conceded </strong> in the last 4.  Average conceded <strong>three goals a game</strong> <strong>2-12 goals</strong> for and against <strong>this is not Chels</strong>
+Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Vale (League One, barely) 7–0.</strong> Last Premier League win: <strong>Aston Villa · 31 days ago.</strong>
 </div>
 <button onclick="(function(){var l=document.getElementById('mgr-list'),a=document.getElementById('mgr-arrow');var o=l.style.display==='flex';l.style.display=o?'none':'flex';a.style.transform=o?'':'rotate(180deg)';document.getElementById('mgr-btn-label').textContent=o?'View pressure breakdown':'Hide pressure breakdown';})()" style="width:100%;background:transparent;border:none;border-top:1px solid rgba(255,255,255,0.06);margin-top:10px;padding:8px 0 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:rgba(255,255,255,0.25);font-family:'Bebas Neue',sans-serif;font-size:0.62rem;letter-spacing:0.18em;" id="mgr-expand-btn">
   <span id="mgr-btn-label">View pressure breakdown</span>
@@ -1628,6 +1628,9 @@ html {
 </div>
 <span class="tile-url">hasliamroseniorbeensackedyet.com</span>
 </div>
+
+
+
 <script>
 (function(){
   var MM=[
@@ -1987,6 +1990,1304 @@ html {
 <div id="plTableInner" style="font-size:.68rem;color:rgba(255,255,255,.3);text-align:center;padding:14px 0;">Fetching table…</div>
 </div>
 </div>
+<!-- MVP RACE TILE -->
+<div style="max-width:480px;width:100%;margin-top:14px;">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&amp;family=Barlow:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+      #mvp-clean {
+        --blue:   #034694;
+        --yellow: #EAC117;
+        --white:  #F2F2F0;
+        --dim:    rgba(242,242,240,0.38);
+        --border: rgba(242,242,240,0.10);
+        --black:  #000;
+        --stats-w: 138px;
+  --mp-col-w: 40px;
+        font-family: 'Barlow', sans-serif;
+        color: #F2F2F0;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      #mvp-clean *, #mvp-clean *::before, #mvp-clean *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+#mvp-clean * { box-sizing: border-box; margin: 0; padding: 0; }
+
+#mvp-clean :root {
+  --blue:   #034694;
+  --yellow: #EAC117;
+  --white:  #F2F2F0;
+  --dim:    rgba(242,242,240,0.38);
+  --border: rgba(242,242,240,0.10);
+  --black:  #000;
+  /* stats panel width — 3 columns + right padding */
+  --stats-w: 138px;
+  --mp-col-w: 40px;
+}
+
+#mvp-clean /* ── CARD ─────────────────────────────────── */
+.card {
+  width: 100%;
+  max-width: 780px;
+  background: var(--black);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+
+#mvp-clean .card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 5px;
+  background: linear-gradient(90deg, var(--blue) 65%, var(--yellow) 65%);
+  z-index: 10;
+}
+
+#mvp-clean /* ── HEADER ───────────────────────────────── */
+.c-header {
+  padding: 20px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+#mvp-clean .c-header h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+#mvp-clean .c-header h1 em { font-style: normal; color: var(--yellow); }
+
+#mvp-clean .eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 5px;
+}
+
+#mvp-clean .legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  padding-bottom: 4px;
+}
+
+#mvp-clean .legend-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+#mvp-clean .swatch {
+  width: 22px; height: 6px; border-radius: 1px;
+}
+
+#mvp-clean .swatch.mp { background: rgba(3,70,148,0.8); }
+
+#mvp-clean .swatch.min { background: rgba(242,242,240,0.3); }
+
+#mvp-clean /* ── NAV ──────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.015);
+}
+
+#mvp-clean .comp-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+#mvp-clean .comp-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding-left: 2px;
+}
+
+#mvp-clean .comp-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--yellow);
+  border: none;
+  padding: 7px 14px 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#mvp-clean .comp-btn:hover { opacity: 0.85; }
+
+#mvp-clean .nav-div {
+  width: 1px; height: 24px;
+  background: var(--border);
+  margin: 0 2px;
+  flex-shrink: 0;
+}
+
+#mvp-clean .filter-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 6px 12px 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+#mvp-clean .filter-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.25); }
+
+#mvp-clean .filter-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+
+#mvp-clean /* ── COL HEADER ───────────────────────────── */
+.col-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+#mvp-clean .col-player {
+  flex: 1;
+  padding: 7px 10px 7px 20px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+#mvp-clean .col-stats {
+  width: var(--stats-w);
+  display: flex;
+  border-left: 1px solid rgba(255,255,255,0.15);
+}
+
+#mvp-clean .col-stat {
+  flex: 1;
+  padding: 7px 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-align: right;
+}
+
+#mvp-clean /* col-header total cell — same as other headers */
+.col-header .col-stat.total {
+  background: rgba(255,255,255,0.04);
+  padding-right: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--dim);
+}
+
+#mvp-clean /* ── PLAYER ROW ───────────────────────────── */
+.player-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  min-height: 44px;
+  animation: slideIn 0.3s ease both;
+}
+
+#mvp-clean .player-row.top { border-left: 4px solid var(--yellow); }
+
+#mvp-clean .player-row.contender { border-left: 4px solid var(--blue); }
+
+#mvp-clean .player-row.rest { border-left: 4px solid rgba(255,255,255,0.07); }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+#mvp-clean /* ── PLAYER COLUMN — bars live here ──────── */
+.player-col {
+  flex: 1;
+  position: relative;     /* bars positioned relative to this */
+  overflow: hidden;       /* bars CANNOT escape this box */
+  padding: 7px 8px 7px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  z-index: 0;
+}
+
+#mvp-clean /* MP bar — top half */
+.bar-mp {
+  position: absolute;
+  top: 0; left: 0;
+  width: var(--mp);        /* set inline on each row */
+  height: 50%;
+  background: rgba(3, 70, 148, 0.45);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#mvp-clean .player-row.top .bar-mp { background: rgba(3, 70, 148, 0.58); }
+
+#mvp-clean /* Minutes bar — bottom half */
+.bar-min {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: var(--min);       /* set inline on each row */
+  height: 50%;
+  background: rgba(242, 242, 240, 0.07);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#mvp-clean .player-row.top .bar-min { background: rgba(242, 242, 240, 0.11); }
+
+#mvp-clean /* Bar labels — outside bar when short, #mvp-clean inside when long */
+.bar-labels {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#mvp-clean .lbl-mp, #mvp-clean .lbl-min {
+  position: absolute;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#mvp-clean .lbl-mp {
+  top: 25%;
+  transform: translateY(-50%);
+  /* For short bars: sits just right of end. For long bars: clamp inside */
+  left: min(var(--mp), calc(100% - 36px));
+  padding-left: 5px;
+  color: rgba(120, 170, 255, 0.70);
+}
+
+#mvp-clean .lbl-min {
+  top: 75%;
+  transform: translateY(-50%);
+  left: min(var(--min), calc(100% - 36px));
+  padding-left: 5px;
+  color: rgba(242,242,240,0.45);
+}
+
+#mvp-clean /* Text content above bars */
+.player-col > .rank, #mvp-clean .player-col > .name {
+  position: relative;
+  z-index: 1;
+}
+
+#mvp-clean .rank {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+#mvp-clean .player-row.top .rank { color: rgba(234,193,23,0.8); }
+
+#mvp-clean .name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--white);
+}
+
+#mvp-clean .player-row.top .name { color: var(--yellow); }
+
+
+#mvp-clean .mp-col {
+  width: var(--mp-col-w);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 6px 0 4px;
+  border-left: 1px solid rgba(255,255,255,0.08);
+  gap: 2px;
+}
+#mvp-clean .mp-col .mc-mp {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(120,170,255,0.85);
+  white-space: nowrap;
+}
+#mvp-clean .mp-col .mc-min {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(242,242,240,0.55);
+  white-space: nowrap;
+}
+#mvp-clean .col-mp {
+  width: var(--mp-col-w);
+  flex-shrink: 0;
+  padding: 7px 6px 7px 4px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-align: right;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+#mvp-clean /* ── STATS COLUMN — completely separate DOM from bars ── */
+.stats-col {
+  width: var(--stats-w);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-left: 1px solid rgba(255,255,255,0.15);
+}
+
+#mvp-clean .s {
+  flex: 1;
+  border-left: 1px solid rgba(255,255,255,0.08);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-align: right;
+  padding: 0 5px;
+  color: var(--white);
+}
+
+#mvp-clean .s.dim { color: var(--white); }
+
+#mvp-clean .total {
+  flex: 1;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-align: right;
+  padding: 0 14px 0 5px;
+  color: var(--white);
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: stretch;
+}
+
+#mvp-clean .total.dim { color: var(--white); }
+
+#mvp-clean /* ── FOOTER ───────────────────────────────── */
+.c-footer {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-top: 1px solid var(--border);
+}
+
+#mvp-clean .dot-row { display: flex; gap: 16px; }
+
+#mvp-clean .dot-item { display: flex; align-items: center; gap: 5px; }
+
+#mvp-clean .dot { width: 7px; height: 7px; border-radius: 50%; }
+
+#mvp-clean .dot.y { background: var(--yellow); }
+
+#mvp-clean .dot.b { background: var(--blue); }
+
+#mvp-clean /* ── VIEW SWITCHING ───────────────────────── */
+.view { display: none; }
+
+#mvp-clean .view.active { display: block; }
+
+#mvp-clean /* ── RESPONSIVE ───────────────────────────── */
+@media (max-width: 480px) {
+  :root { --stats-w: 138px; --mp-col-w: 40px; }
+  .c-header h1 { font-size: 36px; }
+  .name { font-size: 14px; }
+  .s { font-size: 18px; padding: 0 5px; }
+  .total { font-size: 21px; padding: 0 12px 0 5px; }
+  .player-col { padding: 7px 6px 7px 12px; }
+  .col-player { padding-left: 12px; }
+  
+}
+      #mvp-clean .card { max-width: 100%; border-radius: 4px; }
+      @media(max-width:480px) {
+        #mvp-clean { --stats-w: 138px; --mp-col-w: 40px; }
+      }
+    </style>
+<div id="mvp-clean">
+<div class="card">
+<!-- HEADER -->
+<div class="c-header">
+<div>
+<div class="eyebrow">Chelsea FC · 2025/26</div>
+<h1>MVP<br/><em>Race</em></h1>
+</div>
+<div class="legend">
+<div class="legend-row"><div class="swatch mp"></div>Matches played</div>
+<div class="legend-row"><div class="swatch min"></div>Minutes played</div>
+</div>
+</div>
+<!-- NAV -->
+<div class="nav">
+<div class="comp-wrap">
+<span class="comp-label">Competitions</span>
+<button class="comp-btn" id="compBtn">All Comps</button>
+</div>
+<div class="nav-div"></div>
+<button class="filter-btn active" id="fAll">All</button>
+<button class="filter-btn" id="fDef">Defensive</button>
+<button class="filter-btn" id="fAtk">Attacking</button>
+</div>
+<!-- COL HEADER -->
+<div class="col-header" id="colHeader">
+<div class="col-player">Player</div>
+<div class="col-stats">
+<div class="col-stat">Gls</div>
+<div class="col-stat">Ast</div>
+<div class="col-stat total">G+A</div>
+</div>
+</div>
+<!-- ═══════════════════════════════
+       ALL COMPS  (max: 46 MP / 3654')
+       sorted by G+A desc
+       ═══════════════════════════════ -->
+<div class="view active" id="view-all">
+<!-- João Pedro: 44/47 MP, 3182/3744 = 85.0% -->
+<div class="player-row top">
+<div class="player-col" style="--mp:93.6%;--min:85.0%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">MVP · #1</span>
+<span class="name">João Pedro</span>
+</div>
+<div class="mp-col"><span class="mc-mp">44 MP</span><span class="mc-min">3,182'</span></div>
+<div class="stats-col">
+<span class="s">19</span>
+<span class="s">6</span>
+<span class="total">25</span>
+</div>
+</div>
+<!-- Enzo: 46/46=100%, 3654/3654=100% -->
+<div class="player-row contender">
+<div class="player-col" style="--mp:100%;--min:100%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Candidate · #2</span>
+<span class="name">Enzo Fernández</span>
+</div>
+<div class="mp-col"><span class="mc-mp">46 MP</span><span class="mc-min">3,654'</span></div>
+<div class="stats-col">
+<span class="s">12</span>
+<span class="s">6</span>
+<span class="total">18</span>
+</div>
+</div>
+<!-- Pedro Neto: 44/47=93.6%, 3257/3744=87.0% -->
+<div class="player-row contender">
+<div class="player-col" style="--mp:93.6%;--min:87.0%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Candidate · #3</span>
+<span class="name">Pedro Neto</span>
+</div>
+<div class="mp-col"><span class="mc-mp">44 MP</span><span class="mc-min">3,257'</span></div>
+<div class="stats-col">
+<span class="s">10</span>
+<span class="s">7</span>
+<span class="total">17</span>
+</div>
+</div>
+<!-- Cole Palmer: 25/46=54.3%, 1723/3654=47.1% -->
+<div class="player-row contender">
+<div class="player-col" style="--mp:54.3%;--min:47.1%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Injury caveat · #4</span>
+<span class="name">Cole Palmer</span>
+</div>
+<div class="mp-col"><span class="mc-mp">25 MP</span><span class="mc-min">1,723'</span></div>
+<div class="stats-col">
+<span class="s">10</span>
+<span class="s">3</span>
+<span class="total">13</span>
+</div>
+</div>
+<!-- Garnacho: 37/47=78.7%, 1994/3744=53.3% -->
+<div class="player-row contender">
+<div class="player-col" style="--mp:78.7%;--min:53.3%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Candidate · #5</span>
+<span class="name">Alejandro Garnacho</span>
+</div>
+<div class="mp-col"><span class="mc-mp">37 MP</span><span class="mc-min">1,994'</span></div>
+<div class="stats-col">
+<span class="s">8</span>
+<span class="s">4</span>
+<span class="total">12</span>
+</div>
+</div>
+<!-- Estêvão: 34/47=72.3%, 1597/3744=42.7% -->
+<div class="player-row rest">
+<div class="player-col" style="--mp:72.3%;--min:42.7%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Emerging</span>
+<span class="name">Estêvão Willian</span>
+</div>
+<div class="mp-col"><span class="mc-mp">34 MP</span><span class="mc-min">1,597'</span></div>
+<div class="stats-col">
+<span class="s dim">8</span>
+<span class="s dim">3</span>
+<span class="total dim">11</span>
+</div>
+</div>
+<!-- Reece James: 36/46=78.3%, 2518/3654=68.9% -->
+<div class="player-row rest">
+<div class="player-col" style="--mp:78.3%;--min:68.9%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">When fit</span>
+<span class="name">Reece James</span>
+</div>
+<div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">2,518'</span></div>
+<div class="stats-col">
+<span class="s dim">2</span>
+<span class="s dim">6</span>
+<span class="total dim">8</span>
+</div>
+</div>
+<!-- Caicedo: 41/46=89.1%, 3368/3654=92.2% -->
+<div class="player-row rest">
+<div class="player-col" style="--mp:89.1%;--min:92.2%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Defensive anchor</span>
+<span class="name">Moisés Caicedo</span>
+</div>
+<div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,368'</span></div>
+<div class="stats-col">
+<span class="s dim">4</span>
+<span class="s dim">1</span>
+<span class="total dim">5</span>
+</div>
+</div>
+<!-- Andrey Santos: +1g from Port Vale -->
+<div class="player-row rest">
+<div class="player-col" style="--mp:55%;--min:48%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Engine room</span>
+<span class="name">Andrey Santos</span>
+</div>
+<div class="mp-col"><span class="mc-mp">24 MP</span><span class="mc-min">~1,680'</span></div>
+<div class="stats-col">
+<span class="s dim">5</span>
+<span class="s dim">1</span>
+<span class="total dim">6</span>
+</div>
+</div>
+<!-- Tosin: 1g from Port Vale -->
+<div class="player-row rest">
+<div class="player-col" style="--mp:75%;--min:65%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Set piece threat</span>
+<span class="name">Tosin Adarabioyo</span>
+</div>
+<div class="mp-col"><span class="mc-mp">35 MP</span><span class="mc-min">~2,520'</span></div>
+<div class="stats-col">
+<span class="s dim">1</span>
+<span class="s dim">0</span>
+<span class="total dim">1</span>
+</div>
+</div>
+<!-- Jorrel Hato: 1g from Port Vale -->
+<div class="player-row rest">
+<div class="player-col" style="--mp:72%;--min:62%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">First senior goal</span>
+<span class="name">Jorrel Hato</span>
+</div>
+<div class="mp-col"><span class="mc-mp">32 MP</span><span class="mc-min">~2,200'</span></div>
+<div class="stats-col">
+<span class="s dim">1</span>
+<span class="s dim">0</span>
+<span class="total dim">1</span>
+</div>
+</div>
+<!-- Malo Gusto: 1a from Port Vale -->
+<div class="player-row rest">
+<div class="player-col" style="--mp:80%;--min:72%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Assist machine</span>
+<span class="name">Malo Gusto</span>
+</div>
+<div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">~2,600'</span></div>
+<div class="stats-col">
+<span class="s dim">0</span>
+<span class="s dim">1</span>
+<span class="total dim">1</span>
+</div>
+</div>
+</div><!-- /view-all -->
+<!-- ═══════════════════════════════
+       PREMIER LEAGUE
+       ═══════════════════════════════ -->
+<div class="view" id="view-pl">
+<div class="player-row top">
+<div class="player-col" style="--mp:100%;--min:89.6%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">PL MVP · #1</span><span class="name">João Pedro</span>
+</div>
+<div class="mp-col"><span class="mc-mp">31 MP</span><span class="mc-min">2,311'</span></div>
+<div class="stats-col"><span class="s">14</span><span class="s">5</span><span class="total">19</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:96.8%;--min:100%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Workhorse</span><span class="name">Enzo Fernández</span>
+</div>
+<div class="mp-col"><span class="mc-mp">30 MP</span><span class="mc-min">2,578'</span></div>
+<div class="stats-col"><span class="s">8</span><span class="s">3</span><span class="total">11</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:64.5%;--min:55%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Injury caveat</span><span class="name">Cole Palmer</span>
+</div>
+<div class="mp-col"><span class="mc-mp">20 MP</span><span class="mc-min">1,417'</span></div>
+<div class="stats-col"><span class="s">9</span><span class="s">1</span><span class="total">10</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:93.5%;--min:85.7%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Wide threat</span><span class="name">Pedro Neto</span>
+</div>
+<div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,209'</span></div>
+<div class="stats-col"><span class="s dim">5</span><span class="s dim">4</span><span class="total dim">9</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:83.9%;--min:84.6%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Defensive anchor</span><span class="name">Moisés Caicedo</span>
+</div>
+<div class="mp-col"><span class="mc-mp">26 MP</span><span class="mc-min">2,181'</span></div>
+<div class="stats-col"><span class="s dim">3</span><span class="s dim">1</span><span class="total dim">4</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:93.5%;--min:98.9%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Unsung hero</span><span class="name">Trevoh Chalobah</span>
+</div>
+<div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,550'</span></div>
+<div class="stats-col"><span class="s dim">3</span><span class="s dim">0</span><span class="total dim">3</span></div>
+</div>
+</div><!-- /view-pl -->
+<!-- ═══════════════════════════════
+       CHAMPIONS LEAGUE
+       ═══════════════════════════════ -->
+<div class="view" id="view-ucl">
+<div class="player-row top">
+<div class="player-col" style="--mp:100%;--min:87.4%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">UCL MVP · #1</span><span class="name">Enzo Fernández</span>
+</div>
+<div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">744'</span></div>
+<div class="stats-col"><span class="s">3</span><span class="s">2</span><span class="total">5</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:66.7%;--min:62.3%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Joint top scorer</span><span class="name">João Pedro</span>
+</div>
+<div class="mp-col"><span class="mc-mp">6 MP</span><span class="mc-min">530'</span></div>
+<div class="stats-col"><span class="s">3</span><span class="s">0</span><span class="total">3</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:44.4%;--min:50.1%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Breakout · UCL</span><span class="name">Estêvão Willian</span>
+</div>
+<div class="mp-col"><span class="mc-mp">4 MP</span><span class="mc-min">426'</span></div>
+<div class="stats-col"><span class="s">3</span><span class="s">0</span><span class="total">3</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:66.7%;--min:71.9%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Assist machine</span><span class="name">Reece James</span>
+</div>
+<div class="mp-col"><span class="mc-mp">7 MP</span><span class="mc-min">563'</span></div>
+<div class="stats-col"><span class="s dim">0</span><span class="s dim">2</span><span class="total dim">2</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:100%;--min:100%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Midfield wall</span><span class="name">Moisés Caicedo</span>
+</div>
+<div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">851'</span></div>
+<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
+</div>
+</div><!-- /view-ucl -->
+<!-- ═══════════════════════════════
+       FA CUP
+       ═══════════════════════════════ -->
+<div class="view" id="view-fac">
+<div class="player-row top">
+<div class="player-col" style="--mp:100%;--min:100%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">FA Cup MVP</span><span class="name">Pedro Neto</span>
+</div>
+<div class="mp-col"><span class="mc-mp">6 apps</span><span class="mc-min">~540'</span></div>
+<div class="stats-col"><span class="s">4</span><span class="s">1</span><span class="total">5</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:80%;--min:55%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Finalist threat</span><span class="name">Alejandro Garnacho</span>
+</div>
+<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~290'</span></div>
+<div class="stats-col"><span class="s">2</span><span class="s">0</span><span class="total">2</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:80%;--min:50%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Contributor</span><span class="name">Liam Delap</span>
+</div>
+<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~180'</span></div>
+<div class="stats-col"><span class="s">0</span><span class="s">3</span><span class="total">3</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:60%;--min:60%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Contributor</span><span class="name">Enzo Fernández</span>
+</div>
+<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~270'</span></div>
+<div class="stats-col"><span class="s dim">1</span><span class="s dim">1</span><span class="total dim">2</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:60%;--min:44%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Goal + assist</span><span class="name">Estêvão Willian</span>
+</div>
+<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~280'</span></div>
+<div class="stats-col"><span class="s dim">2</span><span class="s dim">1</span><span class="total dim">3</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:50%;--min:35%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">First FAC goal</span><span class="name">Jorrel Hato</span>
+</div>
+<div class="mp-col"><span class="mc-mp">2 apps</span><span class="mc-min">~180'</span></div>
+<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:50%;--min:35%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Header · QF</span><span class="name">Tosin Adarabioyo</span>
+</div>
+<div class="mp-col"><span class="mc-mp">2 apps</span><span class="mc-min">~180'</span></div>
+<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:50%;--min:35%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">QF goal</span><span class="name">Andrey Santos</span>
+</div>
+<div class="mp-col"><span class="mc-mp">2 apps</span><span class="mc-min">~150'</span></div>
+<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:50%;--min:38%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">QF assist</span><span class="name">Malo Gusto</span>
+</div>
+<div class="mp-col"><span class="mc-mp">2 apps</span><span class="mc-min">~180'</span></div>
+<div class="stats-col"><span class="s dim">0</span><span class="s dim">1</span><span class="total dim">1</span></div>
+</div>
+</div><!-- /view-fac -->
+<!-- ═══════════════════════════════
+       EFL CUP
+       ═══════════════════════════════ -->
+<div class="view" id="view-efl">
+<div class="player-row top">
+<div class="player-col" style="--mp:80%;--min:70%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">EFL Cup MVP</span><span class="name">Alejandro Garnacho</span>
+</div>
+<div class="mp-col"><span class="mc-mp">5 apps</span><span class="mc-min">~450'</span></div>
+<div class="stats-col"><span class="s">4</span><span class="s">0</span><span class="total">4</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:60%;--min:45%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Breakthrough</span><span class="name">Tyrique George</span>
+</div>
+<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~300'</span></div>
+<div class="stats-col"><span class="s">2</span><span class="s">1</span><span class="total">3</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:55%;--min:40%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Contributor</span><span class="name">Andrey Santos</span>
+</div>
+<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~280'</span></div>
+<div class="stats-col"><span class="s dim">1</span><span class="s dim">2</span><span class="total dim">3</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:50%;--min:38%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Contributor</span><span class="name">Jamie Gittens</span>
+</div>
+<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~220'</span></div>
+<div class="stats-col"><span class="s dim">1</span><span class="s dim">2</span><span class="total dim">3</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:60%;--min:42%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Contributor</span><span class="name">Pedro Neto</span>
+</div>
+<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~190'</span></div>
+<div class="stats-col"><span class="s dim">1</span><span class="s dim">1</span><span class="total dim">2</span></div>
+</div>
+</div><!-- /view-efl -->
+<!-- ═══════════════════════════════
+       DEFENSIVE VIEWS
+       ═══════════════════════════════ -->
+<div class="def-view" id="def-all" style="display:none">
+<div class="player-row top">
+<div class="player-col" style="--mp:100%;--min:100%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Def MVP · #1</span><span class="name">Moisés Caicedo</span>
+</div>
+<div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,368'</span></div>
+<div class="stats-col"><span class="s">64</span><span class="s">65</span><span class="total">129</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:59.4%;--min:68.9%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Def · #2</span><span class="name">Reece James</span>
+</div>
+<div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">2,518'</span></div>
+<div class="stats-col"><span class="s">38</span><span class="s">44</span><span class="total">82</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:78.1%;--min:75%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Def · #3</span><span class="name">Marc Cucurella</span>
+</div>
+<div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,076'</span></div>
+<div class="stats-col"><span class="s">50</span><span class="s">29</span><span class="total">79</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:62.5%;--min:68.7%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Def · #4</span><span class="name">Malo Gusto</span>
+</div>
+<div class="mp-col"><span class="mc-mp">40 MP</span><span class="mc-min">2,511'</span></div>
+<div class="stats-col"><span class="s">32</span><span class="s">42</span><span class="total">74</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:89.1%;--min:93%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">CB anchor</span><span class="name">Trevoh Chalobah</span>
+</div>
+<div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,399'</span></div>
+<div class="stats-col"><span class="s dim">24</span><span class="s dim">44</span><span class="total dim">68</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:51.6%;--min:56.2%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Unsung hero</span><span class="name">Andrey Santos</span>
+</div>
+<div class="mp-col"><span class="mc-mp">37 MP</span><span class="mc-min">2,049'</span></div>
+<div class="stats-col"><span class="s dim">33</span><span class="s dim">27</span><span class="total dim">60</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:100%;--min:100%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Workhorse</span><span class="name">Enzo Fernández</span>
+</div>
+<div class="mp-col"><span class="mc-mp">46 MP</span><span class="mc-min">3,654'</span></div>
+<div class="stats-col"><span class="s dim">33</span><span class="s dim">18</span><span class="total dim">51</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:93.5%;--min:84.6%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Press machine</span><span class="name">João Pedro</span>
+</div>
+<div class="mp-col"><span class="mc-mp">43 MP</span><span class="mc-min">3,092'</span></div>
+<div class="stats-col"><span class="s dim">18</span><span class="s dim">7</span><span class="total dim">25</span></div>
+</div>
+</div>
+<!-- def-pl, def-ucl, def-fac, def-efl omitted for brevity — same pattern -->
+<div class="def-view" id="def-pl" style="display:none">
+<div class="player-row top">
+<div class="player-col" style="--mp:100%;--min:100%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">PL Def MVP · #1</span><span class="name">Moisés Caicedo</span>
+</div>
+<div class="mp-col"><span class="mc-mp">26 MP</span><span class="mc-min">2,181'</span></div>
+<div class="stats-col"><span class="s">43</span><span class="s">51</span><span class="total">94</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:74.4%;--min:73.6%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">PL Def · #2</span><span class="name">Reece James</span>
+</div>
+<div class="mp-col"><span class="mc-mp">27 MP</span><span class="mc-min">1,896'</span></div>
+<div class="stats-col"><span class="s">32</span><span class="s">31</span><span class="total">63</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:67.4%;--min:89%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">PL Def · #3</span><span class="name">Trevoh Chalobah</span>
+</div>
+<div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,550'</span></div>
+<div class="stats-col"><span class="s">22</span><span class="s">35</span><span class="total">57</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:74.4%;--min:98.9%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">PL Def · #4</span><span class="name">Marc Cucurella</span>
+</div>
+<div class="mp-col"><span class="mc-mp">27 MP</span><span class="mc-min">2,077'</span></div>
+<div class="stats-col"><span class="s">32</span><span class="s">21</span><span class="total">53</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:53.5%;--min:67.5%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Quietly excellent</span><span class="name">Malo Gusto</span>
+</div>
+<div class="mp-col"><span class="mc-mp">28 MP</span><span class="mc-min">1,741'</span></div>
+<div class="stats-col"><span class="s dim">21</span><span class="s dim">23</span><span class="total dim">44</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:100%;--min:100%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Midfield engine</span><span class="name">Enzo Fernández</span>
+</div>
+<div class="mp-col"><span class="mc-mp">30 MP</span><span class="mc-min">2,578'</span></div>
+<div class="stats-col"><span class="s dim">23</span><span class="s dim">16</span><span class="total dim">39</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:25.6%;--min:55.1%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">CB cover</span><span class="name">Wesley Fofana</span>
+</div>
+<div class="mp-col"><span class="mc-mp">19 MP</span><span class="mc-min">1,276'</span></div>
+<div class="stats-col"><span class="s dim">11</span><span class="s dim">25</span><span class="total dim">36</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:30.2%;--min:49.5%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Pressing forward</span><span class="name">João Pedro</span>
+</div>
+<div class="mp-col"><span class="mc-mp">31 MP</span><span class="mc-min">2,311'</span></div>
+<div class="stats-col"><span class="s dim">15</span><span class="s dim">5</span><span class="total dim">20</span></div>
+</div>
+</div>
+<div class="def-view" id="def-ucl" style="display:none">
+<div class="player-row top">
+<div class="player-col" style="--mp:100%;--min:87.4%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">UCL Def MVP · #1</span><span class="name">Moisés Caicedo</span>
+</div>
+<div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">851'</span></div>
+<div class="stats-col"><span class="s">16</span><span class="s">9</span><span class="total">25</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:100%;--min:84.8%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">UCL Def · #2</span><span class="name">Marc Cucurella</span>
+</div>
+<div class="mp-col"><span class="mc-mp">8 MP</span><span class="mc-min">721'</span></div>
+<div class="stats-col"><span class="s">14</span><span class="s">7</span><span class="total">21</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:77.8%;--min:55.7%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">UCL Def · #3</span><span class="name">Malo Gusto</span>
+</div>
+<div class="mp-col"><span class="mc-mp">6 MP</span><span class="mc-min">474'</span></div>
+<div class="stats-col"><span class="s">7</span><span class="s">13</span><span class="total">20</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:33.3%;--min:66.2%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Intercept king</span><span class="name">Reece James</span>
+</div>
+<div class="mp-col"><span class="mc-mp">7 MP</span><span class="mc-min">563'</span></div>
+<div class="stats-col"><span class="s dim">5</span><span class="s dim">12</span><span class="total dim">17</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:33.3%;--min:35.9%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Midfield cover</span><span class="name">Andrey Santos</span>
+</div>
+<div class="mp-col"><span class="mc-mp">3 MP</span><span class="mc-min">306'</span></div>
+<div class="stats-col"><span class="s dim">6</span><span class="s dim">8</span><span class="total dim">14</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:55.6%;--min:56.4%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">CB wall</span><span class="name">Wesley Fofana</span>
+</div>
+<div class="mp-col"><span class="mc-mp">5 MP</span><span class="mc-min">480'</span></div>
+<div class="stats-col"><span class="s dim">2</span><span class="s dim">11</span><span class="total dim">13</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:66.7%;--min:62.3%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Midfield shield</span><span class="name">Enzo Fernández</span>
+</div>
+<div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">744'</span></div>
+<div class="stats-col"><span class="s dim">6</span><span class="s dim">2</span><span class="total dim">8</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:44.4%;--min:39.7%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">CB partner</span><span class="name">Trevoh Chalobah</span>
+</div>
+<div class="mp-col"><span class="mc-mp">6 MP</span><span class="mc-min">572'</span></div>
+<div class="stats-col"><span class="s dim">1</span><span class="s dim">7</span><span class="total dim">8</span></div>
+</div>
+</div>
+<div class="def-view" id="def-fac" style="display:none">
+<div class="player-row top">
+<div class="player-col" style="--mp:80%;--min:60%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">FA Cup Def MVP</span><span class="name">Andrey Santos</span>
+</div>
+<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+<div class="stats-col"><span class="s">7</span><span class="s">1</span><span class="total">8</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:55%;--min:45%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Cup cover</span><span class="name">Moisés Caicedo</span>
+</div>
+<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+<div class="stats-col"><span class="s dim">3</span><span class="s dim">3</span><span class="total dim">6</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:60%;--min:50%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Contributor</span><span class="name">Benoît Badiashile</span>
+</div>
+<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+<div class="stats-col"><span class="s dim">2</span><span class="s dim">3</span><span class="total dim">5</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:55%;--min:40%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Reads well</span><span class="name">Tosin Adarabioyo</span>
+</div>
+<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+<div class="stats-col"><span class="s dim">0</span><span class="s dim">4</span><span class="total dim">4</span></div>
+</div>
+</div>
+<div class="def-view" id="def-efl" style="display:none">
+<div class="player-row top">
+<div class="player-col" style="--mp:80%;--min:65%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">EFL Def MVP</span><span class="name">Andrey Santos</span>
+</div>
+<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+<div class="stats-col"><span class="s">7</span><span class="s">1</span><span class="total">8</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:65%;--min:50%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">EFL Def · #2</span><span class="name">Malo Gusto</span>
+</div>
+<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+<div class="stats-col"><span class="s">4</span><span class="s">5</span><span class="total">9</span></div>
+</div>
+<div class="player-row contender">
+<div class="player-col" style="--mp:60%;--min:42%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">EFL Def · #3</span><span class="name">Marc Cucurella</span>
+</div>
+<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+<div class="stats-col"><span class="s">4</span><span class="s">1</span><span class="total">5</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:55%;--min:38%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Cup rotation</span><span class="name">Enzo Fernández</span>
+</div>
+<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+<div class="stats-col"><span class="s dim">4</span><span class="s dim">0</span><span class="total dim">4</span></div>
+</div>
+<div class="player-row rest">
+<div class="player-col" style="--mp:50%;--min:38%">
+<div class="bar-mp"></div><div class="bar-min"></div>
+<span class="rank">Reads well</span><span class="name">Jorrel Hato</span>
+</div>
+<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
+<div class="stats-col"><span class="s dim">1</span><span class="s dim">3</span><span class="total dim">4</span></div>
+</div>
+</div>
+<!-- FOOTER -->
+<div class="c-footer">
+<div class="dot-row">
+<div class="dot-item"><div class="dot y"></div>MVP candidate</div>
+<div class="dot-item"><div class="dot b"></div>Contender</div>
+</div>
+<span>FBref · 2025/26</span>
+</div>
+</div><!-- /card -->
+<script>
+(function() {
+  function initMVP() {
+    var mvp = document.getElementById('mvp-clean');
+    if (!mvp) return;
+
+    var mvpComps = [
+      { id: 'all', label: 'All Competitions' },
+      { id: 'pl',  label: 'Premier League' },
+      { id: 'ucl', label: 'Champions League' },
+      { id: 'fac', label: 'FA Cup' },
+      { id: 'efl', label: 'EFL Cup' },
+    ];
+    var mvpDefNames = ['caicedo','james','chalobah','fofana','sánchez','cucurella','gusto','hato','adarabioyo','santos'];
+
+    var mvpComp = 0;
+    var mvpFilter = 'all';
+
+    var compBtn  = mvp.querySelector('#compBtn');
+    var colHdr   = mvp.querySelector('#colHeader');
+    var allViews = mvp.querySelectorAll('.view');
+    var allDefs  = mvp.querySelectorAll('.def-view');
+
+    if (!compBtn || !colHdr) return;
+
+    function animate(el) {
+      el.querySelectorAll('.player-row').forEach(function(r, i) {
+        r.style.animation = 'none';
+        r.offsetHeight;
+        r.style.animation = '';
+        r.style.animationDelay = (i * 0.04) + 's';
+      });
+    }
+
+    function render() {
+      allViews.forEach(function(v) { v.classList.remove('active'); });
+      allDefs.forEach(function(v) { v.style.display = 'none'; });
+
+      compBtn.textContent = mvpComp === 0 ? 'All Comps' : mvpComps[mvpComp].label;
+
+      if (mvpFilter === 'defensive') {
+        var dv = mvp.querySelector('#def-' + mvpComps[mvpComp].id);
+        if (dv) { dv.style.display = 'block'; animate(dv); }
+        colHdr.innerHTML =
+          '<div class="col-player">Player</div>' +
+          '<div class="col-mp">MP/M</div>' +
+          '<div class="col-stats">' +
+            '<div class="col-stat">TklW</div>' +
+            '<div class="col-stat">Int</div>' +
+            '<div class="col-stat total">Tkl+Int</div>' +
+          '</div>';
+      } else {
+        colHdr.innerHTML =
+          '<div class="col-player">Player</div>' +
+          '<div class="col-mp">MP/M</div>' +
+          '<div class="col-stats">' +
+            '<div class="col-stat">Gls</div>' +
+            '<div class="col-stat">Ast</div>' +
+            '<div class="col-stat total">G+A</div>' +
+          '</div>';
+        var cv = mvp.querySelector('#view-' + mvpComps[mvpComp].id);
+        if (cv) {
+          cv.classList.add('active');
+          cv.querySelectorAll('.player-row').forEach(function(r) {
+            var n = r.querySelector('.name') ? r.querySelector('.name').textContent.toLowerCase() : '';
+            var isDef = mvpDefNames.some(function(d) { return n.indexOf(d) !== -1; });
+            r.style.display = (mvpFilter === 'attacking' && isDef) ? 'none' : '';
+          });
+          animate(cv);
+        }
+      }
+    }
+
+    compBtn.addEventListener('click', function() {
+      mvpComp = (mvpComp + 1) % mvpComps.length;
+      render();
+    });
+
+    function setMvpFilter(f) {
+      mvpFilter = f;
+      mvp.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      var activeBtn = mvp.querySelector('#f' + f.charAt(0).toUpperCase() + f.slice(1));
+      if (activeBtn) activeBtn.classList.add('active');
+      render();
+    }
+
+    var btnAll = mvp.querySelector('#fAll');
+    var btnDef = mvp.querySelector('#fDef');
+    var btnAtk = mvp.querySelector('#fAtk');
+    if (btnAll) btnAll.addEventListener('click', function() { setMvpFilter('all'); });
+    if (btnDef) btnDef.addEventListener('click', function() { setMvpFilter('defensive'); });
+    if (btnAtk) btnAtk.addEventListener('click', function() { setMvpFilter('attacking'); });
+
+    render();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMVP);
+  } else {
+    initMVP();
+  }
+})();
+</script>
 <!-- BLUECO FINANCIAL REALITY TILE -->
 <div style="max-width:480px;width:100%;margin-top:14px;background:#0a0f1a;border:1px solid rgba(201,168,76,0.2);border-radius:4px;overflow:hidden;">
 
@@ -3835,1216 +5136,7 @@ html {
 </div>
 </div>
 </div>
-<!-- MVP RACE TILE -->
-<div style="max-width:480px;width:100%;margin-top:14px;">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&amp;family=Barlow:wght@400;500&amp;display=swap" rel="stylesheet"/>
-<style>
-      #mvp-clean {
-        --blue:   #034694;
-        --yellow: #EAC117;
-        --white:  #F2F2F0;
-        --dim:    rgba(242,242,240,0.38);
-        --border: rgba(242,242,240,0.10);
-        --black:  #000;
-        --stats-w: 138px;
-  --mp-col-w: 40px;
-        font-family: 'Barlow', sans-serif;
-        color: #F2F2F0;
-        width: 100%;
-        box-sizing: border-box;
-      }
-      #mvp-clean *, #mvp-clean *::before, #mvp-clean *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      
-#mvp-clean * { box-sizing: border-box; margin: 0; padding: 0; }
 
-#mvp-clean :root {
-  --blue:   #034694;
-  --yellow: #EAC117;
-  --white:  #F2F2F0;
-  --dim:    rgba(242,242,240,0.38);
-  --border: rgba(242,242,240,0.10);
-  --black:  #000;
-  /* stats panel width — 3 columns + right padding */
-  --stats-w: 138px;
-  --mp-col-w: 40px;
-}
-
-#mvp-clean /* ── CARD ─────────────────────────────────── */
-.card {
-  width: 100%;
-  max-width: 780px;
-  background: var(--black);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  position: relative;
-}
-
-#mvp-clean .card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 5px;
-  background: linear-gradient(90deg, var(--blue) 65%, var(--yellow) 65%);
-  z-index: 10;
-}
-
-#mvp-clean /* ── HEADER ───────────────────────────────── */
-.c-header {
-  padding: 20px 20px 14px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-#mvp-clean .c-header h1 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 0.9;
-  text-transform: uppercase;
-}
-
-#mvp-clean .c-header h1 em { font-style: normal; color: var(--yellow); }
-
-#mvp-clean .eyebrow {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--yellow);
-  margin-bottom: 5px;
-}
-
-#mvp-clean .legend {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: flex-end;
-  padding-bottom: 4px;
-}
-
-#mvp-clean .legend-row {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--dim);
-}
-
-#mvp-clean .swatch {
-  width: 22px; height: 6px; border-radius: 1px;
-}
-
-#mvp-clean .swatch.mp { background: rgba(3,70,148,0.8); }
-
-#mvp-clean .swatch.min { background: rgba(242,242,240,0.3); }
-
-#mvp-clean /* ── NAV ──────────────────────────────────── */
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 20px;
-  border-bottom: 1px solid var(--border);
-  background: rgba(255,255,255,0.015);
-}
-
-#mvp-clean .comp-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  flex-shrink: 0;
-}
-
-#mvp-clean .comp-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dim);
-  padding-left: 2px;
-}
-
-#mvp-clean .comp-btn {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--black);
-  background: var(--yellow);
-  border: none;
-  padding: 7px 14px 6px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-#mvp-clean .comp-btn:hover { opacity: 0.85; }
-
-#mvp-clean .nav-div {
-  width: 1px; height: 24px;
-  background: var(--border);
-  margin: 0 2px;
-  flex-shrink: 0;
-}
-
-#mvp-clean .filter-btn {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--dim);
-  background: transparent;
-  border: 1px solid var(--border);
-  padding: 6px 12px 5px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-#mvp-clean .filter-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.25); }
-
-#mvp-clean .filter-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
-
-#mvp-clean /* ── COL HEADER ───────────────────────────── */
-.col-header {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  background: rgba(255,255,255,0.02);
-}
-
-#mvp-clean .col-player {
-  flex: 1;
-  padding: 7px 10px 7px 20px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--dim);
-}
-
-#mvp-clean .col-stats {
-  width: var(--stats-w);
-  display: flex;
-  border-left: 1px solid rgba(255,255,255,0.15);
-}
-
-#mvp-clean .col-stat {
-  flex: 1;
-  padding: 7px 8px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--dim);
-  text-align: right;
-}
-
-#mvp-clean /* col-header total cell — same as other headers */
-.col-header .col-stat.total {
-  background: rgba(255,255,255,0.04);
-  padding-right: 20px;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--dim);
-}
-
-#mvp-clean /* ── PLAYER ROW ───────────────────────────── */
-.player-row {
-  display: flex;
-  align-items: stretch;
-  border-bottom: 1px solid rgba(255,255,255,0.10);
-  min-height: 44px;
-  animation: slideIn 0.3s ease both;
-}
-
-#mvp-clean .player-row.top { border-left: 4px solid var(--yellow); }
-
-#mvp-clean .player-row.contender { border-left: 4px solid var(--blue); }
-
-#mvp-clean .player-row.rest { border-left: 4px solid rgba(255,255,255,0.07); }
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(-6px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-#mvp-clean /* ── PLAYER COLUMN — bars live here ──────── */
-.player-col {
-  flex: 1;
-  position: relative;     /* bars positioned relative to this */
-  overflow: hidden;       /* bars CANNOT escape this box */
-  padding: 7px 8px 7px 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
-  z-index: 0;
-}
-
-#mvp-clean /* MP bar — top half */
-.bar-mp {
-  position: absolute;
-  top: 0; left: 0;
-  width: var(--mp);        /* set inline on each row */
-  height: 50%;
-  background: rgba(3, 70, 148, 0.45);
-  pointer-events: none;
-  z-index: 0;
-}
-
-#mvp-clean .player-row.top .bar-mp { background: rgba(3, 70, 148, 0.58); }
-
-#mvp-clean /* Minutes bar — bottom half */
-.bar-min {
-  position: absolute;
-  bottom: 0; left: 0;
-  width: var(--min);       /* set inline on each row */
-  height: 50%;
-  background: rgba(242, 242, 240, 0.07);
-  pointer-events: none;
-  z-index: 0;
-}
-
-#mvp-clean .player-row.top .bar-min { background: rgba(242, 242, 240, 0.11); }
-
-#mvp-clean /* Bar labels — outside bar when short, #mvp-clean inside when long */
-.bar-labels {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  pointer-events: none;
-  z-index: 2;
-}
-
-#mvp-clean .lbl-mp, #mvp-clean .lbl-min {
-  position: absolute;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-#mvp-clean .lbl-mp {
-  top: 25%;
-  transform: translateY(-50%);
-  /* For short bars: sits just right of end. For long bars: clamp inside */
-  left: min(var(--mp), calc(100% - 36px));
-  padding-left: 5px;
-  color: rgba(120, 170, 255, 0.70);
-}
-
-#mvp-clean .lbl-min {
-  top: 75%;
-  transform: translateY(-50%);
-  left: min(var(--min), calc(100% - 36px));
-  padding-left: 5px;
-  color: rgba(242,242,240,0.45);
-}
-
-#mvp-clean /* Text content above bars */
-.player-col > .rank, #mvp-clean .player-col > .name {
-  position: relative;
-  z-index: 1;
-}
-
-#mvp-clean .rank {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--dim);
-}
-
-#mvp-clean .player-row.top .rank { color: rgba(234,193,23,0.8); }
-
-#mvp-clean .name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.05;
-  color: var(--white);
-}
-
-#mvp-clean .player-row.top .name { color: var(--yellow); }
-
-
-#mvp-clean .mp-col {
-  width: var(--mp-col-w);
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 0 6px 0 4px;
-  border-left: 1px solid rgba(255,255,255,0.08);
-  gap: 2px;
-}
-#mvp-clean .mp-col .mc-mp {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: rgba(120,170,255,0.85);
-  white-space: nowrap;
-}
-#mvp-clean .mp-col .mc-min {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: rgba(242,242,240,0.55);
-  white-space: nowrap;
-}
-#mvp-clean .col-mp {
-  width: var(--mp-col-w);
-  flex-shrink: 0;
-  padding: 7px 6px 7px 4px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dim);
-  text-align: right;
-  border-left: 1px solid rgba(255,255,255,0.08);
-}
-
-#mvp-clean /* ── STATS COLUMN — completely separate DOM from bars ── */
-.stats-col {
-  width: var(--stats-w);
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  border-left: 1px solid rgba(255,255,255,0.15);
-}
-
-#mvp-clean .s {
-  flex: 1;
-  border-left: 1px solid rgba(255,255,255,0.08);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  text-align: right;
-  padding: 0 5px;
-  color: var(--white);
-}
-
-#mvp-clean .s.dim { color: var(--white); }
-
-#mvp-clean .total {
-  flex: 1;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  text-align: right;
-  padding: 0 14px 0 5px;
-  color: var(--white);
-  background: rgba(255,255,255,0.05);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  align-self: stretch;
-}
-
-#mvp-clean .total.dim { color: var(--white); }
-
-#mvp-clean /* ── FOOTER ───────────────────────────────── */
-.c-footer {
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dim);
-  border-top: 1px solid var(--border);
-}
-
-#mvp-clean .dot-row { display: flex; gap: 16px; }
-
-#mvp-clean .dot-item { display: flex; align-items: center; gap: 5px; }
-
-#mvp-clean .dot { width: 7px; height: 7px; border-radius: 50%; }
-
-#mvp-clean .dot.y { background: var(--yellow); }
-
-#mvp-clean .dot.b { background: var(--blue); }
-
-#mvp-clean /* ── VIEW SWITCHING ───────────────────────── */
-.view { display: none; }
-
-#mvp-clean .view.active { display: block; }
-
-#mvp-clean /* ── RESPONSIVE ───────────────────────────── */
-@media (max-width: 480px) {
-  :root { --stats-w: 138px; --mp-col-w: 40px; }
-  .c-header h1 { font-size: 36px; }
-  .name { font-size: 14px; }
-  .s { font-size: 18px; padding: 0 5px; }
-  .total { font-size: 21px; padding: 0 12px 0 5px; }
-  .player-col { padding: 7px 6px 7px 12px; }
-  .col-player { padding-left: 12px; }
-  
-}
-      #mvp-clean .card { max-width: 100%; border-radius: 4px; }
-      @media(max-width:480px) {
-        #mvp-clean { --stats-w: 138px; --mp-col-w: 40px; }
-      }
-    </style>
-<div id="mvp-clean">
-<div class="card">
-<!-- HEADER -->
-<div class="c-header">
-<div>
-<div class="eyebrow">Chelsea FC · 2025/26</div>
-<h1>MVP<br/><em>Race</em></h1>
-</div>
-<div class="legend">
-<div class="legend-row"><div class="swatch mp"></div>Matches played</div>
-<div class="legend-row"><div class="swatch min"></div>Minutes played</div>
-</div>
-</div>
-<!-- NAV -->
-<div class="nav">
-<div class="comp-wrap">
-<span class="comp-label">Competitions</span>
-<button class="comp-btn" id="compBtn">All Comps</button>
-</div>
-<div class="nav-div"></div>
-<button class="filter-btn active" id="fAll">All</button>
-<button class="filter-btn" id="fDef">Defensive</button>
-<button class="filter-btn" id="fAtk">Attacking</button>
-</div>
-<!-- COL HEADER -->
-<div class="col-header" id="colHeader">
-<div class="col-player">Player</div>
-<div class="col-stats">
-<div class="col-stat">Gls</div>
-<div class="col-stat">Ast</div>
-<div class="col-stat total">G+A</div>
-</div>
-</div>
-<!-- ═══════════════════════════════
-       ALL COMPS  (max: 46 MP / 3654')
-       sorted by G+A desc
-       ═══════════════════════════════ -->
-<div class="view active" id="view-all">
-<!-- João Pedro: 43/46 MP = 93.5%, 3092/3654 = 84.6% -->
-<div class="player-row top">
-<div class="player-col" style="--mp:93.5%;--min:84.6%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">MVP · #1</span>
-<span class="name">João Pedro</span>
-</div>
-<div class="mp-col"><span class="mc-mp">43 MP</span><span class="mc-min">3,092'</span></div>
-<div class="stats-col">
-<span class="s">18</span>
-<span class="s">6</span>
-<span class="total">24</span>
-</div>
-</div>
-<!-- Enzo: 46/46=100%, 3654/3654=100% -->
-<div class="player-row contender">
-<div class="player-col" style="--mp:100%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Candidate · #2</span>
-<span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">46 MP</span><span class="mc-min">3,654'</span></div>
-<div class="stats-col">
-<span class="s">12</span>
-<span class="s">6</span>
-<span class="total">18</span>
-</div>
-</div>
-<!-- Pedro Neto: 44/46=95.7%, 3167/3654=86.7% -->
-<div class="player-row contender">
-<div class="player-col" style="--mp:95.7%;--min:86.7%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Candidate · #3</span>
-<span class="name">Pedro Neto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">44 MP</span><span class="mc-min">3,167'</span></div>
-<div class="stats-col">
-<span class="s">10</span>
-<span class="s">6</span>
-<span class="total">16</span>
-</div>
-</div>
-<!-- Cole Palmer: 25/46=54.3%, 1723/3654=47.1% -->
-<div class="player-row contender">
-<div class="player-col" style="--mp:54.3%;--min:47.1%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Injury caveat · #4</span>
-<span class="name">Cole Palmer</span>
-</div>
-<div class="mp-col"><span class="mc-mp">25 MP</span><span class="mc-min">1,723'</span></div>
-<div class="stats-col">
-<span class="s">10</span>
-<span class="s">3</span>
-<span class="total">13</span>
-</div>
-</div>
-<!-- Garnacho: 36/46=78.3%, 1904/3654=52.1% -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:78.3%;--min:52.1%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Impact sub</span>
-<span class="name">Alejandro Garnacho</span>
-</div>
-<div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">1,904'</span></div>
-<div class="stats-col">
-<span class="s dim">7</span>
-<span class="s dim">4</span>
-<span class="total dim">11</span>
-</div>
-</div>
-<!-- Estêvão: 33/46=71.7%, 1507/3654=41.2% -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:71.7%;--min:41.2%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Emerging</span>
-<span class="name">Estêvão Willian</span>
-</div>
-<div class="mp-col"><span class="mc-mp">33 MP</span><span class="mc-min">1,507'</span></div>
-<div class="stats-col">
-<span class="s dim">7</span>
-<span class="s dim">2</span>
-<span class="total dim">9</span>
-</div>
-</div>
-<!-- Reece James: 36/46=78.3%, 2518/3654=68.9% -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:78.3%;--min:68.9%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">When fit</span>
-<span class="name">Reece James</span>
-</div>
-<div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">2,518'</span></div>
-<div class="stats-col">
-<span class="s dim">2</span>
-<span class="s dim">6</span>
-<span class="total dim">8</span>
-</div>
-</div>
-<!-- Caicedo: 41/46=89.1%, 3368/3654=92.2% -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:89.1%;--min:92.2%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Defensive anchor</span>
-<span class="name">Moisés Caicedo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,368'</span></div>
-<div class="stats-col">
-<span class="s dim">4</span>
-<span class="s dim">1</span>
-<span class="total dim">5</span>
-</div>
-</div>
-</div><!-- /view-all -->
-<!-- ═══════════════════════════════
-       PREMIER LEAGUE
-       ═══════════════════════════════ -->
-<div class="view" id="view-pl">
-<div class="player-row top">
-<div class="player-col" style="--mp:100%;--min:89.6%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">PL MVP · #1</span><span class="name">João Pedro</span>
-</div>
-<div class="mp-col"><span class="mc-mp">31 MP</span><span class="mc-min">2,311'</span></div>
-<div class="stats-col"><span class="s">14</span><span class="s">5</span><span class="total">19</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:96.8%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Workhorse</span><span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">30 MP</span><span class="mc-min">2,578'</span></div>
-<div class="stats-col"><span class="s">8</span><span class="s">3</span><span class="total">11</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:64.5%;--min:55%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Injury caveat</span><span class="name">Cole Palmer</span>
-</div>
-<div class="mp-col"><span class="mc-mp">20 MP</span><span class="mc-min">1,417'</span></div>
-<div class="stats-col"><span class="s">9</span><span class="s">1</span><span class="total">10</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:93.5%;--min:85.7%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Wide threat</span><span class="name">Pedro Neto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,209'</span></div>
-<div class="stats-col"><span class="s dim">5</span><span class="s dim">4</span><span class="total dim">9</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:83.9%;--min:84.6%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Defensive anchor</span><span class="name">Moisés Caicedo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">26 MP</span><span class="mc-min">2,181'</span></div>
-<div class="stats-col"><span class="s dim">3</span><span class="s dim">1</span><span class="total dim">4</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:93.5%;--min:98.9%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Unsung hero</span><span class="name">Trevoh Chalobah</span>
-</div>
-<div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,550'</span></div>
-<div class="stats-col"><span class="s dim">3</span><span class="s dim">0</span><span class="total dim">3</span></div>
-</div>
-</div><!-- /view-pl -->
-<!-- ═══════════════════════════════
-       CHAMPIONS LEAGUE
-       ═══════════════════════════════ -->
-<div class="view" id="view-ucl">
-<div class="player-row top">
-<div class="player-col" style="--mp:100%;--min:87.4%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">UCL MVP · #1</span><span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">744'</span></div>
-<div class="stats-col"><span class="s">3</span><span class="s">2</span><span class="total">5</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:66.7%;--min:62.3%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Joint top scorer</span><span class="name">João Pedro</span>
-</div>
-<div class="mp-col"><span class="mc-mp">6 MP</span><span class="mc-min">530'</span></div>
-<div class="stats-col"><span class="s">3</span><span class="s">0</span><span class="total">3</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:44.4%;--min:50.1%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Breakout · UCL</span><span class="name">Estêvão Willian</span>
-</div>
-<div class="mp-col"><span class="mc-mp">4 MP</span><span class="mc-min">426'</span></div>
-<div class="stats-col"><span class="s">3</span><span class="s">0</span><span class="total">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:66.7%;--min:71.9%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Assist machine</span><span class="name">Reece James</span>
-</div>
-<div class="mp-col"><span class="mc-mp">7 MP</span><span class="mc-min">563'</span></div>
-<div class="stats-col"><span class="s dim">0</span><span class="s dim">2</span><span class="total dim">2</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:100%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Midfield wall</span><span class="name">Moisés Caicedo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">851'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
-</div>
-</div><!-- /view-ucl -->
-<!-- ═══════════════════════════════
-       FA CUP
-       ═══════════════════════════════ -->
-<div class="view" id="view-fac">
-<div class="player-row top">
-<div class="player-col" style="--mp:100%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">FA Cup MVP</span><span class="name">Pedro Neto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">5 apps</span><span class="mc-min">~450'</span></div>
-<div class="stats-col"><span class="s">4</span><span class="s">0</span><span class="total">4</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:80%;--min:40%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Liam Delap</span>
-</div>
-<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~180'</span></div>
-<div class="stats-col"><span class="s">0</span><span class="s">3</span><span class="total">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:60%;--min:60%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~270'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">1</span><span class="total dim">2</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:60%;--min:44%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Alejandro Garnacho</span>
-</div>
-<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~200'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:60%;--min:42%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Estêvão Willian</span>
-</div>
-<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~190'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
-</div>
-</div><!-- /view-fac -->
-<!-- ═══════════════════════════════
-       EFL CUP
-       ═══════════════════════════════ -->
-<div class="view" id="view-efl">
-<div class="player-row top">
-<div class="player-col" style="--mp:80%;--min:70%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">EFL Cup MVP</span><span class="name">Alejandro Garnacho</span>
-</div>
-<div class="mp-col"><span class="mc-mp">5 apps</span><span class="mc-min">~450'</span></div>
-<div class="stats-col"><span class="s">4</span><span class="s">0</span><span class="total">4</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:60%;--min:45%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Breakthrough</span><span class="name">Tyrique George</span>
-</div>
-<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~300'</span></div>
-<div class="stats-col"><span class="s">2</span><span class="s">1</span><span class="total">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:55%;--min:40%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Andrey Santos</span>
-</div>
-<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~280'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">2</span><span class="total dim">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:50%;--min:38%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Jamie Gittens</span>
-</div>
-<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~220'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">2</span><span class="total dim">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:60%;--min:42%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Pedro Neto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~190'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">1</span><span class="total dim">2</span></div>
-</div>
-</div><!-- /view-efl -->
-<!-- ═══════════════════════════════
-       DEFENSIVE VIEWS
-       ═══════════════════════════════ -->
-<div class="def-view" id="def-all" style="display:none">
-<div class="player-row top">
-<div class="player-col" style="--mp:100%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Def MVP · #1</span><span class="name">Moisés Caicedo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,368'</span></div>
-<div class="stats-col"><span class="s">64</span><span class="s">65</span><span class="total">129</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:59.4%;--min:68.9%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Def · #2</span><span class="name">Reece James</span>
-</div>
-<div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">2,518'</span></div>
-<div class="stats-col"><span class="s">38</span><span class="s">44</span><span class="total">82</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:78.1%;--min:75%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Def · #3</span><span class="name">Marc Cucurella</span>
-</div>
-<div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,076'</span></div>
-<div class="stats-col"><span class="s">50</span><span class="s">29</span><span class="total">79</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:62.5%;--min:68.7%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Def · #4</span><span class="name">Malo Gusto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">40 MP</span><span class="mc-min">2,511'</span></div>
-<div class="stats-col"><span class="s">32</span><span class="s">42</span><span class="total">74</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:89.1%;--min:93%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">CB anchor</span><span class="name">Trevoh Chalobah</span>
-</div>
-<div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,399'</span></div>
-<div class="stats-col"><span class="s dim">24</span><span class="s dim">44</span><span class="total dim">68</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:51.6%;--min:56.2%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Unsung hero</span><span class="name">Andrey Santos</span>
-</div>
-<div class="mp-col"><span class="mc-mp">37 MP</span><span class="mc-min">2,049'</span></div>
-<div class="stats-col"><span class="s dim">33</span><span class="s dim">27</span><span class="total dim">60</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:100%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Workhorse</span><span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">46 MP</span><span class="mc-min">3,654'</span></div>
-<div class="stats-col"><span class="s dim">33</span><span class="s dim">18</span><span class="total dim">51</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:93.5%;--min:84.6%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Press machine</span><span class="name">João Pedro</span>
-</div>
-<div class="mp-col"><span class="mc-mp">43 MP</span><span class="mc-min">3,092'</span></div>
-<div class="stats-col"><span class="s dim">18</span><span class="s dim">7</span><span class="total dim">25</span></div>
-</div>
-</div>
-<!-- def-pl, def-ucl, def-fac, def-efl omitted for brevity — same pattern -->
-<div class="def-view" id="def-pl" style="display:none">
-<div class="player-row top">
-<div class="player-col" style="--mp:100%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">PL Def MVP · #1</span><span class="name">Moisés Caicedo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">26 MP</span><span class="mc-min">2,181'</span></div>
-<div class="stats-col"><span class="s">43</span><span class="s">51</span><span class="total">94</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:74.4%;--min:73.6%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">PL Def · #2</span><span class="name">Reece James</span>
-</div>
-<div class="mp-col"><span class="mc-mp">27 MP</span><span class="mc-min">1,896'</span></div>
-<div class="stats-col"><span class="s">32</span><span class="s">31</span><span class="total">63</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:67.4%;--min:89%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">PL Def · #3</span><span class="name">Trevoh Chalobah</span>
-</div>
-<div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,550'</span></div>
-<div class="stats-col"><span class="s">22</span><span class="s">35</span><span class="total">57</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:74.4%;--min:98.9%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">PL Def · #4</span><span class="name">Marc Cucurella</span>
-</div>
-<div class="mp-col"><span class="mc-mp">27 MP</span><span class="mc-min">2,077'</span></div>
-<div class="stats-col"><span class="s">32</span><span class="s">21</span><span class="total">53</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:53.5%;--min:67.5%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Quietly excellent</span><span class="name">Malo Gusto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">28 MP</span><span class="mc-min">1,741'</span></div>
-<div class="stats-col"><span class="s dim">21</span><span class="s dim">23</span><span class="total dim">44</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:100%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Midfield engine</span><span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">30 MP</span><span class="mc-min">2,578'</span></div>
-<div class="stats-col"><span class="s dim">23</span><span class="s dim">16</span><span class="total dim">39</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:25.6%;--min:55.1%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">CB cover</span><span class="name">Wesley Fofana</span>
-</div>
-<div class="mp-col"><span class="mc-mp">19 MP</span><span class="mc-min">1,276'</span></div>
-<div class="stats-col"><span class="s dim">11</span><span class="s dim">25</span><span class="total dim">36</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:30.2%;--min:49.5%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Pressing forward</span><span class="name">João Pedro</span>
-</div>
-<div class="mp-col"><span class="mc-mp">31 MP</span><span class="mc-min">2,311'</span></div>
-<div class="stats-col"><span class="s dim">15</span><span class="s dim">5</span><span class="total dim">20</span></div>
-</div>
-</div>
-<div class="def-view" id="def-ucl" style="display:none">
-<div class="player-row top">
-<div class="player-col" style="--mp:100%;--min:87.4%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">UCL Def MVP · #1</span><span class="name">Moisés Caicedo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">851'</span></div>
-<div class="stats-col"><span class="s">16</span><span class="s">9</span><span class="total">25</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:100%;--min:84.8%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">UCL Def · #2</span><span class="name">Marc Cucurella</span>
-</div>
-<div class="mp-col"><span class="mc-mp">8 MP</span><span class="mc-min">721'</span></div>
-<div class="stats-col"><span class="s">14</span><span class="s">7</span><span class="total">21</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:77.8%;--min:55.7%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">UCL Def · #3</span><span class="name">Malo Gusto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">6 MP</span><span class="mc-min">474'</span></div>
-<div class="stats-col"><span class="s">7</span><span class="s">13</span><span class="total">20</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:33.3%;--min:66.2%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Intercept king</span><span class="name">Reece James</span>
-</div>
-<div class="mp-col"><span class="mc-mp">7 MP</span><span class="mc-min">563'</span></div>
-<div class="stats-col"><span class="s dim">5</span><span class="s dim">12</span><span class="total dim">17</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:33.3%;--min:35.9%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Midfield cover</span><span class="name">Andrey Santos</span>
-</div>
-<div class="mp-col"><span class="mc-mp">3 MP</span><span class="mc-min">306'</span></div>
-<div class="stats-col"><span class="s dim">6</span><span class="s dim">8</span><span class="total dim">14</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:55.6%;--min:56.4%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">CB wall</span><span class="name">Wesley Fofana</span>
-</div>
-<div class="mp-col"><span class="mc-mp">5 MP</span><span class="mc-min">480'</span></div>
-<div class="stats-col"><span class="s dim">2</span><span class="s dim">11</span><span class="total dim">13</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:66.7%;--min:62.3%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Midfield shield</span><span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">744'</span></div>
-<div class="stats-col"><span class="s dim">6</span><span class="s dim">2</span><span class="total dim">8</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:44.4%;--min:39.7%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">CB partner</span><span class="name">Trevoh Chalobah</span>
-</div>
-<div class="mp-col"><span class="mc-mp">6 MP</span><span class="mc-min">572'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">7</span><span class="total dim">8</span></div>
-</div>
-</div>
-<div class="def-view" id="def-fac" style="display:none">
-<div class="player-row top">
-<div class="player-col" style="--mp:80%;--min:60%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">FA Cup Def MVP</span><span class="name">Andrey Santos</span>
-</div>
-<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
-<div class="stats-col"><span class="s">7</span><span class="s">1</span><span class="total">8</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:55%;--min:45%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Cup cover</span><span class="name">Moisés Caicedo</span>
-</div>
-<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
-<div class="stats-col"><span class="s dim">3</span><span class="s dim">3</span><span class="total dim">6</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:60%;--min:50%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Benoît Badiashile</span>
-</div>
-<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
-<div class="stats-col"><span class="s dim">2</span><span class="s dim">3</span><span class="total dim">5</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:55%;--min:40%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Reads well</span><span class="name">Tosin Adarabioyo</span>
-</div>
-<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
-<div class="stats-col"><span class="s dim">0</span><span class="s dim">4</span><span class="total dim">4</span></div>
-</div>
-</div>
-<div class="def-view" id="def-efl" style="display:none">
-<div class="player-row top">
-<div class="player-col" style="--mp:80%;--min:65%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">EFL Def MVP</span><span class="name">Andrey Santos</span>
-</div>
-<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
-<div class="stats-col"><span class="s">7</span><span class="s">1</span><span class="total">8</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:65%;--min:50%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">EFL Def · #2</span><span class="name">Malo Gusto</span>
-</div>
-<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
-<div class="stats-col"><span class="s">4</span><span class="s">5</span><span class="total">9</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:60%;--min:42%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">EFL Def · #3</span><span class="name">Marc Cucurella</span>
-</div>
-<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
-<div class="stats-col"><span class="s">4</span><span class="s">1</span><span class="total">5</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:55%;--min:38%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Cup rotation</span><span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
-<div class="stats-col"><span class="s dim">4</span><span class="s dim">0</span><span class="total dim">4</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:50%;--min:38%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Reads well</span><span class="name">Jorrel Hato</span>
-</div>
-<div class="mp-col"><span class="mc-mp"></span><span class="mc-min"></span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">3</span><span class="total dim">4</span></div>
-</div>
-</div>
-<!-- FOOTER -->
-<div class="c-footer">
-<div class="dot-row">
-<div class="dot-item"><div class="dot y"></div>MVP candidate</div>
-<div class="dot-item"><div class="dot b"></div>Contender</div>
-</div>
-<span>FBref · 2025/26</span>
-</div>
-</div><!-- /card -->
-<script>
-(function() {
-  function initMVP() {
-    var mvp = document.getElementById('mvp-clean');
-    if (!mvp) return;
-
-    var mvpComps = [
-      { id: 'all', label: 'All Competitions' },
-      { id: 'pl',  label: 'Premier League' },
-      { id: 'ucl', label: 'Champions League' },
-      { id: 'fac', label: 'FA Cup' },
-      { id: 'efl', label: 'EFL Cup' },
-    ];
-    var mvpDefNames = ['caicedo','james','chalobah','fofana','sánchez','cucurella','gusto','hato','adarabioyo','santos'];
-
-    var mvpComp = 0;
-    var mvpFilter = 'all';
-
-    var compBtn  = mvp.querySelector('#compBtn');
-    var colHdr   = mvp.querySelector('#colHeader');
-    var allViews = mvp.querySelectorAll('.view');
-    var allDefs  = mvp.querySelectorAll('.def-view');
-
-    if (!compBtn || !colHdr) return;
-
-    function animate(el) {
-      el.querySelectorAll('.player-row').forEach(function(r, i) {
-        r.style.animation = 'none';
-        r.offsetHeight;
-        r.style.animation = '';
-        r.style.animationDelay = (i * 0.04) + 's';
-      });
-    }
-
-    function render() {
-      allViews.forEach(function(v) { v.classList.remove('active'); });
-      allDefs.forEach(function(v) { v.style.display = 'none'; });
-
-      compBtn.textContent = mvpComp === 0 ? 'All Comps' : mvpComps[mvpComp].label;
-
-      if (mvpFilter === 'defensive') {
-        var dv = mvp.querySelector('#def-' + mvpComps[mvpComp].id);
-        if (dv) { dv.style.display = 'block'; animate(dv); }
-        colHdr.innerHTML =
-          '<div class="col-player">Player</div>' +
-          '<div class="col-mp">MP/M</div>' +
-          '<div class="col-stats">' +
-            '<div class="col-stat">TklW</div>' +
-            '<div class="col-stat">Int</div>' +
-            '<div class="col-stat total">Tkl+Int</div>' +
-          '</div>';
-      } else {
-        colHdr.innerHTML =
-          '<div class="col-player">Player</div>' +
-          '<div class="col-mp">MP/M</div>' +
-          '<div class="col-stats">' +
-            '<div class="col-stat">Gls</div>' +
-            '<div class="col-stat">Ast</div>' +
-            '<div class="col-stat total">G+A</div>' +
-          '</div>';
-        var cv = mvp.querySelector('#view-' + mvpComps[mvpComp].id);
-        if (cv) {
-          cv.classList.add('active');
-          cv.querySelectorAll('.player-row').forEach(function(r) {
-            var n = r.querySelector('.name') ? r.querySelector('.name').textContent.toLowerCase() : '';
-            var isDef = mvpDefNames.some(function(d) { return n.indexOf(d) !== -1; });
-            r.style.display = (mvpFilter === 'attacking' && isDef) ? 'none' : '';
-          });
-          animate(cv);
-        }
-      }
-    }
-
-    compBtn.addEventListener('click', function() {
-      mvpComp = (mvpComp + 1) % mvpComps.length;
-      render();
-    });
-
-    function setMvpFilter(f) {
-      mvpFilter = f;
-      mvp.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-      var activeBtn = mvp.querySelector('#f' + f.charAt(0).toUpperCase() + f.slice(1));
-      if (activeBtn) activeBtn.classList.add('active');
-      render();
-    }
-
-    var btnAll = mvp.querySelector('#fAll');
-    var btnDef = mvp.querySelector('#fDef');
-    var btnAtk = mvp.querySelector('#fAtk');
-    if (btnAll) btnAll.addEventListener('click', function() { setMvpFilter('all'); });
-    if (btnDef) btnDef.addEventListener('click', function() { setMvpFilter('defensive'); });
-    if (btnAtk) btnAtk.addEventListener('click', function() { setMvpFilter('attacking'); });
-
-    render();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMVP);
-  } else {
-    initMVP();
-  }
-})();
-</script>
 </div>
 </div>
 <!-- MARKET VALUE TILE -->
@@ -5651,7 +5743,7 @@ html {
 </div>
 <div class="since-section">
 <div class="live-dot"></div>
-<div class="since-text">Still alive after <strong id="days-count">67 DAYS</strong> in the job. Next test: <strong>Chelsea vs Port Vale · FA Cup QF · 4 Apr</strong></div>
+<div class="since-text">Still alive after <strong id="days-count">87 DAYS</strong> in the job. Next test: <strong>Chelsea vs Man City · PL · 12 Apr</strong></div>
 </div>
 <!-- TRANSFER RUMOUR TILE -->
 <div class="transfer-host preview" data-default-filter="linked" data-mode="preview" data-preview-limit="4" data-source="transfers.html" id="transfers-host-home" style="max-width:480px;width:100%;"></div>
@@ -5871,8 +5963,8 @@ html {
 </button>
 </div>
 <div class="fixture-list">
-<div class="fixture-row"><div class="fixture-comp">FAC</div><div class="fixture-match"><strong>Chelsea vs Port Vale</strong><br/>Quarter-final · Sat 4 Apr</div><div class="fixture-time">16:15</div></div>
 <div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Chelsea vs Man City</strong><br/>Sun 12 Apr</div><div class="fixture-time">15:30</div></div>
+<div class="fixture-row"><div class="fixture-comp">FAC</div><div class="fixture-match"><strong>FA Cup Semi-Final</strong><br/>Wembley · date TBC</div><div class="fixture-time">TBC</div></div>
 <div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Chelsea vs Man United</strong><br/>Sat 18 Apr</div><div class="fixture-time">19:00</div></div>
 <div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Brighton vs Chelsea</strong><br/>Sun 26 Apr</div><div class="fixture-time">15:30</div></div>
 <div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Chelsea vs Nottingham Forest</strong><br/>Sat 2 May</div><div class="fixture-time">14:00</div></div>
@@ -6022,8 +6114,8 @@ html {
 <div class="footer">
 <p>
     *"Departed by mutual consent." Sure.<br/>
-    All comps under Rosenior: P19 W10 D2 L7 · PL only: P11 W6 D2 L3 · Currently 6th in the Premier League<br/>
-    FA Cup QF · Chelsea vs Port Vale · 4 Apr 2026<br/>
+    All comps under Rosenior: P20 W11 D2 L7 · PL only: P11 W6 D2 L3 · Currently 6th in the Premier League<br/>
+    FA Cup QF · Chelsea 7–0 Port Vale · 4 Apr 2026 · THROUGH TO SEMI-FINAL<br/>
     Last updated: 22 March 2026<br/>
 <span style="color:rgba(255,255,255,.1)">Unofficial fan site · Independent fan project · Not affiliated with Chelsea FC or its ownership · KTBFFH</span>
 </p>
@@ -6073,9 +6165,9 @@ const CFC = {
   MARKET_PCT: 22,   // update from betting odds (top 4/5 implied %)
 
   // ── LAST WIN ─────────────────────────────────────────────
-  LAST_WIN_DATE:  '2026-03-07',        // ISO date for auto-counter
-  LAST_WIN_LABEL: 'Wrexham 4–2',       // display name
-  LAST_WIN_COMP:  'FAC · 7 Mar 2026',  // competition + date
+  LAST_WIN_DATE:  '2026-04-04',        // ISO date for auto-counter
+  LAST_WIN_LABEL: 'Port Vale 7–0',     // display name
+  LAST_WIN_COMP:  'FAC QF · 4 Apr 2026',  // competition + date
 
   // ── INJURIES (true = out, false = available) ──────────────
   INJURIES: {
@@ -6086,11 +6178,12 @@ const CFC = {
 
   // ── EDITORIAL TICKER (your words, always shown) ──────────
   EDITORIAL_TICKER: [
-    { text: 'ARSENAL BEAT CHELSEA THREE TIMES IN SIX WEEKS', bad: true },
+    { text: 'CHELSEA 7–0 PORT VALE · FA CUP SEMI-FINAL BOUND', bad: false },
+    { text: 'LAST PREM WIN 31 DAYS AGO · WEMBLEY NEXT', bad: false },
     { text: 'MISSING UCL NEXT SEASON COSTS ~£98M', bad: true },
     { text: 'BLUECO OWE £1.165B IN LOANS', bad: true },
-    { text: 'CONTRACT TO 2032', bad: false },
     { text: '2-8 VS PSG · ROSENIOR BREAKS LAMPARD UCL RECORD', bad: true },
+    { text: 'ENZO SUSPENDED · CUCURELLA PLAYS · THE CULTURE HAS SPOKEN', bad: true },
   ],
 
   // ── RESULTS (add newest at the bottom) ───────────────────
@@ -6114,6 +6207,7 @@ const CFC = {
     { comp:'PL',  match:'Newcastle',              score:'0–1', result:'loss', date:'14 Mar' },
     { comp:'UCL', match:'PSG — R16 L2 (2–8 agg)', score:'0–3', result:'loss', date:'17 Mar' },
     { comp:'PL',  match:'Everton (A)',            score:'0–3', result:'loss', date:'21 Mar' },
+    { comp:'FAC', match:'Port Vale — QF',         score:'7–0', result:'win',  date:'4 Apr'  },
   ],
 
 };
