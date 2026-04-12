@@ -1571,7 +1571,7 @@ html {
 <!-- RIGHT: Days since last win -->
 <div class="twin-tile" style="align-items:center;text-align:center;">
 <div class="twin-tile-label">Days since last win</div>
-<div class="twin-tile-big" id="daysSinceWin" style="color:#4ade80;">0</div>
+<div class="twin-tile-big" id="daysSinceWin">0</div>
 <div class="twin-tile-sub">Last win: Port Vale 7–0</div>
 <div class="twin-tile-sub">FAC QF · 4 Apr 2026</div>
 </div>
@@ -1642,7 +1642,7 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
     {tier:'Major',   label:'Underwhelming appointment — Championship CV for a CL club', points:20, triggered:true,  date:'Rosenior appointed Jan 2026'},
     {tier:'Major',   label:'8-2 aggregate defeat — historically worst European result', points:20, triggered:true,  date:'PSG 8 Chelsea 2 · Mar 2026'},
     {tier:'Major',   label:'Dressing room unrest — multiple players speaking out',       points:15, triggered:true,  date:'Cucurella · Fernández · Mar 2026'},
-    {tier:'Medium',  label:'Lost all three games to a direct rival in one season',       points:10, triggered:false, date:null},
+    {tier:'Medium',  label:'Lost all three games to a direct rival in one season',       points:10, triggered:true,  date:'Man City: 1-1 (A), 0-3 (H) · Jan & Apr 2026'},
     {tier:'Release', label:'3+ consecutive wins',                                        points:5,  triggered:false, date:null, release:true},
     {tier:'Release', label:'Clean sheet run — 3+ games',                                 points:5,  triggered:false, date:null, release:true},
     {tier:'Release', label:'Cup final reached',                                          points:5,  triggered:false, date:null, release:true},
@@ -1653,7 +1653,8 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
   var score=MM.filter(function(m){return m.triggered&&!m.release;}).reduce(function(s,m){return s+m.points;},0);
   var released=MM.filter(function(m){return m.triggered&&m.release;}).reduce(function(s,m){return s+m.points;},0);
   score=Math.max(0,score-released);
-  var pct=Math.min(score,100);
+  score=Math.min(score,98);
+  var pct=score;
 
   function getStatus(s){
     if(s<=30) return 'FINE';
@@ -1806,7 +1807,7 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
     {tier:'Minor',  label:'Manager publicly undermined before sacking',       points:5,  triggered:true,  date:'Maresca, Jan 2026'},
     {tier:'Minor',  label:'Manager briefed against after sacking',            points:5,  triggered:true,  date:'Tuchel, Potter, Maresca'},
     {tier:'Minor',  label:'Footballing needs ignored — no senior GK or CB signed when squad clearly required one', points:5, triggered:true, date:'Multiple windows'},
-    {tier:'Minor',  label:'Stadium announced with no planning permission submitted', points:5, triggered:true, date:'Stamford Bridge — ongoing'},
+    {tier:'Minor',  label:'Home crowd outsung by away fans — Olé chants at Stamford Bridge', points:5, triggered:true, date:'Man City 0-3 · 12 Apr 2026'},
     {tier:'Medium', label:'Manager sacked mid-season',                        points:10, triggered:true,  date:'Tuchel Sep 2022 · Potter Apr 2023 · Maresca Jan 2026'},
     {tier:'Medium', label:'Player sold to direct rival',                      points:10, triggered:true,  date:'Mount → Man Utd 2023 · Havertz → Arsenal 2023 · Madueke → Arsenal 2025'},
     {tier:'Medium', label:'UEFA / PSR financial breach',                      points:10, triggered:true,  date:'UEFA settlement, 2024'},
@@ -1829,6 +1830,7 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
   var score=BM.filter(function(m){return m.triggered&&!m.reset&&!m.release;}).reduce(function(s,m){return s+m.points;},0);
   var released=BM.filter(function(m){return m.triggered&&m.release;}).reduce(function(s,m){return s+m.points;},0);
   score=Math.max(0,score-released);
+  score=Math.min(score,92);
   var triggered=BM.filter(function(m){return m.triggered&&!m.release;}).length;
   var pending=BM.filter(function(m){return !m.triggered&&!m.release;}).length;
   document.getElementById('bc-triggered').textContent=triggered;
@@ -1876,6 +1878,58 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
   document.getElementById('bc-list').innerHTML=html;
 })();
 </script>
+<!-- MANAGER COMPARISON TILE -->
+<div style="max-width:480px;width:100%;margin-top:14px;background:#0a0f1a;border:1px solid rgba(201,168,76,0.18);border-radius:4px;overflow:hidden;">
+  <div style="background:#034694;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid #C9A84C;">
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:.62rem;letter-spacing:.22em;color:rgba(255,255,255,.65);">Chelsea managers · first 11 PL games</span>
+    <span style="font-size:.56rem;color:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.14);padding:2px 6px;border-radius:2px;">PL only · 2026</span>
+  </div>
+  <div style="padding:12px 16px 0;font-size:.52rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.28);">Points · GF · GA · GD · PPG — ranked by points</div>
+  <div style="padding:8px 16px 14px;overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <thead>
+        <tr>
+          <th style="font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);padding:0 6px 7px;text-align:left;width:40%;font-weight:600;">Manager</th>
+          <th style="font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);padding:0 6px 7px;text-align:left;width:12%;font-weight:600;">Era</th>
+          <th style="font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);padding:0 6px 7px;text-align:right;font-weight:600;">Pts</th>
+          <th style="font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);padding:0 6px 7px;text-align:right;font-weight:600;">GF</th>
+          <th style="font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);padding:0 6px 7px;text-align:right;font-weight:600;">GA</th>
+          <th style="font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);padding:0 6px 7px;text-align:right;font-weight:600;">GD</th>
+          <th style="font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);padding:0 6px 7px;text-align:right;font-weight:600;">PPG</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-size:.67rem;color:rgba(255,255,255,.72);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">Mourinho (1st)</td><td style="font-size:.58rem;color:rgba(255,255,255,.26);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">2004</td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">29</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">28</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">5</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">+23</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">2.64</span></td></tr>
+        <tr><td style="font-size:.67rem;color:rgba(255,255,255,.72);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">Conte</td><td style="font-size:.58rem;color:rgba(255,255,255,.26);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">2016</td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">25</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">22</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">12</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">+10</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">2.27</span></td></tr>
+        <tr><td style="font-size:.67rem;color:rgba(255,255,255,.72);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">Ancelotti</td><td style="font-size:.58rem;color:rgba(255,255,255,.26);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">2009</td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">24</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">28</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">8</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">+20</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">2.18</span></td></tr>
+        <tr><td style="font-size:.67rem;color:rgba(255,255,255,.72);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">Tuchel</td><td style="font-size:.58rem;color:rgba(255,255,255,.26);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">2021</td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">23</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">15</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">3</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">+12</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#4ade80;">2.09</span></td></tr>
+        <tr><td style="font-size:.67rem;color:rgba(255,255,255,.72);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">Maresca</td><td style="font-size:.58rem;color:rgba(255,255,255,.26);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">2024</td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">20</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">22</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">16</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">+6</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">1.82</span></td></tr>
+        <tr><td style="font-size:.67rem;color:rgba(255,255,255,.72);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">Pochettino</td><td style="font-size:.58rem;color:rgba(255,255,255,.26);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">2023</td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">18</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">24</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">21</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">+3</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">1.64</span></td></tr>
+        <tr style="background:rgba(3,70,148,.18);">
+          <td style="font-size:.67rem;color:#C9A84C;font-weight:600;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">Rosenior ←</td><td style="font-size:.58rem;color:rgba(255,255,255,.26);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">2026</td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">17</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">19</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">17</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#C9A84C;">+2</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">1.55</span></td>
+        </tr>
+        <tr><td style="font-size:.67rem;color:rgba(255,255,255,.72);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">Villas-Boas</td><td style="font-size:.58rem;color:rgba(255,255,255,.26);padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);">2011</td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">16</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:rgba(255,255,255,.72);">20</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">18</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">+2</span></td><td style="font-size:.67rem;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">1.45</span></td></tr>
+        <tr><td style="font-size:.67rem;color:rgba(255,255,255,.72);padding:5px 6px;">Potter</td><td style="font-size:.58rem;color:rgba(255,255,255,.26);padding:5px 6px;">2022</td><td style="font-size:.67rem;padding:5px 6px;text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">14</span></td><td style="font-size:.67rem;padding:5px 6px;text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">14</span></td><td style="font-size:.67rem;padding:5px 6px;text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">19</span></td><td style="font-size:.67rem;padding:5px 6px;text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">-5</span></td><td style="font-size:.67rem;padding:5px 6px;text-align:right;"><span style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;color:#f87171;">1.27</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin:0 16px 14px;display:flex;flex-direction:column;gap:5px;">
+    <div style="font-size:.52rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:6px;">PPG</div>
+    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:.63rem;color:rgba(255,255,255,.42);width:76px;flex-shrink:0;">Mourinho</span><div style="flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:100%;height:100%;background:#4ade80;border-radius:2px;"></div></div><span style="font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:#4ade80;min-width:28px;text-align:right;">2.64</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:.63rem;color:rgba(255,255,255,.42);width:76px;flex-shrink:0;">Conte</span><div style="flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:86%;height:100%;background:#4ade80;border-radius:2px;"></div></div><span style="font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:#4ade80;min-width:28px;text-align:right;">2.27</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:.63rem;color:rgba(255,255,255,.42);width:76px;flex-shrink:0;">Ancelotti</span><div style="flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:83%;height:100%;background:#4ade80;border-radius:2px;"></div></div><span style="font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:#4ade80;min-width:28px;text-align:right;">2.18</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:.63rem;color:rgba(255,255,255,.42);width:76px;flex-shrink:0;">Tuchel</span><div style="flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:79%;height:100%;background:#4ade80;border-radius:2px;"></div></div><span style="font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:#4ade80;min-width:28px;text-align:right;">2.09</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:.63rem;color:rgba(255,255,255,.42);width:76px;flex-shrink:0;">Maresca</span><div style="flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:69%;height:100%;background:#C9A84C;border-radius:2px;"></div></div><span style="font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:#C9A84C;min-width:28px;text-align:right;">1.82</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:.63rem;color:rgba(255,255,255,.42);width:76px;flex-shrink:0;">Pochettino</span><div style="flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:62%;height:100%;background:#C9A84C;border-radius:2px;"></div></div><span style="font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:#C9A84C;min-width:28px;text-align:right;">1.64</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:.63rem;color:#C9A84C;font-weight:500;width:76px;flex-shrink:0;">Rosenior</span><div style="flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:59%;height:100%;background:#f87171;border-radius:2px;"></div></div><span style="font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:#f87171;min-width:28px;text-align:right;">1.55</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:.63rem;color:rgba(255,255,255,.42);width:76px;flex-shrink:0;">Villas-Boas</span><div style="flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:55%;height:100%;background:#f87171;border-radius:2px;"></div></div><span style="font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:#f87171;min-width:28px;text-align:right;">1.45</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:.63rem;color:rgba(255,255,255,.42);width:76px;flex-shrink:0;">Potter</span><div style="flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:48%;height:100%;background:#f87171;border-radius:2px;"></div></div><span style="font-family:'Bebas Neue',sans-serif;font-size:.82rem;color:#f87171;min-width:28px;text-align:right;">1.27</span></div>
+  </div>
+  <div style="padding:10px 16px;border-top:1px solid rgba(255,255,255,.06);font-size:.62rem;color:rgba(255,255,255,.28);line-height:1.65;font-style:italic;">
+    First 11 PL games only · Rosenior: W5 D2 L4 after 0–3 vs Man City · 12 Apr 2026.<br/>
+    Liam Rosenior was appointed on 6 January 2026 with no top-flight managerial experience, a contract to 2032, and the quiet confidence of an ownership group that has now hired seven managers in four years. His predecessors on this list averaged a combined 1.89 PPG at this stage. Rosenior is averaging 1.55 — behind a man who was sacked mid-season in 2012 and another who lasted seven months before being replaced by a caretaker who won the Champions League. BlueCo described the appointment as "the right decision for the club." The table disagrees.
+  </div>
+</div>
 <!-- KO-FI TOP STRIP — show/hide via --kofi-display in :root -->
 <div class="kofi-strip">
 <div class="kofi-strip-text">
@@ -2508,396 +2562,23 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
        ALL COMPS  (max: 46 MP / 3654')
        sorted by G+A desc
        ═══════════════════════════════ -->
-<div class="view active" id="view-all">
-<!-- João Pedro: 44/47 MP, 3182/3744 = 85.0% -->
-<div class="player-row top">
-<div class="player-col" style="--mp:93.6%;--min:85.0%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">MVP · #1</span>
-<span class="name">João Pedro</span>
-</div>
-<div class="mp-col"><span class="mc-mp">44 MP</span><span class="mc-min">3,182'</span></div>
-<div class="stats-col">
-<span class="s">19</span>
-<span class="s">6</span>
-<span class="total">25</span>
-</div>
-</div>
-<!-- Enzo: 46/46=100%, 3654/3654=100% -->
-<div class="player-row contender">
-<div class="player-col" style="--mp:100%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Candidate · #2</span>
-<span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">46 MP</span><span class="mc-min">3,654'</span></div>
-<div class="stats-col">
-<span class="s">12</span>
-<span class="s">6</span>
-<span class="total">18</span>
-</div>
-</div>
-<!-- Pedro Neto: 44/47=93.6%, 3257/3744=87.0% -->
-<div class="player-row contender">
-<div class="player-col" style="--mp:93.6%;--min:87.0%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Candidate · #3</span>
-<span class="name">Pedro Neto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">44 MP</span><span class="mc-min">3,257'</span></div>
-<div class="stats-col">
-<span class="s">10</span>
-<span class="s">7</span>
-<span class="total">17</span>
-</div>
-</div>
-<!-- Cole Palmer: 25/46=54.3%, 1723/3654=47.1% -->
-<div class="player-row contender">
-<div class="player-col" style="--mp:54.3%;--min:47.1%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Injury caveat · #4</span>
-<span class="name">Cole Palmer</span>
-</div>
-<div class="mp-col"><span class="mc-mp">25 MP</span><span class="mc-min">1,723'</span></div>
-<div class="stats-col">
-<span class="s">10</span>
-<span class="s">3</span>
-<span class="total">13</span>
-</div>
-</div>
-<!-- Garnacho: 37/47=78.7%, 1994/3744=53.3% -->
-<div class="player-row contender">
-<div class="player-col" style="--mp:78.7%;--min:53.3%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Candidate · #5</span>
-<span class="name">Alejandro Garnacho</span>
-</div>
-<div class="mp-col"><span class="mc-mp">37 MP</span><span class="mc-min">1,994'</span></div>
-<div class="stats-col">
-<span class="s">8</span>
-<span class="s">4</span>
-<span class="total">12</span>
-</div>
-</div>
-<!-- Estêvão: 34/47=72.3%, 1597/3744=42.7% -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:72.3%;--min:42.7%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Emerging</span>
-<span class="name">Estêvão Willian</span>
-</div>
-<div class="mp-col"><span class="mc-mp">34 MP</span><span class="mc-min">1,597'</span></div>
-<div class="stats-col">
-<span class="s dim">8</span>
-<span class="s dim">3</span>
-<span class="total dim">11</span>
-</div>
-</div>
-<!-- Reece James: 36/46=78.3%, 2518/3654=68.9% -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:78.3%;--min:68.9%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">When fit</span>
-<span class="name">Reece James</span>
-</div>
-<div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">2,518'</span></div>
-<div class="stats-col">
-<span class="s dim">2</span>
-<span class="s dim">6</span>
-<span class="total dim">8</span>
-</div>
-</div>
-<!-- Caicedo: 41/46=89.1%, 3368/3654=92.2% -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:89.1%;--min:92.2%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Defensive anchor</span>
-<span class="name">Moisés Caicedo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">41 MP</span><span class="mc-min">3,368'</span></div>
-<div class="stats-col">
-<span class="s dim">4</span>
-<span class="s dim">1</span>
-<span class="total dim">5</span>
-</div>
-</div>
-<!-- Andrey Santos: +1g from Port Vale -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:55%;--min:48%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Engine room</span>
-<span class="name">Andrey Santos</span>
-</div>
-<div class="mp-col"><span class="mc-mp">24 MP</span><span class="mc-min">~1,680'</span></div>
-<div class="stats-col">
-<span class="s dim">5</span>
-<span class="s dim">1</span>
-<span class="total dim">6</span>
-</div>
-</div>
-<!-- Tosin: 1g from Port Vale -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:75%;--min:65%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Set piece threat</span>
-<span class="name">Tosin Adarabioyo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">35 MP</span><span class="mc-min">~2,520'</span></div>
-<div class="stats-col">
-<span class="s dim">1</span>
-<span class="s dim">0</span>
-<span class="total dim">1</span>
-</div>
-</div>
-<!-- Jorrel Hato: 1g from Port Vale -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:72%;--min:62%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">First senior goal</span>
-<span class="name">Jorrel Hato</span>
-</div>
-<div class="mp-col"><span class="mc-mp">32 MP</span><span class="mc-min">~2,200'</span></div>
-<div class="stats-col">
-<span class="s dim">1</span>
-<span class="s dim">0</span>
-<span class="total dim">1</span>
-</div>
-</div>
-<!-- Malo Gusto: 1a from Port Vale -->
-<div class="player-row rest">
-<div class="player-col" style="--mp:80%;--min:72%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Assist machine</span>
-<span class="name">Malo Gusto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">36 MP</span><span class="mc-min">~2,600'</span></div>
-<div class="stats-col">
-<span class="s dim">0</span>
-<span class="s dim">1</span>
-<span class="total dim">1</span>
-</div>
-</div>
-</div><!-- /view-all -->
+<div class="view active" id="view-all"></div>
 <!-- ═══════════════════════════════
        PREMIER LEAGUE
        ═══════════════════════════════ -->
-<div class="view" id="view-pl">
-<div class="player-row top">
-<div class="player-col" style="--mp:100%;--min:89.6%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">PL MVP · #1</span><span class="name">João Pedro</span>
-</div>
-<div class="mp-col"><span class="mc-mp">31 MP</span><span class="mc-min">2,311'</span></div>
-<div class="stats-col"><span class="s">14</span><span class="s">5</span><span class="total">19</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:96.8%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Workhorse</span><span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">30 MP</span><span class="mc-min">2,578'</span></div>
-<div class="stats-col"><span class="s">8</span><span class="s">3</span><span class="total">11</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:64.5%;--min:55%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Injury caveat</span><span class="name">Cole Palmer</span>
-</div>
-<div class="mp-col"><span class="mc-mp">20 MP</span><span class="mc-min">1,417'</span></div>
-<div class="stats-col"><span class="s">9</span><span class="s">1</span><span class="total">10</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:93.5%;--min:85.7%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Wide threat</span><span class="name">Pedro Neto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,209'</span></div>
-<div class="stats-col"><span class="s dim">5</span><span class="s dim">4</span><span class="total dim">9</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:83.9%;--min:84.6%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Defensive anchor</span><span class="name">Moisés Caicedo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">26 MP</span><span class="mc-min">2,181'</span></div>
-<div class="stats-col"><span class="s dim">3</span><span class="s dim">1</span><span class="total dim">4</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:93.5%;--min:98.9%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Unsung hero</span><span class="name">Trevoh Chalobah</span>
-</div>
-<div class="mp-col"><span class="mc-mp">29 MP</span><span class="mc-min">2,550'</span></div>
-<div class="stats-col"><span class="s dim">3</span><span class="s dim">0</span><span class="total dim">3</span></div>
-</div>
-</div><!-- /view-pl -->
+<div class="view" id="view-pl"></div>
 <!-- ═══════════════════════════════
        CHAMPIONS LEAGUE
        ═══════════════════════════════ -->
-<div class="view" id="view-ucl">
-<div class="player-row top">
-<div class="player-col" style="--mp:100%;--min:87.4%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">UCL MVP · #1</span><span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">744'</span></div>
-<div class="stats-col"><span class="s">3</span><span class="s">2</span><span class="total">5</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:66.7%;--min:62.3%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Joint top scorer</span><span class="name">João Pedro</span>
-</div>
-<div class="mp-col"><span class="mc-mp">6 MP</span><span class="mc-min">530'</span></div>
-<div class="stats-col"><span class="s">3</span><span class="s">0</span><span class="total">3</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:44.4%;--min:50.1%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Breakout · UCL</span><span class="name">Estêvão Willian</span>
-</div>
-<div class="mp-col"><span class="mc-mp">4 MP</span><span class="mc-min">426'</span></div>
-<div class="stats-col"><span class="s">3</span><span class="s">0</span><span class="total">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:66.7%;--min:71.9%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Assist machine</span><span class="name">Reece James</span>
-</div>
-<div class="mp-col"><span class="mc-mp">7 MP</span><span class="mc-min">563'</span></div>
-<div class="stats-col"><span class="s dim">0</span><span class="s dim">2</span><span class="total dim">2</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:100%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Midfield wall</span><span class="name">Moisés Caicedo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">9 MP</span><span class="mc-min">851'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
-</div>
-</div><!-- /view-ucl -->
+<div class="view" id="view-ucl"></div>
 <!-- ═══════════════════════════════
        FA CUP
        ═══════════════════════════════ -->
-<div class="view" id="view-fac">
-<div class="player-row top">
-<div class="player-col" style="--mp:100%;--min:100%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">FA Cup MVP</span><span class="name">Pedro Neto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">6 apps</span><span class="mc-min">~540'</span></div>
-<div class="stats-col"><span class="s">4</span><span class="s">1</span><span class="total">5</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:80%;--min:55%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Finalist threat</span><span class="name">Alejandro Garnacho</span>
-</div>
-<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~290'</span></div>
-<div class="stats-col"><span class="s">2</span><span class="s">0</span><span class="total">2</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:80%;--min:50%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Liam Delap</span>
-</div>
-<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~180'</span></div>
-<div class="stats-col"><span class="s">0</span><span class="s">3</span><span class="total">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:60%;--min:60%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Enzo Fernández</span>
-</div>
-<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~270'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">1</span><span class="total dim">2</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:60%;--min:44%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Goal + assist</span><span class="name">Estêvão Willian</span>
-</div>
-<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~280'</span></div>
-<div class="stats-col"><span class="s dim">2</span><span class="s dim">1</span><span class="total dim">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:50%;--min:35%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">First FAC goal</span><span class="name">Jorrel Hato</span>
-</div>
-<div class="mp-col"><span class="mc-mp">2 apps</span><span class="mc-min">~180'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:50%;--min:35%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Header · QF</span><span class="name">Tosin Adarabioyo</span>
-</div>
-<div class="mp-col"><span class="mc-mp">2 apps</span><span class="mc-min">~180'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:50%;--min:35%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">QF goal</span><span class="name">Andrey Santos</span>
-</div>
-<div class="mp-col"><span class="mc-mp">2 apps</span><span class="mc-min">~150'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">0</span><span class="total dim">1</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:50%;--min:38%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">QF assist</span><span class="name">Malo Gusto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">2 apps</span><span class="mc-min">~180'</span></div>
-<div class="stats-col"><span class="s dim">0</span><span class="s dim">1</span><span class="total dim">1</span></div>
-</div>
-</div><!-- /view-fac -->
+<div class="view" id="view-fac"></div>
 <!-- ═══════════════════════════════
        EFL CUP
        ═══════════════════════════════ -->
-<div class="view" id="view-efl">
-<div class="player-row top">
-<div class="player-col" style="--mp:80%;--min:70%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">EFL Cup MVP</span><span class="name">Alejandro Garnacho</span>
-</div>
-<div class="mp-col"><span class="mc-mp">5 apps</span><span class="mc-min">~450'</span></div>
-<div class="stats-col"><span class="s">4</span><span class="s">0</span><span class="total">4</span></div>
-</div>
-<div class="player-row contender">
-<div class="player-col" style="--mp:60%;--min:45%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Breakthrough</span><span class="name">Tyrique George</span>
-</div>
-<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~300'</span></div>
-<div class="stats-col"><span class="s">2</span><span class="s">1</span><span class="total">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:55%;--min:40%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Andrey Santos</span>
-</div>
-<div class="mp-col"><span class="mc-mp">4 apps</span><span class="mc-min">~280'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">2</span><span class="total dim">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:50%;--min:38%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Jamie Gittens</span>
-</div>
-<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~220'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">2</span><span class="total dim">3</span></div>
-</div>
-<div class="player-row rest">
-<div class="player-col" style="--mp:60%;--min:42%">
-<div class="bar-mp"></div><div class="bar-min"></div>
-<span class="rank">Contributor</span><span class="name">Pedro Neto</span>
-</div>
-<div class="mp-col"><span class="mc-mp">3 apps</span><span class="mc-min">~190'</span></div>
-<div class="stats-col"><span class="s dim">1</span><span class="s dim">1</span><span class="total dim">2</span></div>
-</div>
-</div><!-- /view-efl -->
+<div class="view" id="view-efl"></div><!-- /view-efl -->
 <!-- ═══════════════════════════════
        DEFENSIVE VIEWS
        ═══════════════════════════════ -->
@@ -3185,6 +2866,55 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
 <span>FBref · 2025/26</span>
 </div>
 </div><!-- /card -->
+<script>
+// ── MVP ATTACKING RENDERER ─────────────────────────────────────────
+// Reads CFC.MVP_PLAYERS and populates all attacking view containers.
+// Run before initMVP so the rows exist when the engine initialises.
+(function() {
+  if (typeof CFC === 'undefined' || !CFC.MVP_PLAYERS) return;
+
+  var views = { all:'view-all', pl:'view-pl', ucl:'view-ucl', fac:'view-fac', efl:'view-efl' };
+
+  Object.keys(views).forEach(function(key) {
+    var players = CFC.MVP_PLAYERS[key];
+    if (!players || !players.length) return;
+    var el = document.getElementById(views[key]);
+    if (!el) return;
+
+    // Max MP and min for bar scaling within this view
+    var maxMp  = Math.max.apply(null, players.map(function(p){ return p.mp; }));
+    var maxMin = Math.max.apply(null, players.map(function(p){ return p.min; }));
+
+    var rows = players.map(function(p) {
+      var mpPct  = maxMp  > 0 ? ((p.mp  / maxMp)  * 100).toFixed(1) : '0';
+      var minPct = maxMin > 0 ? ((p.min / maxMin) * 100).toFixed(1) : '0';
+      var ga = p.g + p.a;
+      var isTop = p.tier === 'top';
+      var isDim = p.tier === 'rest';
+      var sCls  = isDim ? 's dim' : 's';
+      var totCls = isDim ? 'total dim' : 'total';
+      var mpLabel  = key === 'all' || key === 'pl' ? p.mp + ' MP' : p.mp + ' apps';
+      var minLabel = p.min >= 1000
+        ? (Math.floor(p.min/1000) + ',' + String(p.min % 1000).padStart(3,'0') + "'")
+        : (p.min + "'");
+      return '<div class="player-row ' + p.tier + '">' +
+        '<div class="player-col" style="--mp:' + mpPct + '%;--min:' + minPct + '%">' +
+        '<div class="bar-mp"></div><div class="bar-min"></div>' +
+        '<span class="rank">' + p.rank + '</span>' +
+        '<span class="name">' + p.name + '</span>' +
+        '</div>' +
+        '<div class="mp-col"><span class="mc-mp">' + mpLabel + '</span><span class="mc-min">' + minLabel + '</span></div>' +
+        '<div class="stats-col">' +
+        '<span class="' + sCls + '">' + p.g + '</span>' +
+        '<span class="' + sCls + '">' + p.a + '</span>' +
+        '<span class="' + totCls + '">' + ga + '</span>' +
+        '</div></div>';
+    }).join('');
+
+    el.innerHTML = rows;
+  });
+})();
+</script>
 <script>
 (function() {
   function initMVP() {
@@ -5963,11 +5693,12 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
 </button>
 </div>
 <div class="fixture-list">
-<div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Chelsea vs Man City</strong><br/>Sun 12 Apr</div><div class="fixture-time">15:30</div></div>
-<div class="fixture-row"><div class="fixture-comp">FAC</div><div class="fixture-match"><strong>FA Cup Semi-Final</strong><br/>Wembley · date TBC</div><div class="fixture-time">TBC</div></div>
-<div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Chelsea vs Man United</strong><br/>Sat 18 Apr</div><div class="fixture-time">19:00</div></div>
-<div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Brighton vs Chelsea</strong><br/>Sun 26 Apr</div><div class="fixture-time">15:30</div></div>
-<div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Chelsea vs Nottingham Forest</strong><br/>Sat 2 May</div><div class="fixture-time">14:00</div></div>
+<div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Chelsea vs Man United</strong><br/>Sat 18 Apr · <span style="color:#f87171;font-size:.65em;letter-spacing:.06em;">PROTEST</span></div><div class="fixture-time">19:00</div></div>
+<div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Brighton vs Chelsea</strong><br/>Tue 21 Apr</div><div class="fixture-time">20:00</div></div>
+<div class="fixture-row"><div class="fixture-comp">FAC</div><div class="fixture-match"><strong>Chelsea vs Leeds United — SF</strong><br/>Wembley · Sun 26 Apr</div><div class="fixture-time">15:00</div></div>
+<div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Chelsea vs Nottingham Forest</strong><br/>Mon 4 May</div><div class="fixture-time">14:00</div></div>
+<div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Liverpool vs Chelsea</strong><br/>Sat 9 May</div><div class="fixture-time">12:30</div></div>
+<div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Chelsea vs Tottenham</strong><br/>Sun 17 May</div><div class="fixture-time">14:00</div></div>
 </div>
 <span class="tile-url">hasliamroseniorbeensackedyet.com</span>
 </div>
@@ -6052,8 +5783,6 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
 </div>
 </div>
 </div>
-<!-- KO-FI BOTTOM TILE — show/hide via --kofi-display in :root -->
-<!-- HUDDLEGATE TILE -->
 <div class="huddle-tile">
 <div class="huddle-header">
 <div class="huddle-header-title">🫂 Huddlegate · Mar 2026 → ongoing</div>
@@ -6114,9 +5843,9 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
 <div class="footer">
 <p>
     *"Departed by mutual consent." Sure.<br/>
-    All comps under Rosenior: P20 W11 D2 L7 · PL only: P11 W6 D2 L3 · Currently 6th in the Premier League<br/>
+    All comps under Rosenior: P21 W11 D2 L8 · PL only: P11 W5 D2 L4 · Currently 6th in the Premier League<br/>
     FA Cup QF · Chelsea 7–0 Port Vale · 4 Apr 2026 · THROUGH TO SEMI-FINAL<br/>
-    Last updated: 22 March 2026<br/>
+    Last updated: 12 April 2026<br/>
 <span style="color:rgba(255,255,255,.1)">Unofficial fan site · Independent fan project · Not affiliated with Chelsea FC or its ownership · KTBFFH</span>
 </p>
 <p style="margin-top:10px; font-size:.68rem; color:rgba(255,255,255,.28); line-height:1.9;">
@@ -6138,6 +5867,8 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
    4. Update LAST_WIN_DATE and LAST_WIN_LABEL if Chelsea won
    5. Update INJURIES if players return or get injured
    6. Add/edit EDITORIAL_TICKER items as you see fit
+   7. Update MVP_PLAYERS goals (g) and assists (a) for any scorer/assister
+      — also bump mp and min for players who appeared
 
    RESULT FORMAT:
    { comp:'PL', match:'Opponent', score:'2-1', result:'win', date:'4 Apr' }
@@ -6178,8 +5909,8 @@ const CFC = {
 
   // ── EDITORIAL TICKER (your words, always shown) ──────────
   EDITORIAL_TICKER: [
-    { text: 'CHELSEA 7–0 PORT VALE · FA CUP SEMI-FINAL BOUND', bad: false },
-    { text: 'LAST PREM WIN 31 DAYS AGO · WEMBLEY NEXT', bad: false },
+    { text: 'CHELSEA 0–3 MAN CITY · OLÉ AT STAMFORD BRIDGE · 12 APR', bad: true },
+    { text: 'FA CUP SEMI-FINAL NEXT · WEMBLEY · AT LEAST IT\'S NEUTRAL', bad: false },
     { text: 'MISSING UCL NEXT SEASON COSTS ~£98M', bad: true },
     { text: 'BLUECO OWE £1.165B IN LOANS', bad: true },
     { text: '2-8 VS PSG · ROSENIOR BREAKS LAMPARD UCL RECORD', bad: true },
@@ -6208,7 +5939,64 @@ const CFC = {
     { comp:'UCL', match:'PSG — R16 L2 (2–8 agg)', score:'0–3', result:'loss', date:'17 Mar' },
     { comp:'PL',  match:'Everton (A)',            score:'0–3', result:'loss', date:'21 Mar' },
     { comp:'FAC', match:'Port Vale — QF',         score:'7–0', result:'win',  date:'4 Apr'  },
+    { comp:'PL',  match:'Man City',               score:'0–3', result:'loss', date:'12 Apr' },
   ],
+
+  // ── MVP ATTACKING STATS ───────────────────────────────────
+  // Update goals (g) and assists (a) after each match.
+  // mp = matches played, min = minutes played (for bar width).
+  // comps listed: 'all', 'pl', 'ucl', 'fac', 'efl'
+  // tier: 'top' | 'contender' | 'rest'   rank: shown as label
+  // Bar widths auto-calculated from mp/min relative to max in each view.
+  MVP_PLAYERS: {
+    all: [
+      { name:'João Pedro',         mp:44,  min:3182, g:19, a:6,  tier:'top',       rank:'MVP · #1'        },
+      { name:'Enzo Fernández',      mp:46,  min:3654, g:12, a:6,  tier:'contender', rank:'Candidate · #2'  },
+      { name:'Pedro Neto',          mp:44,  min:3257, g:10, a:7,  tier:'contender', rank:'Candidate · #3'  },
+      { name:'Cole Palmer',         mp:25,  min:1723, g:10, a:3,  tier:'contender', rank:'Injury caveat · #4' },
+      { name:'Alejandro Garnacho',  mp:37,  min:1994, g:8,  a:4,  tier:'contender', rank:'Candidate · #5'  },
+      { name:'Estêvão Willian',     mp:34,  min:1597, g:8,  a:3,  tier:'rest',      rank:'Emerging'        },
+      { name:'Reece James',         mp:36,  min:2518, g:2,  a:6,  tier:'rest',      rank:'When fit'        },
+      { name:'Moisés Caicedo',      mp:41,  min:3368, g:4,  a:1,  tier:'rest',      rank:'Defensive anchor'},
+      { name:'Andrey Santos',       mp:24,  min:1680, g:5,  a:1,  tier:'rest',      rank:'Engine room'     },
+      { name:'Tosin Adarabioyo',    mp:35,  min:2520, g:1,  a:0,  tier:'rest',      rank:'Set piece threat' },
+      { name:'Jorrel Hato',         mp:32,  min:2200, g:1,  a:0,  tier:'rest',      rank:'First senior goal'},
+      { name:'Malo Gusto',          mp:36,  min:2600, g:0,  a:1,  tier:'rest',      rank:'Assist machine'  },
+    ],
+    pl: [
+      { name:'João Pedro',         mp:31,  min:2311, g:14, a:5,  tier:'top',       rank:'PL MVP · #1'     },
+      { name:'Enzo Fernández',      mp:30,  min:2578, g:8,  a:3,  tier:'contender', rank:'Workhorse'        },
+      { name:'Cole Palmer',         mp:20,  min:1417, g:9,  a:1,  tier:'contender', rank:'Injury caveat'    },
+      { name:'Pedro Neto',          mp:29,  min:2209, g:5,  a:4,  tier:'rest',      rank:'Wide threat'      },
+      { name:'Moisés Caicedo',      mp:26,  min:2181, g:3,  a:1,  tier:'rest',      rank:'Defensive anchor' },
+      { name:'Trevoh Chalobah',     mp:29,  min:2550, g:3,  a:0,  tier:'rest',      rank:'Unsung hero'      },
+    ],
+    ucl: [
+      { name:'Enzo Fernández',      mp:9,   min:744,  g:3,  a:2,  tier:'top',       rank:'UCL MVP · #1'    },
+      { name:'João Pedro',          mp:6,   min:530,  g:3,  a:0,  tier:'contender', rank:'Joint top scorer' },
+      { name:'Estêvão Willian',     mp:4,   min:426,  g:3,  a:0,  tier:'contender', rank:'Breakout · UCL'   },
+      { name:'Reece James',         mp:7,   min:563,  g:0,  a:2,  tier:'rest',      rank:'Assist machine'   },
+      { name:'Moisés Caicedo',      mp:9,   min:851,  g:1,  a:0,  tier:'rest',      rank:'Midfield wall'    },
+    ],
+    fac: [
+      { name:'Pedro Neto',          mp:6,   min:540,  g:4,  a:1,  tier:'top',       rank:'FA Cup MVP'       },
+      { name:'Alejandro Garnacho',  mp:4,   min:290,  g:2,  a:0,  tier:'contender', rank:'Finalist threat'  },
+      { name:'Liam Delap',          mp:4,   min:180,  g:0,  a:3,  tier:'contender', rank:'Contributor'      },
+      { name:'Enzo Fernández',      mp:3,   min:270,  g:1,  a:1,  tier:'rest',      rank:'Contributor'      },
+      { name:'Estêvão Willian',     mp:4,   min:280,  g:2,  a:1,  tier:'rest',      rank:'Goal + assist'    },
+      { name:'Jorrel Hato',         mp:2,   min:180,  g:1,  a:0,  tier:'rest',      rank:'First FAC goal'   },
+      { name:'Tosin Adarabioyo',    mp:2,   min:180,  g:1,  a:0,  tier:'rest',      rank:'Header · QF'      },
+      { name:'Andrey Santos',       mp:2,   min:150,  g:1,  a:0,  tier:'rest',      rank:'QF goal'          },
+      { name:'Malo Gusto',          mp:2,   min:180,  g:0,  a:1,  tier:'rest',      rank:'QF assist'        },
+    ],
+    efl: [
+      { name:'Alejandro Garnacho',  mp:5,   min:450,  g:4,  a:0,  tier:'top',       rank:'EFL Cup MVP'      },
+      { name:'Tyrique George',      mp:4,   min:300,  g:2,  a:1,  tier:'contender', rank:'Breakthrough'     },
+      { name:'Andrey Santos',       mp:4,   min:280,  g:1,  a:2,  tier:'rest',      rank:'Contributor'      },
+      { name:'Jamie Gittens',       mp:3,   min:220,  g:1,  a:2,  tier:'rest',      rank:'Contributor'      },
+      { name:'Pedro Neto',          mp:3,   min:190,  g:1,  a:1,  tier:'rest',      rank:'Contributor'      },
+    ],
+  },
 
 };
 
@@ -6321,6 +6109,10 @@ const CFC = {
   const lastWin = new Date(CFC.LAST_WIN_DATE);
   const daysSince = Math.floor((now - lastWin) / 86400000);
   set('daysSinceWin', daysSince);
+  const daysSinceEl = document.getElementById('daysSinceWin');
+  if (daysSinceEl) {
+    daysSinceEl.style.color = daysSince <= 7 ? '#4ade80' : daysSince <= 12 ? '#f59e0b' : '#cc1100';
+  }
   const lastWinSubs = document.querySelectorAll('.twin-tile-sub');
   lastWinSubs.forEach(el => {
     if (el.textContent.includes('Last win:')) el.textContent = 'Last win: ' + CFC.LAST_WIN_LABEL;
