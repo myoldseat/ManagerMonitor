@@ -2085,7 +2085,7 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
 #mvp-clean /* ── CARD ─────────────────────────────────── */
 .card {
   width: 100%;
-  max-width: 780px;
+  max-width: 100%;
   background: var(--black);
   border: 1px solid var(--border);
   overflow: hidden;
@@ -2135,6 +2135,7 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
   gap: 6px;
   align-items: flex-end;
   padding-bottom: 4px;
+  min-width: 0;
 }
 
 #mvp-clean .legend-row {
@@ -2172,6 +2173,7 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
   flex-direction: column;
   gap: 3px;
   flex-shrink: 0;
+  min-width: 0;
 }
 
 #mvp-clean .comp-label {
@@ -2224,6 +2226,15 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
 #mvp-clean .filter-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.25); }
 
 #mvp-clean .filter-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+
+#mvp-clean .card,
+#mvp-clean .nav,
+#mvp-clean .c-header,
+#mvp-clean .col-header,
+#mvp-clean .player-row,
+#mvp-clean .c-footer {
+  min-width: 0;
+}
 
 #mvp-clean /* ── COL HEADER ───────────────────────────── */
 .col-header {
@@ -2512,13 +2523,42 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
 #mvp-clean /* ── RESPONSIVE ───────────────────────────── */
 @media (max-width: 480px) {
   :root { --stats-w: 138px; --mp-col-w: 40px; }
+  .c-header {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 12px 12px;
+  }
   .c-header h1 { font-size: 36px; }
+  .legend {
+    width: 100%;
+    align-items: flex-start;
+    padding-bottom: 0;
+  }
+  .nav {
+    flex-wrap: wrap;
+    padding: 8px 12px;
+  }
+  .nav-div {
+    display: none;
+  }
+  .comp-wrap {
+    width: 100%;
+  }
+  .comp-btn,
+  .filter-btn {
+    min-width: 0;
+  }
   .name { font-size: 14px; }
   .s { font-size: 18px; padding: 0 5px; }
   .total { font-size: 21px; padding: 0 12px 0 5px; }
   .player-col { padding: 7px 6px 7px 12px; }
   .col-player { padding-left: 12px; }
-  
+  .c-footer {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 12px;
+  }
 }
       #mvp-clean .card { max-width: 100%; border-radius: 4px; }
       @media(max-width:480px) {
@@ -4842,9 +4882,6 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
 <div class="bc-footer-l">BlueCo · Chelsea FC · Acquired May 2022 · £4.25bn<br/>Clearlake ~61.5% · Fans consulted: none</div>
 <div class="bc-footer-r">"Clearlake considers an investment's exit<br/>as a critical factor." — Clearlake.com</div>
 </div>
-</div>
-</div>
-
 </div>
 </div>
 <!-- MARKET VALUE TILE -->
