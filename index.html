@@ -1970,7 +1970,7 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
         <div style="font-family:'Bebas Neue',sans-serif;font-size:0.55rem;letter-spacing:0.18em;color:#6b7a96;margin-top:2px;">Secs</div>
       </div>
     </div>
-    <div style="font-size:0.75rem;color:rgba(208,216,232,0.6);font-weight:300;"><strong style="color:#e8edf5;font-weight:500;">Sunday 20 April 2026</strong> · After Chelsea 0–1 Man Utd · Brighton next</div>
+    <div style="font-size:0.75rem;color:rgba(208,216,232,0.6);font-weight:300;"><strong style="color:#e8edf5;font-weight:500;">Tuesday 21 April 2026</strong> · After Chelsea 0–3 Brighton · Leeds next</div>
   </div>
   <div style="display:flex;flex-direction:column;">
     <div style="display:flex;gap:0.75rem;align-items:flex-start;padding:0.7rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.06);">
@@ -5488,7 +5488,7 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
 </div>
 <div class="since-section">
 <div class="live-dot"></div>
-<div class="since-text">Still alive after <strong id="days-count">104 DAYS</strong> in the job. Next test: <strong>Brighton vs Chelsea · PL · 22 Apr</strong></div>
+<div class="since-text">Still alive after <strong id="days-count">104 DAYS</strong> in the job. Next test: <strong>Chelsea vs Leeds United · FAC SF · 26 Apr</strong></div>
 </div>
 <!-- TRANSFER RUMOUR TILE -->
 <div class="transfer-host preview" data-default-filter="linked" data-mode="preview" data-preview-limit="4" data-source="transfers.html" id="transfers-host-home" style="max-width:480px;width:100%;"></div>
@@ -5708,7 +5708,6 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
 </button>
 </div>
 <div class="fixture-list">
-<div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Brighton vs Chelsea</strong><br/>Tue 22 Apr</div><div class="fixture-time">20:00</div></div>
 <div class="fixture-row"><div class="fixture-comp">FAC</div><div class="fixture-match"><strong>Chelsea vs Leeds United — SF</strong><br/>Wembley · Sun 26 Apr</div><div class="fixture-time">15:00</div></div>
 <div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Chelsea vs Nottingham Forest</strong><br/>Mon 4 May</div><div class="fixture-time">14:00</div></div>
 <div class="fixture-row"><div class="fixture-comp">PL</div><div class="fixture-match"><strong>Liverpool vs Chelsea</strong><br/>Sat 9 May</div><div class="fixture-time">12:30</div></div>
@@ -5955,6 +5954,7 @@ const CFC = {
     { comp:'FAC', match:'Port Vale — QF',         score:'7–0', result:'win',  date:'4 Apr'  },
     { comp:'PL',  match:'Man City',               score:'0–3', result:'loss', date:'12 Apr' },
     { comp:'PL',  match:'Man United (H)',          score:'0–1', result:'loss', date:'18 Apr' },
+    { comp:'PL',  match:'Brighton (A)',            score:'0–3', result:'loss', date:'21 Apr' },
   ],
 
   // ── MVP ATTACKING STATS ───────────────────────────────────
@@ -6763,30 +6763,70 @@ window.addEventListener('DOMContentLoaded', function(){
 </script>
 <script>
 (function(){
+  function getTeamName(t){
+    return (typeof t.team === 'string' ? t.team : (t.team && (t.team.name || t.team.shortName)) || t.name || t.club || '').trim();
+  }
+  function getRank(t){
+    return Number(t.rank ?? t.position ?? t.pos ?? t.place ?? 0);
+  }
+  function getPlayed(t){
+    return t.played ?? t.mp ?? t.matchesPlayed ?? t.games ?? '';
+  }
+  function getPoints(t){
+    return t.points ?? t.pts ?? '';
+  }
+  function getGoalDiff(t){
+    const gd = t.gd ?? t.goalDifference ?? t.goal_diff ?? t.diff ?? '';
+    return gd;
+  }
+  function ordinal(n){
+    const v = Number(n);
+    if (!v) return '';
+    if (v % 100 >= 11 && v % 100 <= 13) return v + 'th';
+    if (v % 10 === 1) return v + 'st';
+    if (v % 10 === 2) return v + 'nd';
+    if (v % 10 === 3) return v + 'rd';
+    return v + 'th';
+  }
+
   async function loadPLTable(){
     try {
       const res = await fetch('/.netlify/functions/premtable');
       const json = await res.json();
-      const plData = json.standings || [];
+      const plDataRaw = json.standings || json.table || json.data || [];
+      const plData = Array.isArray(plDataRaw) ? plDataRaw : (Array.isArray(plDataRaw[0]?.table) ? plDataRaw[0].table : []);
       const sub = document.getElementById('plTableSub');
-      if(sub && plData[0]) sub.textContent = 'GW ' + plData[0].played;
+      if(sub && plData[0]) sub.textContent = 'GW ' + getPlayed(plData[0]);
+      const chelseaRow = plData.find(t => getTeamName(t).toLowerCase().includes('chelsea'));
+      if (chelseaRow) {
+        const statPos = document.getElementById('stat-plpos');
+        const livePos = ordinal(getRank(chelseaRow));
+        if (statPos && livePos) statPos.textContent = livePos;
+        if (typeof window.syncMoneyIntroFromTable === 'function') window.syncMoneyIntroFromTable();
+      }
       const el = document.getElementById('plTableInner');
       if(!el || !plData.length) return;
       const th = 'padding:0 4px 6px;font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.22);';
       const rows = plData.slice(0,8).map(t => {
-        const isChelsea = t.team.toLowerCase().includes('chelsea');
-        const gd = t.gd > 0 ? '+'+t.gd : t.gd;
+        const teamName = getTeamName(t);
+        const rank = getRank(t);
+        const played = getPlayed(t);
+        const points = getPoints(t);
+        const gdRaw = getGoalDiff(t);
+        const gdNum = Number(gdRaw);
+        const gd = gdRaw === '' ? '' : (Number.isNaN(gdNum) ? gdRaw : (gdNum > 0 ? '+' + gdNum : String(gdNum)));
+        const isChelsea = teamName.toLowerCase().includes('chelsea');
         const bg      = isChelsea ? 'background:rgba(3,70,148,.15);' : '';
         const nameCol = isChelsea ? 'color:var(--gold);font-weight:700;' : 'color:rgba(255,255,255,.75);';
         const posCol  = isChelsea ? 'color:var(--gold);' : 'color:rgba(255,255,255,.28);';
         const ptsCol  = isChelsea ? 'color:var(--gold);' : 'color:rgba(255,255,255,.9);';
-        const border  = t.rank === 5 ? 'border-bottom:2px solid rgba(74,222,128,.6);' : 'border-bottom:1px solid rgba(255,255,255,.04);';
+        const border  = rank === 5 ? 'border-bottom:2px solid rgba(74,222,128,.6);' : 'border-bottom:1px solid rgba(255,255,255,.04);';
         return `<tr style="${bg}${border}">
-          <td style="padding:5px 4px;font-family:'Bebas Neue',sans-serif;font-size:.82rem;${posCol}width:16px;text-align:center;">${t.rank}</td>
-          <td style="padding:5px 6px;font-size:.72rem;${nameCol}text-align:left;">${t.team}</td>
-          <td style="padding:5px 4px;font-size:.65rem;color:rgba(255,255,255,.35);text-align:center;">${t.played}</td>
+          <td style="padding:5px 4px;font-family:'Bebas Neue',sans-serif;font-size:.82rem;${posCol}width:16px;text-align:center;">${rank || ''}</td>
+          <td style="padding:5px 6px;font-size:.72rem;${nameCol}text-align:left;">${teamName}</td>
+          <td style="padding:5px 4px;font-size:.65rem;color:rgba(255,255,255,.35);text-align:center;">${played}</td>
           <td style="padding:5px 4px;font-size:.65rem;color:rgba(255,255,255,.35);text-align:center;">${gd}</td>
-          <td style="padding:5px 4px;font-family:'Bebas Neue',sans-serif;font-size:.95rem;${ptsCol}text-align:center;">${t.points}</td>
+          <td style="padding:5px 4px;font-family:'Bebas Neue',sans-serif;font-size:.95rem;${ptsCol}text-align:center;">${points}</td>
         </tr>`;
       }).join('');
       el.innerHTML = `
