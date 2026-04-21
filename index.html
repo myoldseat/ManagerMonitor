@@ -1653,7 +1653,7 @@ Last two wins: <strong>Wrexham (Championship) 4–2</strong> and <strong>Port Va
   var score=MM.filter(function(m){return m.triggered&&!m.release;}).reduce(function(s,m){return s+m.points;},0);
   var released=MM.filter(function(m){return m.triggered&&m.release;}).reduce(function(s,m){return s+m.points;},0);
   score=Math.max(0,score-released);
-  score=Math.min(score,98);
+  score=Math.min(score,100);
   var pct=score;
 
   function getStatus(s){
