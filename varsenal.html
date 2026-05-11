@@ -34,6 +34,13 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .question{font-weight:300;font-size:clamp(.82rem,2.2vw,1.1rem);letter-spacing:.12em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:4px;}
 .name{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.2rem,18vw,7rem);line-height:.88;letter-spacing:.03em;color:var(--white);margin-bottom:4px;}.name span{color:var(--red);-webkit-text-stroke:1px rgba(200,169,81,.28)}
 .answer-sub{font-size:.78rem;font-weight:600;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-top:2px;}
+.download-callout{width:100%;margin-top:14px;background:rgba(204,17,0,.10);border:1px solid rgba(204,17,0,.35);border-radius:4px;padding:11px 13px;text-align:center;box-shadow:0 10px 24px rgba(204,17,0,.10)}
+.download-callout-kicker{font-size:.55rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#f87171;margin-bottom:4px}
+.download-callout-main{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.06em;color:#fff;line-height:1}
+.download-callout-main span{color:var(--gold)}
+.download-callout-sub{margin-top:5px;font-size:.66rem;color:rgba(255,255,255,.45);line-height:1.45}
+.download-note{margin-top:8px;text-align:center;font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.34)}
+
 .tile{max-width:480px;width:100%;margin-top:16px;background:rgba(255,255,255,.025);border:1px solid rgba(204,17,0,.32);border-radius:4px;overflow:hidden;text-align:left;}
 .tile-header{background:rgba(204,17,0,.12);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(204,17,0,.22);}.tile-title{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#f87171}.tile-sub{font-size:.6rem;color:rgba(255,255,255,.3);letter-spacing:.05em}.tile-body{padding:14px 16px;}
 .intro{font-size:.74rem;color:rgba(255,255,255,.46);line-height:1.6;margin-bottom:14px}.intro strong{color:rgba(255,255,255,.82)}.intro em{color:var(--gold);font-style:normal}
@@ -62,6 +69,11 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="question">Unofficial emergency browser treatment</div>
     <h1 class="name">VAR<span>SENAL</span></h1>
     <div class="answer-sub">Chrome extension · local parody mode</div>
+    <div class="download-callout">
+      <div class="download-callout-kicker">Download available on this page</div>
+      <div class="download-callout-main">Get the <span>Varsenal ZIP</span></div>
+      <div class="download-callout-sub">Scroll to the red download button below, then unzip and load it in Chrome.</div>
+    </div>
     <section class="tile">
       <div class="tile-header"><div class="tile-title">Title charge assistance report</div><div class="tile-sub">totally scientific</div></div>
       <div class="tile-body">
@@ -72,14 +84,18 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
           <div class="stat-cell"><div class="stat-val green">14</div><div class="stat-lbl">goals emotionally pre-approved</div></div>
           <div class="stat-cell"><div class="stat-val blue">99%</div><div class="stat-lbl">confidence from Arsenal Twitter</div></div>
           <div class="stat-cell"><div class="stat-val">0</div><div class="stat-lbl">bias detected by people wearing red</div></div>
+          <div class="stat-cell"><div class="stat-val red">17</div><div class="stat-lbl">GKs manhandled in the box</div></div>
+          <div class="stat-cell"><div class="stat-val">STK+</div><div class="stat-lbl">raised Stoke tactics to new heights</div></div>
         </div>
         <div class="claim-list">
           <div class="claim-row red"><div class="claim-icon">📺</div><div class="claim-text"><strong>Every Arsenal mention reviewed.</strong> No monitor trip required. The browser makes the brave call instantly.</div></div>
           <div class="claim-row gold"><div class="claim-icon">🧾</div><div class="claim-text"><strong>No data collection.</strong> Unlike a post-match referee audio release, there is nothing to hide.</div></div>
           <div class="claim-row blue"><div class="claim-icon">🧠</div><div class="claim-text"><strong>Local-only correction.</strong> The internet remains wrong. Your browser becomes slightly more honest.</div></div>
+          <div class="claim-row red"><div class="claim-icon">🥊</div><div class="claim-text"><strong>Set Piece FC.</strong> 17 GKs manhandled in the box. Stoke tactics raised to new heights, but with better PR.</div></div>
         </div>
         <div class="demo" aria-label="Arsenal becomes Varsenal"><div class="word">Arsenal</div><div class="arrow">→</div><div class="word after">Varsenal</div></div>
-        <a class="download-btn" href="/downloads/varsenal-extension.zip" download>Apply VAR correction</a>
+        <a class="download-btn" href="/downloads/varsenal-extension.zip" download>Download ZIP · Apply VAR correction</a>
+        <div class="download-note">Chrome desktop only · unzip before installing</div>
         <div class="steps"><div class="steps-title">Install instructions</div><ol><li>Download the ZIP.</li><li>Unzip it.</li><li>Open Chrome on desktop.</li><li>Go to <code>chrome://extensions</code>.</li><li>Turn on <strong>Developer mode</strong>.</li><li>Click <strong>Load unpacked</strong>.</li><li>Select the unzipped <code>varsenal-extension</code> folder.</li><li>Refresh any page. Enjoy the correction.</li></ol></div>
         <p class="disclaimer">Unofficial parody/fan-made browser tool. Not affiliated with, endorsed by, or connected to Arsenal Football Club, the Premier League, PGMOL, Stockley Park, or any man drawing lines on a freeze-frame. This extension does not collect, store, transmit, sell, or share user data.</p>
       </div>
