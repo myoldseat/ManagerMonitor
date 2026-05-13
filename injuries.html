@@ -615,6 +615,7 @@ function render(filter){
   let html = "";
 
   filtered.forEach(inj => {
+    if (!inj || !inj.name) return;
     const tags = [];
     if(inj.suspended) tags.push(`<span class="inj-tag suspended">Club suspension</span>`);
     else if(inj.current) tags.push(`<span class="inj-tag current">Out now</span>`);
@@ -821,8 +822,22 @@ function updateLiveCounter() {
   document.getElementById("tGames").textContent = "~" + totalGames;
 }
 
-render("all");
-updateLiveCounter();
+try {
+  render("all");
+  updateLiveCounter();
+} catch (err) {
+  console.error("Injury tracker render failed:", err);
+  const list = document.getElementById("injuryList");
+  if (list) {
+    list.innerHTML = `<div class="inj-row sev-critical">
+      <div class="inj-sev">ERR</div>
+      <div class="inj-content">
+        <div class="inj-name">Tracker failed to render</div>
+        <div class="inj-type">${err && err.message ? err.message : "Unknown JavaScript error"}</div>
+      </div>
+    </div>`;
+  }
+}
 
 // Re-run at midnight so the day ticks over without a page reload
 (function scheduleMidnightRefresh() {
