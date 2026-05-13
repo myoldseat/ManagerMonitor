@@ -152,17 +152,17 @@
     <span>CHELSEA INJURY TRACKER 2025–26</span><span class="sep">◆</span>
     <span class="bad">CLUB WORLD CUP → NOW</span><span class="sep">◆</span>
     <span class="bad">COLWILL: RETURNED</span><span class="sep">◆</span>
-    <span class="bad">JAMES: RECOVERED</span><span class="sep">◆</span>
-    <span class="bad">CHALOBAH: ANKLE · WATCH</span><span class="sep">◆</span>
-    <span>GARNACHO / NETO / SÁNCHEZ: 50% · LATE TESTS</span><span class="sep">◆</span>
+    <span class="bad">JAMES: RETURNED</span><span class="sep">◆</span>
+    <span class="bad">GARNACHO / NETO / SÁNCHEZ: RETURNING</span><span class="sep">◆</span>
+    <span>GITTENS: SEASON WRECKED</span><span class="sep">◆</span>
     <span class="bad">MUDRYK: DOPING BAN · SEASON OVER</span><span class="sep">◆</span>
     <span style="color:#C8A951;">ENZO FERNÁNDEZ: CLUB SUSPENSION · BACK 13 APR</span><span class="sep">◆</span>
     <span>CHELSEA INJURY TRACKER 2025–26</span><span class="sep">◆</span>
     <span class="bad">CLUB WORLD CUP → NOW</span><span class="sep">◆</span>
     <span class="bad">COLWILL: RETURNED</span><span class="sep">◆</span>
-    <span class="bad">JAMES: RECOVERED</span><span class="sep">◆</span>
-    <span class="bad">CHALOBAH: ANKLE · WATCH</span><span class="sep">◆</span>
-    <span>GARNACHO / NETO / SÁNCHEZ: 50% · LATE TESTS</span><span class="sep">◆</span>
+    <span class="bad">JAMES: RETURNED</span><span class="sep">◆</span>
+    <span class="bad">GARNACHO / NETO / SÁNCHEZ: RETURNING</span><span class="sep">◆</span>
+    <span>GITTENS: SEASON WRECKED</span><span class="sep">◆</span>
     <span class="bad">MUDRYK: DOPING BAN · SEASON OVER</span><span class="sep">◆</span>
     <span style="color:#C8A951;">ENZO FERNÁNDEZ: CLUB SUSPENSION · BACK 13 APR</span><span class="sep">◆</span>
   </div>
@@ -301,14 +301,31 @@
 
 const injuries = [
 
-  // ── CURRENTLY OUT / BEING ASSESSED ─────────────────────────
+  // ── CURRENTLY OUT ──────────────────────────────────────────
+  {
+    name: "Enzo Fernández",
+    pos: "M",
+    injury: "Club suspension — Real Madrid comments",
+    detail: "Rosenior confirmed suspension after Enzo publicly discussed Real Madrid interest during the international break. Misses Port Vale (FA Cup QF, 4 Apr) and Manchester City (PL, 12 Apr). No fine reported. Chelsea's record signing — £107m — unavailable for the two most important games of the run-in.",
+    start: "3 Apr 2026",
+    returnDate: "13 Apr 2026",
+    days: 10,
+    games: 2,
+    severity: "suspended",
+    current: false,
+    suspended: false,
+    repeat: false,
+    cwc: false,
+    hamstring: false,
+    shirtNumber: 8
+  },
   {
     name: "Levi Colwill",
     pos: "D",
     injury: "ACL — right knee",
     detail: "Sustained in preseason training at Cobham, Aug 2025, after Club World Cup. Surgery successful. Returned in May 2026.",
     start: "4 Aug 2025",
-    returnDate: "May 2026",
+    returnDate: "4 May 2026",
     days: 273,
     games: 50,
     severity: "critical",
@@ -321,114 +338,22 @@ const injuries = [
     name: "Mykhailo Mudryk",
     pos: "A",
     injury: "Doping ban — banned substance",
-    detail: "Failed doping test Dec 2024. Provisionally suspended. Expected to miss the entire 2025–26 season.",
-    start: "1 Dec 2024",
-    returnDate: "No return date",
-    days: 218,
-    games: 41,
+    detail: "Provisionally suspended. For season-damage accounting, counted from the start of the 2025–26 season rather than the original Dec 2024 test date.",
+    start: "1 Jul 2025",
+    returnDate: "Jun 2026",
+    days: 316,
+    games: 55,
     severity: "current",
     current: true,
     repeat: false,
     cwc: false,
     hamstring: false
   },
-  {
-    name: "Estêvão Willian",
-    pos: "A",
-    injury: "Hamstring / thigh injury — season over",
-    detail: "Chelsea confirmed Estêvão would miss the rest of the season. Reports describe a serious hamstring/thigh injury after the Manchester United match; tracker counts Leeds, Nottingham Forest, Liverpool, Man City, Tottenham and Sunderland as the affected run.",
-    start: "22 Apr 2026",
-    returnDate: "1 Jun 2026",
-    days: 40,
-    games: 6,
-    severity: "current",
-    current: true,
-    repeat: true,
-    cwc: false,
-    hamstring: true
-  },
-  {
-    name: "Jesse Derry",
-    pos: "A",
-    injury: "Head/face injury — currently being assessed",
-    detail: "May 07: early signs are positive. Expected to be available from now to the end of the season, but listed as currently being assessed and ruled out until 1 Jun 2026.",
-    start: "7 May 2026",
-    returnDate: "1 Jun 2026",
-    days: 25,
-    games: 3,
-    severity: "current",
-    current: true,
-    repeat: false,
-    cwc: false,
-    hamstring: false
-  },
-  {
-    name: "Jamie Gittens",
-    pos: "A",
-    injury: "Recurring hamstring / shoulder / illness — season wrecked",
-    detail: "Gittens has barely featured since late January. Transfermarkt lists 12 games missed from the February/March hamstring spell, 7 from the April setback, plus earlier illness and shoulder absences; current reporting says no set return date. Rounded tracker total: ~25 games missed.",
-    start: "19 Dec 2025",
-    returnDate: "Unknown / late May 2026",
-    days: 122,
-    games: 25,
-    severity: "current",
-    current: true,
-    repeat: true,
-    cwc: false,
-    hamstring: true
-  },
-  {
-    name: "Robert Sánchez",
-    pos: "D",
-    injury: "Head/face injury — currently being assessed",
-    detail: "May 07: unlikely to be available after the injury sustained against Nottingham Forest. Listed as currently being assessed, 50% chance, estimated return 16 May 2026.",
-    start: "7 May 2026",
-    returnDate: "16 May 2026",
-    days: 9,
-    games: 2,
-    severity: "current",
-    current: true,
-    repeat: true,
-    cwc: false,
-    hamstring: false
-  },
-  {
-    name: "Pedro Neto",
-    pos: "A",
-    injury: "Niggle / other — currently being assessed",
-    detail: "Picked up a knock in training before Nottingham Forest and missed both Nottingham Forest and Liverpool. Being assessed day by day, 50% chance, estimated return 16 May 2026.",
-    start: "4 May 2026",
-    returnDate: "16 May 2026",
-    days: 10,
-    games: 2,
-    severity: "current",
-    current: true,
-    repeat: false,
-    cwc: false,
-    hamstring: false
-  },
-  {
-    name: "Alejandro Garnacho",
-    pos: "A",
-    injury: "Niggle / other — currently being assessed",
-    detail: "Picked up a knock in training before Nottingham Forest and missed both Nottingham Forest and Liverpool. Being assessed day by day, 50% chance, estimated return 16 May 2026.",
-    start: "4 May 2026",
-    returnDate: "16 May 2026",
-    days: 10,
-    games: 2,
-    severity: "current",
-    current: true,
-    repeat: false,
-    cwc: false,
-    hamstring: false
-  },
-
-  // ── RECOVERED / NO LONGER CURRENT ──────────────────────────
   {
     name: "Reece James",
     pos: "D",
     injury: "Hamstring — right leg",
-    detail: "Felt hamstring at end of Newcastle defeat (14 Mar). Ruled out of England March internationals. Recovered by May 2026.",
+    detail: "Felt hamstring at end of Newcastle defeat (14 Mar). Ruled out of England March internationals. Returned by May 2026.",
     start: "14 Mar 2026",
     returnDate: "May 2026",
     days: 55,
@@ -448,7 +373,7 @@ const injuries = [
     returnDate: "Late Apr 2026",
     days: 43,
     games: 8,
-    severity: "major",
+    severity: "current",
     current: false,
     repeat: false,
     cwc: false,
@@ -458,7 +383,7 @@ const injuries = [
     name: "Filip Jörgensen",
     pos: "D",
     injury: "Groin — minor operation",
-    detail: "Sustained groin issue after PSG R16 first leg. Underwent minor surgery. Recovered by May 2026.",
+    detail: "Sustained groin issue after PSG R16 first leg. Underwent minor surgery. Returned by May 2026.",
     start: "13 Mar 2026",
     returnDate: "May 2026",
     days: 52,
@@ -470,10 +395,42 @@ const injuries = [
     hamstring: false
   },
   {
+    name: "Jamie Gittens",
+    pos: "A",
+    injury: "Recurring hamstring / shoulder / illness — season wrecked",
+    detail: "Has barely featured since late January. Treat as a season-wrecking recurring absence rather than a single short spell. Rounded tracker total: roughly 25 games missed.",
+    start: "31 Jan 2026",
+    returnDate: "Late May 2026",
+    days: 122,
+    games: 25,
+    severity: "current",
+    current: true,
+    repeat: true,
+    cwc: false,
+    hamstring: true
+  },
+  {
+    name: "Dário Essugo",
+    pos: "M",
+    injury: "Thigh (surgery) + muscle setback",
+    detail: "Thigh injury on Portugal U21 duty Sep 2025 — surgery. Returned to training Nov, then slipped in training Jan. Finally made his Chelsea debut late Mar 2026.",
+    start: "Sep 2025",
+    returnDate: "Mar 2026",
+    days: 195,
+    games: 37,
+    severity: "critical",
+    current: false,
+    repeat: true,
+    cwc: false,
+    hamstring: false
+  },
+
+  // ── RECOVERED ──────────────────────────────────────────────
+  {
     name: "Cole Palmer",
     pos: "A",
     injury: "Groin — chronic (+ toe)",
-    detail: "Groin tweak vs West Ham pre-season (Aug). Managed it while playing, worsened. Maresca called it 'chronic'. Recovered by May 2026.",
+    detail: "Groin tweak vs West Ham pre-season (Aug). Managed it while playing, worsened. Maresca called it chronic. Returned by May 2026.",
     start: "Apr 2026",
     returnDate: "May 2026",
     days: 65,
@@ -503,7 +460,7 @@ const injuries = [
     name: "Liam Delap",
     pos: "A",
     injury: "Shoulder — landed awkwardly",
-    detail: "Senesi landed on his shoulder vs Bournemouth (6 Dec 2025). Arm put in sling. Out ~3 weeks. Recovered.",
+    detail: "Senesi landed on his shoulder vs Bournemouth (6 Dec 2025). Arm put in sling. Out ~3 weeks.",
     start: "6 Dec 2025",
     returnDate: "Jan 2026",
     days: 21,
@@ -518,7 +475,7 @@ const injuries = [
     name: "Roméo Lavia",
     pos: "M",
     injury: "Quadriceps — Club World Cup + recurrence",
-    detail: "Muscle issue from Club World Cup. Brief returns before recurrence vs Qarabag (5 Nov) — quad. Recovered by Jan 2026.",
+    detail: "Muscle issue from Club World Cup. Brief returns before recurrence vs Qarabag (5 Nov) — quad. Out again ~4–5 weeks. Managing load carefully.",
     start: "Jun 2025",
     returnDate: "Jan 2026",
     days: 120,
@@ -547,24 +504,8 @@ const injuries = [
   {
     name: "Enzo Fernández",
     pos: "M",
-    injury: "Club suspension — Real Madrid comments",
-    detail: "Rosenior confirmed suspension after Enzo publicly discussed Real Madrid interest during the international break. Missed Port Vale and Manchester City.",
-    start: "3 Apr 2026",
-    returnDate: "13 Apr 2026",
-    days: 10,
-    games: 2,
-    severity: "suspended",
-    current: false,
-    suspended: true,
-    repeat: false,
-    cwc: false,
-    hamstring: false
-  },
-  {
-    name: "Enzo Fernández",
-    pos: "M",
     injury: "Bone edema — knee",
-    detail: "Admitted he'd been carrying a knee problem for 4 months (Nov 2025). Withdrew from Argentina. Out ~2–3 weeks.",
+    detail: "Admitted he'd been carrying a knee problem for 4 months (Nov 2025). Withdrew from Argentina. Out ~2–3 weeks. Managed back to fitness.",
     start: "Nov 2025",
     returnDate: "Dec 2025",
     days: 21,
@@ -591,6 +532,21 @@ const injuries = [
     hamstring: true
   },
   {
+    name: "Estêvão Willian",
+    pos: "A",
+    injury: "Hamstring / thigh injury — season over",
+    detail: "Late-season hamstring/thigh issue. Treated as season over for tracker purposes, with the run-in counted as the affected spell.",
+    start: "22 Apr 2026",
+    returnDate: "1 Jun 2026",
+    days: 40,
+    games: 6,
+    severity: "current",
+    current: true,
+    repeat: true,
+    cwc: false,
+    hamstring: true
+  },
+  {
     name: "Pedro Neto",
     pos: "A",
     injury: "Groin — international duty",
@@ -601,7 +557,7 @@ const injuries = [
     games: 3,
     severity: "moderate",
     current: false,
-    repeat: true,
+    repeat: false,
     cwc: false,
     hamstring: false
   },
@@ -624,7 +580,7 @@ const injuries = [
     name: "Joao Pedro",
     pos: "A",
     injury: "Groin — managed",
-    detail: "Carrying groin issue. Managed through fixtures. Recovered by May 2026.",
+    detail: "Carrying groin issue. Managed through fixtures. Returned by May 2026.",
     start: "April 2025",
     returnDate: "May 2025",
     days: 7,
@@ -661,10 +617,10 @@ const injuries = [
     games: 3,
     severity: "moderate",
     current: false,
-    repeat: true,
+    repeat: false,
     cwc: false,
     hamstring: false
-  }
+  },
 ];
 
 // ── Iron men — available all season ─────────────────────────────────────────
@@ -675,7 +631,6 @@ const ironMen = [
   { name: "Jorrel Hato",        pos: "D", note: "Stepped up admirably when others fell. Stayed fit." },
   { name: "Mamadou Sarr",       pos: "D", note: "Recalled from Strasbourg Feb. No injuries since joining." },
   { name: "Josh Acheampong",    pos: "D", note: "Academy graduate. Emerged as cover, never missed a beat." },
-  { name: "João Pedro",         pos: "A", note: "Managed minor groin Nov — never missed significant time." },
   { name: "Marc Guiu",          pos: "A", note: "Recalled from Sunderland. Fit and available throughout." },
   { name: "Andrey Santos",      pos: "M", note: "Brief knock Jan aside — consistently available." },
 ];
@@ -810,7 +765,6 @@ function render(filter){
   let html = "";
 
   filtered.forEach(inj => {
-    if (!inj || !inj.name) return;
     const tags = [];
     if(inj.suspended) tags.push(`<span class="inj-tag suspended">Club suspension</span>`);
     else if(inj.current) tags.push(`<span class="inj-tag current">Out now</span>`);
@@ -818,11 +772,24 @@ function render(filter){
     if(inj.seasonCount > 1 || inj.repeat) tags.push(`<span class="inj-tag repeat">${inj.seasonCount} injuries</span>`);
     if(inj.cwc) tags.push(`<span class="inj-tag repeat" style="color:#fbbf24;border-color:rgba(251,191,36,.2);background:rgba(251,191,36,.08);">CWC</span>`);
 
-    // Display the configured expected spell length.
-    // Do not overwrite ruled-out projected absences with elapsed-to-date days,
-    // otherwise e.g. 4 Apr → 24 May wrongly appears as 39 days on 13 May.
+    // For current injuries, calculate real elapsed days from start date.
+    // Games use the larger of known missed games or a rough days/7 estimate,
+    // so short two-game absences do not get undercounted.
     let displayDays = inj.days || 0;
     let displayGames = inj.games || 0;
+    if(inj.current && !inj.suspended) {
+      const startStr = inj.startList ? inj.startList[0] : inj.start;
+      const start = parseStartDate(startStr);
+      if(start) {
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const actualDays = Math.round((today - start) / 86400000);
+        if(Number.isFinite(actualDays) && actualDays > 0) {
+          displayDays = actualDays;
+          displayGames = Math.max(inj.games || 0, Math.round(actualDays / 7));
+        }
+      }
+    }
 
     const fillPct = Math.min(100, Math.max(6, (displayDays / 240) * 100));
 
@@ -915,11 +882,7 @@ function parseStartDate(s) {
     dec:11, december:11
   };
 
-  const clean = s
-    .trim()
-    .replace(/,/g, "")
-    .replace(/\s+/g, " ");
-
+  const clean = s.trim().replace(/,/g, "").replace(/\s+/g, " ");
   const parts = clean.split(" ");
   let date = null;
 
@@ -927,14 +890,12 @@ function parseStartDate(s) {
     const day = parseInt(parts[0], 10);
     const month = months[parts[1].toLowerCase()];
     const year = parseInt(parts[2], 10);
-
     if (Number.isFinite(day) && month !== undefined && Number.isFinite(year)) {
       date = new Date(year, month, day);
     }
   } else if (parts.length === 2) {
     const month = months[parts[0].toLowerCase()];
     const year = parseInt(parts[1], 10);
-
     if (month !== undefined && Number.isFinite(year)) {
       date = new Date(year, month, 1);
     }
@@ -945,16 +906,33 @@ function parseStartDate(s) {
 }
 
 function calcLiveTotals() {
+  const today = new Date();
+  today.setHours(0,0,0,0);
   let totalDays = 0;
   let totalGames = 0;
   let currentNames = [];
 
   injuries.forEach(inj => {
-    totalDays += inj.days || 0;
-    totalGames += inj.games || 0;
+    if(inj.current && !inj.suspended) {
+      const start = parseStartDate(inj.start);
+      if(start) {
+        const actualDays = Math.round((today - start) / 86400000);
+        if(Number.isFinite(actualDays) && actualDays > 0) {
+          totalDays += actualDays;
+          totalGames += Math.max(inj.games || 0, Math.round(actualDays / 7));
+        } else {
+          totalDays += inj.days || 0;
+          totalGames += inj.games || 0;
+        }
+      } else {
+        totalDays += inj.days || 0;
+        totalGames += inj.games || 0;
+      }
 
-    if(inj.current && !currentNames.includes(inj.name)) {
-      currentNames.push(inj.name);
+      if(!currentNames.includes(inj.name)) currentNames.push(inj.name);
+    } else {
+      totalDays += inj.days || 0;
+      totalGames += inj.games || 0;
     }
   });
 
@@ -989,22 +967,8 @@ function updateLiveCounter() {
   document.getElementById("tGames").textContent = "~" + totalGames;
 }
 
-try {
-  render("all");
-  updateLiveCounter();
-} catch (err) {
-  console.error("Injury tracker render failed:", err);
-  const list = document.getElementById("injuryList");
-  if (list) {
-    list.innerHTML = `<div class="inj-row sev-critical">
-      <div class="inj-sev">ERR</div>
-      <div class="inj-content">
-        <div class="inj-name">Tracker failed to render</div>
-        <div class="inj-type">${err && err.message ? err.message : "Unknown JavaScript error"}</div>
-      </div>
-    </div>`;
-  }
-}
+render("all");
+updateLiveCounter();
 
 // Re-run at midnight so the day ticks over without a page reload
 (function scheduleMidnightRefresh() {
