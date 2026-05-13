@@ -66,16 +66,11 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <a class="back-link" href="/">← Back to the sack tracker</a>
         <div class="download-note">Chrome desktop only · unzip before installing</div>
         <div class="fake-counter">
-          <strong id="fakeDownloadCount">116+</strong>
+          <strong data-varsenal-count>142+</strong>
           <span>corrections applied · audited by absolutely nobody</span>
         </div>
 
-    <div class="question">Unofficial emergency browser treatment</div>
-    <h1 class="name">VAR<span>SENAL</span></h1>
-    <div class="answer-sub">Chrome extension · local parody mode</div>
-    <section class="tile">
-      <div class="tile-header"><div class="tile-title">Title charge assistance report</div><div class="tile-sub">totally scientific</div></div>
-      <div class="tile-body">
+<div class="tile-body">
         <p class="intro">For users suffering from repeated exposure to the word <strong>Arsenal</strong>, this extension applies a locally stored, deeply unserious correction: <em>Varsenal</em>.</p>
         <div class="big-stat"><div class="big-label">Estimated VAR interventions towards the title</div><div class="big-number">115</div><div class="big-desc"><strong>± 114</strong>, depending on whether you ask North London, Stockley Park, or a man shouting at a television.</div></div>
         <div class="stat-grid">
@@ -90,7 +85,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
           <div class="claim-row blue"><div class="claim-icon">🧠</div><div class="claim-text"><strong>Local-only correction.</strong> The internet remains wrong. Your browser becomes slightly more honest.</div></div>
         </div>
         <div class="demo" aria-label="Arsenal becomes Varsenal"><div class="word">Arsenal</div><div class="arrow">→</div><div class="word after">Varsenal</div></div>
-        <a class="download-btn" id="downloadBtn" href="/download-varsenal.html">Download ZIP · <span id="downloadBtnCount">116+</span> corrections applied</a>
+        <a class="download-btn" id="downloadBtn" href="/download-varsenal.html">Download ZIP · <span data-varsenal-count>142+</span> corrections applied</a>
         <div class="steps"><div class="steps-title">Install instructions</div><ol><li>Download the ZIP.</li><li>Unzip it.</li><li>Open Chrome on desktop.</li><li>Go to <code>chrome://extensions</code>.</li><li>Turn on <strong>Developer mode</strong>.</li><li>Click <strong>Load unpacked</strong>.</li><li>Select the unzipped <code>varsenal-extension</code> folder.</li><li>Refresh any page. Enjoy the correction.</li></ol></div>
         <p class="disclaimer">Unofficial parody/fan-made browser tool. Not affiliated with, endorsed by, or connected to Arsenal Football Club, the Premier League, PGMOL, Stockley Park, or any man drawing lines on a freeze-frame. This extension does not collect, store, transmit, sell, or share user data.</p>
       </div>
@@ -98,14 +93,21 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </main>
   <footer class="footer"><p>Varsenal Text Replacer · Local parody extension · No tracking · No mercy</p></footer>
 
+
+
 <script>
-  const VARSENAL_COUNTER_BASE = 116;
+  const VARSENAL_COUNTER_BASE = 142;
   const VARSENAL_LAUNCH_TIME = new Date("2026-05-12T00:00:00Z").getTime();
+  const VARSENAL_MINUTES_PER_FAKE_DOWNLOAD = 30;
 
   function getTimeBasedBoost() {
     const now = Date.now();
-    const hoursPassed = Math.max(0, Math.floor((now - VARSENAL_LAUNCH_TIME) / (1000 * 60 * 60)));
-    return Math.min(250, Math.floor(hoursPassed / 3));
+    const minutesPassed = Math.max(
+      0,
+      Math.floor((now - VARSENAL_LAUNCH_TIME) / (1000 * 60))
+    );
+
+    return Math.floor(minutesPassed / VARSENAL_MINUTES_PER_FAKE_DOWNLOAD);
   }
 
   function getLocalClickBoost() {
@@ -122,14 +124,13 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   function renderFakeCount() {
     const count = getFakeCount();
-    const countEl = document.getElementById("fakeDownloadCount");
-    const btnCountEl = document.getElementById("downloadBtnCount");
-
-    if (countEl) countEl.textContent = `${count}+`;
-    if (btnCountEl) btnCountEl.textContent = `${count}+`;
+    document.querySelectorAll("[data-varsenal-count]").forEach((el) => {
+      el.textContent = `${count}+`;
+    });
   }
 
   renderFakeCount();
+  setInterval(renderFakeCount, 30000);
 
   const downloadBtn = document.getElementById("downloadBtn");
   if (downloadBtn) {
@@ -139,6 +140,5 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     });
   }
 </script>
-
 </body>
 </html>

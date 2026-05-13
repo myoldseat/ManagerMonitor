@@ -49,12 +49,59 @@ a{color:var(--gold);font-weight:800}
     <h1>VAR<span>SENAL</span></h1>
     <p>Your Varsenal ZIP download should start automatically.</p>
     <div class="stat">
-      <div class="stat-num">116+</div>
+      <div class="stat-num" data-varsenal-count>142+</div>
       <div class="stat-label">downloads attempted — more than VAR interventions</div>
     </div>
     <p>If nothing happens, <a href="/downloads/varsenal-extension.zip">click here to download the ZIP</a>.</p>
     <p class="note">Chrome desktop only · unzip before installing · unofficial parody tool</p>
   </main>
+
+<script>
+  const VARSENAL_COUNTER_BASE = 142;
+  const VARSENAL_LAUNCH_TIME = new Date("2026-05-12T00:00:00Z").getTime();
+  const VARSENAL_MINUTES_PER_FAKE_DOWNLOAD = 30;
+
+  function getTimeBasedBoost() {
+    const now = Date.now();
+    const minutesPassed = Math.max(
+      0,
+      Math.floor((now - VARSENAL_LAUNCH_TIME) / (1000 * 60))
+    );
+
+    return Math.floor(minutesPassed / VARSENAL_MINUTES_PER_FAKE_DOWNLOAD);
+  }
+
+  function getLocalClickBoost() {
+    return Number(localStorage.getItem("varsenalLocalClickBoost") || "0");
+  }
+
+  function setLocalClickBoost(value) {
+    localStorage.setItem("varsenalLocalClickBoost", String(value));
+  }
+
+  function getFakeCount() {
+    return VARSENAL_COUNTER_BASE + getTimeBasedBoost() + getLocalClickBoost();
+  }
+
+  function renderFakeCount() {
+    const count = getFakeCount();
+    document.querySelectorAll("[data-varsenal-count]").forEach((el) => {
+      el.textContent = `${count}+`;
+    });
+  }
+
+  renderFakeCount();
+  setInterval(renderFakeCount, 30000);
+
+  const downloadBtn = document.getElementById("downloadBtn");
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", () => {
+      setLocalClickBoost(getLocalClickBoost() + 1);
+      renderFakeCount();
+    });
+  }
+</script>
+
   <script>
     setTimeout(() => {
       window.location.href = "/downloads/varsenal-extension.zip";
