@@ -335,17 +335,17 @@ const injuries = [
   {
     name: "Estêvão Willian",
     pos: "A",
-    injury: "Thigh injury — currently being assessed",
-    detail: "Apr 24: Rosenior said Estêvão will not play for the rest of the season and will be assessed. Listed as ruled out with estimated return 1 Jun 2026.",
-    start: "24 Apr 2026",
+    injury: "Hamstring / thigh injury — season over",
+    detail: "Chelsea confirmed Estêvão would miss the rest of the season. Reports describe a serious hamstring/thigh injury after the Manchester United match; tracker counts Leeds, Nottingham Forest, Liverpool, Man City, Tottenham and Sunderland as the affected run.",
+    start: "22 Apr 2026",
     returnDate: "1 Jun 2026",
-    days: 38,
-    games: 5,
+    days: 40,
+    games: 6,
     severity: "current",
     current: true,
     repeat: true,
     cwc: false,
-    hamstring: false
+    hamstring: true
   },
   {
     name: "Jesse Derry",
@@ -365,12 +365,12 @@ const injuries = [
   {
     name: "Jamie Gittens",
     pos: "A",
-    injury: "Thigh injury — not available",
-    detail: "Apr 04: injured in training, picked up what looks like a hamstring/thigh injury. Scans planned. Listed as not available with estimated return 24 May 2026.",
-    start: "4 Apr 2026",
-    returnDate: "24 May 2026",
-    days: 50,
-    games: 7,
+    injury: "Recurring hamstring / shoulder / illness — season wrecked",
+    detail: "Gittens has barely featured since late January. Transfermarkt lists 12 games missed from the February/March hamstring spell, 7 from the April setback, plus earlier illness and shoulder absences; current reporting says no set return date. Rounded tracker total: ~25 games missed.",
+    start: "19 Dec 2025",
+    returnDate: "Unknown / late May 2026",
+    days: 122,
+    games: 25,
     severity: "current",
     current: true,
     repeat: true,
@@ -818,22 +818,11 @@ function render(filter){
     if(inj.seasonCount > 1 || inj.repeat) tags.push(`<span class="inj-tag repeat">${inj.seasonCount} injuries</span>`);
     if(inj.cwc) tags.push(`<span class="inj-tag repeat" style="color:#fbbf24;border-color:rgba(251,191,36,.2);background:rgba(251,191,36,.08);">CWC</span>`);
 
-    // For current injuries, calculate live days purely from start date
-    let displayDays = inj.days;
-    let displayGames = inj.games;
-    if(inj.current && !inj.suspended) {
-      const startStr = inj.startList ? inj.startList[0] : inj.start;
-      const start = parseStartDate(startStr);
-      if(start) {
-        const today = new Date();
-        today.setHours(0,0,0,0);
-        const actualDays = Math.round((today - start) / 86400000);
-        if(Number.isFinite(actualDays) && actualDays > 0) {
-          displayDays = actualDays;
-          displayGames = Math.max(inj.games || 0, Math.round(actualDays / 7));
-        }
-      }
-    }
+    // Display the configured expected spell length.
+    // Do not overwrite ruled-out projected absences with elapsed-to-date days,
+    // otherwise e.g. 4 Apr → 24 May wrongly appears as 39 days on 13 May.
+    let displayDays = inj.days || 0;
+    let displayGames = inj.games || 0;
 
     const fillPct = Math.min(100, Math.max(6, (displayDays / 240) * 100));
 
@@ -956,33 +945,16 @@ function parseStartDate(s) {
 }
 
 function calcLiveTotals() {
-  const today = new Date();
-  today.setHours(0,0,0,0);
   let totalDays = 0;
   let totalGames = 0;
   let currentNames = [];
 
   injuries.forEach(inj => {
-    if(inj.current) {
-      const start = parseStartDate(inj.start);
-      if(start) {
-        const actualDays = Math.round((today - start) / 86400000);
-        if(Number.isFinite(actualDays) && actualDays > 0) {
-          totalDays += actualDays;
-          // 1 game per 7 days — simple and consistent
-          totalGames += Math.max(inj.games || 0, Math.round(actualDays / 7));
-        } else {
-          totalDays += inj.days || 0;
-          totalGames += inj.games || 0;
-        }
-        if(!currentNames.includes(inj.name)) currentNames.push(inj.name);
-      } else {
-        totalDays += inj.days;
-        totalGames += inj.games;
-      }
-    } else {
-      totalDays += inj.days;
-      totalGames += inj.games;
+    totalDays += inj.days || 0;
+    totalGames += inj.games || 0;
+
+    if(inj.current && !currentNames.includes(inj.name)) {
+      currentNames.push(inj.name);
     }
   });
 
