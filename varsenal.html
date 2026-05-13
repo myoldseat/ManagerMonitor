@@ -48,6 +48,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .fake-counter strong{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.05em;color:var(--gold)}
 .fake-counter span{display:block;margin-top:2px;font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.34);line-height:1.35}
 
+
+.top-download-wrap{margin:14px 0 18px}
+.top-download-wrap .download-btn{margin-top:0}
+
 </style>
 </head>
 <body>
@@ -65,10 +69,9 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <main class="main">
     <a class="back-link" href="/">← Back to the sack tracker</a>
         <div class="download-note">Chrome desktop only · unzip before installing</div>
-        <div class="fake-counter">
-          <strong data-varsenal-count>142+</strong>
-          <span>corrections applied · audited by absolutely nobody</span>
-        </div>
+    <div class="top-download-wrap">
+      <a class="download-btn download-trigger" id="downloadBtn" href="/download-varsenal.html">Download ZIP · <span data-varsenal-count>142+</span> corrections applied</a>
+    </div>
 
 <div class="tile-body">
         <p class="intro">For users suffering from repeated exposure to the word <strong>Arsenal</strong>, this extension applies a locally stored, deeply unserious correction: <em>Varsenal</em>.</p>
@@ -85,7 +88,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
           <div class="claim-row blue"><div class="claim-icon">🧠</div><div class="claim-text"><strong>Local-only correction.</strong> The internet remains wrong. Your browser becomes slightly more honest.</div></div>
         </div>
         <div class="demo" aria-label="Arsenal becomes Varsenal"><div class="word">Arsenal</div><div class="arrow">→</div><div class="word after">Varsenal</div></div>
-        <a class="download-btn" id="downloadBtn" href="/download-varsenal.html">Download ZIP · <span data-varsenal-count>142+</span> corrections applied</a>
+        <a class="download-btn download-trigger" id="downloadBtn" href="/download-varsenal.html">Download ZIP · <span data-varsenal-count>142+</span> corrections applied</a>
         <div class="steps"><div class="steps-title">Install instructions</div><ol><li>Download the ZIP.</li><li>Unzip it.</li><li>Open Chrome on desktop.</li><li>Go to <code>chrome://extensions</code>.</li><li>Turn on <strong>Developer mode</strong>.</li><li>Click <strong>Load unpacked</strong>.</li><li>Select the unzipped <code>varsenal-extension</code> folder.</li><li>Refresh any page. Enjoy the correction.</li></ol></div>
         <p class="disclaimer">Unofficial parody/fan-made browser tool. Not affiliated with, endorsed by, or connected to Arsenal Football Club, the Premier League, PGMOL, Stockley Park, or any man drawing lines on a freeze-frame. This extension does not collect, store, transmit, sell, or share user data.</p>
       </div>
@@ -106,7 +109,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       0,
       Math.floor((now - VARSENAL_LAUNCH_TIME) / (1000 * 60))
     );
-
     return Math.floor(minutesPassed / VARSENAL_MINUTES_PER_FAKE_DOWNLOAD);
   }
 
@@ -132,13 +134,12 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   renderFakeCount();
   setInterval(renderFakeCount, 30000);
 
-  const downloadBtn = document.getElementById("downloadBtn");
-  if (downloadBtn) {
-    downloadBtn.addEventListener("click", () => {
+  document.querySelectorAll(".download-trigger").forEach((btn) => {
+    btn.addEventListener("click", () => {
       setLocalClickBoost(getLocalClickBoost() + 1);
       renderFakeCount();
     });
-  }
+  });
 </script>
 </body>
 </html>
