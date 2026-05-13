@@ -396,11 +396,11 @@ const injuries = [
     name: "Pedro Neto",
     pos: "A",
     injury: "Niggle / other — currently being assessed",
-    detail: "May 09: being assessed day by day. Back in training but availability uncertain. Listed as currently being assessed, 50% chance, estimated return 16 May 2026.",
-    start: "9 May 2026",
+    detail: "Picked up a knock in training before Nottingham Forest and missed both Nottingham Forest and Liverpool. Being assessed day by day, 50% chance, estimated return 16 May 2026.", 50% chance, estimated return 16 May 2026.",
+    start: "4 May 2026",
     returnDate: "16 May 2026",
-    days: 7,
-    games: 1,
+    days: 10,
+    games: 2,
     severity: "current",
     current: true,
     repeat: false,
@@ -411,11 +411,11 @@ const injuries = [
     name: "Alejandro Garnacho",
     pos: "A",
     injury: "Niggle / other — currently being assessed",
-    detail: "May 09: being assessed day by day. Back in training but availability uncertain. Listed as currently being assessed, 50% chance, estimated return 16 May 2026.",
-    start: "9 May 2026",
+    detail: "Picked up a knock in training before Nottingham Forest and missed both Nottingham Forest and Liverpool. Being assessed day by day, 50% chance, estimated return 16 May 2026.", 50% chance, estimated return 16 May 2026.",
+    start: "4 May 2026",
     returnDate: "16 May 2026",
-    days: 7,
-    games: 1,
+    days: 10,
+    games: 2,
     severity: "current",
     current: true,
     repeat: false,
@@ -830,7 +830,7 @@ function render(filter){
         const actualDays = Math.round((today - start) / 86400000);
         if(Number.isFinite(actualDays) && actualDays > 0) {
           displayDays = actualDays;
-          displayGames = Math.round(actualDays / 7);
+          displayGames = Math.max(inj.games || 0, Math.round(actualDays / 7));
         }
       }
     }
@@ -970,7 +970,7 @@ function calcLiveTotals() {
         if(Number.isFinite(actualDays) && actualDays > 0) {
           totalDays += actualDays;
           // 1 game per 7 days — simple and consistent
-          totalGames += Math.round(actualDays / 7);
+          totalGames += Math.max(inj.games || 0, Math.round(actualDays / 7));
         } else {
           totalDays += inj.days || 0;
           totalGames += inj.games || 0;
