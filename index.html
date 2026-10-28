@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="No. Not yet. The unofficial Chelsea manager tracker.">
 <meta name="twitter:image" content="https://hasxabialonsobeensackedyet.com/og-alonso.png">
 <meta name="theme-color" content="#0d2a9c">
-<link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230d2a9c'/%3E%3Ctext x='50' y='74' font-family='Arial Black,sans-serif' font-size='60' font-weight='900' fill='%23fff' text-anchor='middle'%3ENO%3C/text%3E%3C/svg%3E">
+<link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230d2a9c'/%3E%3Ctext x='50' y='74' font-family='Arial Black,sans-serif' font-size='60' font-weight='900' fill='%23ff4b3e' text-anchor='middle'%3ENO%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Archivo:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
@@ -71,15 +71,29 @@ a{color:inherit}
 .top a:hover{color:var(--paper)}
 
 /* Hero */
-.hero{position:relative;padding:28px 0 56px}
-.hero-grid{display:grid;gap:40px;align-items:end;position:relative}
-@media (min-width:900px){.hero-grid{grid-template-columns:1.35fr 1fr}}
+.hero{position:relative;overflow:hidden;padding:0 0 64px;min-height:min(100vh,860px)}
+.hero-photo{position:absolute;inset:0;background:url(alonso-hero.webp) 78% 12%/cover no-repeat}
+.hero-photo::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(90deg,var(--blue) 0%,rgba(13,42,156,.92) 28%,rgba(13,42,156,.35) 55%,rgba(13,42,156,0) 75%),
+  linear-gradient(0deg,var(--blue) 0%,rgba(13,42,156,0) 30%)}
+.hero .wrap{position:relative}
+.hero-text{padding-top:clamp(20px,6vh,70px);max-width:640px}
+@media (max-width:760px){
+  .hero{min-height:0}
+  .hero-photo{background-position:72% 0;background-size:auto 560px;bottom:auto;height:560px}
+  .hero-photo::after{background:linear-gradient(0deg,var(--blue) 2%,rgba(13,42,156,.55) 35%,rgba(13,42,156,0) 65%),linear-gradient(90deg,rgba(13,42,156,.6) 0%,rgba(13,42,156,0) 60%)}
+  .hero-text{padding-top:250px}
+}
+.pressure{border-top:0;padding-top:8px}
+.pressure-grid{display:grid;gap:20px;align-items:start}
+@media (min-width:860px){.pressure-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}.pressure-grid .gauge-card{position:sticky;top:20px}}
+.photo-note{position:absolute;right:16px;bottom:12px;font-size:11px;color:rgba(245,247,255,.55)}
 .q{font-family:var(--display);font-weight:500;font-size:clamp(26px,4vw,40px);line-height:1;color:var(--sky)}
 .q .who{display:block;font-weight:900;color:var(--paper);font-size:clamp(54px,10vw,112px);line-height:.86;letter-spacing:-.005em;margin:.08em 0 .06em;text-transform:uppercase}
-.answer{font-family:var(--display);font-weight:900;font-size:clamp(170px,36vw,380px);line-height:.78;letter-spacing:-.03em;margin-top:18px;color:var(--paper);display:inline-block;transform-origin:left bottom}
+.answer{font-family:var(--display);font-weight:900;font-size:clamp(170px,36vw,380px);line-height:.78;letter-spacing:-.03em;margin-top:18px;color:var(--red);display:inline-block;transform-origin:left bottom}
 .answer.stamp{animation:stamp .5s cubic-bezier(.2,1.4,.4,1) .15s both}
 @keyframes stamp{from{transform:scale(1.25);opacity:0}to{transform:none;opacity:1}}
-.answer.yes{color:var(--green)}
+.answer.yes{color:#5f93ff;-webkit-text-stroke:3px var(--paper);paint-order:stroke fill}
 .verdict{font-size:clamp(17px,2vw,20px);max-width:34ch;margin-top:22px;color:var(--paper)}
 .verdict b{font-weight:700}
 
@@ -103,7 +117,7 @@ a{color:inherit}
 .why-btn:hover{border-color:var(--sky)}
 .why-btn .chev{transition:transform .2s}
 .why-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
-.why{display:none;margin-top:12px;list-style:none}
+.why{display:none;list-style:none}
 .why.open{display:block}
 .why li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
 .why li .what{font-weight:600}
@@ -247,28 +261,28 @@ footer a{color:var(--paper)}
 <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
 
 <header class="hero">
-  <div class="pitch" aria-hidden="true">
-    <svg viewBox="0 0 680 440" fill="none" stroke="#fff" stroke-width="3">
-      <rect x="10" y="10" width="660" height="420"/><line x1="340" y1="10" x2="340" y2="430"/>
-      <circle cx="340" cy="220" r="62"/><rect x="10" y="110" width="104" height="220"/><rect x="566" y="110" width="104" height="220"/>
-      <rect x="10" y="168" width="36" height="104"/><rect x="634" y="168" width="36" height="104"/>
-    </svg>
-  </div>
+  <div class="hero-photo" role="img" aria-label="AI-generated illustration of Xabi Alonso under stadium floodlights"></div>
+  <span class="photo-note">AI-generated illustration</span>
   <div class="wrap">
     <div class="top">
       <span><strong>Chelsea manager watch</strong> · @TheManagerMeter</span>
       <span id="updated"></span>
     </div>
-    <div class="hero-grid">
-      <div>
-        <h1 class="q">Has <span class="who" id="who">Xabi Alonso</span> been sacked yet?</h1>
-        <div class="answer stamp" id="answer" role="text">NO.</div>
-        <p class="verdict" id="verdict"></p>
-        <div class="clock" id="clock"></div>
-      </div>
+    <div class="hero-text">
+      <h1 class="q">Has <span class="who" id="who">Xabi Alonso</span> been sacked yet?</h1>
+      <div class="answer stamp" id="answer" role="text">NO.</div>
+      <p class="verdict" id="verdict"></p>
+      <div class="clock" id="clock"></div>
+    </div>
+  </div>
+</header>
+
+<section id="pressure" class="pressure">
+  <div class="wrap">
+    <div class="pressure-grid">
       <aside class="gauge-card" aria-labelledby="gauge-h">
         <h2 id="gauge-h">Sack pressure</h2>
-        <p class="sub">Rises with every disaster. Falls when things go right.</p>
+        <p class="sub">Our own editorial judgement, not a prediction. Rises with every disaster, falls when things go right.</p>
         <svg class="gauge" viewBox="0 0 320 180" role="img" aria-labelledby="gauge-desc">
           <title id="gauge-desc">Sack pressure gauge</title>
           <g fill="none" stroke-width="22">
@@ -284,19 +298,22 @@ footer a{color:var(--paper)}
         </svg>
         <div class="gauge-read"><div class="score" id="score">0</div><div class="band" id="band">—</div></div>
         <div class="zones"><span>Fine 0–30</span><span>Elevated 31–55</span><span>Critical 56–75</span><span>Gone 76+</span></div>
-        <button class="why-btn" id="why-btn" aria-expanded="false" aria-controls="why">What's driving it <span class="chev" aria-hidden="true">▾</span></button>
-        <ul class="why" id="why"></ul>
       </aside>
+      <div class="panel">
+        <h3>What's driving it</h3>
+        <p class="sub">Every point on the meter, and why.</p>
+        <ul class="why open" id="why"></ul>
+      </div>
     </div>
   </div>
-</header>
+</section>
 
 <main>
   <section id="five-days">
     <div class="wrap">
       <div class="sec-head">
         <h2>Five days, two defeats</h2>
-        <p>Out of the Carabao Cup at Anfield tonight, four days after Spurs won at Stamford Bridge for the first time since 2018.</p>
+        <p>Out of the Carabao Cup at Anfield on Wednesday, four days after Spurs won at Stamford Bridge for the first time since 2018.</p>
       </div>
       <div class="matches" id="matches"></div>
     </div>
@@ -306,7 +323,7 @@ footer a{color:var(--paper)}
     <div class="wrap">
       <div class="sec-head">
         <h2>The Alonso era so far</h2>
-        <p>All competitions since 1 July. Tonight's shoot-out counts as a draw in the record books, but they're out.</p>
+        <p>All competitions since 1 July. The Anfield shoot-out counts as a draw in the record books, but they're out.</p>
       </div>
       <div class="nums" id="nums"></div>
       <div class="form" id="form" aria-label="Form, oldest to newest"></div>
@@ -376,7 +393,7 @@ footer a{color:var(--paper)}
           <li><b>Summer in:</b> £340m on 11 signings, led by Morgan Rogers at £117m.</li>
           <li><b>Summer out:</b> £383m, including Enzo Fernández to Man City for £125m.</li>
           <li><b>Net:</b> roughly £43m profit. The squad got younger again.</li>
-          <li><b>Europe:</b> none this season. The Carabao Cup was the shortest route to Wembley, and it closed tonight.</li>
+          <li><b>Europe:</b> none this season. The Carabao Cup was the shortest route to Wembley, and it closed at Anfield on 28 October.</li>
         </ul>
       </div>
     </div>
@@ -409,7 +426,7 @@ footer a{color:var(--paper)}
   <div class="wrap">
     <p id="foot-updated"></p>
     <p>Sources: Chelsea FC, Sky Sports, ESPN, Premier League, Wikipedia season records, Squawka. Spot a mistake? Tell <a href="https://x.com/TheManagerMeter">@TheManagerMeter</a>.</p>
-    <p>Unofficial fan site and satire. Not affiliated with Chelsea FC, BlueCo or Clearlake. KTBFFH.</p>
+    <p>Unofficial fan site and satire. Not affiliated with Chelsea FC, BlueCo or Clearlake. The header image is an AI-generated illustration, not a photograph. KTBFFH.</p>
     <p><a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
   </div>
 </footer>
@@ -440,18 +457,18 @@ const SITE = {
   PL_POINTS: 13,
   GAP_TO_TOP: 8,
 
-  VERDICT: 'Not yet. But it\'s <b>two defeats in five days</b>, he\'s out of the only cup that mattered before Christmas, and Manchester United come to the Bridge on Saturday.',
+  VERDICT: 'Not yet. But he\'s <b>lost to Spurs at home</b>, been knocked out at Anfield and thrashed at Brentford. At Chelsea, that\'s usually enough. Manchester United come to the Bridge on Saturday.',
 
   PRESSURE: [
     { dir:'up',   pts:10, what:'Back-to-back defeats',                 ev:'Spurs (H) 0–2, then out at Liverpool' },
-    { dir:'up',   pts:10, what:'Knocked out of a cup',                 ev:'Carabao Cup R4 · lost 6–5 on penalties at Anfield' },
-    { dir:'up',   pts:10, what:'Lost a home derby to Spurs',           ev:'Their first win at the Bridge since April 2018' },
+    { dir:'up',   pts:15, what:'Knocked out at Anfield',               ev:'Carabao Cup R4 · lost 6–5 on penalties to Liverpool' },
+    { dir:'up',   pts:20, what:'Lost to Spurs at home',                ev:'A death sentence at Chelsea. Their first win at the Bridge since April 2018' },
     { dir:'up',   pts:5,  what:'Best player sent off',                 ev:'Palmer, second yellow, 80 min v Spurs' },
     { dir:'up',   pts:5,  what:'Goalkeeper own goal',                  ev:'Penders, 77 min v Spurs' },
     { dir:'up',   pts:5,  what:'Olés from the away end',               ev:'Spurs fans, Stamford Bridge, 24 Oct' },
-    { dir:'up',   pts:5,  what:'Heaviest defeat of the season',        ev:'Brentford (A) 0–3, 18 Sep' },
+    { dir:'up',   pts:15, what:'Thrashed at Brentford',                ev:'0–3, 18 Sep · heaviest defeat of the season' },
     { dir:'up',   pts:5,  what:'The xG table says mid-table',          ev:'14th on expected goals, 5th in reality' },
-    { dir:'down', pts:10, what:'Still in the top five',                ev:'5th, 13 points from 8 games' },
+    { dir:'down', pts:5,  what:'Still in the top five',                ev:'5th, but 8 points off the top' },
     { dir:'down', pts:5,  what:'A five-goal win',                      ev:'Bournemouth (H) 5–1, 10 Oct' },
     { dir:'down', pts:5,  what:'First league clean sheet',             ev:'Everton (A) 2–0, 17 Oct' },
   ],
@@ -518,6 +535,7 @@ const SITE = {
     { t:'FOFANA MISSES THE DECISIVE KICK', c:'bad' },
     { t:'SPURS WIN AT THE BRIDGE FOR THE FIRST TIME SINCE 2018', c:'bad' },
     { t:'PALMER SENT OFF', c:'bad' },
+    { t:'SACK PRESSURE: CRITICAL', c:'bad' },
     { t:'STILL 5TH IN THE PREMIER LEAGUE', c:'good' },
     { t:'17 GOALS FROM 9.94 xG', c:'' },
     { t:'CLEARLAKE NOW IN FULL CONTROL', c:'' },
@@ -555,7 +573,7 @@ const SITE = {
     const a = $('answer'); a.textContent = 'YES.'; a.classList.add('yes');
     $('verdict').innerHTML = 'Gone' + (SITE.SACKED_DATE ? ', ' + esc(SITE.SACKED_DATE) : '') + '. Another plot in the graveyard. Who\'s next?';
     document.title = 'Has ' + SITE.MANAGER + ' Been Sacked Yet? YES.';
-    $('favicon').href = $('favicon').href.replace('%3ENO%3C','%3EYES%3C').replace("font-size='60'","font-size='44'");
+    $('favicon').href = $('favicon').href.replace('%3ENO%3C','%3EYES%3C').replace("font-size='60'","font-size='44'").replace('%23ff4b3e','%235f93ff');
   } else {
     $('verdict').innerHTML = SITE.VERDICT;
   }
@@ -572,7 +590,7 @@ const SITE = {
   const score = SITE.SACKED ? 100 : Math.max(0, Math.min(99, up - down));
   const band = score<=30 ? 'Fine' : score<=55 ? 'Elevated' : score<=75 ? 'Critical' : score<100 ? 'Beyond critical' : 'Sacked';
   $('band').textContent = band;
-  $('band').style.color = score<=30 ? 'var(--green)' : score<=55 ? 'var(--amber)' : 'var(--red)';
+  $('band').style.color = score<=30 ? 'var(--green)' : score<=55 ? 'var(--amber)' : score<=75 ? '#ff8a3d' : 'var(--red)';
   const needle = $('needle');
   const setNeedle = v => { needle.style.transform = `rotate(${-90 + v*1.8}deg)`; };
   if (reduce) { setNeedle(score); $('score').textContent = score; }
@@ -585,10 +603,6 @@ const SITE = {
   const sorted = [...SITE.PRESSURE].sort((a,b) => (a.dir===b.dir ? b.pts-a.pts : a.dir==='up' ? -1 : 1));
   $('why').innerHTML = sorted.map(p =>
     `<li class="${p.dir}"><span class="what">${esc(p.what)}</span><span class="ev">${esc(p.ev)}</span><span class="pts">${p.dir==='up'?'+':'−'}${p.pts}</span></li>`).join('');
-  $('why-btn').addEventListener('click', e => {
-    const open = $('why').classList.toggle('open');
-    e.currentTarget.setAttribute('aria-expanded', open);
-  });
 
   /* Featured matches */
   $('matches').innerHTML = SITE.FEATURED.map(m => `
