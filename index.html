@@ -227,10 +227,18 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--sky);fon
 footer p+p{margin-top:8px}
 footer a{color:var(--paper)}
 
+/* Back to top */
+#toTop{position:fixed;right:16px;bottom:16px;z-index:50;display:flex;flex-direction:column;align-items:center;gap:3px;max-width:210px;padding:10px 16px 9px;border-radius:14px;background:var(--blue-ink);border:1px solid var(--line);color:var(--paper);font:inherit;cursor:pointer;box-shadow:0 8px 24px rgba(3,10,40,.45);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s,border-color .2s}
+#toTop.show{opacity:1;transform:none;pointer-events:auto}
+#toTop:hover{border-color:var(--amber)}
+#toTop .main{font-family:var(--display);font-weight:900;font-size:20px;line-height:1}
+#toTop .tag{font-size:12px;line-height:1.25;color:var(--sky);text-align:center}
+
 @media (prefers-reduced-motion:reduce){
   .ticker-track{animation:none}
   .answer.stamp{animation:none}
   #needle{transition:none!important}
+  #toTop{transition:none}
 }
 </style>
 </head>
@@ -405,6 +413,8 @@ footer a{color:var(--paper)}
     <p><a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
   </div>
 </footer>
+
+<button id="toTop" type="button" aria-label="Back to the top"><span class="main">To the top</span><span class="tag" id="toTopTag">Where Chelsea vaguely remember being.</span></button>
 
 <script>
 /* =================================================================
@@ -656,6 +666,31 @@ const SITE = {
   ];
   const html = items.map(i => `<span class="${i.c}">${esc(i.t)}</span><span aria-hidden="true">◆</span>`).join('');
   $('ticker').innerHTML = html + html;
+
+  /* Back to top: appears once the hero is off screen, new tagline after each trip up */
+  const TOP_TAGLINES = [
+    'Where Chelsea vaguely remember being.',
+    '274 days on top (2014/15)',
+    '30 league wins (2016/17)',
+    '103 league goals (2009/10)',
+    'Only 15 conceded (2004/05)',
+    'Briefly, like pre-season optimism',
+    'More upward movement than the club',
+    'Where Chelsea are not',
+    'After the darkest night comes the dawn',
+  ];
+  const toTop = $('toTop'), tag = $('toTopTag'), hero = document.querySelector('.hero');
+  let nextTag = null;
+  const pickTag = () => { const c = TOP_TAGLINES.filter(t => t !== tag.textContent); return c[Math.floor(Math.random()*c.length)]; };
+  tag.textContent = pickTag();
+  new IntersectionObserver(([e]) => {
+    toTop.classList.toggle('show', !e.isIntersecting);
+    if (e.isIntersecting && nextTag) { tag.textContent = nextTag; nextTag = null; }
+  }).observe(hero);
+  toTop.addEventListener('click', () => {
+    nextTag = pickTag();
+    window.scrollTo({ top:0, behavior: reduce ? 'auto' : 'smooth' });
+  });
 
   /* Share */
   $('share').addEventListener('click', async e => {
