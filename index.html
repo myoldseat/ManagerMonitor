@@ -527,9 +527,9 @@ const SITE = {
   SACKED: false,
   SACKED_DATE: '',
   LAST_UPDATED: '8 Nov 2026, after Sunderland (A)',
-  PL_POSITION: '4th',
+  PL_POSITION: '5th',
   PL_POINTS: 16,
-  GAP_TO_TOP: 8,
+  GAP_TO_TOP: 11,
 
   VERDICT: 'Not yet. But he\'s just lost <b>1–0 to the bottom club</b>, nothing he changed worked, and he looks like a fish out of water. The referee was no help either. Leeds come to the Bridge on 21 November. <b>Will Alonso still be at the helm?</b>',
 
@@ -546,7 +546,7 @@ const SITE = {
     { dir:'up',   pts:15, what:'Thrashed at Brentford',                ev:'0–3, 18 Sep · heaviest defeat of the season' },
     { dir:'up',   pts:5,  what:'The xG table says mid-table',          ev:'14th on expected goals, 5th in reality' },
     { dir:'down', pts:10, what:'Beat Manchester United',               ev:'2–0 at the Bridge, 31 Oct · Rogers, Palmer (pen)' },
-    { dir:'down', pts:5,  what:'Still fourth, for now',                ev:'4th after gameweek 9, 8 points behind the leaders' },
+    { dir:'down', pts:5,  what:'Still in the top five, just',          ev:'5th, 11 points behind Varsenal, level with Everton' },
     { dir:'down', pts:5,  what:'A five-goal win',                      ev:'Bournemouth (H) 5–1, 10 Oct' },
     { dir:'down', pts:5,  what:'First league clean sheet',             ev:'Everton (A) 2–0, 17 Oct' },
   ],
@@ -556,7 +556,7 @@ const SITE = {
     { date:'2026-08-24', comp:'PL',  opp:'Fulham',      venue:'A', score:'3–2', result:'W' },
     { date:'2026-08-27', comp:'EFL', opp:'Luton Town',  venue:'H', score:'2–0', result:'W' },
     { date:'2026-08-30', comp:'PL',  opp:'Brighton',    venue:'H', score:'4–3', result:'W' },
-    { date:'2026-09-06', comp:'PL',  opp:'Arsenal',     venue:'A', score:'1–2', result:'L' },
+    { date:'2026-09-06', comp:'PL',  opp:'Varsenal',    venue:'A', score:'1–2', result:'L' },
     { date:'2026-09-09', comp:'EFL', opp:'Leeds United',venue:'H', score:'6–3', result:'W' },
     { date:'2026-09-12', comp:'PL',  opp:'Hull City',   venue:'H', score:'2–2', result:'D' },
     { date:'2026-09-18', comp:'PL',  opp:'Brentford',   venue:'A', score:'0–3', result:'L' },
@@ -578,14 +578,14 @@ const SITE = {
 
   /* gd is optional: leave it out and the column hides */
   TABLE: [
-    { pos:1, team:'Arsenal',         p:9, pts:24 },
-    { pos:2, team:'Manchester City', p:9, pts:21 },
-    { pos:3, team:'Brighton',        p:9, pts:19 },
-    { pos:4, team:'Chelsea',         p:9, pts:16 },
-    { pos:5, team:'Liverpool',       p:9, pts:15 },
-    { pos:6, team:'Brentford',       p:9, pts:14 },
+    { pos:1, team:'Varsenal',        p:10, gd:'+10', pts:27 },
+    { pos:2, team:'Brighton',        p:10, gd:'+19', pts:22 },
+    { pos:3, team:'Manchester City', p:10, gd:'+8',  pts:21 },
+    { pos:4, team:'Liverpool',       p:10, gd:'+4',  pts:18 },
+    { pos:5, team:'Chelsea',         p:10, gd:'+3',  pts:16 },
+    { pos:6, team:'Everton',         p:10, gd:'+2',  pts:16 },
   ],
-  TABLE_NOTE: 'After gameweek 9 · the line marks 5th, a Champions League place if England keep their extra spot',
+  TABLE_NOTE: 'After gameweek 10 · the line marks 5th, a Champions League place if England keep their extra spot. Everton are level on points',
 
   FIXTURES: [
     { date:'2026-11-21', opp:'Leeds United',      venue:'H', comp:'Premier League' },
