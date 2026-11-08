@@ -211,7 +211,6 @@ td{padding:9px 4px;border-bottom:1px solid var(--line)}
 th.n,td.n{text-align:right}
 table.no-gd .gd{display:none}
 tr.cfc td{background:rgba(255,255,255,.08);font-weight:700}
-.var{cursor:help;text-decoration:underline dotted rgba(255,75,62,.7);text-underline-offset:3px}
 tr.cut td{border-bottom:2px solid var(--green)}
 .fx{list-style:none}
 .fx li{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
@@ -652,7 +651,7 @@ const SITE = {
     nodes.forEach(n => {
       const frag = document.createDocumentFragment();
       n.nodeValue.split(/(\bArsenal\b)/).forEach(part => {
-        if (part === 'Arsenal') { const s = document.createElement('span'); s.className = 'var'; s.title = 'Officially: Arsenal'; s.textContent = 'Varsenal'; frag.appendChild(s); }
+        if (part === 'Arsenal') { const s = document.createElement('span'); s.className = 'var'; s.textContent = 'Varsenal'; frag.appendChild(s); }
         else if (part) frag.appendChild(document.createTextNode(part));
       });
       n.replaceWith(frag);
