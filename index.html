@@ -110,6 +110,17 @@ a{color:inherit}
 .gauge-card .sub{color:var(--sky);font-size:14px;margin-top:4px}
 .gauge{width:100%;max-width:380px;display:block;margin:10px auto 0}
 #needle{transform-origin:160px 160px;transform:rotate(-90deg)}
+.gauge-card{position:relative;overflow:hidden;--hit:#ff8a3d}
+.gauge-card::after{content:'';position:absolute;left:50%;top:44%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:radial-gradient(circle,var(--hit) 0%,transparent 70%);opacity:0;pointer-events:none}
+.gauge-card.burst{animation:jolt .6s cubic-bezier(.36,.07,.19,.97)}
+.gauge-card.burst::after{animation:flash .9s ease-out}
+.gauge-read .score.pop{animation:pop .7s cubic-bezier(.2,1.6,.4,1)}
+.gauge-read .band{transition:opacity .3s,transform .3s}
+.gauge-read .band.wait{opacity:0;transform:translateY(6px)}
+.gauge .spark{fill:var(--hit)}
+@keyframes jolt{10%,90%{transform:translate(-1px,0)}20%,80%{transform:translate(3px,-1px)}30%,50%,70%{transform:translate(-6px,2px) rotate(-.6deg)}40%,60%{transform:translate(6px,-2px) rotate(.6deg)}}
+@keyframes flash{0%{opacity:.95;transform:scale(1)}100%{opacity:0;transform:scale(28)}}
+@keyframes pop{0%{transform:scale(1)}35%{transform:scale(1.45);color:var(--hit)}100%{transform:scale(1)}}
 .gauge-read{text-align:center;margin-top:-8px}
 .gauge-read .score{font-family:var(--display);font-weight:900;font-size:58px;line-height:1}
 .gauge-read .band{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.03em;color:var(--amber)}
@@ -149,6 +160,24 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .match li .min{font-family:var(--display);font-weight:700;color:var(--sky);min-width:34px}
 .match .stamp-out{position:absolute;top:18px;right:18px;font-family:var(--display);font-weight:900;font-size:20px;color:var(--red);border:2px solid var(--red);border-radius:6px;padding:2px 10px 0;transform:rotate(4deg)}
 
+/* Referee watch */
+.ref-grid{display:grid;gap:20px;align-items:start}
+@media (min-width:860px){.ref-grid{grid-template-columns:1.3fr 1fr}}
+.ref-match{color:var(--sky);font-size:14px}
+.officials{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0 6px}
+.officials div{background:var(--blue-ink);border:1px solid var(--line);border-radius:8px;padding:10px 14px 8px}
+.officials dt{font-size:13px;color:var(--sky)}
+.officials dd{font-family:var(--display);font-weight:900;font-size:clamp(24px,3vw,30px);line-height:1.05}
+.calls{list-style:none;margin-top:10px}
+.calls li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:14px 0;border-top:1px solid var(--line)}
+.calls .tag{grid-row:1/span 2;align-self:start;font-family:var(--display);font-weight:900;font-size:16px;padding:4px 10px 2px;border-radius:6px;white-space:nowrap}
+.calls .tag.no{background:var(--red);color:#fff}
+.calls .tag.yes{background:var(--amber);color:var(--blue-ink)}
+.calls .what{font-weight:700}
+.calls .note{color:var(--sky);font-size:14px}
+.before .vote-label{font-weight:700;margin-top:6px}
+@media (max-width:520px){.calls li{grid-template-columns:1fr}.calls .tag{grid-row:auto;justify-self:start}}
+
 /* Season numbers */
 .nums{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media (min-width:700px){.nums{grid-template-columns:repeat(4,1fr)}}
@@ -180,6 +209,7 @@ table{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:ta
 th{text-align:left;font-weight:600;color:var(--sky);font-size:13px;padding:6px 4px;border-bottom:1px solid var(--line)}
 td{padding:9px 4px;border-bottom:1px solid var(--line)}
 th.n,td.n{text-align:right}
+table.no-gd .gd{display:none}
 tr.cfc td{background:rgba(255,255,255,.08);font-weight:700}
 .var{cursor:help;text-decoration:underline dotted rgba(255,75,62,.7);text-underline-offset:3px}
 tr.cut td{border-bottom:2px solid var(--green)}
@@ -190,6 +220,12 @@ tr.cut td{border-bottom:2px solid var(--green)}
 .fx .opp{font-weight:600}
 .fx .ha{font-size:13px;color:var(--sky)}
 .fx .tag{font-size:13px;color:var(--sky);text-align:right}
+
+/* Projection */
+.proj{margin-top:20px;display:grid;gap:8px 32px;align-items:center}
+@media (min-width:760px){.proj{grid-template-columns:auto 1fr}}
+.proj .big small{display:inline-block;margin-left:8px}
+.proj p{max-width:60ch}
 
 /* Callouts */
 .callouts{display:grid;gap:20px}
@@ -255,6 +291,7 @@ footer a{color:var(--paper)}
   .answer.stamp{animation:none}
   #needle{transition:none!important}
   #toTop{transition:none}
+  .gauge-card.burst,.gauge-card.burst::after,.gauge-read .score.pop{animation:none}
 }
 </style>
 </head>
@@ -314,10 +351,33 @@ footer a{color:var(--paper)}
   <section id="five-days">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Five days, two defeats</h2>
-        <p>Out of the Carabao Cup at Anfield on Wednesday, four days after Spurs won at Stamford Bridge for the first time since 2018.</p>
+        <h2>Charity FC rolls into town</h2>
+        <p>Alonso stupidly starts Neto up front away at Sunderland. The line-up was confusing, and every change he made changed nothing. His position is getting grim.</p>
       </div>
       <div class="matches" id="matches"></div>
+    </div>
+  </section>
+
+  <section id="ref-watch">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Here we go again</h2>
+        <p>Not the first time Jarred Gillett has failed to give Chelsea a penalty.</p>
+      </div>
+      <div class="ref-grid">
+        <div class="panel">
+          <p class="ref-match" id="ref-match"></p>
+          <dl class="officials" id="officials"></dl>
+          <ul class="calls" id="calls"></ul>
+        </div>
+        <div class="panel before">
+          <h3>Previously</h3>
+          <p class="sub" id="before-when"></p>
+          <div class="big" id="before-vote"></div>
+          <p class="vote-label">Key Match Incidents Panel: should have been a penalty</p>
+          <p id="before-text"></p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -341,7 +401,7 @@ footer a{color:var(--paper)}
           <h3>Premier League</h3>
           <p class="sub" id="table-sub">After gameweek 8</p>
           <table>
-            <thead><tr><th>#</th><th>Team</th><th class="n">P</th><th class="n">GD</th><th class="n">Pts</th></tr></thead>
+            <thead><tr><th>#</th><th>Team</th><th class="n">P</th><th class="n gd">GD</th><th class="n">Pts</th></tr></thead>
             <tbody id="tbody"></tbody>
           </table>
         </div>
@@ -349,6 +409,17 @@ footer a{color:var(--paper)}
           <h3>Next up</h3>
           <p class="sub">The run that decides how loud this gets.</p>
           <ul class="fx" id="fixtures"></ul>
+        </div>
+      </div>
+      <div class="panel proj">
+        <div>
+          <h3>At this rate</h3>
+          <p class="sub">If Alonso keeps losing half his league games</p>
+          <div class="big" id="proj-pos"></div>
+        </div>
+        <div>
+          <p id="proj-text"></p>
+          <p class="muted" id="proj-pace"></p>
         </div>
       </div>
     </div>
@@ -455,15 +526,18 @@ const SITE = {
   VARSENAL: true,                  // shows every "Arsenal" as "Varsenal"; set false to turn off
   SACKED: false,
   SACKED_DATE: '',
-  LAST_UPDATED: '28 Oct 2026, after Liverpool (A)',
-  PL_POSITION: '5th',
-  PL_POINTS: 13,
+  LAST_UPDATED: '8 Nov 2026, after Sunderland (A)',
+  PL_POSITION: '4th',
+  PL_POINTS: 16,
   GAP_TO_TOP: 8,
 
-  VERDICT: 'Not yet. But he\'s <b>lost to Spurs at home</b>, been knocked out at Anfield and thrashed at Brentford. At Chelsea, that\'s usually enough. Manchester United come to the Bridge on Saturday.',
+  VERDICT: 'Not yet. But he\'s just lost <b>1–0 to the bottom club</b>, nothing he changed worked, and he looks like a fish out of water. The referee was no help either. Leeds come to the Bridge on 21 November. <b>Will Alonso still be at the helm?</b>',
 
+  /* on:false = ready but switched off. Flip to on:true to count it. */
   PRESSURE: [
-    { dir:'up',   pts:10, what:'Back-to-back defeats',                 ev:'Spurs (H) 0–2, then out at Liverpool' },
+    { dir:'up',   pts:20, what:'Lost to the bottom club',              ev:'Sunderland 1–0 Chelsea, 8 Nov · Le Fée penalty' },
+    { dir:'up',   pts:5,  what:'Substitutions changed nothing',        ev:'Colwill off at half-time, Caicedo to centre-back, four attackers on. Still 1–0.' },
+    { dir:'up',   pts:5,  what:'Two penalty calls go against them',    ev:'Palmer not given, Colwill given against · Gillett and Hopton' },
     { dir:'up',   pts:15, what:'Knocked out at Anfield',               ev:'Carabao Cup R4 · lost 6–5 on penalties to Liverpool' },
     { dir:'up',   pts:20, what:'Lost to Spurs at home',                ev:'A death sentence at Chelsea. Their first win at the Bridge since April 2018' },
     { dir:'up',   pts:5,  what:'Best player sent off',                 ev:'Palmer, second yellow, 80 min v Spurs' },
@@ -471,7 +545,8 @@ const SITE = {
     { dir:'up',   pts:5,  what:'Olés from the away end',               ev:'Spurs fans, Stamford Bridge, 24 Oct' },
     { dir:'up',   pts:15, what:'Thrashed at Brentford',                ev:'0–3, 18 Sep · heaviest defeat of the season' },
     { dir:'up',   pts:5,  what:'The xG table says mid-table',          ev:'14th on expected goals, 5th in reality' },
-    { dir:'down', pts:5,  what:'Still in the top five',                ev:'5th, but 8 points off the top' },
+    { dir:'down', pts:10, what:'Beat Manchester United',               ev:'2–0 at the Bridge, 31 Oct · Rogers, Palmer (pen)' },
+    { dir:'down', pts:5,  what:'Still fourth, for now',                ev:'4th after gameweek 9, 8 points behind the leaders' },
     { dir:'down', pts:5,  what:'A five-goal win',                      ev:'Bournemouth (H) 5–1, 10 Oct' },
     { dir:'down', pts:5,  what:'First league clean sheet',             ev:'Everton (A) 2–0, 17 Oct' },
   ],
@@ -489,29 +564,30 @@ const SITE = {
     { date:'2026-10-17', comp:'PL',  opp:'Everton',     venue:'A', score:'2–0', result:'W' },
     { date:'2026-10-24', comp:'PL',  opp:'Tottenham',   venue:'H', score:'0–2', result:'L' },
     { date:'2026-10-28', comp:'EFL', opp:'Liverpool',   venue:'A', score:'1–1', result:'D', pens:'5–6', out:true },
+    { date:'2026-10-31', comp:'PL',  opp:'Manchester United', venue:'H', score:'2–0', result:'W' },
+    { date:'2026-11-08', comp:'PL',  opp:'Sunderland',  venue:'A', score:'0–1', result:'L' },
   ],
 
   /* Featured match cards (newest first) */
   FEATURED: [
-    { when:'Wednesday 28 October · Carabao Cup fourth round · Anfield', home:'Liverpool', away:'Chelsea', score:'1–1', pens:'Liverpool win 6–5 on penalties', out:true,
-      events:[ ['40′','Morgan Rogers scores a penalty'], ['43′','Cody Gakpo levels from the spot three minutes later'], ['Pens','Wesley Fofana misses the decisive kick'] ] },
-    { when:'Saturday 24 October · Premier League · Stamford Bridge', home:'Chelsea', away:'Tottenham', score:'0–2',
-      events:[ ['77′','Mike Penders own goal from a corner'], ['80′','Cole Palmer sent off for a second yellow'], ['87′','Mathys Tel solo goal seals it for Spurs'] ] },
+    { when:'Sunday 8 November · Premier League · Stadium of Light', home:'Sunderland', away:'Chelsea', score:'1–0',
+      events:[ ['1H','Palmer brought down by O\'Nien. VAR checks, no penalty'], ['1H','Colwill penalised for a foul on Brobbey. Le Fée scores the penalty'], ['46′','Colwill off, Estêvão on. Caicedo drops to centre-back'], ['62′','Gusto and Welbeck on for Palestra and Neto'], ['79′','Quenda on for Chavarría. Nothing changes'] ] },
+    { when:'Saturday 31 October · Premier League · Stamford Bridge', home:'Chelsea', away:'Man Utd', score:'2–0',
+      events:[ ['50′','Morgan Rogers opens the scoring'], ['63′','Lisandro Martínez sent off: two yellows in two minutes, the second for the penalty'], ['64′','Cole Palmer scores from the spot'] ] },
   ],
 
+  /* gd is optional: leave it out and the column hides */
   TABLE: [
-    { pos:1, team:'Manchester City', p:8, gd:'+11', pts:21 },
-    { pos:2, team:'Arsenal',         p:8, gd:'+8',  pts:21 },
-    { pos:3, team:'Brighton',        p:8, gd:'+16', pts:16 },
-    { pos:4, team:'Liverpool',       p:8, gd:'+3',  pts:15 },
-    { pos:5, team:'Chelsea',         p:8, gd:'+2',  pts:13 },
-    { pos:6, team:'Brentford',       p:8, gd:'+5',  pts:11 },
+    { pos:1, team:'Arsenal',         p:9, pts:24 },
+    { pos:2, team:'Manchester City', p:9, pts:21 },
+    { pos:3, team:'Brighton',        p:9, pts:19 },
+    { pos:4, team:'Chelsea',         p:9, pts:16 },
+    { pos:5, team:'Liverpool',       p:9, pts:15 },
+    { pos:6, team:'Brentford',       p:9, pts:14 },
   ],
-  TABLE_NOTE: 'After gameweek 8 · the line marks 5th, a Champions League place if England keep their extra spot',
+  TABLE_NOTE: 'After gameweek 9 · the line marks 5th, a Champions League place if England keep their extra spot',
 
   FIXTURES: [
-    { date:'2026-10-31', opp:'Manchester United', venue:'H', comp:'Premier League', note:'Michael Carrick\'s side' },
-    { date:'2026-11-08', opp:'Sunderland',        venue:'A', comp:'Premier League' },
     { date:'2026-11-21', opp:'Leeds United',      venue:'H', comp:'Premier League' },
     { date:'2026-11-27', opp:'Nottingham Forest', venue:'A', comp:'Premier League' },
   ],
@@ -534,16 +610,27 @@ const SITE = {
   ],
 
   TICKER: [
-    { t:'LIVERPOOL 1–1 CHELSEA · OUT 6–5 ON PENALTIES', c:'bad' },
-    { t:'FOFANA MISSES THE DECISIVE KICK', c:'bad' },
-    { t:'SPURS WIN AT THE BRIDGE FOR THE FIRST TIME SINCE 2018', c:'bad' },
-    { t:'PALMER SENT OFF', c:'bad' },
-    { t:'SACK PRESSURE: CRITICAL', c:'bad' },
-    { t:'STILL 5TH IN THE PREMIER LEAGUE', c:'good' },
-    { t:'17 GOALS FROM 9.94 xG', c:'' },
+    { t:'SUNDERLAND 1–0 CHELSEA', c:'bad' },
+    { t:'LOST TO THE BOTTOM CLUB', c:'bad' },
+    { t:'COLWILL OFF AT HALF-TIME. CAICEDO AT CENTRE-BACK.', c:'bad' },
+    { t:'GILLETT AND HOPTON. HERE WE GO AGAIN.', c:'bad' },
+    { t:'CHELSEA 2–0 MAN UTD LAST WEEK', c:'good' },
+    { t:'OUT OF THE CARABAO CUP AT ANFIELD', c:'bad' },
+    { t:'SPURS WON AT THE BRIDGE. NOBODY HAS FORGOTTEN.', c:'bad' },
     { t:'CLEARLAKE NOW IN FULL CONTROL', c:'' },
-    { t:'MAN UTD AT THE BRIDGE ON SATURDAY', c:'' },
   ],
+
+  /* Referee watch. Facts only: the jokes are the reader's job. */
+  REF_WATCH: {
+    match: 'Sunderland 1–0 Chelsea · Sunday 8 November · Stadium of Light',
+    officials: [ ['Referee','Jarred Gillett'], ['VAR','Nick Hopton'] ],
+    calls: [
+      { tag:'Not given', cls:'no',  what:'Palmer brought down by Luke O\'Nien', note:'VAR checked it. The Premier League says the contact started outside the box. Replays show it carrying on inside.' },
+      { tag:'Given against', cls:'yes', what:'Penalty against Levi Colwill', note:'Minutes later, at the other end, with Brian Brobbey appearing to pull Colwill into the contact. Le Fée scored it. It was the only goal.' },
+    ],
+    before: { when:'Wolves 1–3 Chelsea · 7 February 2026', vote:'3–2',
+      text:'Gillett waved away José Sá\'s high boot on João Pedro. The Premier League\'s independent Key Match Incidents Panel later voted 3–2 that Chelsea should have had a penalty.' },
+  },
 };
 
 /* =================================================================
@@ -572,6 +659,9 @@ const SITE = {
     });
   }
 
+  const on = x => x.on !== false;
+  SITE.RESULTS = SITE.RESULTS.filter(on);
+  SITE.PRESSURE = SITE.PRESSURE.filter(on);
   const R = SITE.RESULTS;
   const W = R.filter(r => r.result==='W').length;
   const D = R.filter(r => r.result==='D').length;
@@ -608,18 +698,66 @@ const SITE = {
   const band = score<=30 ? 'Fine' : score<=55 ? 'Elevated' : score<=75 ? 'Critical' : score<100 ? 'Beyond critical' : 'Sacked';
   $('band').textContent = band;
   $('band').style.color = score<=30 ? 'var(--green)' : score<=55 ? 'var(--amber)' : score<=75 ? '#ff8a3d' : 'var(--red)';
-  const needle = $('needle');
-  const setNeedle = v => { needle.style.transform = `rotate(${-90 + v*1.8}deg)`; };
-  if (reduce) { setNeedle(score); $('score').textContent = score; }
-  else {
-    needle.style.transition = 'transform 1.6s cubic-bezier(.3,1.3,.4,1)';
-    requestAnimationFrame(() => setTimeout(() => setNeedle(score), 350));
-    let c = 0; const step = Math.max(1, Math.ceil(score/30));
-    const iv = setInterval(() => { c = Math.min(score, c+step); $('score').textContent = c; if (c>=score) clearInterval(iv); }, 45);
-  }
+  /* Gauge: creeps off the mark, accelerates, then bursts at the reading */
+  const needle = $('needle'), scoreEl = $('score'), card = document.querySelector('.gauge-card'), gsvg = document.querySelector('.gauge');
+  const hit = score<=30 ? '#4fe39a' : score<=55 ? '#ffc23d' : score<=75 ? '#ff8a3d' : '#ff4b3e';
+  card.style.setProperty('--hit', hit);
+  const setNeedle = v => { needle.style.transform = `rotate(${-90 + Math.max(0, Math.min(100, v))*1.8}deg)`; };
+  const sparks = () => {
+    const a = (-90 + score*1.8) * Math.PI/180, x = 160 + 112*Math.sin(a), y = 160 - 112*Math.cos(a);
+    for (let i = 0; i < 18; i++) {
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', 2 + Math.random()*3); c.setAttribute('class', 'spark');
+      gsvg.appendChild(c);
+      const dir = a - Math.PI/2 + (Math.random()-.5)*2.6, dist = 30 + Math.random()*70;
+      c.animate([{ transform:'translate(0,0)', opacity:1 }, { transform:`translate(${Math.cos(dir)*dist}px,${Math.sin(dir)*dist}px)`, opacity:0 }],
+        { duration:600 + Math.random()*500, easing:'cubic-bezier(.1,.8,.3,1)' }).onfinish = () => c.remove();
+    }
+  };
+  const runGauge = () => {
+    if (reduce) { setNeedle(score); scoreEl.textContent = score; return; }
+    $('band').classList.add('wait');
+    const rise = 1500 + score*12, wobble = 1100, t0 = performance.now();
+    let burst = false;
+    const frame = now => {
+      const el = now - t0;
+      if (el < rise) {
+        const t = el / rise, eased = Math.pow(t, 3.2);              // slow start, fast finish
+        const shake = Math.sin(now/26) * 1.6 * t * t;               // needle strains as it climbs
+        setNeedle(score*eased + shake);
+        scoreEl.textContent = Math.round(score*eased);
+      } else {
+        if (!burst) {
+          burst = true; scoreEl.textContent = score;
+          card.classList.remove('burst'); scoreEl.classList.remove('pop'); void card.offsetWidth;
+          card.classList.add('burst'); scoreEl.classList.add('pop'); sparks(); $('band').classList.remove('wait');
+        }
+        const s = (el - rise) / 1000;
+        setNeedle(score + 9*Math.exp(-5*s)*Math.sin(18*s));          // overshoot and settle
+        if (el > rise + wobble) { setNeedle(score); return; }
+      }
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  };
+  setNeedle(0);
+  new IntersectionObserver((ents, obs) => {
+    if (ents[0].isIntersecting) { obs.disconnect(); setTimeout(runGauge, 250); }
+  }, { threshold:.5 }).observe(card);
   const sorted = [...SITE.PRESSURE].sort((a,b) => (a.dir===b.dir ? b.pts-a.pts : a.dir==='up' ? -1 : 1));
   $('why').innerHTML = sorted.map(p =>
     `<li class="${p.dir}"><span class="what">${esc(p.what)}</span><span class="ev">${esc(p.ev)}</span><span class="pts">${p.dir==='up'?'+':'−'}${p.pts}</span></li>`).join('');
+
+  /* Referee watch */
+  const RW = SITE.REF_WATCH;
+  if (RW) {
+    $('ref-match').textContent = RW.match;
+    $('officials').innerHTML = RW.officials.map(([k,v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+    $('calls').innerHTML = RW.calls.map(c => `<li><span class="tag ${c.cls}">${esc(c.tag)}</span><span class="what">${esc(c.what)}</span><span class="note">${esc(c.note)}</span></li>`).join('');
+    $('before-when').textContent = RW.before.when;
+    $('before-vote').textContent = RW.before.vote;
+    $('before-text').textContent = RW.before.text;
+  } else { $('ref-watch').remove(); }
 
   /* Featured matches */
   $('matches').innerHTML = SITE.FEATURED.map(m => `
@@ -651,9 +789,11 @@ const SITE = {
   /* Table (tries the live Netlify function, falls back to SITE.TABLE) */
   const drawTable = (rows, note) => {
     $('table-sub').textContent = note;
+    const hasGD = rows.every(t => t.gd !== undefined && t.gd !== '');
+    $('tbody').closest('table').classList.toggle('no-gd', !hasGD);
     $('tbody').innerHTML = rows.map(t => {
       const cfc = /chelsea/i.test(t.team);
-      return `<tr class="${cfc?'cfc':''}${t.pos===5?' cut':''}"><td>${t.pos}</td><td>${esc(t.team)}</td><td class="n">${t.p}</td><td class="n">${esc(t.gd)}</td><td class="n">${t.pts}</td></tr>`;
+      return `<tr class="${cfc?'cfc':''}${t.pos===5?' cut':''}"><td>${t.pos}</td><td>${esc(t.team)}</td><td class="n">${t.p}</td><td class="n gd">${esc(t.gd ?? '')}</td><td class="n">${t.pts}</td></tr>`;
     }).join('');
     varsenal($('tbody'));
   };
@@ -670,6 +810,23 @@ const SITE = {
     if (cfc && !top.includes(cfc)) top.push(cfc);
     drawTable(top, 'Live table · the line marks 5th');
   }).catch(() => {});
+
+  /* Projection: where the league season ends up at this rate */
+  {
+    const TYPICAL = [91,84,75,70,67,63,60,57,54,51,49,47,45,43,41,38,35,32,27,20]; // rough PL points by finishing position, recent seasons
+    const posFor = pts => { const i = TYPICAL.findIndex(t => pts >= t); return i === -1 ? 20 : i + 1; };
+    const ord = n => n + (['th','st','nd','rd'][(n%100>10 && n%100<14) ? 0 : (n%10<4 ? n%10 : 0)] || 'th');
+    const PL = R.filter(r => r.comp === 'PL');
+    const pw = PL.filter(r => r.result==='W').length, pd = PL.filter(r => r.result==='D').length, pl = PL.length - pw - pd;
+    const pts = pw*3 + pd, left = 38 - PL.length;
+    const losses = Math.round(left/2), rest = left - losses;
+    const perNonLoss = (pw + pd) ? (3*pw + pd) / (pw + pd) : 1;
+    const half = Math.round(pts + rest*perNonLoss);
+    const pace = Math.round(pts / PL.length * 38);
+    $('proj-pos').innerHTML = `${ord(posFor(half))} <small>~${half} points</small>`;
+    $('proj-text').textContent = `${pts} points from ${PL.length} league games (${pw} won, ${pd} drawn, ${pl} lost). Lose ${losses} of the last ${left}, win and draw the rest at his current ratio, and Chelsea finish on about ${half} points. That usually means ${ord(posFor(half))}.`;
+    $('proj-pace').textContent = `At his overall pace so far (${(pts/PL.length).toFixed(1)} points a game) it would be about ${pace} points, roughly ${ord(posFor(pace))}. Positions use typical Premier League points totals from recent seasons.`;
+  }
 
   /* Fixtures */
   $('fixtures').innerHTML = SITE.FIXTURES.map(f => `
@@ -694,6 +851,7 @@ const SITE = {
   const items = [
     { t:`DAY ${dayN} OF THE ALONSO ERA`, c:'' },
     { t:`${W}W ${D}D ${L}L IN ${R.length} GAMES`, c:'' },
+    { t:`SACK PRESSURE: ${score}/100, ${band.toUpperCase()}`, c: score>55 ? 'bad' : '' },
     ...SITE.TICKER,
   ];
   const html = items.map(i => `<span class="${i.c}">${esc(i.t)}</span><span aria-hidden="true">◆</span>`).join('');
