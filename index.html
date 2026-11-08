@@ -125,6 +125,32 @@ a{color:inherit}
 .gauge-read .score{font-family:var(--display);font-weight:900;font-size:58px;line-height:1}
 .gauge-read .band{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.03em;color:var(--amber)}
 .zones{display:flex;justify-content:space-between;font-size:12px;color:var(--sky);margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.odds{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.odds-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.odds-top h3{font-family:var(--display);font-weight:700;font-size:22px;line-height:1;white-space:nowrap}
+.odds-top span{font-size:12px;color:var(--sky);text-align:right}
+.odds-now{display:flex;align-items:center;gap:12px;margin-top:8px;flex-wrap:wrap}
+.odds-now .price{font-family:var(--display);font-weight:900;font-size:44px;line-height:1}
+.odds .chip{font-size:13px;font-weight:700;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.odds .chip.up{color:var(--red);background:rgba(255,75,62,.14)}
+.odds .chip.down{color:var(--green);background:rgba(79,227,154,.14)}
+.odds .chip.flat{color:var(--sky);background:rgba(255,255,255,.07)}
+.odds-chart{width:100%;height:110px;display:block;margin-top:12px;overflow:visible}
+.odds-chart .grid{stroke:rgba(255,255,255,.08);stroke-width:1;vector-effect:non-scaling-stroke}
+.odds-chart .seg{fill:none;stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.odds-chart .seg.up{stroke:var(--red)}
+.odds-chart .seg.down{stroke:var(--green)}
+.odds-chart .seg.flat{stroke:var(--sky)}
+.odds-chart .seg{stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.odds-chart.go .seg{transition:stroke-dashoffset .5s ease-out;stroke-dashoffset:0}
+.odds-chart .dot{fill:var(--blue-deep);stroke-width:2.5}
+.odds-chart .dot.last{fill:currentColor}
+.odds-axis{display:flex;justify-content:space-between;font-size:11px;color:var(--sky);margin-top:6px;gap:6px}
+.odds-axis span{text-align:center;flex:1}
+.odds-axis span:first-child{text-align:left}
+.odds-axis span:last-child{text-align:right}
+.odds-axis b{display:block;color:var(--paper);font-size:12px}
+.odds-foot{font-size:12px;color:var(--sky);margin-top:10px}
 .why-btn{margin-top:14px;width:100%;background:transparent;border:1px solid var(--line);color:var(--paper);font:inherit;font-size:14px;font-weight:600;padding:10px 12px;border-radius:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .why-btn:hover{border-color:var(--sky)}
 .why-btn .chev{transition:transform .2s}
@@ -189,6 +215,34 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .pill.W{background:var(--green)}.pill.D{background:var(--amber)}.pill.L{background:var(--red);color:#fff}
 .pill.out{background:var(--red);color:#fff;outline:2px dashed var(--amber);outline-offset:2px}
 .form-note{color:var(--sky);font-size:14px;margin-top:10px}
+
+/* First ten games */
+.f10{display:grid;gap:16px}
+@media (min-width:860px){.f10{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:start}}
+.f10-facts{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:560px) and (max-width:859px){.f10-facts{grid-template-columns:1fr 1fr}}
+.f10-facts .num .k b{color:var(--paper)}
+.f10-facts .num.hot .v{color:var(--red)}
+.f10-list{list-style:none;margin-top:14px}
+.f10-list li{display:grid;grid-template-columns:28px minmax(0,1fr) 44px;gap:4px 10px;align-items:center;padding:6px 0;font-size:14px}
+.f10-list .p{color:var(--sky);font-variant-numeric:tabular-nums;font-size:12px;text-align:right}
+.f10-list .nm{display:flex;justify-content:space-between;gap:8px;min-width:0}
+.f10-list .nm span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.f10-list .rec{color:var(--sky);font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.f10-list .pts{font-family:var(--display);font-weight:900;font-size:20px;text-align:right;font-variant-numeric:tabular-nums}
+.f10-list .bar{grid-column:2 / 3;height:6px;border-radius:3px;background:rgba(169,189,255,.12);overflow:hidden}
+.f10-list .bar i{display:block;height:100%;width:0;background:rgba(169,189,255,.45);border-radius:3px;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.f10-list li.me{background:rgba(255,75,62,.10);border-radius:8px;margin:2px -8px;padding:8px}
+.f10-list li.me .nm span:first-child,.f10-list li.me .pts{color:var(--red);font-weight:700}
+.f10-list li.me .bar i{background:var(--red)}
+.f10-src{margin-top:12px;font-size:12px}
+.f10-tabs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--blue-ink);border:1px solid var(--line);margin-bottom:14px}
+.f10-tabs button{font:inherit;font-size:13px;font-weight:600;color:var(--sky);background:transparent;border:0;border-radius:999px;padding:6px 14px;cursor:pointer}
+.f10-tabs button[aria-selected="true"]{background:var(--paper);color:var(--blue-ink)}
+.f10-list.ga .bar i{background:rgba(255,138,61,.55)}
+.f10-list.ga li.me .bar i{background:var(--red)}
+.hash{color:var(--amber);font-weight:700;margin-left:3px}
+.f10-src .hash{margin:0 2px 0 0}
 
 /* Results list */
 .results{margin-top:28px;list-style:none;border-top:1px solid var(--line)}
@@ -336,6 +390,13 @@ footer a{color:var(--paper)}
         </svg>
         <div class="gauge-read"><div class="score" id="score">0</div><div class="band" id="band">—</div></div>
         <div class="zones"><span>Fine 0–30</span><span>Elevated 31–55</span><span>Critical 56–75</span><span>Gone 76+</span></div>
+        <div class="odds" id="odds">
+          <div class="odds-top"><h3>Sack odds</h3><span id="odds-mkt"></span></div>
+          <div class="odds-now"><span class="price" id="odds-price"></span><span class="chip" id="odds-chip"></span></div>
+          <svg class="odds-chart" id="odds-chart" viewBox="0 0 320 110" role="img" aria-label="Sack odds over time"></svg>
+          <div class="odds-axis" id="odds-axis"></div>
+          <p class="odds-foot" id="odds-foot"></p>
+        </div>
       </aside>
       <div class="panel">
         <h3>What's driving it</h3>
@@ -390,6 +451,28 @@ footer a{color:var(--paper)}
       <div class="form" id="form" aria-label="Form, oldest to newest"></div>
       <p class="form-note">Oldest on the left. Dashed outline: drawn, lost on penalties.</p>
       <ul class="results" id="results"></ul>
+    </div>
+  </section>
+
+  <section id="first-ten">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Ten games in</h2>
+        <p>Every Chelsea manager's first ten Premier League games since 2004. Nineteen starts. Alonso's is one of the worst.</p>
+      </div>
+      <div class="f10">
+        <div class="f10-facts" id="f10-facts"></div>
+        <div class="panel f10-rank">
+          <div class="f10-tabs" role="tablist">
+            <button type="button" role="tab" data-m="pts" aria-selected="true">Points</button>
+            <button type="button" role="tab" data-m="ga" aria-selected="false">Goals conceded</button>
+          </div>
+          <h3 id="f10-h">Points after ten games</h3>
+          <p class="sub" id="f10-sub">Each spell counted separately. Interim spells under ten league games left out.</p>
+          <ol class="f10-list" id="f10-list"></ol>
+          <p class="muted f10-src" id="f10-src"></p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -532,6 +615,14 @@ const SITE = {
 
   VERDICT: 'Not yet. But he\'s just lost <b>1–0 to the bottom club</b>, nothing he changed worked, and he looks like a fish out of water. The referee was no help either. Leeds come to the Bridge on 21 November. <b>Will Alonso still be at the helm?</b>',
 
+  /* Sack odds: next Premier League manager to leave. Add a line after each match, newest last. */
+  ODDS_MARKET: 'Next Premier League manager to leave',
+  ODDS_NOTE: 'Best available price. Shorter odds = closer to the sack.',
+  ODDS: [
+    { date:'2026-11-07', odds:'80/1', label:'Before Sunderland' },
+    { date:'2026-11-08', odds:'66/1', label:'After Sunderland' },
+  ],
+
   /* on:false = ready but switched off. Flip to on:true to count it. */
   PRESSURE: [
     { dir:'up',   pts:20, what:'Lost to the bottom club',              ev:'Sunderland 1–0 Chelsea, 8 Nov · Le Fée penalty' },
@@ -590,6 +681,39 @@ const SITE = {
     { date:'2026-11-21', opp:'Leeds United',      venue:'H', comp:'Premier League' },
     { date:'2026-11-27', opp:'Nottingham Forest', venue:'A', comp:'Premier League' },
   ],
+
+  /* First ten Premier League games of every Chelsea spell since 2004. me:true = highlighted */
+  FIRST10: [
+    { who:'Guus Hiddink', yr:2009, w:8, d:1, l:1, gf:15, ga:6 },
+    { who:'Carlo Ancelotti', yr:2009, w:8, d:0, l:2, gf:24, ga:8 },
+    { who:'Maurizio Sarri', yr:2018, w:7, d:3, l:0, gf:24, ga:7 },
+    { who:'José Mourinho', yr:2004, w:7, d:2, l:1, gf:12, ga:2 },
+    { who:'Avram Grant', yr:2007, w:7, d:2, l:1, gf:17, ga:3 },
+    { who:'Luiz Felipe Scolari', yr:2008, w:7, d:2, l:1, gf:24, ga:4 },
+    { who:'Antonio Conte', yr:2016, w:7, d:1, l:2, gf:21, ga:9 },
+    { who:'Thomas Tuchel', yr:2021, w:6, d:4, l:0, gf:11, ga:2 },
+    { who:'José Mourinho', yr:2013, w:6, d:2, l:2, gf:16, ga:8 },
+    { who:'Frank Lampard', yr:2019, w:6, d:2, l:2, gf:23, ga:16 },
+    { who:'André Villas-Boas', yr:2011, w:6, d:1, l:3, gf:23, ga:15 },
+    { who:'Rafael Benítez', yr:2012, w:5, d:3, l:2, gf:19, ga:9 },
+    { who:'Enzo Maresca', yr:2024, w:5, d:3, l:2, gf:20, ga:12 },
+    { who:'Guus Hiddink', yr:2015, w:4, d:6, l:0, gf:19, ga:10 },
+    { who:'Liam Rosenior', yr:2026, w:5, d:2, l:3, gf:19, ga:14 },
+    { who:'Xabi Alonso', yr:2026, w:5, d:1, l:4, gf:19, ga:16, me:true },
+    { who:'Graham Potter', yr:2022, w:4, d:3, l:3, gf:12, ga:9, gone:true },
+    { who:'Roberto Di Matteo', yr:2012, w:4, d:3, l:3, gf:16, ga:13, gone:true },
+    { who:'Mauricio Pochettino', yr:2023, w:3, d:3, l:4, gf:13, ga:11, gone:true },
+  ],
+  FIRST10_FACTS: [
+    { v:'16th', k:'of 19 Chelsea starts since 2004. <b>Only three managers began worse.</b>', hot:true },
+    { v:'4', k:'defeats in his first ten. <b>Joint most of any Chelsea manager since 2004.</b> Only Pochettino matches it.', hot:true },
+    { v:'16', k:'goals conceded. <b>Joint most of any Chelsea start since 2004</b>, level with Lampard. Mourinho let in 2.', hot:true },
+    { v:'−1', k:'point behind <b>Liam Rosenior</b>, the man he replaced, who took over mid-season.' },
+    { v:'3/3', k:'of the managers below him are <b>gone</b>. Potter and Di Matteo were sacked. Pochettino lasted one season.' },
+  ],
+  FIRST10_REAL_BEFORE: 2022,       // spells before this year get the # mark
+  FIRST10_REAL_NOTE: 'Squad made up of real footballers.',
+  FIRST10_SOURCE: 'Sources: StatMuse, FBref, Sky Sports, Premier League results.',
 
   GRAVEYARD: [
     { name:'Thomas Tuchel',      role:'Head coach',        dur:'20 months', how:'Sacked, September 2022' },
@@ -741,8 +865,52 @@ const SITE = {
   };
   setNeedle(0);
   new IntersectionObserver((ents, obs) => {
-    if (ents[0].isIntersecting) { obs.disconnect(); setTimeout(runGauge, 250); }
+    if (ents[0].isIntersecting) { obs.disconnect(); setTimeout(runGauge, 250); setTimeout(() => $('odds-chart').classList.add('go'), reduce ? 0 : 2900 + score*12); }
   }, { threshold:.5 }).observe(card);
+
+  /* Sack odds: line tracks the implied chance of the sack. Red = chance up, green = chance down */
+  const ODDS = (SITE.ODDS || []).filter(o => o.odds);
+  if (!ODDS.length) $('odds').remove();
+  else {
+    const prob = s => { const m = String(s).match(/(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)/); if (m) return +m[2]/(+m[1] + +m[2]); const d = parseFloat(s); return d > 1 ? 1/d : 0; };
+    const ps = ODDS.map(o => prob(o.odds));
+    const dirOf = (a, b) => b > a + 1e-9 ? 'up' : b < a - 1e-9 ? 'down' : 'flat';
+    const last = ODDS[ODDS.length-1], n = ps.length;
+    const fmtD = d => new Date(d + 'T12:00:00').toLocaleDateString('en-GB', { day:'numeric', month:'short' });
+    $('odds-mkt').textContent = SITE.ODDS_MARKET || '';
+    $('odds-price').textContent = SITE.SACKED ? 'Paid out' : last.odds;
+    const chip = $('odds-chip');
+    if (n > 1) {
+      const d = dirOf(ps[n-2], ps[n-1]);
+      chip.className = 'chip ' + d;
+      const rel = Math.round(Math.abs(ps[n-1]/ps[n-2] - 1)*100);
+      chip.textContent = d==='up' ? `▲ Chance up ${rel}% · was ${ODDS[n-2].odds}` : d==='down' ? `▼ Chance down ${rel}% · was ${ODDS[n-2].odds}` : `No change`;
+    } else chip.remove();
+    $('odds-foot').textContent = `${(ps[n-1]*100).toFixed(1)}% implied chance · ${fmtD(last.date)} · ${SITE.ODDS_NOTE || ''}`;
+    const show = n <= 5 ? ODDS.map((o,i) => i) : [0, Math.round((n-1)/2), n-1];
+    $('odds-axis').innerHTML = show.map(i => `<span><b>${esc(ODDS[i].odds)}</b>${esc(fmtD(ODDS[i].date))}</span>`).join('');
+    const svg = $('odds-chart');
+    const draw = () => {
+      const W = Math.max(200, Math.round(svg.getBoundingClientRect().width)), H = 110, px = 10, py = 14;
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      let lo = Math.min(...ps), hi = Math.max(...ps);
+      const pad = Math.max((hi - lo) * .25, hi * .15, .002); lo = Math.max(0, lo - pad); hi += pad;
+      const X = i => n === 1 ? W/2 : px + i*(W - 2*px)/(n-1), Y = p => py + (1 - (p - lo)/(hi - lo))*(H - 2*py);
+      let g = [1,2,3].map(k => `<line class="grid" x1="0" x2="${W}" y1="${(H*k/4).toFixed(1)}" y2="${(H*k/4).toFixed(1)}"/>`).join('');
+      for (let i = 1; i < n; i++) {
+        const x1 = X(i-1), y1 = Y(ps[i-1]), x2 = X(i), y2 = Y(ps[i]), len = Math.hypot(x2-x1, y2-y1).toFixed(1);
+        g += `<path class="seg ${dirOf(ps[i-1], ps[i])}" d="M${x1.toFixed(1)} ${y1.toFixed(1)} L${x2.toFixed(1)} ${y2.toFixed(1)}" style="--len:${len};transition-delay:${((i-1)*.35).toFixed(2)}s"/>`;
+      }
+      const col = d => d==='up' ? 'var(--red)' : d==='down' ? 'var(--green)' : 'var(--sky)';
+      ps.forEach((p, i) => {
+        const d = i ? dirOf(ps[i-1], p) : (n > 1 ? dirOf(p, ps[1]) : 'flat');
+        g += `<circle class="dot${i===n-1 ? ' last' : ''}" cx="${X(i).toFixed(1)}" cy="${Y(p).toFixed(1)}" r="${i===n-1 ? 5 : 3.5}" stroke="${col(d)}" style="color:${col(d)}"><title>${esc(ODDS[i].odds)} · ${esc(fmtD(ODDS[i].date))}${ODDS[i].label ? ' · ' + esc(ODDS[i].label) : ''}</title></circle>`;
+      });
+      svg.innerHTML = g;
+    };
+    draw();
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(draw, 150); });
+  }
   const sorted = [...SITE.PRESSURE].sort((a,b) => (a.dir===b.dir ? b.pts-a.pts : a.dir==='up' ? -1 : 1));
   $('why').innerHTML = sorted.map(p =>
     `<li class="${p.dir}"><span class="what">${esc(p.what)}</span><span class="ev">${esc(p.ev)}</span><span class="pts">${p.dir==='up'?'+':'−'}${p.pts}</span></li>`).join('');
@@ -769,6 +937,41 @@ const SITE = {
     </article>`).join('');
 
   /* Season numbers */
+  /* First ten games */
+  if (SITE.FIRST10 && $('f10-list')) {
+    const all = SITE.FIRST10.map(r => ({ ...r, pts: r.w*3 + r.d }));
+    const hasGA = all.every(r => r.ga != null);
+    const MODES = {
+      pts: { key:'pts', sort:(a,b) => b.pts - a.pts || b.w - a.w, h:'Points after ten games', sub:'Each spell counted separately. Interim spells under ten league games left out.', rec:r => `${r.w}-${r.d}-${r.l}` },
+      ga:  { key:'ga', sort:(a,b) => b.ga - a.ga || a.pts - b.pts, h:'Goals conceded in ten games', sub:'Leakiest first. Goals scored–conceded on the right.', rec:r => `${r.gf}–${r.ga}` },
+    };
+    let shown = false;
+    const render = m => {
+      const M = MODES[m], rows = [...all].sort(M.sort), max = Math.max(...rows.map(r => r[M.key])) || 1;
+      $('f10-h').textContent = M.h; $('f10-sub').textContent = M.sub;
+      $('f10-list').className = 'f10-list ' + m;
+      $('f10-list').innerHTML = rows.map((r,i) => {
+        const rank = rows.findIndex(x => x[M.key] === r[M.key]) + 1, tie = rows.filter(x => x[M.key] === r[M.key]).length > 1;
+        return `<li class="${r.me ? 'me' : ''}">
+      <span class="p">${tie ? '=' : ''}${rank}</span>
+      <span class="nm"><span>${esc(r.who)} <span class="rec">${r.yr}</span>${r.yr < (SITE.FIRST10_REAL_BEFORE || 0) ? '<span class="hash">#</span>' : ''}</span><span class="rec">${M.rec(r)}</span></span>
+      <span class="pts">${r[M.key]}</span>
+      <span class="bar"><i data-w="${(r[M.key]/max*100).toFixed(1)}"></i></span></li>`; }).join('');
+      if (shown) requestAnimationFrame(() => requestAnimationFrame(grow));
+    };
+    document.querySelectorAll('.f10-tabs button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('.f10-tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+      render(b.dataset.m);
+    }));
+    if (!hasGA) document.querySelector('.f10-tabs').remove();
+    render('pts');
+    $('f10-facts').innerHTML = (SITE.FIRST10_FACTS || []).map(f => `<div class="num${f.hot ? ' hot' : ''}"><div class="v">${esc(f.v)}</div><div class="k">${f.k}</div></div>`).join('');
+    $('f10-src').innerHTML = (SITE.FIRST10_REAL_NOTE ? `<span class="hash">#</span> ${esc(SITE.FIRST10_REAL_NOTE)}<br>` : '') + esc(SITE.FIRST10_SOURCE || '');
+    function grow() { shown = true; document.querySelectorAll('#f10-list .bar i').forEach((b,i) => { b.style.transitionDelay = reduce ? '0s' : (i*.04)+'s'; b.style.width = b.dataset.w + '%'; }); }
+    if (reduce || !('IntersectionObserver' in window)) grow();
+    else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); grow(); } }, { threshold:.25 }).observe($('f10-list'));
+  }
+
   $('nums').innerHTML = [
     [R.length, 'Games'], [`${W}–${D}–${L}`, 'Won, drawn, lost'],
     [`${gf}–${ga}`, 'Goals for and against'], [Math.round(W/R.length*100)+'%', 'Win rate'],
