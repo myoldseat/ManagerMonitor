@@ -245,6 +245,80 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .hash{color:var(--amber);font-weight:700;margin-left:3px}
 .f10-src .hash{margin:0 2px 0 0}
 
+/* The chameleon */
+.cham-quote{margin:0 0 20px;padding:20px 22px;border-left:4px solid var(--amber);background:rgba(255,181,71,.07);border-radius:0 14px 14px 0}
+.cham-quote blockquote{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1.05}
+.cham-quote figcaption{margin-top:8px;font-size:13px;color:var(--sky)}
+.cham{display:grid;gap:16px}
+@media (min-width:900px){.cham{grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);align-items:start}}
+.cham-chart h3,.cham-shapes h3{font-size:clamp(18px,2.2vw,22px)}
+.cham-svg{margin-top:14px}
+.cham-svg svg{display:block;width:100%;height:auto;overflow:visible}
+.cham-svg .zb{font:700 11px var(--body);letter-spacing:.1em;text-transform:uppercase;fill:rgba(169,189,255,.55)}
+.cham-svg .zmid{fill:rgba(255,255,255,.05)}
+.cham-svg .gridl{stroke:rgba(255,255,255,.07)}
+.cham-svg .tick{fill:var(--sky);font:11px var(--body)}
+.cham-svg .line{fill:none;stroke:var(--amber);stroke-width:2.5;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 2.2s ease-in-out}
+.cham-svg.go .line{stroke-dashoffset:0}
+.cham-svg .dot{stroke:#fff;stroke-width:2;opacity:0;transition:opacity .3s}
+.cham-svg.go .dot{opacity:1}
+.cham-svg .dot.W{fill:var(--green)}.cham-svg .dot.D{fill:var(--amber)}.cham-svg .dot.L{fill:var(--red)}
+.cham-svg .pv{font:800 13px var(--display);fill:var(--paper);opacity:0;transition:opacity .3s}
+.cham-svg.go .pv{opacity:1}
+.cham-svg .opp{font:700 11px var(--body);fill:var(--paper)}
+.cham-svg .res{font:11px var(--body);fill:var(--sky)}
+.cham-svg .sw{font:600 10px var(--body);fill:rgba(255,181,71,.85)}
+.cham-svg .call{font:600 12px var(--body);fill:var(--paper)}
+.cham-svg .callbg{fill:var(--blue-ink);stroke:var(--line)}
+.cham-side{display:grid;gap:12px}
+.cham-facts{display:grid;gap:12px;margin-top:16px}
+@media (min-width:560px){.cham-facts{grid-template-columns:1fr 1fr}}
+@media (min-width:900px){.cham-facts{grid-template-columns:repeat(3,1fr)}}
+.cham-facts .num.hot .v{color:var(--amber)}
+.cham-shapes ol{list-style:none;margin-top:10px}
+.cham-shapes li{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.35}
+.cham-shapes li b{font-size:12px;color:var(--amber);font-weight:700;padding-top:1px}
+.cham-src{font-size:12px;margin-top:14px}
+.cham-svg.small .opp,.cham-svg.small .res{font-size:9px}
+.cham-svg .bl{font:800 15px var(--display);fill:var(--paper)}
+.cham-svg .bl.b3{fill:#c7a6ff}.cham-svg .bl.b4{fill:#7fd3ff}.cham-svg .bl.bx{fill:var(--sky)}
+.cham-svg .shp{font:10px var(--body);fill:var(--sky)}
+.cham-svg .rowl{font:700 10px var(--body);letter-spacing:.08em;text-transform:uppercase;fill:var(--sky)}
+.cham-svg .rowbg{fill:rgba(255,255,255,.04)}
+.cham-svg .era{stroke:rgba(255,255,255,.25);stroke-dasharray:3 4}
+
+/* Luckier than they look (xG) */
+.xg{display:grid;gap:16px}
+@media (min-width:900px){.xg{grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);align-items:start}}
+.xg-facts{display:grid;gap:12px}
+@media (min-width:560px) and (max-width:899px){.xg-facts{grid-template-columns:1fr 1fr}}
+.xg-facts .num.hot .v{color:var(--red)}
+.xg-facts .num .v small{font-size:.45em;color:var(--sky);font-weight:700;margin-left:6px}
+.xg-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.xg-chart .xg-head h3{font-size:clamp(18px,2.2vw,22px)}
+.xg-head .f10-tabs{margin:0}
+.xg-head .f10-tabs button{white-space:nowrap}
+.xg-plot{display:flex;gap:6px;margin-top:18px;position:relative}
+.xg-col{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;cursor:default}
+.xg-score{font-family:var(--display);font-weight:900;font-size:17px;line-height:1;margin-bottom:6px;white-space:nowrap}
+.xg-col.W .xg-score{color:var(--green)}.xg-col.L .xg-score{color:var(--red)}.xg-col.D .xg-score{color:var(--amber)}
+.xg-up,.xg-dn{width:100%;height:110px;display:flex;justify-content:center}
+.xg-up{align-items:flex-end;border-bottom:1px solid rgba(255,255,255,.35)}
+.xg-dn{align-items:flex-start}
+.xg-up i,.xg-dn i{display:block;width:min(30px,72%);height:0;transition:height .8s cubic-bezier(.2,.8,.2,1)}
+.xg-up i{background:var(--paper);border-radius:4px 4px 0 0}
+.xg-dn i{background:var(--red);border-radius:0 0 4px 4px}
+.xg-col.neg .xg-up i{opacity:.55}
+.xg-v{font-size:11px;color:var(--sky);font-variant-numeric:tabular-nums;height:15px;line-height:15px}
+.xg-opp{font-weight:700;font-size:12px;margin-top:6px;letter-spacing:.04em}
+.xg-poss{font-size:11px;color:var(--sky);font-variant-numeric:tabular-nums;margin-top:2px;padding:1px 5px;border-radius:999px}
+.xg-col.hi .xg-poss{background:rgba(255,181,71,.18);color:var(--amber);font-weight:700}
+.xg-plot.poss .xg-col.hi{background:rgba(255,181,71,.06);border-radius:8px}
+.xg-call{margin-top:14px;font-size:15px;line-height:1.45;min-height:2.9em}
+.xg-call b{color:var(--amber)}
+.xg-src{font-size:12px;margin-top:8px}
+@media (max-width:520px){.xg-plot{gap:3px}.xg-score{font-size:13px}.xg-up,.xg-dn{height:80px}.xg-v{font-size:10px}.xg-opp{font-size:10px}.xg-poss{font-size:10px;padding:1px 2px}}
+
 /* Where this is heading */
 .path{display:grid;gap:16px}
 @media (min-width:900px){.path{grid-template-columns:minmax(0,1.45fr) minmax(0,.8fr);align-items:stretch}}
@@ -486,6 +560,56 @@ footer a{color:var(--paper)}
 </section>
 
 <main>
+  <section id="chameleon">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>The chameleon</h2>
+        <p>Ten games, ten different Chelseas. No plan you could recognise from one week to the next.</p>
+      </div>
+      <figure class="cham-quote">
+        <blockquote id="cham-quote"></blockquote>
+        <figcaption id="cham-cite"></figcaption>
+      </figure>
+      <div class="cham">
+        <div class="panel cham-chart">
+          <h3>Share of the ball, and the shape, game by game</h3>
+          <p class="sub">A team with an identity lives in one band, with one back line. Chelsea visit all three bands and change the back line as they go.</p>
+          <div id="cham-svg" class="cham-svg"></div>
+        </div>
+        <div class="panel cham-shapes">
+          <h3>Ten games, four systems</h3>
+          <ol id="cham-shapes"></ol>
+        </div>
+      </div>
+      <div class="cham-facts" id="cham-facts"></div>
+      <p class="muted cham-src" id="cham-src"></p>
+    </div>
+  </section>
+
+  <section id="xg">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Luckier than they look</h2>
+        <p>Sixteen points looks bad enough. The chances Chelsea create and give away say it should be worse.</p>
+      </div>
+      <div class="xg">
+        <div class="xg-facts" id="xg-facts"></div>
+        <div class="panel xg-chart">
+          <div class="xg-head">
+            <div><h3>Chances created and conceded, game by game</h3><p class="sub">Expected goals (xG). Up: Chelsea. Down: the opponent.</p></div>
+            <div class="f10-tabs" id="xg-sort" role="tablist">
+              <button type="button" role="tab" data-s="date" aria-selected="true">By date</button>
+              <button type="button" role="tab" data-s="poss" aria-selected="false">By possession</button>
+            </div>
+          </div>
+          <div class="xg-plot" id="xg-plot"></div>
+          <p class="xg-call" id="xg-call"></p>
+          <p class="muted xg-src" id="xg-src"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="path">
     <div class="wrap">
       <div class="sec-head">
@@ -831,6 +955,41 @@ const SITE = {
   FIRST10_REAL_NOTE: 'Squad made up of real footballers.',
   FIRST10_SOURCE: 'Sources: StatMuse, FBref, Sky Sports, Premier League results.',
 
+  /* The chameleon. Possession comes from XG.matches below */
+  CHAMELEON: {
+    quote:'“We are not just sticking to one idea.”',
+    cite:'Xabi Alonso, August 2026',
+    shapes:[
+      ['Games 1–5','A rigid 3-4-3. Twelve goals conceded in five games before he gave up on it.'],
+      ['Game 6','Back four, 4-4-2 without the ball. Bournemouth beaten 5–1.'],
+      ['Game 7','“Far more volatile and fluid.” Still a back three at times.'],
+      ['Game 8','4-4-2 with two false nines “pressing erratically”. Spurs win 2–0.'],
+      ['Game 10','4-3-3 at Sunderland, Neto up front. 0–1.'],
+    ],
+    setPieces:'Eight goals conceded from set pieces by 24 October, double any other side.',
+    distance:{ km:102.71, rank:15, sprintRank:7 },
+    source:'Possession: CrunchClash. Shapes: Last Word on Sports (21 Oct), Extra Time Talk (23 Sep), FourFourTwo (Spurs), The Pride of London (Sunderland); no clear report for Man United. Set pieces: Opta / The Analyst. Running: Premier League. Quote: The Chelsea News via Yahoo Sports (8 Aug).',
+  },
+
+  /* Luckier than they look. xG per game, Chelsea first. Possession in %. code = 3-letter label */
+  XG: {
+    matches: [
+      { code:'FUL', opp:'Fulham', venue:'A', score:'3–2', res:'W', poss:38, xg:2.24, xga:1.33, shape:'3-4-3', back:'3' },
+      { code:'BHA', opp:'Brighton', venue:'H', score:'4–3', res:'W', poss:26, xg:2.93, xga:1.41, shape:'3-4-3', back:'3' },
+      { code:'VAR', opp:'Varsenal', venue:'A', score:'1–2', res:'L', poss:45, xg:0.39, xga:2.05, shape:'3-4-3', back:'3' },
+      { code:'HUL', opp:'Hull City', venue:'H', score:'2–2', res:'D', poss:68, xg:0.91, xga:1.38, shape:'3-4-3', back:'3' },
+      { code:'BRE', opp:'Brentford', venue:'A', score:'0–3', res:'L', poss:60, xg:0.83, xga:2.65, shape:'3-4-3', back:'3' },
+      { code:'BOU', opp:'Bournemouth', venue:'H', score:'5–1', res:'W', poss:50, xg:1.10, xga:1.38, shape:'4-4-2', back:'4' },
+      { code:'EVE', opp:'Everton', venue:'A', score:'2–0', res:'W', poss:53, xg:1.47, xga:0.43, shape:'Hybrid', back:'3/4' },
+      { code:'TOT', opp:'Tottenham', venue:'H', score:'0–2', res:'L', poss:31, xg:0.43, xga:0.74, shape:'4-4-2', back:'4' },
+      { code:'MUN', opp:'Manchester United', venue:'H', score:'2–0', res:'W', poss:58, xg:3.01, xga:1.24, shape:'', back:'?', note:'United down to ten men from the 59th minute' },
+      { code:'SUN', opp:'Sunderland', venue:'A', score:'0–1', res:'L', poss:69, xg:0.53, xga:2.55, shape:'4-3-3', back:'4' },
+    ],
+    xpts: [ ['OddAlerts',13.29], ['Kepler',13.1], ['The Fishy',12.5] ],
+    possHigh: 55,
+    source:'xG and possession: CrunchClash (Opta-based match data). Expected points: OddAlerts, Kepler, The Fishy. Small differences from official totals because of rounding.',
+  },
+
   /* Where this is heading. ppg = points per game for the rest of the season.
      Built from 200 Premier League team-seasons, 2016/17 to 2025/26 (OpenFootball). */
   PATH: {
@@ -1132,17 +1291,129 @@ const SITE = {
       <span class="bar"><i data-w="${(r[M.key]/max*100).toFixed(1)}"></i></span></li>`; }).join('');
       if (shown) requestAnimationFrame(() => requestAnimationFrame(grow));
     };
-    document.querySelectorAll('.f10-tabs button').forEach(b => b.addEventListener('click', () => {
-      document.querySelectorAll('.f10-tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+    document.querySelectorAll('#first-ten .f10-tabs button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('#first-ten .f10-tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
       render(b.dataset.m);
     }));
-    if (!hasGA) document.querySelector('.f10-tabs').remove();
+    if (!hasGA) document.querySelector('#first-ten .f10-tabs').remove();
     render('pts');
     $('f10-facts').innerHTML = (SITE.FIRST10_FACTS || []).map(f => `<div class="num${f.hot ? ' hot' : ''}"><div class="v">${esc(f.v)}</div><div class="k">${f.k}</div></div>`).join('');
     $('f10-src').innerHTML = (SITE.FIRST10_REAL_NOTE ? `<span class="hash">#</span> ${esc(SITE.FIRST10_REAL_NOTE)}<br>` : '') + esc(SITE.FIRST10_SOURCE || '');
     function grow() { shown = true; document.querySelectorAll('#f10-list .bar i').forEach((b,i) => { b.style.transitionDelay = reduce ? '0s' : (i*.04)+'s'; b.style.width = b.dataset.w + '%'; }); }
     if (reduce || !('IntersectionObserver' in window)) grow();
     else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); grow(); } }, { threshold:.25 }).observe($('f10-list'));
+  }
+
+  /* The chameleon */
+  if (SITE.CHAMELEON && SITE.XG && $('cham-svg')) {
+    const C = SITE.CHAMELEON, M = SITE.XG.matches;
+    $('cham-quote').textContent = C.quote; $('cham-cite').textContent = C.cite;
+    $('cham-src').textContent = C.source || '';
+    $('cham-shapes').innerHTML = C.shapes.map(([w,t]) => `<li><b>${esc(w)}</b><span>${esc(t)}</span></li>`).join('');
+    const P = M.map(m => m.poss), lo = M.reduce((a,m) => m.poss < a.poss ? m : a), hi = M.reduce((a,m) => m.poss > a.poss ? m : a);
+    const swings = P.slice(1).map((p,i) => Math.abs(p - P[i])), avgSw = swings.reduce((a,b) => a+b, 0)/swings.length;
+    const big = swings.filter(x => x >= 15).length;
+    const venue = v => v === 'H' ? 'home' : 'away';
+    const sw0 = M.findIndex(mm => mm.back && mm.back !== '3'), parse = sc => sc.split(/[–-]/).map(Number);
+    const gaPre = M.slice(0, sw0).reduce((a,mm) => a + parse(mm.score)[1], 0), gaPost = M.slice(sw0).reduce((a,mm) => a + parse(mm.score)[1], 0);
+    const D = C.distance;
+    $('cham-facts').innerHTML = [
+      { v:`${lo.poss}–${hi.poss}%`, k:`Possession, lowest to highest. From sitting deep at home to ${esc(lo.opp)} to camping in Sunderland's half. <b>A ${hi.poss - lo.poss}-point spread.</b>`, hot:true },
+      { v:`±${Math.round(avgSw)}`, k:`points of possession, on average, from one game to the next. ${big} of ${swings.length} switches were 15 points or more.`, hot:true },
+      { v:`${gaPre} in ${sw0}`, k:`goals conceded in the first ${sw0} games with his back three. <b>It took him ${sw0} games to give up on his own system.</b>`, hot:true },
+      { v:'8', k: esc(C.setPieces || '') + ' <b>No structure, no set-piece plan.</b>' },
+      { v:`${esc(lo.score)} / ${esc(hi.score)}`, k:`Won ${esc(lo.score)} with ${lo.poss}% of the ball. Lost ${esc(hi.score)} with ${hi.poss}%. <b>Whatever the plan is, it is not the ball.</b>` },
+      D && { v:`${D.rank}th`, k:`of 20 for distance covered, ${D.km} km per 90 minutes. They sprint (${D.sprintRank}th), but they do not cover the ground.` },
+    ].filter(Boolean).map(f => `<div class="num${f.hot ? ' hot' : ''}"><div class="v">${f.v}</div><div class="k">${f.k}</div></div>`).join('');
+    const box = $('cham-svg');
+    let went = false;
+    const draw = () => {
+      const W = Math.max(300, Math.round(box.getBoundingClientRect().width)), small = W < 520;
+      const H = Math.round(W * (small ? .95 : .56)), m = { l:34, r:14, t:14, b:104 };
+      box.classList.toggle('small', small);
+      const yLo = 20, yHi = 80, n = M.length;
+      const X = i => m.l + (i + .5) * (W - m.l - m.r) / n, Y = v => m.t + (yHi - v)/(yHi - yLo) * (H - m.t - m.b);
+      let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Chelsea possession in each of the first ten league games">`;
+      g += `<rect class="zmid" x="${m.l}" y="${Y(60)}" width="${W-m.l-m.r}" height="${Y(40)-Y(60)}"/>`;
+      g += `<text class="zb" x="${W-m.r-6}" y="${Y(yHi)+14}" text-anchor="end">Keep the ball</text>`;
+      g += `<text class="zb" x="${W-m.r-6}" y="${Y(60)+16}" text-anchor="end">Balanced</text>`;
+      g += `<text class="zb" x="${W-m.r-6}" y="${Y(yLo)-8}" text-anchor="end">Sit deep, counter</text>`;
+      [30,40,50,60,70].forEach(v => g += `<line class="gridl" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="tick" x="${m.l-6}" y="${Y(v)+4}" text-anchor="end">${v}%</text>`);
+      const pts = M.map((mm,i) => [X(i), Y(mm.poss)]);
+      let len = 0; for (let i = 1; i < pts.length; i++) len += Math.hypot(pts[i][0]-pts[i-1][0], pts[i][1]-pts[i-1][1]);
+      g += `<path class="line" style="--len:${len.toFixed(0)}" d="${pts.map((p,i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ')}"/>`;
+      if (!small) M.slice(1).forEach((mm,i) => { const d = mm.poss - M[i].poss, x = (pts[i][0]+pts[i+1][0])/2, y = (pts[i][1]+pts[i+1][1])/2;
+        if (Math.abs(d) >= 15) g += `<text class="sw" x="${x+6}" y="${y}">${d > 0 ? '+' : '−'}${Math.abs(d)}</text>`; });
+      M.forEach((mm,i) => {
+        const [x,y] = pts[i], up = mm.poss >= 50;
+        g += `<circle class="dot ${mm.res}" cx="${x}" cy="${y}" r="${small ? 5 : 7}" style="transition-delay:${(i*0.2).toFixed(1)}s"><title>${esc(mm.opp)} (${mm.venue}) ${esc(mm.score)} · ${mm.poss}% possession</title></circle>`;
+        g += `<text class="pv" x="${x}" y="${up ? y - 13 : y + 22}" text-anchor="middle" style="transition-delay:${(i*0.2).toFixed(1)}s">${mm.poss}</text>`;
+        g += `<text class="opp" x="${x}" y="${H-m.b+16}" text-anchor="middle">${esc(mm.code)}</text><text class="res" x="${x}" y="${H-m.b+30}" text-anchor="middle">${esc(mm.score)}</text>`;
+        const b = mm.back || '?', bc = b === '3' ? 'b3' : b === '4' ? 'b4' : 'bx';
+        g += `<text class="bl ${bc}" x="${x}" y="${H-m.b+73}" text-anchor="middle">${esc(b)}</text>`;
+        if (!small && mm.shape) g += `<text class="shp" x="${x}" y="${H-m.b+89}" text-anchor="middle">${esc(mm.shape)}</text>`;
+      });
+      g += `<rect class="rowbg" x="${m.l}" y="${H-m.b+53}" width="${W-m.l-m.r}" height="${small ? 28 : 44}" rx="6"/>`;
+      g += `<text class="rowl" x="${m.l}" y="${H-m.b+48}">Players in the back line</text>`;
+      const sw = M.findIndex(mm => mm.back && mm.back !== '3');
+      if (sw > 0) { const xe = (X(sw-1) + X(sw))/2; g += `<line class="era" x1="${xe}" x2="${xe}" y1="${m.t}" y2="${H-4}"/>`; }
+      box.innerHTML = g + '</svg>';
+      if (went) box.classList.add('go');
+    };
+    draw();
+    const go = () => { went = true; box.classList.add('go'); };
+    if (reduce || !('IntersectionObserver' in window)) go();
+    else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); go(); } }, { threshold:.35 }).observe(box);
+    let crt; addEventListener('resize', () => { clearTimeout(crt); crt = setTimeout(draw, 150); });
+  }
+
+  /* Luckier than they look */
+  if (SITE.XG && $('xg-plot')) {
+    const X = SITE.XG, M = X.matches.map((m,i) => ({ ...m, i }));
+    const sum = k => M.reduce((a,m) => a + m[k], 0);
+    const pts = M.reduce((a,m) => a + (m.res==='W' ? 3 : m.res==='D' ? 1 : 0), 0);
+    const gf = M.reduce((a,m) => a + parseInt(m.score), 0), ga = M.reduce((a,m) => a + parseInt(m.score.split(/[–-]/)[1]), 0);
+    const xg = sum('xg'), xga = sum('xga'), negN = M.filter(m => m.xg < m.xga).length;
+    const xp = X.xpts.reduce((a,x) => a + x[1], 0) / X.xpts.length;
+    const hiM = M.filter(m => m.poss > X.possHigh);
+    const hiPts = hiM.reduce((a,m) => a + (m.res==='W' ? 3 : m.res==='D' ? 1 : 0), 0);
+    const f1 = n => n.toFixed(1), sg = n => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n).toFixed(1);
+    $('xg-facts').innerHTML = [
+      { v:`${f1(xp)}<small>vs ${pts}</small>`, k:`expected points. The models say Chelsea have <b>about ${Math.round(pts - xp)} points more</b> than their chances deserve.`, hot:true },
+      { v:`${sg(xg - xga)}<small>vs +${gf - ga}</small>`, k:`expected goal difference. The real one is positive. <b>The chances are not.</b>`, hot: xg < xga },
+      { v:`${negN}/${M.length}`, k:`games where the opponent created more. Including five of the last seven.`, hot:true },
+      { v:`${hiPts}/${hiM.length*3}`, k:`points from the ${hiM.length} games with more than ${X.possHigh}% of the ball. <b>More of the ball, fewer of the chances.</b>` },
+    ].map(f => `<div class="num${f.hot ? ' hot' : ''}"><div class="v">${f.v}</div><div class="k">${f.k}</div></div>`).join('');
+    const max = Math.max(...M.map(m => Math.max(m.xg, m.xga)));
+    const plot = $('xg-plot');
+    plot.innerHTML = M.map(m => `<div class="xg-col ${m.res}${m.xg < m.xga ? ' neg' : ''}${m.poss > X.possHigh ? ' hi' : ''}" data-i="${m.i}" title="${esc(m.opp)} (${m.venue}) ${m.score} · ${m.poss}% possession · xG ${m.xg.toFixed(2)}–${m.xga.toFixed(2)}${m.note ? ' · ' + esc(m.note) : ''}">
+        <span class="xg-score">${esc(m.score)}</span>
+        <span class="xg-v">${m.xg.toFixed(1)}</span>
+        <div class="xg-up"><i data-h="${(m.xg/max*100).toFixed(1)}"></i></div>
+        <div class="xg-dn"><i data-h="${(m.xga/max*100).toFixed(1)}"></i></div>
+        <span class="xg-v">${m.xga.toFixed(1)}</span>
+        <span class="xg-opp">${esc(m.code)}</span>
+        <span class="xg-poss">${m.poss}%</span></div>`).join('');
+    const late = M.slice(-7).filter(m => m.xg < m.xga).length;
+    $('xg-facts').innerHTML = $('xg-facts').innerHTML.replace('five of the last seven', `${['none','one','two','three','four','five','six','seven'][late]} of the last seven`);
+    const hiXg = hiM.reduce((a,m) => a + m.xg, 0), hiXga = hiM.reduce((a,m) => a + m.xga, 0);
+    const calls = {
+      date: `Five wins, but the opponent made the better chances in <b>${negN} of ${M.length}</b> games. The 5–1 over Bournemouth came from 1.1 xG.`,
+      poss: `With more than ${X.possHigh}% of the ball: <b>${hiPts} points from ${hiM.length*3}</b>, and ${hiXg.toFixed(1)} xG against ${hiXga.toFixed(1)}. Sunderland had 31% of it and the best chances.`,
+    };
+    const setSort = s => {
+      document.querySelectorAll('#xg-sort button').forEach(b => b.setAttribute('aria-selected', b.dataset.s === s));
+      const ord = s === 'poss' ? [...M].sort((a,b) => a.poss - b.poss) : M;
+      ord.forEach((m,k) => plot.querySelector(`[data-i="${m.i}"]`).style.order = k);
+      plot.classList.toggle('poss', s === 'poss');
+      $('xg-call').innerHTML = calls[s];
+    };
+    document.querySelectorAll('#xg-sort button').forEach(b => b.addEventListener('click', () => setSort(b.dataset.s)));
+    setSort('date');
+    $('xg-src').textContent = X.source || '';
+    const growX = () => plot.querySelectorAll('i[data-h]').forEach((b,k) => { b.style.transitionDelay = reduce ? '0s' : (k*.03)+'s'; b.style.height = b.dataset.h + '%'; });
+    if (reduce || !('IntersectionObserver' in window)) growX();
+    else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); growX(); } }, { threshold:.3 }).observe(plot);
   }
 
   /* Where this is heading */
