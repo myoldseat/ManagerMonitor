@@ -245,6 +245,54 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .hash{color:var(--amber);font-weight:700;margin-left:3px}
 .f10-src .hash{margin:0 2px 0 0}
 
+/* Where this is heading */
+.path{display:grid;gap:16px}
+@media (min-width:900px){.path{grid-template-columns:minmax(0,1.45fr) minmax(0,.8fr);align-items:stretch}}
+.path-btns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.path-btns button{font:inherit;font-size:14px;font-weight:700;color:var(--paper);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.path-btns button i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.path-btns button[aria-pressed="true"]{border-color:var(--c);background:color-mix(in srgb,var(--c) 18%,transparent)}
+.path-svg svg{display:block;width:100%;height:auto;overflow:visible}
+.path-svg .blab{font:600 11px var(--body);letter-spacing:.06em;text-transform:uppercase;fill:rgba(169,189,255,.55)}
+.path-svg .gridl{stroke:rgba(255,255,255,.06)}
+.path-svg .tick{fill:var(--sky);font:11px var(--body);font-variant-numeric:tabular-nums}
+.path-svg .now{stroke:rgba(255,255,255,.35);stroke-dasharray:3 4}
+.path-svg .nowl{fill:var(--paper);font:600 11px var(--body)}
+.path-svg .act{fill:none;stroke:#fff;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.path-svg .actd{fill:#fff}
+.path-svg .scn{fill:none;stroke-width:2;stroke-dasharray:6 6;opacity:.35;transition:opacity .25s}
+.path-svg .scn.on{stroke-width:3.5;stroke-dasharray:none;opacity:1}
+.path-svg .end{font:800 15px var(--display)}
+.path-svg .endd{stroke:#fff;stroke-width:2}
+.path-slide{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;margin-top:12px;font-size:13px;color:var(--sky)}
+.path-slide span b{color:var(--paper)}
+.path-slide input{grid-column:1/-1;grid-row:2;width:100%;accent-color:var(--amber);height:28px;cursor:pointer}
+.path-slide output{font-family:var(--display);font-weight:900;font-size:20px;color:var(--paper)}
+.path-out{display:flex;flex-direction:column}
+.path-out .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c,var(--sky))}
+.path-pos{margin-top:4px}
+.path-pos span{font-family:var(--display);font-weight:900;font-size:clamp(64px,9vw,96px);line-height:.9;color:var(--c,var(--paper))}
+.path-pos span{display:block}
+.path-pos small{display:block;margin-top:8px;font-size:15px;color:var(--sky)}
+.path-verdict{margin-top:10px;font-size:16px;line-height:1.45;min-height:3em}
+.path-odds{margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
+.path-odds-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.path-out .path-odds-head h3{font-size:20px}
+.path-odds .f10-tabs{margin:0}
+.path-odds .f10-tabs button{padding:5px 10px;font-size:12px;white-space:nowrap}
+.pbar{display:grid;grid-template-columns:120px 1fr 52px;gap:10px;align-items:center;padding:6px 0;cursor:pointer;background:none;border:0;color:inherit;font:inherit;width:100%;text-align:left}
+.pbar .t{font-weight:600;font-size:13px}
+.pbar .tr{height:10px;border-radius:5px;background:rgba(169,189,255,.12);overflow:hidden}
+.pbar .tr i{display:block;height:100%;border-radius:5px;background:var(--c);opacity:.5;transition:width .6s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.pbar.on .tr i{opacity:1}
+.pbar .v{font-family:var(--display);font-weight:900;font-size:18px;text-align:right;font-variant-numeric:tabular-nums}
+.path-src{font-size:12px;margin-top:8px}
+.pbar .t small{display:block;font-weight:400;font-size:11px;color:var(--sky)}
+.path-teams{list-style:none;margin-top:10px;font-size:13px}
+.path-teams li{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px solid var(--line)}
+.path-teams li.h{border:0;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky)}
+.path-teams b{color:var(--paper)}
+
 /* Under siege scatter */
 .siege{display:grid;gap:16px}
 @media (min-width:860px){.siege{grid-template-columns:minmax(0,.55fr) minmax(0,1.45fr);align-items:start}}
@@ -308,10 +356,6 @@ tr.cut td{border-bottom:2px solid var(--green)}
 .fx .tag{font-size:13px;color:var(--sky);text-align:right}
 
 /* Projection */
-.proj{margin-top:20px;display:grid;gap:8px 32px;align-items:center}
-@media (min-width:760px){.proj{grid-template-columns:auto 1fr}}
-.proj .big small{display:inline-block;margin-left:8px}
-.proj p{max-width:60ch}
 
 /* Callouts */
 .callouts{display:grid;gap:20px}
@@ -442,6 +486,37 @@ footer a{color:var(--paper)}
 </section>
 
 <main>
+  <section id="path">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Where this is heading</h2>
+        <p>Ten games down, 28 to go. Pick a path, or drag the slider. Based on what 200 Premier League teams did after their first ten games.</p>
+      </div>
+      <div class="path">
+        <div class="panel path-chart">
+          <div class="path-btns" id="path-btns" role="group" aria-label="Scenario"></div>
+          <div class="path-svg" id="path-svg"></div>
+          <label class="path-slide">
+            <span>Points per game, last <b id="path-left"></b> games</span>
+            <input type="range" id="path-ppg" min="0.6" max="2.6" step="0.05">
+            <output id="path-ppg-v"></output>
+          </label>
+        </div>
+        <div class="panel path-out">
+          <p class="eyebrow" id="path-name"></p>
+          <div class="path-pos"><span id="path-pos"></span><small id="path-pts"></small></div>
+          <p class="path-verdict" id="path-verdict"></p>
+          <div class="path-odds">
+            <div class="path-odds-head"><h3>How often it happens</h3>
+              <div class="f10-tabs" id="path-sample" role="tablist"></div></div>
+            <div id="path-bars"></div>
+            <p class="muted path-src" id="path-src"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="siege">
     <div class="wrap">
       <div class="sec-head">
@@ -544,16 +619,6 @@ footer a{color:var(--paper)}
           <ul class="fx" id="fixtures"></ul>
         </div>
       </div>
-      <div class="panel proj">
-        <div>
-          <h3>At this rate</h3>
-          <p class="sub">If Alonso keeps losing half his league games</p>
-          <div class="big" id="proj-pos"></div>
-        </div>
-        <div>
-          <p id="proj-text"></p>
-          <p class="muted" id="proj-pace"></p>
-        </div>
       </div>
     </div>
   </section>
@@ -765,6 +830,28 @@ const SITE = {
   FIRST10_REAL_BEFORE: 2022,       // spells before this year get the # mark
   FIRST10_REAL_NOTE: 'Squad made up of real footballers.',
   FIRST10_SOURCE: 'Sources: StatMuse, FBref, Sky Sports, Premier League results.',
+
+  /* Where this is heading. ppg = points per game for the rest of the season.
+     Built from 200 Premier League team-seasons, 2016/17 to 2025/26 (OpenFootball). */
+  PATH: {
+    scenarios: [
+      { id:'down', name:'Downturn', ppg:1.0, color:'#ff4b3e', verdict:'The slide. Mid-table, no Europe, and Alonso does not see the spring.' },
+      { id:'same', name:'More of the same', ppg:1.6, color:'#ffb547', verdict:'Scrapping for Europe, again. Is this what Clearlake paid for?' },
+      { id:'up', name:'Upturn', ppg:2.0, color:'#4fe39a', verdict:'The miracle. It does happen. Just not often to teams that start like this.' },
+      { id:'hist', name:'History says', color:'#a9bdff', verdict:'What teams that started like this actually went on to do. Worse than now.' },
+    ],
+    // hist = average points per game in the last 28 games for that group
+    samples: [
+      { id:'all', name:'All 200', n:200, count:{ down:52, same:101, up:47 }, hist:1.384 },
+      { id:'near', name:'15–17 pts', n:37, count:{ down:13, same:19, up:5 }, hist:1.454 },
+      { id:'exact', name:'16 pts, 4 lost', n:4, count:{ down:2, same:2, up:0 }, hist:1.339,
+        teams:[ ['Chelsea 2019/20',66,'4th'], ['Everton 2020/21',59,'10th'], ['Wolves 2021/22',51,'10th'], ['Tottenham 2024/25',38,'17th'] ] },
+    ],
+    defaultSample:'near', defaultScenario:'hist',
+    note:'Every Premier League team-season 2016/17 to 2025/26: 200 teams, 3,800 games. First 10 games against the last 28. “Same” = within ±0.30 points a game. Data: OpenFootball. History, not a forecast.',
+    // rough PL points by finishing position, recent seasons
+    typical:[91,84,75,70,67,63,60,57,54,51,49,47,45,43,41,38,35,32,27,20],
+  },
 
   /* Shots on target faced (sot) and goals conceded (ga), per 90. me:true = Chelsea. label:true = always named */
   SIEGE: [
@@ -1058,6 +1145,73 @@ const SITE = {
     else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); grow(); } }, { threshold:.25 }).observe($('f10-list'));
   }
 
+  /* Where this is heading */
+  if (SITE.PATH && $('path-svg')) {
+    const P = SITE.PATH, S = P.scenarios, TY = P.typical;
+    const SC = { down:S.find(s=>s.id==='down'), same:S.find(s=>s.id==='same'), up:S.find(s=>s.id==='up') };
+    const PLr = R.filter(r => r.comp === 'PL');
+    const cum = [0]; PLr.forEach(r => cum.push(cum[cum.length-1] + (r.result==='W' ? 3 : r.result==='D' ? 1 : 0)));
+    const g0 = PLr.length, p0 = cum[g0], left = 38 - g0, ppg0 = g0 ? p0/g0 : 0;
+    const posFor = pts => { const i = TY.findIndex(t => pts >= t); return i === -1 ? 20 : i + 1; };
+    const ordP = n => n + ({1:'st',2:'nd',3:'rd'}[(n%100 > 10 && n%100 < 14) ? 0 : n%10] || 'th');
+    const zone = pos => pos <= 4 ? 'Champions League' : pos <= 5 ? 'Champions League, maybe' : pos <= 7 ? 'Europe, just' : pos <= 14 ? 'Mid-table. No Europe.' : pos <= 17 ? 'Relegation scrap' : 'Relegated';
+    let sample = P.defaultSample || P.samples[0].id, sel = P.defaultScenario || 'same';
+    const smp = () => P.samples.find(x => x.id === sample);
+    const ppgOf = id => id === 'hist' ? smp().hist : S.find(s => s.id === id).ppg;
+    let ppg = ppgOf(sel);
+    const slider = $('path-ppg'); slider.value = ppg;
+    $('path-left').textContent = left;
+    $('path-btns').innerHTML = S.map(s => `<button type="button" data-id="${s.id}" style="--c:${s.color}"><i></i>${esc(s.name)}</button>`).join('');
+    $('path-sample').innerHTML = P.samples.map(s => `<button type="button" role="tab" data-id="${s.id}">${esc(s.name)}</button>`).join('');
+    $('path-src').textContent = P.note || '';
+    const box = $('path-svg');
+    const bandOf = v => v - ppg0 < -0.3 ? 'down' : v - ppg0 > 0.3 ? 'up' : 'same';
+    const colOf = () => sel ? S.find(s => s.id === sel).color : SC[bandOf(ppg)].color;
+    const draw = () => {
+      const W = Math.max(300, Math.round(box.getBoundingClientRect().width)), small = W < 520;
+      const H = Math.round(W * (small ? .85 : .52)), m = { l:30, r: small ? 46 : 58, t:10, b:30 };
+      const yMax = 95, X = g => m.l + g/38*(W-m.l-m.r), Y = p => m.t + (1 - p/yMax)*(H-m.t-m.b);
+      const bands = [[TY[3], yMax, 'Top four', 'rgba(79,227,154,.10)'], [TY[6], TY[3], 'Europe', 'rgba(79,227,154,.05)'], [TY[16], TY[6], 'Mid-table', 'rgba(255,255,255,0)'], [0, TY[16], 'Relegation', 'rgba(255,75,62,.10)']];
+      let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Chelsea league points, actual and projected to game 38">`;
+      bands.forEach(([lo, hi, l, c]) => { g += `<rect x="${m.l}" y="${Y(hi)}" width="${W-m.l-m.r}" height="${Y(lo)-Y(hi)}" fill="${c}"/><text class="blab" x="${m.l+8}" y="${Y(hi)+15}">${l}</text>`; });
+      for (let v = 20; v <= 80; v += 20) g += `<line class="gridl" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="tick" x="${m.l-6}" y="${Y(v)+4}" text-anchor="end">${v}</text>`;
+      [0,10,19,28,38].forEach(v => g += `<text class="tick" x="${X(v)}" y="${H-m.b+18}" text-anchor="middle">${v === 0 ? 'Game' : v}</text>`);
+      g += `<line class="now" x1="${X(g0)}" x2="${X(g0)}" y1="${m.t}" y2="${H-m.b}"/><text class="nowl" x="${X(g0)+6}" y="${H-m.b-8}">Today</text>`;
+      S.forEach(s => g += `<path class="scn${sel===s.id ? ' on' : ''}" stroke="${s.color}" d="M${X(g0)} ${Y(p0)} L${X(38)} ${Y(p0 + ppgOf(s.id)*left)}"/>`);
+      if (!sel) g += `<path class="scn on" stroke="${colOf()}" d="M${X(g0)} ${Y(p0)} L${X(38)} ${Y(p0 + ppg*left)}"/>`;
+      g += `<path class="act" d="${cum.map((p,i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(p).toFixed(1)).join(' ')}"/>`;
+      g += cum.slice(1).map((p,i) => `<circle class="actd" cx="${X(i+1)}" cy="${Y(p)}" r="${small ? 2.2 : 3}"/>`).join('');
+      const fin = Math.round(p0 + ppg*left), c = colOf();
+      g += `<circle class="endd" cx="${X(38)}" cy="${Y(fin)}" r="7" fill="${c}"/><text class="end" x="${X(38)+11}" y="${Y(fin)+5}" fill="${c}">${fin}</text>`;
+      box.innerHTML = g + '</svg>';
+    };
+    const update = () => {
+      const fin = Math.round(p0 + ppg*left), pos = posFor(fin), c = colOf(), sm = smp();
+      document.querySelectorAll('#path-btns button').forEach(b => b.setAttribute('aria-pressed', b.dataset.id === sel));
+      document.querySelectorAll('#path-sample button').forEach(b => b.setAttribute('aria-selected', b.dataset.id === sample));
+      $('path-ppg-v').textContent = ppg.toFixed(2);
+      $('path-name').closest('.path-out').style.setProperty('--c', c); slider.style.accentColor = c;
+      const sc = sel && S.find(s => s.id === sel);
+      $('path-name').textContent = sc ? (sel === 'hist' ? `History says · ${sm.name}` : sc.name) : (bandOf(ppg) === 'down' ? 'Your downturn' : bandOf(ppg) === 'up' ? 'Your upturn' : 'Your version');
+      $('path-pos').textContent = ordP(pos);
+      $('path-pts').textContent = `${fin} points · ${zone(pos)}`;
+      $('path-verdict').textContent = sc ? sc.verdict : `${ppg.toFixed(2)} points a game from here, against ${ppg0.toFixed(2)} so far. ${ppg < ppg0 ? 'Worse than now.' : ppg > ppg0 ? 'Better than now.' : 'Same as now.'}`;
+      const hi = sel && sel !== 'hist' ? sel : bandOf(ppg);
+      let bars = ['down','same','up'].map(k => { const x = SC[k], pc = sm.count[k]/sm.n*100;
+        return `<button type="button" class="pbar${k===hi ? ' on' : ''}" data-id="${k}" style="--c:${x.color}"><span class="t">${esc(x.name)}<small>${sm.count[k]} of ${sm.n}</small></span><span class="tr"><i style="width:${pc.toFixed(1)}%"></i></span><span class="v">${pc % 1 ? pc.toFixed(1) : pc}%</span></button>`; }).join('');
+      if (sm.teams) bars += `<ul class="path-teams"><li class="h">Started exactly like this</li>${sm.teams.map(t => `<li><span>${esc(t[0])}</span><span>${t[1]} pts · <b>${esc(t[2])}</b></span></li>`).join('')}</ul>`;
+      $('path-bars').innerHTML = bars;
+      $('path-bars').querySelectorAll('.pbar').forEach(b => b.addEventListener('click', () => pick(b.dataset.id)));
+      draw();
+    };
+    const pick = id => { sel = id; ppg = ppgOf(id); slider.value = ppg; update(); };
+    document.querySelectorAll('#path-btns button').forEach(b => b.addEventListener('click', () => pick(b.dataset.id)));
+    document.querySelectorAll('#path-sample button').forEach(b => b.addEventListener('click', () => { sample = b.dataset.id; if (sel === 'hist') ppg = ppgOf('hist'), slider.value = ppg; update(); }));
+    slider.addEventListener('input', () => { ppg = +slider.value; const m = S.find(s => s.id !== 'hist' && Math.abs(s.ppg - ppg) < 1e-6); sel = m ? m.id : null; update(); });
+    update();
+    let prt; addEventListener('resize', () => { clearTimeout(prt); prt = setTimeout(draw, 150); });
+  }
+
   /* Under siege scatter */
   if (SITE.SIEGE && $('siege-svg')) {
     const T = SITE.SIEGE, me = T.find(t => t.me), N = T.length;
@@ -1168,23 +1322,6 @@ const SITE = {
     if (cfc && !top.includes(cfc)) top.push(cfc);
     drawTable(top, 'Live table · the line marks 5th');
   }).catch(() => {});
-
-  /* Projection: where the league season ends up at this rate */
-  {
-    const TYPICAL = [91,84,75,70,67,63,60,57,54,51,49,47,45,43,41,38,35,32,27,20]; // rough PL points by finishing position, recent seasons
-    const posFor = pts => { const i = TYPICAL.findIndex(t => pts >= t); return i === -1 ? 20 : i + 1; };
-    const ord = n => n + (['th','st','nd','rd'][(n%100>10 && n%100<14) ? 0 : (n%10<4 ? n%10 : 0)] || 'th');
-    const PL = R.filter(r => r.comp === 'PL');
-    const pw = PL.filter(r => r.result==='W').length, pd = PL.filter(r => r.result==='D').length, pl = PL.length - pw - pd;
-    const pts = pw*3 + pd, left = 38 - PL.length;
-    const losses = Math.round(left/2), rest = left - losses;
-    const perNonLoss = (pw + pd) ? (3*pw + pd) / (pw + pd) : 1;
-    const half = Math.round(pts + rest*perNonLoss);
-    const pace = Math.round(pts / PL.length * 38);
-    $('proj-pos').innerHTML = `${ord(posFor(half))} <small>~${half} points</small>`;
-    $('proj-text').textContent = `${pts} points from ${PL.length} league games (${pw} won, ${pd} drawn, ${pl} lost). Lose ${losses} of the last ${left}, win and draw the rest at his current ratio, and Chelsea finish on about ${half} points. That usually means ${ord(posFor(half))}.`;
-    $('proj-pace').textContent = `At his overall pace so far (${(pts/PL.length).toFixed(1)} points a game) it would be about ${pace} points, roughly ${ord(posFor(pace))}. Positions use typical Premier League points totals from recent seasons.`;
-  }
 
   /* Fixtures */
   $('fixtures').innerHTML = SITE.FIXTURES.map(f => `
