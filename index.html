@@ -157,6 +157,7 @@ a{color:inherit}
 .why-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .why{display:none;list-style:none}
 .why.open{display:block}
+.why.clip li:nth-child(n+5){display:none}
 .why li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
 .why li .what{font-weight:600}
 .why li .ev{grid-column:1;color:var(--sky);font-size:13px}
@@ -433,13 +434,53 @@ footer a{color:var(--paper)}
       <div class="panel">
         <h3>What's driving it</h3>
         <p class="sub">Every point on the meter, and why.</p>
-        <ul class="why open" id="why"></ul>
+        <ul class="why open clip" id="why"></ul>
+        <button type="button" class="why-btn" id="why-more" aria-expanded="false" aria-controls="why"><span id="why-more-t">Show all</span><span class="chev">▾</span></button>
       </div>
     </div>
   </div>
 </section>
 
 <main>
+  <section id="siege">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Under siege</h2>
+        <p>Shots on target faced and goals conceded, per game. Up and right is good. Chelsea are nowhere near it.</p>
+      </div>
+      <div class="siege">
+        <div class="siege-facts" id="siege-facts"></div>
+        <div class="panel siege-chart">
+          <div class="siege-svg" id="siege-svg"></div>
+          <div class="siege-tip" id="siege-tip" hidden></div>
+          <p class="muted siege-src" id="siege-src"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="first-ten">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Ten games in</h2>
+        <p>Every Chelsea manager's first ten Premier League games since 2004. Nineteen starts. Alonso's is one of the worst.</p>
+      </div>
+      <div class="f10">
+        <div class="f10-facts" id="f10-facts"></div>
+        <div class="panel f10-rank">
+          <div class="f10-tabs" role="tablist">
+            <button type="button" role="tab" data-m="pts" aria-selected="true">Points</button>
+            <button type="button" role="tab" data-m="ga" aria-selected="false">Goals conceded</button>
+          </div>
+          <h3 id="f10-h">Points after ten games</h3>
+          <p class="sub" id="f10-sub">Each spell counted separately. Interim spells under ten league games left out.</p>
+          <ol class="f10-list" id="f10-list"></ol>
+          <p class="muted f10-src" id="f10-src"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="five-days">
     <div class="wrap">
       <div class="sec-head">
@@ -483,45 +524,6 @@ footer a{color:var(--paper)}
       <div class="form" id="form" aria-label="Form, oldest to newest"></div>
       <p class="form-note">Oldest on the left. Dashed outline: drawn, lost on penalties.</p>
       <ul class="results" id="results"></ul>
-    </div>
-  </section>
-
-  <section id="first-ten">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Ten games in</h2>
-        <p>Every Chelsea manager's first ten Premier League games since 2004. Nineteen starts. Alonso's is one of the worst.</p>
-      </div>
-      <div class="f10">
-        <div class="f10-facts" id="f10-facts"></div>
-        <div class="panel f10-rank">
-          <div class="f10-tabs" role="tablist">
-            <button type="button" role="tab" data-m="pts" aria-selected="true">Points</button>
-            <button type="button" role="tab" data-m="ga" aria-selected="false">Goals conceded</button>
-          </div>
-          <h3 id="f10-h">Points after ten games</h3>
-          <p class="sub" id="f10-sub">Each spell counted separately. Interim spells under ten league games left out.</p>
-          <ol class="f10-list" id="f10-list"></ol>
-          <p class="muted f10-src" id="f10-src"></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="siege">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Under siege</h2>
-        <p>Shots on target faced and goals conceded, per game. Up and right is good. Chelsea are nowhere near it.</p>
-      </div>
-      <div class="siege">
-        <div class="siege-facts" id="siege-facts"></div>
-        <div class="panel siege-chart">
-          <div class="siege-svg" id="siege-svg"></div>
-          <div class="siege-tip" id="siege-tip" hidden></div>
-          <p class="muted siege-src" id="siege-src"></p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -988,6 +990,16 @@ const SITE = {
   const sorted = [...SITE.PRESSURE].sort((a,b) => (a.dir===b.dir ? b.pts-a.pts : a.dir==='up' ? -1 : 1));
   $('why').innerHTML = sorted.map(p =>
     `<li class="${p.dir}"><span class="what">${esc(p.what)}</span><span class="ev">${esc(p.ev)}</span><span class="pts">${p.dir==='up'?'+':'−'}${p.pts}</span></li>`).join('');
+  {
+    const ul = $('why'), btn = $('why-more'), n = ul.children.length;
+    const setT = () => $('why-more-t').textContent = ul.classList.contains('clip') ? `Show all ${n}` : 'Show less';
+    if (n <= 4) btn.remove();
+    else { setT(); btn.addEventListener('click', () => {
+      const open = ul.classList.toggle('clip') === false;
+      btn.setAttribute('aria-expanded', open); setT();
+      if (!open) ul.closest('.panel').scrollIntoView({ block:'nearest', behavior: reduce ? 'auto' : 'smooth' });
+    }); }
+  }
 
   /* Referee watch */
   const RW = SITE.REF_WATCH;
