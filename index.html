@@ -244,6 +244,38 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .hash{color:var(--amber);font-weight:700;margin-left:3px}
 .f10-src .hash{margin:0 2px 0 0}
 
+/* Under siege scatter */
+.siege{display:grid;gap:16px}
+@media (min-width:860px){.siege{grid-template-columns:minmax(0,.55fr) minmax(0,1.45fr);align-items:start}}
+.siege-facts{display:grid;gap:12px}
+@media (min-width:560px) and (max-width:859px){.siege-facts{grid-template-columns:1fr 1fr}}
+.siege-facts .num.hot .v{color:var(--red)}
+.siege-chart{position:relative;padding:18px 14px 14px}
+.siege-svg svg{display:block;width:100%;height:auto;overflow:visible}
+.siege-svg .zone-bad{fill:url(#siegeBad)}
+.siege-svg .zone-good{fill:url(#siegeGood)}
+.siege-svg .zlab{font:700 11px var(--body);letter-spacing:.12em;text-transform:uppercase}
+.siege-svg .zlab.bad{fill:rgba(255,75,62,.75)}
+.siege-svg .zlab.good{fill:rgba(79,227,154,.7)}
+.siege-svg .gridl{stroke:rgba(255,255,255,.06)}
+.siege-svg .avg{stroke:rgba(169,189,255,.35);stroke-dasharray:4 5}
+.siege-svg .tick{fill:var(--sky);font:11px var(--body);font-variant-numeric:tabular-nums}
+.siege-svg .axl{fill:var(--paper);font:600 12px var(--body)}
+.siege-svg .dot{fill:#7f97e6;fill-opacity:.55;stroke:#c7d3ff;stroke-opacity:.5;stroke-width:1;cursor:pointer;transition:fill-opacity .2s}
+.siege-svg .dot:hover,.siege-svg .dot:focus{fill-opacity:.95;outline:none}
+.siege-svg .dot.top{fill:var(--green);fill-opacity:.8;stroke:#c9ffe4}
+.siege-svg .dot.me{fill:var(--red);fill-opacity:1;stroke:#fff;stroke-width:2}
+.siege-svg .ring{fill:none;stroke:var(--red);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:siegeRing 2.2s ease-out infinite}
+@keyframes siegeRing{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+.siege-svg .lab{fill:var(--sky);font:12px var(--body);pointer-events:none}
+.siege-svg .lab.me{fill:#fff;font:800 15px var(--display);letter-spacing:.02em}
+.siege-svg .lab.top{fill:#bff5da}
+.siege-svg .callout{stroke:rgba(255,255,255,.55);stroke-width:1}
+.siege-svg g.pt{transition:transform .9s cubic-bezier(.2,1.3,.4,1),opacity .5s}
+.siege-tip{position:absolute;pointer-events:none;background:var(--paper);color:var(--blue-ink);font-size:13px;line-height:1.35;padding:7px 10px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35);white-space:nowrap;transform:translate(-50%,calc(-100% - 12px))}
+.siege-tip b{display:block;font-size:14px}
+.siege-src{font-size:12px;margin-top:8px}
+
 /* Results list */
 .results{margin-top:28px;list-style:none;border-top:1px solid var(--line)}
 .results li{display:grid;grid-template-columns:62px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
@@ -471,6 +503,23 @@ footer a{color:var(--paper)}
           <p class="sub" id="f10-sub">Each spell counted separately. Interim spells under ten league games left out.</p>
           <ol class="f10-list" id="f10-list"></ol>
           <p class="muted f10-src" id="f10-src"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="siege">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Under siege</h2>
+        <p>Shots on target faced and goals conceded, per game. Up and right is good. Chelsea are nowhere near it.</p>
+      </div>
+      <div class="siege">
+        <div class="siege-facts" id="siege-facts"></div>
+        <div class="panel siege-chart">
+          <div class="siege-svg" id="siege-svg"></div>
+          <div class="siege-tip" id="siege-tip" hidden></div>
+          <p class="muted siege-src" id="siege-src"></p>
         </div>
       </div>
     </div>
@@ -714,6 +763,31 @@ const SITE = {
   FIRST10_REAL_BEFORE: 2022,       // spells before this year get the # mark
   FIRST10_REAL_NOTE: 'Squad made up of real footballers.',
   FIRST10_SOURCE: 'Sources: StatMuse, FBref, Sky Sports, Premier League results.',
+
+  /* Shots on target faced (sot) and goals conceded (ga), per 90. me:true = Chelsea. label:true = always named */
+  SIEGE: [
+    { team:'Varsenal', ga:0.56, sot:2.78, label:true },
+    { team:'Liverpool', ga:1.00, sot:3.00, label:true },
+    { team:'Bournemouth', ga:1.44, sot:3.22 },
+    { team:'Nottingham Forest', ga:1.33, sot:3.33 },
+    { team:'Tottenham', ga:1.11, sot:3.56 },
+    { team:'Brighton', ga:0.78, sot:3.56 },
+    { team:'Manchester City', ga:1.11, sot:3.78 },
+    { team:'Fulham', ga:1.22, sot:3.89 },
+    { team:'Brentford', ga:1.00, sot:4.00 },
+    { team:'Sunderland', ga:1.89, sot:3.89, label:true },
+    { team:'Coventry City', ga:1.78, sot:4.00 },
+    { team:'Everton', ga:1.12, sot:4.25 },
+    { team:'Leeds United', ga:0.89, sot:4.56 },
+    { team:'Manchester United', ga:1.67, sot:5.11, label:true },
+    { team:'Hull City', ga:1.11, sot:5.11 },
+    { team:'Ipswich Town', ga:2.00, sot:5.33 },
+    { team:'Newcastle', ga:1.75, sot:5.38 },
+    { team:'Aston Villa', ga:1.44, sot:5.33 },
+    { team:'Chelsea', ga:1.67, sot:5.89, me:true },
+    { team:'Crystal Palace', ga:2.33, sot:6.00, label:true },
+  ],
+  SIEGE_SOURCE: 'Premier League, before gameweek 10. Values read from a chart by MB, so approximate.',
 
   GRAVEYARD: [
     { name:'Thomas Tuchel',      role:'Head coach',        dur:'20 months', how:'Sacked, September 2022' },
@@ -970,6 +1044,76 @@ const SITE = {
     function grow() { shown = true; document.querySelectorAll('#f10-list .bar i').forEach((b,i) => { b.style.transitionDelay = reduce ? '0s' : (i*.04)+'s'; b.style.width = b.dataset.w + '%'; }); }
     if (reduce || !('IntersectionObserver' in window)) grow();
     else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); grow(); } }, { threshold:.25 }).observe($('f10-list'));
+  }
+
+  /* Under siege scatter */
+  if (SITE.SIEGE && $('siege-svg')) {
+    const T = SITE.SIEGE, me = T.find(t => t.me), N = T.length;
+    const ord = n => n + ({1:'st',2:'nd',3:'rd'}[(n%100 > 10 && n%100 < 14) ? 0 : n%10] || 'th');
+    const sotRank = [...T].sort((a,b) => a.sot - b.sot).indexOf(me) + 1;
+    const gaRank = [...T].sort((a,b) => a.ga - b.ga).indexOf(me) + 1;
+    const worse = T.filter(t => t.sot > me.sot).map(t => t.team);
+    const best = [...T].sort((a,b) => a.sot - b.sot)[0];
+    $('siege-facts').innerHTML = [
+      { v: me.sot.toFixed(1), k:`shots on target faced per game. <b>${ord(sotRank)} of ${N}.</b>${worse.length ? ' Only ' + esc(worse.join(' and ')) + ' face more.' : ' The most in the league.'}`, hot:true },
+      { v: me.ga.toFixed(2), k:`goals conceded per game. <b>${ord(gaRank)} of ${N}.</b>`, hot: gaRank > N/2 },
+      { v: '×' + (me.sot / best.sot).toFixed(1), k:`the shots ${esc(best.team)} face. Same league, different planet.` },
+    ].map(f => `<div class="num${f.hot ? ' hot' : ''}"><div class="v">${f.v}</div><div class="k">${f.k}</div></div>`).join('');
+    $('siege-src').textContent = SITE.SIEGE_SOURCE || '';
+    const top = [...T].sort((a,b) => (a.sot + a.ga*2) - (b.sot + b.ga*2))[0];
+    const box = $('siege-svg'), tip = $('siege-tip');
+    let played = false;
+    const drawSiege = () => {
+      const W = Math.max(300, Math.round(box.getBoundingClientRect().width)), small = W < 560;
+      const H = Math.round(W * (small ? 1.1 : .62)), m = { l: small ? 34 : 44, r: 12, t: 14, b: small ? 40 : 46 };
+      const gaMin = .4, gaMax = 2.4, sMin = 2.5, sMax = 6.2;
+      const X = v => m.l + (gaMax - v)/(gaMax - gaMin)*(W - m.l - m.r);
+      const Y = v => m.t + (v - sMin)/(sMax - sMin)*(H - m.t - m.b);
+      const avgGa = T.reduce((s,t) => s + t.ga, 0)/N, avgS = T.reduce((s,t) => s + t.sot, 0)/N;
+      let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Shots on target faced against goals conceded per game, every Premier League team">
+        <defs>
+          <radialGradient id="siegeBad" cx="0" cy="1" r="1"><stop offset="0" stop-color="#ff4b3e" stop-opacity=".28"/><stop offset="1" stop-color="#ff4b3e" stop-opacity="0"/></radialGradient>
+          <radialGradient id="siegeGood" cx="1" cy="0" r="1"><stop offset="0" stop-color="#4fe39a" stop-opacity=".18"/><stop offset="1" stop-color="#4fe39a" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect class="zone-bad" x="${m.l}" y="${Y(avgS)}" width="${X(avgGa)-m.l}" height="${H-m.b-Y(avgS)}"/>
+        <rect class="zone-good" x="${X(avgGa)}" y="${m.t}" width="${W-m.r-X(avgGa)}" height="${Y(avgS)-m.t}"/>
+        <text class="zlab good" x="${W-m.r-8}" y="${Y(avgS)-10}" text-anchor="end">Solid</text>
+        <text class="zlab bad" x="${m.l+8}" y="${Y(avgS)+20}">Under siege</text>`;
+      for (let v = 3; v <= 6; v++) g += `<line class="gridl" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="tick" x="${m.l-8}" y="${Y(v)+4}" text-anchor="end">${v}</text>`;
+      for (let v = .5; v <= 2.31; v += .5) g += `<line class="gridl" y1="${m.t}" y2="${H-m.b}" x1="${X(v)}" x2="${X(v)}"/><text class="tick" y="${H-m.b+16}" x="${X(v)}" text-anchor="middle">${v.toFixed(1)}</text>`;
+      g += `<line class="avg" x1="${m.l}" x2="${W-m.r}" y1="${Y(avgS)}" y2="${Y(avgS)}"/><line class="avg" y1="${m.t}" y2="${H-m.b}" x1="${X(avgGa)}" x2="${X(avgGa)}"/>
+        <text class="axl" x="${W-m.r}" y="${H-6}" text-anchor="end">← More goals conceded per game · fewer →</text>
+        <text class="axl" transform="translate(12 ${m.t + (H-m.t-m.b)/2}) rotate(-90)" text-anchor="middle">Shots on target faced per game</text>`;
+      const cx = X(avgGa), cy = Y(avgS);
+      const order = [...T].sort((a,b) => (a.me?1:0) - (b.me?1:0));
+      order.forEach((t,i) => {
+        const x = X(t.ga), y = Y(t.sot), r = t.me ? (small ? 8 : 10) : (small ? 5 : 6.5);
+        const cls = t.me ? 'me' : t === top ? 'top' : '';
+        const showLab = t.me || t.label || (!small && t === top);
+        const right = x < W*0.62;
+        const lab = !showLab ? '' : t.me
+          ? `<line class="callout" x1="${x+r+2}" y1="${y}" x2="${x+r+22}" y2="${y-18}"/><text class="lab me" x="${x+r+26}" y="${y-20}">CHELSEA</text>`
+          : `<text class="lab ${cls}" x="${right ? x+r+5 : x-r-5}" y="${y+4}" text-anchor="${right ? 'start' : 'end'}">${esc(t.team)}</text>`;
+        const from = played || reduce ? '' : `transform:translate(${(cx-x).toFixed(1)}px,${(cy-y).toFixed(1)}px);opacity:0;`;
+        g += `<g class="pt" style="${from}transition-delay:${t.me ? 1.1 : (i*0.035).toFixed(2)}s">
+          ${t.me ? `<circle class="ring" cx="${x}" cy="${y}" r="${r}"/>` : ''}
+          <circle class="dot ${cls}" cx="${x}" cy="${y}" r="${r}" tabindex="0" data-i="${T.indexOf(t)}"/>${lab}</g>`;
+      });
+      box.innerHTML = g + '</svg>';
+      box.querySelectorAll('.dot').forEach(d => {
+        const t = T[d.dataset.i];
+        const show = () => { const bb = d.getBoundingClientRect(), pb = box.parentElement.getBoundingClientRect();
+          tip.innerHTML = `<b>${esc(t.team)}</b>${t.sot.toFixed(2)} shots on target faced · ${t.ga.toFixed(2)} conceded`;
+          tip.style.left = (bb.left + bb.width/2 - pb.left) + 'px'; tip.style.top = (bb.top - pb.top) + 'px'; tip.hidden = false; };
+        d.addEventListener('mouseenter', show); d.addEventListener('focus', show); d.addEventListener('click', show);
+        d.addEventListener('mouseleave', () => tip.hidden = true); d.addEventListener('blur', () => tip.hidden = true);
+      });
+    };
+    const playSiege = () => { played = true; box.querySelectorAll('g.pt').forEach(p => { p.style.transform = ''; p.style.opacity = ''; }); };
+    drawSiege();
+    if (reduce || !('IntersectionObserver' in window)) playSiege();
+    else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); requestAnimationFrame(() => requestAnimationFrame(playSiege)); } }, { threshold:.35 }).observe(box);
+    let srt; addEventListener('resize', () => { clearTimeout(srt); srt = setTimeout(drawSiege, 150); });
   }
 
   $('nums').innerHTML = [
