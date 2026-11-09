@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where is Alonso taking Chelsea? | Drag the slider</title>
+<meta name="description" content="Ten games down, 28 to go. Drag the slider and see where Xabi Alonso's Chelsea finish. Based on 200 Premier League team-seasons.">
+<link rel="canonical" href="https://hasxabialonsobeensackedyet.com/heading">
+<meta property="og:title" content="Where is Alonso taking Chelsea? Drag the slider.">
+<meta property="og:description" content="16 points from 10 games. History says 8th. Pick your own path for the last 28.">
+<meta property="og:url" content="https://hasxabialonsobeensackedyet.com/heading">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://hasxabialonsobeensackedyet.com/og-heading.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@TheManagerMeter">
+<meta name="twitter:title" content="Where is Alonso taking Chelsea? Drag the slider.">
+<meta name="twitter:description" content="16 points from 10 games. History says 8th. Pick your own path.">
+<meta name="twitter:image" content="https://hasxabialonsobeensackedyet.com/og-heading.png">
+<meta name="theme-color" content="#0d2a9c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230d2a9c'/%3E%3Ctext x='50' y='70' font-family='Arial Black,Impact,sans-serif' font-size='52' font-weight='900' text-anchor='middle' fill='%23ff4b3e'%3ENO%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Archivo:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0d2a9c;        /* Bridge blue: the page */
+  --blue-deep:#091d6e;   /* panels */
+  --blue-ink:#06144d;    /* deepest wells */
+  --sky:#a9bdff;         /* secondary text, rules */
+  --paper:#f5f7ff;       /* primary text */
+  --red:#ff4b3e;         /* defeats, pressure */
+  --amber:#ffc23d;       /* draws, warnings */
+  --green:#4fe39a;       /* wins, relief */
+  --line:rgba(169,189,255,.22);
+  --display:'Big Shoulders Display',Impact,'Arial Narrow',sans-serif;
+  --body:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--blue);color:var(--paper);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+@media (min-width:760px){.wrap{padding:0 32px}}
+
+
+.panel{background:var(--blue-deep);border:1px solid var(--line);border-radius:14px;padding:22px}
+.panel h3{font-family:var(--display);font-weight:900;font-size:30px;line-height:1;margin-bottom:4px}
+.panel .sub{color:var(--sky);font-size:14px;margin-bottom:14px}
+.panel p{font-size:15px;margin-top:12px;max-width:52ch}
+.panel p.muted{color:var(--sky);font-size:13px}
+.f10-tabs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--blue-ink);border:1px solid var(--line);margin-bottom:14px}
+.f10-tabs button{font:inherit;font-size:13px;font-weight:600;color:var(--sky);background:transparent;border:0;border-radius:999px;padding:6px 14px;cursor:pointer}
+.f10-tabs button[aria-selected="true"]{background:var(--paper);color:var(--blue-ink)}
+/* Where this is heading */
+.path{display:grid;gap:16px}
+@media (min-width:900px){.path{grid-template-columns:minmax(0,1.45fr) minmax(0,.8fr);align-items:stretch}}
+.path-btns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.path-btns button{font:inherit;font-size:14px;font-weight:700;color:var(--paper);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.path-btns button i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.path-btns button[aria-pressed="true"]{border-color:var(--c);background:color-mix(in srgb,var(--c) 18%,transparent)}
+.path-svg svg{display:block;width:100%;height:auto;overflow:visible}
+.path-svg .blab{font:600 11px var(--body);letter-spacing:.06em;text-transform:uppercase;fill:rgba(169,189,255,.55)}
+.path-svg .gridl{stroke:rgba(255,255,255,.06)}
+.path-svg .tick{fill:var(--sky);font:11px var(--body);font-variant-numeric:tabular-nums}
+.path-svg .now{stroke:rgba(255,255,255,.35);stroke-dasharray:3 4}
+.path-svg .nowl{fill:var(--paper);font:600 11px var(--body)}
+.path-svg .act{fill:none;stroke:#fff;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.path-svg .actd{fill:#fff}
+.path-svg .scn{fill:none;stroke-width:2;stroke-dasharray:6 6;opacity:.35;transition:opacity .25s}
+.path-svg .scn.on{stroke-width:3.5;stroke-dasharray:none;opacity:1}
+.path-svg .end{font:800 15px var(--display)}
+.path-svg .endd{stroke:#fff;stroke-width:2}
+.path-slide{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;margin-top:12px;font-size:13px;color:var(--sky)}
+.path-slide span b{color:var(--paper)}
+.path-slide input{grid-column:1/-1;grid-row:2;width:100%;accent-color:var(--amber);height:28px;cursor:pointer}
+.path-slide output{font-family:var(--display);font-weight:900;font-size:20px;color:var(--paper)}
+.path-out{display:flex;flex-direction:column}
+.path-out .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c,var(--sky))}
+.path-pos{margin-top:4px}
+.path-pos span{font-family:var(--display);font-weight:900;font-size:clamp(64px,9vw,96px);line-height:.9;color:var(--c,var(--paper))}
+.path-pos span{display:block}
+.path-pos small{display:block;margin-top:8px;font-size:15px;color:var(--sky)}
+.path-verdict{margin-top:10px;font-size:16px;line-height:1.45;min-height:3em}
+.path-odds{margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
+.path-odds-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.path-out .path-odds-head h3{font-size:20px}
+.path-odds .f10-tabs{margin:0}
+.path-odds .f10-tabs button{padding:5px 10px;font-size:12px;white-space:nowrap}
+.pbar{display:grid;grid-template-columns:120px 1fr 52px;gap:10px;align-items:center;padding:6px 0;cursor:pointer;background:none;border:0;color:inherit;font:inherit;width:100%;text-align:left}
+.pbar .t{font-weight:600;font-size:13px}
+.pbar .tr{height:10px;border-radius:5px;background:rgba(169,189,255,.12);overflow:hidden}
+.pbar .tr i{display:block;height:100%;border-radius:5px;background:var(--c);opacity:.5;transition:width .6s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.pbar.on .tr i{opacity:1}
+.pbar .v{font-family:var(--display);font-weight:900;font-size:18px;text-align:right;font-variant-numeric:tabular-nums}
+.path-src{font-size:12px;margin-top:8px}
+.pbar .t small{display:block;font-weight:400;font-size:11px;color:var(--sky)}
+.path-teams{list-style:none;margin-top:10px;font-size:13px}
+.path-teams li{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px solid var(--line)}
+.path-teams li.h{border:0;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky)}
+.path-teams b{color:var(--paper)}
+
+
+/* standalone page */
+.top{padding:28px 0 18px}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
+.kicker a{text-decoration:none;border-bottom:1px solid var(--line)}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(40px,7vw,72px);line-height:.92;margin-top:8px}
+h1 em{font-style:normal;color:var(--red)}
+.lede{color:var(--sky);font-size:16px;margin-top:10px;max-width:60ch}
+.share{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.share a,.share button{font:inherit;font-size:15px;font-weight:700;display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;cursor:pointer;text-decoration:none;border:1.5px solid var(--line);background:transparent;color:var(--paper)}
+.share .x{background:var(--paper);color:var(--blue-ink);border-color:var(--paper)}
+.share svg{width:16px;height:16px}
+.foot{padding:28px 0 40px;color:var(--sky);font-size:13px}
+.foot a{color:var(--paper)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--paper);color:var(--blue-ink);font-weight:700;padding:10px 16px;border-radius:999px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+/* og / video modes */
+body.cap .share,body.cap .foot,body.cap .path-src,body.cap .lede{display:none}
+body.cap .top{padding:22px 0 14px}
+body.og .path-odds,body.og .path-btns,body.og .kicker{display:none}
+body.og .top{padding:26px 0 16px}
+body.og h1{font-size:60px}
+body.og .path-pos span{font-size:150px}
+body.og .path-out{justify-content:center}
+body.og .path-out::after{content:'Drag the slider. Pick your own path.';display:block;margin-top:22px;font-weight:700;font-size:20px;color:var(--amber)}
+body.video .path-btns{display:none}
+body.video .path-odds{display:none}
+body.video .path{grid-template-columns:1fr}
+body.video .path-out{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:16px}
+body.video .path-pos span{font-size:84px}
+body.video .path-verdict{max-width:26ch;font-size:15px;min-height:0;text-align:right}
+.cta{display:none;margin-top:14px;font-weight:700;font-size:16px;text-align:center;color:var(--amber)}
+body.video .cta{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="kicker"><a href="/">Has Xabi Alonso been sacked yet?</a> · The Manager Meter</p>
+    <h1>Where is Alonso taking Chelsea? <em>Drag it.</em></h1>
+    <p class="lede">16 points from 10 games. 28 to go. Pick a path, or drag the slider, and see where they finish. Built on what 200 Premier League teams did after their first ten games.</p>
+  </header>
+  <section id="path">
+    <div class="path">
+      <div class="panel path-chart">
+        <div class="path-btns" id="path-btns" role="group" aria-label="Scenario"></div>
+        <div class="path-svg" id="path-svg"></div>
+        <label class="path-slide">
+          <span>Points per game, last <b id="path-left"></b> games</span>
+          <input type="range" id="path-ppg" min="0.6" max="2.6" step="0.05">
+          <output id="path-ppg-v"></output>
+        </label>
+      </div>
+      <div class="panel path-out">
+        <div>
+          <p class="eyebrow" id="path-name"></p>
+          <div class="path-pos"><span id="path-pos"></span><small id="path-pts"></small></div>
+        </div>
+        <p class="path-verdict" id="path-verdict"></p>
+        <div class="path-odds">
+          <div class="path-odds-head"><h3>How often it happens</h3>
+            <div class="f10-tabs" id="path-sample" role="tablist"></div></div>
+          <div id="path-bars"></div>
+          <p class="muted path-src" id="path-src"></p>
+        </div>
+      </div>
+    </div>
+    <p class="cta">Drag it yourself: hasxabialonsobeensackedyet.com/heading</p>
+    <div class="share">
+      <a class="x" id="share-x" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.4l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg>Post my prediction</a>
+      <button type="button" id="share-copy">Copy link</button>
+      <a href="/">Back to the meter</a>
+    </div>
+  </section>
+  <footer class="foot">From <a href="/">hasxabialonsobeensackedyet.com</a>, the unofficial Chelsea manager tracker. Data: OpenFootball, Premier League 2016/17 to 2025/26.</footer>
+</div>
+<div class="toast" id="toast">Link copied</div>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const PAGE = 'https://hasxabialonsobeensackedyet.com/heading';
+  const qs = new URLSearchParams(location.search);
+  if (qs.has('og')) document.body.classList.add('cap','og');
+  if (qs.has('video')) document.body.classList.add('cap','video');
+  // League results so far, oldest first. Add a letter after each game: W, D or L.
+  const FORM = 'WWLDLWWLWL';
+  const SITE = {
+  PATH: {
+    scenarios: [
+      { id:'down', name:'Downturn', ppg:1.0, color:'#ff4b3e', verdict:'The slide. Mid-table, no Europe, and Alonso does not see the spring.' },
+      { id:'same', name:'More of the same', ppg:1.6, color:'#ffb547', verdict:'Scrapping for Europe, again. Is this what Clearlake paid for?' },
+      { id:'up', name:'Upturn', ppg:2.0, color:'#4fe39a', verdict:'The miracle. It does happen. Just not often to teams that start like this.' },
+      { id:'hist', name:'History says', color:'#a9bdff', verdict:'What teams that started like this actually went on to do. Worse than now.' },
+    ],
+    // hist = average points per game in the last 28 games for that group
+    samples: [
+      { id:'all', name:'All 200', n:200, count:{ down:52, same:101, up:47 }, hist:1.384 },
+      { id:'near', name:'15–17 pts', n:37, count:{ down:13, same:19, up:5 }, hist:1.454 },
+      { id:'exact', name:'16 pts, 4 lost', n:4, count:{ down:2, same:2, up:0 }, hist:1.339,
+        teams:[ ['Chelsea 2019/20',66,'4th'], ['Everton 2020/21',59,'10th'], ['Wolves 2021/22',51,'10th'], ['Tottenham 2024/25',38,'17th'] ] },
+    ],
+    defaultSample:'near', defaultScenario:'hist',
+    note:'Every Premier League team-season 2016/17 to 2025/26: 200 teams, 3,800 games. First 10 games against the last 28. “Same” = within ±0.30 points a game. Data: OpenFootball. History, not a forecast.',
+    // rough PL points by finishing position, recent seasons
+    typical:[91,84,75,70,67,63,60,57,54,51,49,47,45,43,41,38,35,32,27,20],
+  }
+  };
+  const P = SITE.PATH, S = P.scenarios, TY = P.typical;
+  const SC = { down:S.find(s=>s.id==='down'), same:S.find(s=>s.id==='same'), up:S.find(s=>s.id==='up') };
+  const cum = [0]; [...FORM].forEach(r => cum.push(cum[cum.length-1] + (r==='W' ? 3 : r==='D' ? 1 : 0)));
+  const g0 = FORM.length, p0 = cum[g0], left = 38 - g0, ppg0 = g0 ? p0/g0 : 0;
+  const posFor = pts => { const i = TY.findIndex(t => pts >= t); return i === -1 ? 20 : i + 1; };
+  const ordP = n => n + ({1:'st',2:'nd',3:'rd'}[(n%100 > 10 && n%100 < 14) ? 0 : n%10] || 'th');
+  const zone = pos => pos <= 4 ? 'Champions League' : pos <= 5 ? 'Champions League, maybe' : pos <= 7 ? 'Europe, just' : pos <= 14 ? 'Mid-table. No Europe.' : pos <= 17 ? 'Relegation scrap' : 'Relegated';
+  let sample = P.samples.some(x => x.id === qs.get('s')) ? qs.get('s') : (P.defaultSample || P.samples[0].id);
+  let sel = P.defaultScenario || 'same';
+  const smp = () => P.samples.find(x => x.id === sample);
+  const ppgOf = id => id === 'hist' ? smp().hist : S.find(s => s.id === id).ppg;
+  let ppg = ppgOf(sel);
+  const q = parseFloat(qs.get('ppg'));
+  if (q >= 0.6 && q <= 2.6) { ppg = Math.round(q*20)/20; const m = S.find(s => s.id !== 'hist' && Math.abs(s.ppg - ppg) < 1e-6); sel = m ? m.id : null; }
+  const slider = $('path-ppg'); slider.value = ppg;
+  $('path-left').textContent = left;
+  $('path-btns').innerHTML = S.map(s => `<button type="button" data-id="${s.id}" style="--c:${s.color}"><i></i>${esc(s.name)}</button>`).join('');
+  $('path-sample').innerHTML = P.samples.map(s => `<button type="button" role="tab" data-id="${s.id}">${esc(s.name)}</button>`).join('');
+  $('path-src').textContent = P.note || '';
+  const box = $('path-svg');
+  const bandOf = v => v - ppg0 < -0.3 ? 'down' : v - ppg0 > 0.3 ? 'up' : 'same';
+  const colOf = () => sel ? S.find(s => s.id === sel).color : SC[bandOf(ppg)].color;
+  const draw = () => {
+    const W = Math.max(300, Math.round(box.getBoundingClientRect().width)), small = W < 520;
+    const H = Math.round(W * (small ? .85 : .52)), m = { l:30, r: small ? 46 : 58, t:10, b:30 };
+    const yMax = 95, X = g => m.l + g/38*(W-m.l-m.r), Y = p => m.t + (1 - p/yMax)*(H-m.t-m.b);
+    const bands = [[TY[3], yMax, 'Top four', 'rgba(79,227,154,.10)'], [TY[6], TY[3], 'Europe', 'rgba(79,227,154,.05)'], [TY[16], TY[6], 'Mid-table', 'rgba(255,255,255,0)'], [0, TY[16], 'Relegation', 'rgba(255,75,62,.10)']];
+    let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Chelsea league points, actual and projected to game 38">`;
+    bands.forEach(([lo, hi, l, c]) => { g += `<rect x="${m.l}" y="${Y(hi)}" width="${W-m.l-m.r}" height="${Y(lo)-Y(hi)}" fill="${c}"/><text class="blab" x="${m.l+8}" y="${Y(hi)+15}">${l}</text>`; });
+    for (let v = 20; v <= 80; v += 20) g += `<line class="gridl" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="tick" x="${m.l-6}" y="${Y(v)+4}" text-anchor="end">${v}</text>`;
+    [0,10,19,28,38].forEach(v => g += `<text class="tick" x="${X(v)}" y="${H-m.b+18}" text-anchor="middle">${v === 0 ? 'Game' : v}</text>`);
+    g += `<line class="now" x1="${X(g0)}" x2="${X(g0)}" y1="${m.t}" y2="${H-m.b}"/><text class="nowl" x="${X(g0)+6}" y="${H-m.b-8}">Today</text>`;
+    S.forEach(s => g += `<path class="scn${sel===s.id ? ' on' : ''}" stroke="${s.color}" d="M${X(g0)} ${Y(p0)} L${X(38)} ${Y(p0 + ppgOf(s.id)*left)}"/>`);
+    if (!sel) g += `<path class="scn on" stroke="${colOf()}" d="M${X(g0)} ${Y(p0)} L${X(38)} ${Y(p0 + ppg*left)}"/>`;
+    g += `<path class="act" d="${cum.map((p,i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(p).toFixed(1)).join(' ')}"/>`;
+    g += cum.slice(1).map((p,i) => `<circle class="actd" cx="${X(i+1)}" cy="${Y(p)}" r="${small ? 2.2 : 3}"/>`).join('');
+    const fin = Math.round(p0 + ppg*left), c = colOf();
+    g += `<circle class="endd" cx="${X(38)}" cy="${Y(fin)}" r="7" fill="${c}"/><text class="end" x="${X(38)+11}" y="${Y(fin)+5}" fill="${c}">${fin}</text>`;
+    box.innerHTML = g + '</svg>';
+  };
+  const shareUrl = () => `${PAGE}?ppg=${ppg.toFixed(2)}${sample !== (P.defaultSample||'') ? '&s=' + sample : ''}`;
+  const update = () => {
+    const fin = Math.round(p0 + ppg*left), pos = posFor(fin), c = colOf(), sm = smp();
+    document.querySelectorAll('#path-btns button').forEach(b => b.setAttribute('aria-pressed', b.dataset.id === sel));
+    document.querySelectorAll('#path-sample button').forEach(b => b.setAttribute('aria-selected', b.dataset.id === sample));
+    $('path-ppg-v').textContent = ppg.toFixed(2);
+    document.querySelector('.path-out').style.setProperty('--c', c); slider.style.accentColor = c;
+    const sc = sel && S.find(s => s.id === sel);
+    $('path-name').textContent = sc ? (sel === 'hist' ? `History says · ${sm.name}` : sc.name) : (bandOf(ppg) === 'down' ? 'Your downturn' : bandOf(ppg) === 'up' ? 'Your upturn' : 'Your version');
+    $('path-pos').textContent = ordP(pos);
+    $('path-pts').textContent = `${fin} points · ${zone(pos)}`;
+    $('path-verdict').textContent = sc ? sc.verdict : `${ppg.toFixed(2)} points a game from here, against ${ppg0.toFixed(2)} so far. ${ppg < ppg0 ? 'Worse than now.' : ppg > ppg0 ? 'Better than now.' : 'Same as now.'}`;
+    const hi = sel && sel !== 'hist' ? sel : bandOf(ppg);
+    let bars = ['down','same','up'].map(k => { const x = SC[k], pc = sm.count[k]/sm.n*100;
+      return `<button type="button" class="pbar${k===hi ? ' on' : ''}" data-id="${k}" style="--c:${x.color}"><span class="t">${esc(x.name)}<small>${sm.count[k]} of ${sm.n}</small></span><span class="tr"><i style="width:${pc.toFixed(1)}%"></i></span><span class="v">${pc % 1 ? pc.toFixed(1) : pc}%</span></button>`; }).join('');
+    if (sm.teams) bars += `<ul class="path-teams"><li class="h">Started exactly like this</li>${sm.teams.map(t => `<li><span>${esc(t[0])}</span><span>${t[1]} pts · <b>${esc(t[2])}</b></span></li>`).join('')}</ul>`;
+    $('path-bars').innerHTML = bars;
+    $('path-bars').querySelectorAll('.pbar').forEach(b => b.addEventListener('click', () => pick(b.dataset.id)));
+    const text = `I've done the maths. Alonso's Chelsea finish ${ordP(pos)} with ${fin} points. Drag it yourself:`;
+    $('share-x').href = 'https://x.com/intent/post?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(shareUrl());
+    draw();
+  };
+  let rt; const remember = () => { clearTimeout(rt); rt = setTimeout(() => { try { history.replaceState(null, '', `?ppg=${ppg.toFixed(2)}${sample !== (P.defaultSample||'') ? '&s=' + sample : ''}`); } catch (e) {} }, 250); };
+  const pick = id => { sel = id; ppg = ppgOf(id); slider.value = ppg; update(); remember(); };
+  document.querySelectorAll('#path-btns button').forEach(b => b.addEventListener('click', () => pick(b.dataset.id)));
+  document.querySelectorAll('#path-sample button').forEach(b => b.addEventListener('click', () => { sample = b.dataset.id; if (sel === 'hist') { ppg = ppgOf('hist'); slider.value = ppg; } update(); remember(); }));
+  slider.addEventListener('input', () => { ppg = +slider.value; const m = S.find(s => s.id !== 'hist' && Math.abs(s.ppg - ppg) < 1e-6); sel = m ? m.id : null; update(); remember(); });
+  $('share-copy').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(shareUrl()); } catch (e) { const t = document.createElement('textarea'); t.value = shareUrl(); document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (_) {} t.remove(); }
+    $('toast').classList.add('on'); setTimeout(() => $('toast').classList.remove('on'), 1400);
+  });
+  window.__setPPG = v => { ppg = v; slider.value = v; const m = S.find(s => s.id !== 'hist' && Math.abs(s.ppg - v) < 1e-6); sel = m ? m.id : null; update(); };
+  window.__pick = pick;
+  update();
+  let prt; addEventListener('resize', () => { clearTimeout(prt); prt = setTimeout(draw, 150); });
+})();
+</script>
+</body>
+</html>

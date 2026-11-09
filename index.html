@@ -361,6 +361,7 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .pbar.on .tr i{opacity:1}
 .pbar .v{font-family:var(--display);font-weight:900;font-size:18px;text-align:right;font-variant-numeric:tabular-nums}
 .path-src{font-size:12px;margin-top:8px}
+.path-share{display:inline-block;margin:4px 0 16px;font-weight:700;font-size:14px;color:var(--c,var(--paper));text-decoration:none;border-bottom:1.5px solid currentColor}
 .pbar .t small{display:block;font-weight:400;font-size:11px;color:var(--sky)}
 .path-teams{list-style:none;margin-top:10px;font-size:13px}
 .path-teams li{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px solid var(--line)}
@@ -630,6 +631,7 @@ footer a{color:var(--paper)}
           <p class="eyebrow" id="path-name"></p>
           <div class="path-pos"><span id="path-pos"></span><small id="path-pts"></small></div>
           <p class="path-verdict" id="path-verdict"></p>
+          <a class="path-share" id="path-share" href="/heading">Post your prediction on X →</a>
           <div class="path-odds">
             <div class="path-odds-head"><h3>How often it happens</h3>
               <div class="f10-tabs" id="path-sample" role="tablist"></div></div>
@@ -1466,6 +1468,7 @@ const SITE = {
       $('path-name').textContent = sc ? (sel === 'hist' ? `History says · ${sm.name}` : sc.name) : (bandOf(ppg) === 'down' ? 'Your downturn' : bandOf(ppg) === 'up' ? 'Your upturn' : 'Your version');
       $('path-pos').textContent = ordP(pos);
       $('path-pts').textContent = `${fin} points · ${zone(pos)}`;
+      $('path-share').href = `/heading?ppg=${ppg.toFixed(2)}${sample !== (P.defaultSample||'') ? '&s=' + sample : ''}`;
       $('path-verdict').textContent = sc ? sc.verdict : `${ppg.toFixed(2)} points a game from here, against ${ppg0.toFixed(2)} so far. ${ppg < ppg0 ? 'Worse than now.' : ppg > ppg0 ? 'Better than now.' : 'Same as now.'}`;
       const hi = sel && sel !== 'hist' ? sel : bandOf(ppg);
       let bars = ['down','same','up'].map(k => { const x = SC[k], pc = sm.count[k]/sm.n*100;
