@@ -279,6 +279,21 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .cham-shapes li{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.35}
 .cham-shapes li b{font-size:12px;color:var(--amber);font-weight:700;padding-top:1px}
 .cham-src{font-size:12px;margin-top:14px}
+.cham-xi{margin-top:16px;display:grid;gap:20px}
+@media (min-width:900px){.cham-xi{grid-template-columns:1.3fr 1fr;align-items:center}}
+.xi-row{display:grid;grid-template-columns:112px 1fr 48px;gap:10px;align-items:center;padding:6px 0;font-size:14px}
+.xi-row .tr{height:22px;border-radius:6px;background:rgba(169,189,255,.08);overflow:hidden}
+.xi-row .tr i{display:block;height:100%;width:0;border-radius:6px;background:rgba(169,189,255,.45);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.xi-row.me .tr i{background:var(--amber)}
+.xi-row.me{font-weight:700}
+.xi-row.rest .tr i{background:repeating-linear-gradient(45deg,rgba(169,189,255,.18) 0 6px,rgba(169,189,255,.08) 6px 12px)}
+.xi-row.rest{color:var(--sky)}
+.xi-row .v{font-family:var(--display);font-weight:900;font-size:22px;text-align:right}
+.xi-row.me .v{color:var(--amber)}
+.cham-xi-r{display:grid;gap:10px}
+.xi-chip{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--blue-ink);border:1px solid var(--line)}
+.xi-chip b{font-family:var(--display);font-weight:900;font-size:40px;line-height:1;color:var(--amber);text-align:center}
+.xi-chip span{font-size:14px;line-height:1.35}
 .cham-svg.small .opp,.cham-svg.small .res{font-size:9px}
 .cham-svg .bl{font:800 15px var(--display);fill:var(--paper)}
 .cham-svg .bl.b3{fill:#c7a6ff}.cham-svg .bl.b4{fill:#7fd3ff}.cham-svg .bl.bx{fill:var(--sky)}
@@ -578,9 +593,17 @@ footer a{color:var(--paper)}
           <div id="cham-svg" class="cham-svg"></div>
         </div>
         <div class="panel cham-shapes">
-          <h3>Ten games, four systems</h3>
+          <h3>Ten games, five systems</h3>
           <ol id="cham-shapes"></ol>
         </div>
+      </div>
+      <div class="panel cham-xi">
+        <div class="cham-xi-l">
+          <h3>The tinkerman</h3>
+          <p class="sub" id="xi-sub"></p>
+          <div id="xi-bars"></div>
+        </div>
+        <div class="cham-xi-r" id="xi-chips"></div>
       </div>
       <div class="cham-facts" id="cham-facts"></div>
       <p class="muted cham-src" id="cham-src"></p>
@@ -966,11 +989,19 @@ const SITE = {
       ['Game 6','Back four, 4-4-2 without the ball. Bournemouth beaten 5–1.'],
       ['Game 7','“Far more volatile and fluid.” Still a back three at times.'],
       ['Game 8','4-4-2 with two false nines “pressing erratically”. Spurs win 2–0.'],
-      ['Game 10','4-3-3 at Sunderland, Neto up front. 0–1.'],
+      ['Game 9','A first half “mess” with Palmer dropping deep. Fixed at half-time with a 4-2-3-1.'],
+      ['Game 10','A three-man midfield for the first time. Neto up front, no striker again. 0–1.'],
+    ],
+    // Starting XI changes after 10 league games (BBC Sport, 8 Nov). rest = the most any other club has made
+    xiChanges:{ rows:[ ['Tottenham',28], ['Chelsea',24,true] ], rest:23, gaps:9 },
+    combos:[
+      ['6','different back lines in his first nine league games'],
+      ['5','different two-man midfields in the same nine games'],
+      ['2','games in a row without a recognised striker, Spurs and Sunderland'],
     ],
     setPieces:'Eight goals conceded from set pieces by 24 October, double any other side.',
     distance:{ km:102.71, rank:15, sprintRank:7 },
-    source:'Possession: CrunchClash. Shapes: Last Word on Sports (21 Oct), Extra Time Talk (23 Sep), FourFourTwo (Spurs), The Pride of London (Sunderland); no clear report for Man United. Set pieces: Opta / The Analyst. Running: Premier League. Quote: The Chelsea News via Yahoo Sports (8 Aug).',
+    source:'Possession: CrunchClash. Shapes: Last Word on Sports (21 Oct), Extra Time Talk (23 Sep), FourFourTwo (Spurs; 2 Nov), The Pride of London (Sunderland); Man United changed to 4-2-3-1 at half-time. Line-up changes: BBC Sport (8 Nov). Set pieces: Opta / The Analyst. Running: Premier League. Quote: The Chelsea News via Yahoo Sports (8 Aug).',
   },
 
   /* Luckier than they look. xG per game, Chelsea first. Possession in %. code = 3-letter label */
@@ -984,7 +1015,7 @@ const SITE = {
       { code:'BOU', opp:'Bournemouth', venue:'H', score:'5–1', res:'W', poss:50, xg:1.10, xga:1.38, shape:'4-4-2', back:'4' },
       { code:'EVE', opp:'Everton', venue:'A', score:'2–0', res:'W', poss:53, xg:1.47, xga:0.43, shape:'Hybrid', back:'3/4' },
       { code:'TOT', opp:'Tottenham', venue:'H', score:'0–2', res:'L', poss:31, xg:0.43, xga:0.74, shape:'4-4-2', back:'4' },
-      { code:'MUN', opp:'Manchester United', venue:'H', score:'2–0', res:'W', poss:58, xg:3.01, xga:1.24, shape:'', back:'?', note:'United down to ten men from the 59th minute' },
+      { code:'MUN', opp:'Manchester United', venue:'H', score:'2–0', res:'W', poss:58, xg:3.01, xga:1.24, shape:'→ 4-2-3-1', back:'?', note:'United down to ten men from the 59th minute' },
       { code:'SUN', opp:'Sunderland', venue:'A', score:'0–1', res:'L', poss:69, xg:0.53, xga:2.55, shape:'4-3-3', back:'4' },
     ],
     xpts: [ ['OddAlerts',13.29], ['Kepler',13.1], ['The Fishy',12.5] ],
@@ -1312,6 +1343,16 @@ const SITE = {
     $('cham-quote').textContent = C.quote; $('cham-cite').textContent = C.cite;
     $('cham-src').textContent = C.source || '';
     $('cham-shapes').innerHTML = C.shapes.map(([w,t]) => `<li><b>${esc(w)}</b><span>${esc(t)}</span></li>`).join('');
+    if (C.xiChanges) {
+      const XI = C.xiChanges, all = [...XI.rows.map(r => ({ n:r[0], v:r[1], me:!!r[2] })), { n:'Everyone else', v:XI.rest, rest:true }], mx = Math.max(...all.map(r => r.v));
+      const me = all.find(r => r.me);
+      $('xi-sub').textContent = `Changes to the starting XI after ten league games. ${me ? `${me.v} changes in ${XI.gaps} gaps: ${(me.v/XI.gaps).toFixed(1)} new starters every game.` : ''}`;
+      $('xi-bars').innerHTML = all.map(r => `<div class="xi-row${r.me ? ' me' : ''}${r.rest ? ' rest' : ''}"><span>${esc(r.n)}</span><span class="tr"><i data-w="${(r.v/mx*100).toFixed(1)}"></i></span><span class="v">${r.rest ? '≤' : ''}${r.v}</span></div>`).join('');
+      $('xi-chips').innerHTML = (C.combos || []).map(([v,t]) => `<div class="xi-chip"><b>${esc(v)}</b><span>${esc(t)}</span></div>`).join('');
+      const growXI = () => document.querySelectorAll('#xi-bars i').forEach((b,i) => { b.style.transitionDelay = reduce ? '0s' : (i*.15)+'s'; b.style.width = b.dataset.w + '%'; });
+      if (reduce || !('IntersectionObserver' in window)) growXI();
+      else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); growXI(); } }, { threshold:.4 }).observe($('xi-bars'));
+    } else document.querySelector('.cham-xi')?.remove();
     const P = M.map(m => m.poss), lo = M.reduce((a,m) => m.poss < a.poss ? m : a), hi = M.reduce((a,m) => m.poss > a.poss ? m : a);
     const swings = P.slice(1).map((p,i) => Math.abs(p - P[i])), avgSw = swings.reduce((a,b) => a+b, 0)/swings.length;
     const big = swings.filter(x => x >= 15).length;
