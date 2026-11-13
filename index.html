@@ -334,6 +334,56 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .xg-src{font-size:12px;margin-top:8px}
 @media (max-width:520px){.xg-plot{gap:3px}.xg-score{font-size:13px}.xg-up,.xg-dn{height:80px}.xg-v{font-size:10px}.xg-opp{font-size:10px}.xg-poss{font-size:10px;padding:1px 2px}}
 
+/* Direction of travel */
+.dir-grid{display:grid;gap:16px}
+@media (min-width:880px){.dir-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:stretch}}
+.dir-eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
+.dir-word{font-family:var(--display);font-weight:900;font-size:clamp(58px,10vw,112px);line-height:.84;letter-spacing:-.01em;text-transform:uppercase;margin-top:10px;color:var(--c,var(--amber))}
+.dir-word small{display:block;font-size:.34em;letter-spacing:.02em;margin-top:.25em;color:var(--paper);font-weight:800}
+.dir-say{margin-top:14px;font-size:clamp(16px,1.8vw,18px);max-width:46ch}
+.dir-say b{font-weight:700}
+.dir-meter{margin-top:22px}
+.dir-meter svg,.dir-path svg{display:block;width:100%;height:auto;overflow:visible}
+.dir-meter .zl{font:700 10px var(--body);letter-spacing:.08em;text-transform:uppercase;fill:var(--sky)}
+.dir-meter .mk{font:800 13px var(--display);letter-spacing:.02em}
+.dir-keys{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:13px;color:var(--sky)}
+.dir-keys span{display:inline-flex;align-items:center;gap:7px}
+.dir-keys i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dir-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dir-facts .num .v small{font-size:.45em;color:var(--sky);font-weight:700;margin-left:6px}
+.dir-facts .num .k b{color:var(--paper)}
+.dir-facts .num.hot .v{color:var(--red)}
+.dir-facts .num.warm .v{color:var(--amber)}
+.dir-chart{margin-top:16px}
+.dir-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.dir-head .f10-tabs{margin:0}
+.dir-path{margin-top:16px;position:relative}
+.dir-path .zl{font:700 11px var(--body);letter-spacing:.08em;text-transform:uppercase}
+.dir-path .tick{fill:var(--sky);font:11px var(--body)}
+.dir-path .opp{font:700 11px var(--body);fill:var(--paper)}
+.dir-path .res{font:11px var(--body)}
+.dir-path .zero{stroke:rgba(255,255,255,.35);stroke-dasharray:3 4}
+.dir-path .ln{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.dir-path .ln.res{stroke:rgba(245,247,255,.55);stroke-width:2;stroke-dasharray:6 5}
+.dir-path .ln.perf{stroke:var(--paper)}
+.dir-path .pt{stroke:var(--blue-deep);stroke-width:2;cursor:pointer}
+.dir-path .end{font:900 16px var(--display)}
+.dir-tip{position:absolute;pointer-events:none;background:var(--paper);color:var(--blue-ink);font-size:13px;line-height:1.35;padding:7px 10px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35);white-space:nowrap;transform:translate(-50%,calc(-100% - 12px));z-index:2}
+.dir-tip b{display:block;font-size:14px}
+.dir-call{margin-top:14px;font-size:15px;line-height:1.45}
+.dir-call b{color:var(--amber)}
+.dir-table{overflow-x:auto;margin-top:16px}
+.dir-table table{font-size:14px}
+.dir-table th,.dir-table td{text-align:right;white-space:nowrap;padding:8px 6px}
+.dir-table th:nth-child(-n+2),.dir-table td:nth-child(-n+2){text-align:left}
+.dir-table td.r{font-family:var(--display);font-weight:900;font-size:18px}
+.dir-table .W{color:var(--green)}.dir-table .D{color:var(--amber)}.dir-table .L{color:var(--red)}
+.dir-table .pos{color:var(--green);font-weight:700}.dir-table .neg{color:var(--red);font-weight:700}
+.dir-table .h{font-size:12px;color:var(--sky)}
+.dir-short{display:none}
+@media (max-width:560px){.dir-hide{display:none}.dir-long{display:none}.dir-short{display:inline}.dir-table table{font-size:13px}.dir-table th,.dir-table td{padding:8px 4px}.dir-table td.r{font-size:16px}}
+.dir-src{font-size:12px;margin-top:12px}
+
 /* Where this is heading */
 .path{display:grid;gap:16px}
 @media (min-width:900px){.path{grid-template-columns:minmax(0,1.45fr) minmax(0,.8fr);align-items:stretch}}
@@ -630,6 +680,46 @@ footer a{color:var(--paper)}
           <p class="xg-call" id="xg-call"></p>
           <p class="muted xg-src" id="xg-src"></p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="direction">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Direction of travel</h2>
+        <p>Is it getting better? Every league game measured against what the squad Alonso inherited would be expected to get from the same fixtures.</p>
+      </div>
+      <div class="dir-grid">
+        <div class="panel">
+          <p class="dir-eyebrow">The verdict after <span id="dir-n"></span> league games</p>
+          <div class="dir-word" id="dir-word"></div>
+          <p class="dir-say" id="dir-say"></p>
+          <div class="dir-meter" id="dir-meter" aria-label="Where Alonso sits between negative and positive"></div>
+          <div class="dir-keys">
+            <span><i style="background:var(--paper)"></i>Performance (30% points, 70% xPts)</span>
+            <span><i style="border:2px dashed rgba(245,247,255,.7)"></i>Results only</span>
+          </div>
+        </div>
+        <div class="dir-facts" id="dir-facts"></div>
+      </div>
+      <div class="panel dir-chart">
+        <div class="dir-head">
+          <div><h3>Position after each game</h3><p class="sub">Above the middle band: better than the inherited squad. Below: worse. Tap a dot for the match.</p></div>
+          <div class="f10-tabs" id="dir-tabs" role="tablist">
+            <button type="button" role="tab" data-s="perf" aria-selected="true">Performance</button>
+            <button type="button" role="tab" data-s="res" aria-selected="false">Results</button>
+          </div>
+        </div>
+        <div class="dir-path" id="dir-path"><div class="dir-tip" id="dir-tip" hidden></div></div>
+        <p class="dir-call" id="dir-call"></p>
+        <div class="dir-table">
+          <table>
+            <thead><tr><th class="dir-hide">#</th><th>Match</th><th>Score</th><th class="dir-hide">Opp. Elo</th><th>Expected</th><th>Pts</th><th>xPts</th><th>Perf. vs exp.</th></tr></thead>
+            <tbody id="dir-rows"></tbody>
+          </table>
+        </div>
+        <p class="muted dir-src" id="dir-src"></p>
       </div>
     </div>
   </section>
@@ -1004,23 +1094,34 @@ const SITE = {
     source:'Possession: CrunchClash. Shapes: Last Word on Sports (21 Oct), Extra Time Talk (23 Sep), FourFourTwo (Spurs; 2 Nov), The Pride of London (Sunderland); Man United changed to 4-2-3-1 at half-time. Line-up changes: BBC Sport (8 Nov). Set pieces: Opta / The Analyst. Running: Premier League. Quote: The Chelsea News via Yahoo Sports (8 Aug).',
   },
 
-  /* Luckier than they look. xG per game, Chelsea first. Possession in %. code = 3-letter label */
+  /* Luckier than they look. xG per game, Chelsea first. Possession in %. code = 3-letter label
+     opp_elo: opponent's ClubElo rating on matchday = Chelsea's pre-match ClubElo minus "Prior Δ"
+     (clubelo.com/Chelsea, Calculation table). hfa: ClubElo's home advantage for that game.
+     These two feed "Direction of travel". */
   XG: {
     matches: [
-      { code:'FUL', opp:'Fulham', venue:'A', score:'3–2', res:'W', poss:38, xg:2.24, xga:1.33, shape:'3-4-3', back:'3' },
-      { code:'BHA', opp:'Brighton', venue:'H', score:'4–3', res:'W', poss:26, xg:2.93, xga:1.41, shape:'3-4-3', back:'3' },
-      { code:'VAR', opp:'Varsenal', venue:'A', score:'1–2', res:'L', poss:45, xg:0.39, xga:2.05, shape:'3-4-3', back:'3' },
-      { code:'HUL', opp:'Hull City', venue:'H', score:'2–2', res:'D', poss:68, xg:0.91, xga:1.38, shape:'3-4-3', back:'3' },
-      { code:'BRE', opp:'Brentford', venue:'A', score:'0–3', res:'L', poss:60, xg:0.83, xga:2.65, shape:'3-4-3', back:'3' },
-      { code:'BOU', opp:'Bournemouth', venue:'H', score:'5–1', res:'W', poss:50, xg:1.10, xga:1.38, shape:'4-4-2', back:'4' },
-      { code:'EVE', opp:'Everton', venue:'A', score:'2–0', res:'W', poss:53, xg:1.47, xga:0.43, shape:'Hybrid', back:'3/4' },
-      { code:'TOT', opp:'Tottenham', venue:'H', score:'0–2', res:'L', poss:31, xg:0.43, xga:0.74, shape:'4-4-2', back:'4' },
-      { code:'MUN', opp:'Manchester United', venue:'H', score:'2–0', res:'W', poss:58, xg:3.01, xga:1.24, shape:'→ 4-2-3-1', back:'?', note:'United down to ten men from the 59th minute' },
-      { code:'SUN', opp:'Sunderland', venue:'A', score:'0–1', res:'L', poss:69, xg:0.53, xga:2.55, shape:'4-3-3', back:'4' },
+      { code:'FUL', opp_elo:1807.5, hfa:38, opp:'Fulham', venue:'A', score:'3–2', res:'W', poss:38, xg:2.24, xga:1.33, shape:'3-4-3', back:'3' },
+      { code:'BHA', opp_elo:1868.0, hfa:36, opp:'Brighton', venue:'H', score:'4–3', res:'W', poss:26, xg:2.93, xga:1.41, shape:'3-4-3', back:'3' },
+      { code:'VAR', opp_elo:2040.0, hfa:39, opp:'Varsenal', venue:'A', score:'1–2', res:'L', poss:45, xg:0.39, xga:2.05, shape:'3-4-3', back:'3' },
+      { code:'HUL', opp_elo:1630.0, hfa:40, opp:'Hull City', venue:'H', score:'2–2', res:'D', poss:68, xg:0.91, xga:1.38, shape:'3-4-3', back:'3' },
+      { code:'BRE', opp_elo:1851.0, hfa:39, opp:'Brentford', venue:'A', score:'0–3', res:'L', poss:60, xg:0.83, xga:2.65, shape:'3-4-3', back:'3' },
+      { code:'BOU', opp_elo:1860.0, hfa:42, opp:'Bournemouth', venue:'H', score:'5–1', res:'W', poss:50, xg:1.10, xga:1.38, shape:'4-4-2', back:'4' },
+      { code:'EVE', opp_elo:1823.0, hfa:38, opp:'Everton', venue:'A', score:'2–0', res:'W', poss:53, xg:1.47, xga:0.43, shape:'Hybrid', back:'3/4' },
+      { code:'TOT', opp_elo:1803.0, hfa:41, opp:'Tottenham', venue:'H', score:'0–2', res:'L', poss:31, xg:0.43, xga:0.74, shape:'4-4-2', back:'4' },
+      { code:'MUN', opp_elo:1852.0, hfa:45, opp:'Manchester United', venue:'H', score:'2–0', res:'W', poss:58, xg:3.01, xga:1.24, shape:'→ 4-2-3-1', back:'?', note:'United down to ten men from the 59th minute' },
+      { code:'SUN', opp_elo:1719.0, hfa:49, opp:'Sunderland', venue:'A', score:'0–1', res:'L', poss:69, xg:0.53, xga:2.55, shape:'4-3-3', back:'4' },
     ],
     xpts: [ ['OddAlerts',13.29], ['Kepler',13.1], ['The Fishy',12.5] ],
     possHigh: 55,
     source:'xG and possession: CrunchClash (Opta-based match data). Expected points: OddAlerts, Kepler, The Fishy. Small differences from official totals because of rounding.',
+  },
+
+  /* Direction of travel. Uses XG.matches above (score, xg, xga, opp_elo, hfa). */
+  DIRECTION: {
+    R0: 1876.5,                    // Chelsea's ClubElo rating when Alonso started, 1 July 2026
+    BLEND: 0.3,                    // performance = 30% points + 70% xPts
+    HALF_LIFE: { level:8, short:5, long:15 },
+    source:'Ratings: ClubElo, matchday ratings from the clubelo.com/Chelsea calculation table. xG: CrunchClash (Opta-based). xPts: Poisson model from match xG. Expected points: 3 × win expectancy − 0.13.',
   },
 
   /* Where this is heading. ppg = points per game for the rest of the season.
@@ -1459,6 +1560,115 @@ const SITE = {
     else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); growX(); } }, { threshold:.3 }).observe(plot);
   }
 
+  /* Direction of travel */
+  let dirTicker = null;
+  if (SITE.DIRECTION && SITE.XG && $('dir-path')) {
+    const DR = SITE.DIRECTION, lam = h => 1 - Math.pow(0.5, 1/h);
+    const sg = (v,d=2) => (v > 0.005 ? '+' : v < -0.005 ? '−' : '') + Math.abs(v).toFixed(d);
+    const pois = (l,k) => { let f = 1; for (let i = 2; i <= k; i++) f *= i; return Math.exp(-l)*Math.pow(l,k)/f; };
+    const xpOf = (a,b) => { let w = 0, d = 0; for (let i = 0; i < 12; i++) for (let j = 0; j < 12; j++) { const p = pois(a,i)*pois(b,j); if (i > j) w += p; else if (i === j) d += p; } return 3*w + d; };
+    const G = SITE.XG.matches.filter(m => m.opp_elo != null).map(m => {
+      const [a,b] = m.score.split(/[–-]/).map(Number), pts = a > b ? 3 : a === b ? 1 : 0;
+      const own = DR.R0 + (m.venue === 'H' ? m.hfa : -m.hfa), we = 1/(1 + Math.pow(10, -(own - m.opp_elo)/400));
+      const E = Math.min(3, Math.max(0, 3*we - 0.13)), xp = xpOf(m.xg, m.xga), perf = DR.BLEND*pts + (1-DR.BLEND)*xp;
+      return { ...m, pts, E, xp, perf, gapR: pts - E, gapP: perf - E };
+    });
+    const n = G.length;
+    const series = key => {
+      const H = DR.HALF_LIFE, lL = lam(H.level), lS = lam(H.short), lG = lam(H.long), gaps = G.map(g => g[key]);
+      const mean = gaps.reduce((a,b) => a+b, 0)/n, sigma = Math.sqrt(gaps.reduce((a,b) => a + (b-mean)**2, 0)/(n-1));
+      let L = 0, S = 0, Lg = 0; const out = [];
+      gaps.forEach((r,t) => {
+        L = (1-lL)*L + lL*r; S = (1-lS)*S + lS*r; Lg = (1-lG)*Lg + lG*r;
+        let qL = 0, qD = 0; for (let j = 0; j <= t; j++) { const wl = lL*Math.pow(1-lL,j), wd = lS*Math.pow(1-lS,j) - lG*Math.pow(1-lG,j); qL += wl*wl; qD += wd*wd; }
+        out.push({ t:t+1, L, D:S-Lg, seL:sigma*Math.sqrt(qL), z:L/(sigma*Math.sqrt(qL)), zD:(S-Lg)/(sigma*Math.sqrt(qD)) });
+      });
+      return out;
+    };
+    const SP = series('gapP'), SR = series('gapR'), lastP = SP[n-1], lastR = SR[n-1];
+    const ZONES = [
+      { lo:-Infinity, hi:-2, name:'Negative',         c:'var(--red)',  fill:'rgba(255,75,62,.22)' },
+      { lo:-2, hi:-1,        name:'Leaning negative', c:'#ff8a3d',     fill:'rgba(255,138,61,.12)' },
+      { lo:-1, hi:1,         name:'In between',       c:'var(--amber)',fill:'rgba(255,255,255,.04)' },
+      { lo:1, hi:2,          name:'Leaning positive', c:'#9df0c4',     fill:'rgba(79,227,154,.10)' },
+      { lo:2, hi:Infinity,   name:'Positive',         c:'var(--green)',fill:'rgba(79,227,154,.20)' },
+    ];
+    const zoneOf = z => ZONES.find(Z => z >= Z.lo && z < Z.hi);
+    const zP = zoneOf(lastP.z), side = lastP.z < -0.25 ? 'negative' : lastP.z > 0.25 ? 'positive' : null;
+    const trendWord = zd => zd <= -2 ? 'getting worse' : zd <= -0.75 ? 'edging down' : zd >= 2 ? 'getting better' : zd >= 0.75 ? 'edging up' : 'flat';
+    dirTicker = { t:`DIRECTION OF TRAVEL: ${zP.name.toUpperCase()}${zP.name === 'In between' && side ? ', ' + side.toUpperCase() + ' SIDE' : ''}`, c: lastP.z < -0.25 ? 'bad' : lastP.z > 0.25 ? 'good' : '' };
+
+    $('dir-n').textContent = n;
+    $('dir-src').textContent = DR.source || '';
+    $('dir-word').style.setProperty('--c', zP.c);
+    $('dir-word').innerHTML = esc(zP.name) + (zP.name === 'In between' && side ? `<small>on the ${side} side</small>` : '');
+    const sumE = G.reduce((a,g) => a+g.E, 0), sumP = G.reduce((a,g) => a+g.pts, 0), sumX = G.reduce((a,g) => a+g.xp, 0);
+    const fav = G.filter(g => g.E >= 1.75), favPts = fav.reduce((a,g) => a+g.pts, 0), favE = fav.reduce((a,g) => a+g.E, 0);
+    $('dir-say').innerHTML = `The results are <b>${Math.abs(sumP-sumE) < 1 ? 'about what the squad he inherited would get' : sumP > sumE ? 'ahead of the squad he inherited' : 'behind the squad he inherited'}</b> (${sumP} points against ${sumE.toFixed(1)} expected). The performances are <b>${sumX < sumE - 1 ? 'below it' : sumX > sumE + 1 ? 'above it' : 'level with it'}</b> (${sumX.toFixed(1)} expected points from xG). The trend is <b>${trendWord(lastP.zD)}</b>${Math.abs(lastP.z) < 2 ? ', and nothing is outside normal noise yet' : ''}.`;
+    $('dir-facts').innerHTML = [
+      { v:`${sumP}<small>vs ${sumE.toFixed(1)}</small>`, k:'<b>Points against expected.</b> What the inherited squad would get from these fixtures.', cls: sumP < sumE - 1 ? 'hot' : '' },
+      { v:`${sumX.toFixed(1)}<small>vs ${sumE.toFixed(1)}</small>`, k:`<b>Expected points from xG.</b> ${sumX < sumE - 1 ? 'The chances say Chelsea have earned less than the squad should.' : 'What the chances say Chelsea have earned.'}`, cls: sumX < sumE - 1 ? 'hot' : '' },
+      { v:`${favPts}/${Math.round(favE)}`, k:`<b>Points from the ${fav.length} games Chelsea were clear favourites in</b>, against about ${favE.toFixed(0)} expected. ${fav.map(g => esc(g.code)).join(', ')}.`, cls: favPts < favE - 1.5 ? 'hot' : '' },
+      { v:sg(lastP.L), k:`<b>Performance level</b> per game against the inherited squad. Normal noise is ±${lastP.seL.toFixed(2)}.`, cls: lastP.z <= -1 ? 'hot' : lastP.z < 0 ? 'warm' : '' },
+    ].map(f => `<div class="num ${f.cls}"><div class="v">${f.v}</div><div class="k">${f.k}</div></div>`).join('');
+    $('dir-rows').innerHTML = G.map((g,i) => `<tr><td class="dir-hide">${i+1}</td><td><span class="dir-long">${esc(g.opp)}</span><span class="dir-short">${esc(g.code)}</span> <span class="h">${g.venue === 'H' ? 'home' : 'away'}</span></td><td class="r ${g.res}">${esc(g.score)}</td><td class="dir-hide">${Math.round(g.opp_elo)}</td><td>${g.E.toFixed(2)}</td><td>${g.pts}</td><td>${g.xp.toFixed(2)}</td><td class="${g.gapP >= 0 ? 'pos' : 'neg'}">${sg(g.gapP)}</td></tr>`).join('');
+
+    const drawMeter = () => {
+      const box = $('dir-meter'), W = Math.max(300, Math.round(box.getBoundingClientRect().width)), H = 96, lo = -3, hi = 3, m = 6, barY = 48, barH = 18;
+      const X = z => m + (Math.max(lo, Math.min(hi, z)) - lo)/(hi-lo)*(W-2*m);
+      let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Scale from negative to positive">`;
+      ZONES.forEach(Z => { const a = X(Math.max(lo,Z.lo)), b = X(Math.min(hi,Z.hi)); g += `<rect x="${a}" y="${barY}" width="${b-a}" height="${barH}" fill="${Z.c}" opacity="${Z.name === 'In between' ? .35 : .8}"/>`; });
+      const labs = W < 520 ? [['Negative',-2.5,'start'],['In between',0,'middle'],['Positive',2.5,'end']] : ZONES.map(Z => [Z.name, (Math.max(lo,Z.lo)+Math.min(hi,Z.hi))/2, 'middle']);
+      labs.forEach(([t,z,a]) => g += `<text class="zl" x="${a === 'start' ? m : a === 'end' ? W-m : X(z)}" y="${barY+barH+16}" text-anchor="${a}">${t}</text>`);
+      const xp = X(lastP.z), xr = X(lastR.z), close = Math.abs(xp - xr) < 90;
+      const ap = close ? (xp <= xr ? 'end' : 'start') : 'middle', ar = close ? (xr < xp ? 'end' : 'start') : 'middle';
+      g += `<line x1="${xr}" x2="${xr}" y1="${barY-8}" y2="${barY+barH+4}" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/><text class="mk" x="${xr + (ar === 'start' ? 4 : ar === 'end' ? -4 : 0)}" y="${barY-14}" text-anchor="${ar}" fill="rgba(245,247,255,.75)">Results</text>`;
+      g += `<line x1="${xp}" x2="${xp}" y1="${barY-8}" y2="${barY+barH+4}" stroke="#fff" stroke-width="4"/><circle cx="${xp}" cy="${barY-12}" r="7" fill="#fff"/><text class="mk" x="${xp + (ap === 'start' ? 10 : ap === 'end' ? -10 : 0)}" y="${barY - (close ? 26 : 24)}" text-anchor="${ap}" fill="#fff">Performance</text>`;
+      box.innerHTML = g + '</svg>';
+    };
+
+    let focus = 'perf';
+    const drawPath = () => {
+      const box = $('dir-path'), tip = $('dir-tip'), W = Math.max(300, Math.round(box.getBoundingClientRect().width)), small = W < 560;
+      const H = Math.round(W*(small ? .95 : .5)), m = { l: small ? 30 : 40, r: small ? 56 : 70, t:12, b:44 }, lo = -3, hi = 3;
+      const X = t => m.l + (t-0.5)/n*(W-m.l-m.r), Y = z => m.t + (hi - Math.max(lo, Math.min(hi, z)))/(hi-lo)*(H-m.t-m.b);
+      let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Alonso's position after each league game">`;
+      ZONES.forEach(Z => { const a = Y(Math.min(hi,Z.hi)), b = Y(Math.max(lo,Z.lo)); g += `<rect x="${m.l}" y="${a}" width="${W-m.l-m.r}" height="${b-a}" fill="${Z.fill}"/>`;
+        if (!small || !Z.name.startsWith('Leaning')) g += `<text class="zl" x="${m.l+8}" y="${(a+b)/2+4}" fill="${Z.c}" opacity=".85">${Z.name}</text>`; });
+      [-2,-1,1,2].forEach(z => g += `<text class="tick" x="${m.l-6}" y="${Y(z)+4}" text-anchor="end">${z > 0 ? '+' : ''}${z}</text>`);
+      g += `<line class="zero" x1="${m.l}" x2="${W-m.r}" y1="${Y(0)}" y2="${Y(0)}"/><text class="tick" x="${m.l-6}" y="${Y(0)+4}" text-anchor="end">0</text>`;
+      G.forEach((gm,i) => g += `<text class="opp" x="${X(i+1)}" y="${H-m.b+18}" text-anchor="middle">${esc(gm.code)}</text><text class="res" x="${X(i+1)}" y="${H-m.b+33}" text-anchor="middle" style="fill:${gm.res === 'W' ? 'var(--green)' : gm.res === 'D' ? 'var(--amber)' : 'var(--red)'}">${esc(gm.score)}</text>`);
+      const line = (S, cls) => `<path class="ln ${cls}" d="${S.map((p,i) => (i ? 'L' : 'M') + X(i+1).toFixed(1) + ' ' + Y(p.z).toFixed(1)).join(' ')}" opacity="${focus === cls ? 1 : .55}"/>`;
+      g += line(SR, 'res') + line(SP, 'perf');
+      const S = focus === 'perf' ? SP : SR, key = focus === 'perf' ? 'gapP' : 'gapR';
+      S.forEach((p,i) => g += `<circle class="pt" data-i="${i}" cx="${X(i+1)}" cy="${Y(p.z)}" r="${small ? 6 : 7}" fill="${zoneOf(p.z).c}" tabindex="0"><title>${esc(G[i].opp)}</title></circle>`);
+      const last = S[n-1];
+      g += `<text class="end" x="${X(n)+12}" y="${Y(last.z)+5}" fill="${zoneOf(last.z).c}">${last.z > 0 ? '+' : ''}${last.z.toFixed(1)}</text>`;
+      box.querySelector('svg')?.remove();
+      box.insertAdjacentHTML('afterbegin', g + '</svg>');
+      box.querySelectorAll('.pt').forEach(d => {
+        const i = +d.dataset.i, gm = G[i], p = S[i];
+        const show = () => { const bb = d.getBoundingClientRect(), pb = box.getBoundingClientRect();
+          tip.innerHTML = `<b>${esc(gm.opp)} (${gm.venue}) ${esc(gm.score)}</b>Expected ${gm.E.toFixed(2)} · got ${gm.pts}${focus === 'perf' ? ` · xPts ${gm.xp.toFixed(2)}` : ''}<br>Gap ${sg(gm[key])} · position ${p.z > 0 ? '+' : ''}${p.z.toFixed(1)}`;
+          tip.style.left = Math.min(pb.width-90, Math.max(90, bb.left + bb.width/2 - pb.left)) + 'px'; tip.style.top = (bb.top - pb.top) + 'px'; tip.hidden = false; };
+        d.addEventListener('mouseenter', show); d.addEventListener('focus', show); d.addEventListener('click', show);
+        d.addEventListener('mouseleave', () => tip.hidden = true); d.addEventListener('blur', () => tip.hidden = true);
+      });
+      const peak = S.reduce((a,p) => p.z > a.z ? p : a), low = S.reduce((a,p) => p.z < a.z ? p : a);
+      let since = n; while (since > 0 && Math.abs(S[since-1].z) < 1) since--; since += 1;
+      $('dir-call').innerHTML = focus === 'perf'
+        ? `Performance peaked after <b>${esc(G[peak.t-1].opp)}</b>${peak.z >= 1 ? ', briefly leaning positive,' : ''} and has stayed in the middle band since game ${since}, ending on the ${last.z < 0 ? 'negative' : 'positive'} side. ${last.z < 0 ? '<b>No sign yet of the lift a new manager is supposed to bring.</b>' : ''}`
+        : `Results swing harder: up after <b>${esc(G[peak.t-1].opp)}</b>, down after <b>${esc(G[low.t-1].opp)}</b>. Wins in games Chelsea were expected to win would move this line up fastest.`;
+    };
+    document.querySelectorAll('#dir-tabs button').forEach(b => b.addEventListener('click', () => {
+      focus = b.dataset.s;
+      document.querySelectorAll('#dir-tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+      drawPath();
+    }));
+    drawMeter(); drawPath();
+    let drt; addEventListener('resize', () => { clearTimeout(drt); drt = setTimeout(() => { drawMeter(); drawPath(); }, 150); });
+  }
+
   /* Where this is heading */
   if (SITE.PATH && $('path-svg')) {
     const P = SITE.PATH, S = P.scenarios, TY = P.typical;
@@ -1662,6 +1872,7 @@ const SITE = {
     { t:`DAY ${dayN} OF THE ALONSO ERA`, c:'' },
     { t:`${W}W ${D}D ${L}L IN ${R.length} GAMES`, c:'' },
     { t:`SACK PRESSURE: ${score}/100, ${band.toUpperCase()}`, c: score>55 ? 'bad' : '' },
+    ...(dirTicker ? [dirTicker] : []),
     ...SITE.TICKER,
   ];
   const html = items.map(i => `<span class="${i.c}">${esc(i.t)}</span><span aria-hidden="true">◆</span>`).join('');
