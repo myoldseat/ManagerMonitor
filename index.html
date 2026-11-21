@@ -976,7 +976,7 @@ footer a{color:var(--paper)}
           <div><h3>Every BlueCo manager, by xG difference</h3><p class="sub" id="mgr-sub">Chances created minus chances conceded, per league game.</p></div>
           <div class="f10-tabs" id="mgr-tabs" role="tablist">
             <button type="button" role="tab" data-v="all" aria-selected="true">Whole spell</button>
-            <button type="button" role="tab" data-v="f10" aria-selected="false">First 10 games</button>
+            <button type="button" role="tab" data-v="f10" aria-selected="false">First 11 games</button>
           </div>
         </div>
         <div class="mgr-axis" aria-hidden="true"><span>Out-created</span><span>Out-creating</span></div>
@@ -1058,8 +1058,8 @@ footer a{color:var(--paper)}
   <section id="first-ten">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Ten games in</h2>
-        <p>Every Chelsea manager's first ten Premier League games since 2004. Nineteen starts. Alonso's is one of the worst.</p>
+        <h2>Eleven games in</h2>
+        <p>Every Chelsea manager's first eleven Premier League games since 2004. Nineteen starts. Alonso's is one of the worst.</p>
       </div>
       <div class="f10">
         <div class="f10-facts" id="f10-facts"></div>
@@ -1068,8 +1068,8 @@ footer a{color:var(--paper)}
             <button type="button" role="tab" data-m="pts" aria-selected="true">Points</button>
             <button type="button" role="tab" data-m="ga" aria-selected="false">Goals conceded</button>
           </div>
-          <h3 id="f10-h">Points after ten games</h3>
-          <p class="sub" id="f10-sub">Each spell counted separately. Interim spells under ten league games left out.</p>
+          <h3 id="f10-h">Points after eleven games</h3>
+          <p class="sub" id="f10-sub">Each spell counted separately. Interim spells under eleven league games left out.</p>
           <ol class="f10-list" id="f10-list"></ol>
           <p class="muted f10-src" id="f10-src"></p>
         </div>
@@ -1349,34 +1349,34 @@ const SITE = {
     { date:'2026-12-05', opp:'Liverpool',         venue:'H', comp:'Premier League' },
   ],
 
-  /* First ten Premier League games of every Chelsea spell since 2004. me:true = highlighted */
+  /* First eleven Premier League games of every Chelsea spell since 2004. me:true = highlighted */
   FIRST10: [
-    { who:'Guus Hiddink', yr:2009, w:8, d:1, l:1, gf:15, ga:6 },
-    { who:'Carlo Ancelotti', yr:2009, w:8, d:0, l:2, gf:24, ga:8 },
-    { who:'Maurizio Sarri', yr:2018, w:7, d:3, l:0, gf:24, ga:7 },
-    { who:'José Mourinho', yr:2004, w:7, d:2, l:1, gf:12, ga:2 },
-    { who:'Avram Grant', yr:2007, w:7, d:2, l:1, gf:17, ga:3 },
-    { who:'Luiz Felipe Scolari', yr:2008, w:7, d:2, l:1, gf:24, ga:4 },
-    { who:'Antonio Conte', yr:2016, w:7, d:1, l:2, gf:21, ga:9 },
-    { who:'Thomas Tuchel', yr:2021, w:6, d:4, l:0, gf:11, ga:2 },
-    { who:'José Mourinho', yr:2013, w:6, d:2, l:2, gf:16, ga:8 },
-    { who:'Frank Lampard', yr:2019, w:6, d:2, l:2, gf:23, ga:16 },
-    { who:'André Villas-Boas', yr:2011, w:6, d:1, l:3, gf:23, ga:15 },
-    { who:'Rafael Benítez', yr:2012, w:5, d:3, l:2, gf:19, ga:9 },
-    { who:'Enzo Maresca', yr:2024, w:5, d:3, l:2, gf:20, ga:12 },
-    { who:'Guus Hiddink', yr:2015, w:4, d:6, l:0, gf:19, ga:10 },
-    { who:'Liam Rosenior', yr:2026, w:5, d:2, l:3, gf:19, ga:14 },
-    { who:'Xabi Alonso', yr:2026, w:5, d:1, l:4, gf:19, ga:16, me:true },
-    { who:'Graham Potter', yr:2022, w:4, d:3, l:3, gf:12, ga:9, gone:true },
-    { who:'Roberto Di Matteo', yr:2012, w:4, d:3, l:3, gf:16, ga:13, gone:true },
-    { who:'Mauricio Pochettino', yr:2023, w:3, d:3, l:4, gf:13, ga:11, gone:true },
+    { who:'Guus Hiddink', yr:2009, w:9, d:1, l:1, gf:19, ga:7 },
+    { who:'Carlo Ancelotti', yr:2009, w:9, d:0, l:2, gf:25, ga:8 },
+    { who:'Maurizio Sarri', yr:2018, w:8, d:3, l:0, gf:27, ga:8 },
+    { who:'José Mourinho', yr:2004, w:8, d:2, l:1, gf:16, ga:3 },
+    { who:'Avram Grant', yr:2007, w:7, d:2, l:2, gf:17, ga:4 },
+    { who:'Luiz Felipe Scolari', yr:2008, w:8, d:2, l:1, gf:27, ga:4 },
+    { who:'Antonio Conte', yr:2016, w:8, d:1, l:2, gf:26, ga:9 },
+    { who:'Thomas Tuchel', yr:2021, w:6, d:4, l:1, gf:13, ga:7 },
+    { who:'José Mourinho', yr:2013, w:6, d:3, l:2, gf:18, ga:10 },
+    { who:'Frank Lampard', yr:2019, w:7, d:2, l:2, gf:25, ga:17 },
+    { who:'André Villas-Boas', yr:2011, w:7, d:1, l:3, gf:24, ga:15 },
+    { who:'Rafael Benítez', yr:2012, w:5, d:4, l:2, gf:21, ga:11 },
+    { who:'Enzo Maresca', yr:2024, w:5, d:4, l:2, gf:21, ga:13 },
+    { who:'Guus Hiddink', yr:2015, w:4, d:7, l:0, gf:20, ga:11 },
+    { who:'Liam Rosenior', yr:2026, w:5, d:2, l:4, gf:19, ga:17 },
+    { who:'Xabi Alonso', yr:2026, w:5, d:1, l:5, gf:20, ga:20, me:true },
+    { who:'Graham Potter', yr:2022, w:4, d:3, l:4, gf:12, ga:10, gone:true },
+    { who:'Roberto Di Matteo', yr:2012, w:5, d:3, l:3, gf:18, ga:14 },
+    { who:'Mauricio Pochettino', yr:2023, w:4, d:3, l:4, gf:17, ga:12, gone:true },
   ],
   FIRST10_FACTS: [
-    { v:'16th', k:'of 19 Chelsea starts since 2004. <b>Only three managers began worse.</b>', hot:true },
-    { v:'4', k:'defeats in his first ten. <b>Joint most of any Chelsea manager since 2004.</b> Only Pochettino matches it.', hot:true },
-    { v:'16', k:'goals conceded. <b>Joint most of any Chelsea start since 2004</b>, level with Lampard. Mourinho let in 2.', hot:true },
+    { v:'17th', k:'of 19 Chelsea starts since 2004. <b>Only Potter and Pochettino began worse.</b>', hot:true },
+    { v:'5', k:'defeats in his first eleven. <b>The most of any Chelsea manager since 2004.</b> Nobody else lost more than four.', hot:true },
+    { v:'20', k:'goals conceded. <b>The most of any Chelsea start since 2004.</b> Lampard and Rosenior let in 17. Mourinho let in 3.', hot:true },
     { v:'−1', k:'point behind <b>Liam Rosenior</b>, the man he replaced, who took over mid-season.' },
-    { v:'3/3', k:'of the managers below him are <b>gone</b>. Potter and Di Matteo were sacked. Pochettino lasted one season.' },
+    { v:'2/2', k:'of the managers below him are <b>gone</b>. Potter was sacked. Pochettino lasted one season.' },
   ],
   FIRST10_REAL_BEFORE: 2022,       // spells before this year get the # mark
   FIRST10_REAL_NOTE: 'Squad made up of real footballers.',
@@ -1478,12 +1478,12 @@ const SITE = {
     source:'xG: RShiri/XEPL Premier League database (first five games model-estimated, last five provider xG), so every manager is measured the same way. Possession: CrunchClash. Expected points: OddAlerts, Kepler, The Fishy.',
     // Every BlueCo manager with 9+ league games. xgd = xG difference per game, ppg = points per game
     managers:[
-      { name:'Graham Potter', yrs:'2022–23', all:{ neg:8, bad:1, n:22, xgd:0.17, ppg:1.27 }, f10:{ n:10, xgd:-0.16, ppg:1.50 } },
+      { name:'Graham Potter', yrs:'2022–23', all:{ neg:8, bad:1, n:22, xgd:0.17, ppg:1.27 }, f10:{ n:11, xgd:-0.26, ppg:1.36 } },
       { name:'Frank Lampard', yrs:'2023, interim', all:{ neg:6, bad:2, n:9, xgd:-0.59, ppg:0.56 }, f10:{ n:9, xgd:-0.59, ppg:0.56 } },
-      { name:'Mauricio Pochettino', yrs:'2023–24', all:{ neg:13, bad:3, n:38, xgd:0.46, ppg:1.66 }, f10:{ n:10, xgd:0.70, ppg:1.20 } },
-      { name:'Enzo Maresca', yrs:'2024–26', all:{ neg:23, bad:1, n:57, xgd:0.36, ppg:1.74 }, f10:{ n:10, xgd:0.28, ppg:1.80 } },
-      { name:'Liam Rosenior', yrs:'2026', all:{ neg:4, bad:1, n:13, xgd:0.59, ppg:1.31 }, f10:{ n:10, xgd:0.99, ppg:1.70 } },
-      { name:'Xabi Alonso', yrs:'2026–', me:true, all:{ neg:7, bad:3, n:11, xgd:-0.23, ppg:1.45 }, f10:{ n:10, xgd:-0.05, ppg:1.60 } },
+      { name:'Mauricio Pochettino', yrs:'2023–24', all:{ neg:13, bad:3, n:38, xgd:0.46, ppg:1.66 }, f10:{ n:11, xgd:0.92, ppg:1.36 } },
+      { name:'Enzo Maresca', yrs:'2024–26', all:{ neg:23, bad:1, n:57, xgd:0.36, ppg:1.74 }, f10:{ n:11, xgd:0.21, ppg:1.73 } },
+      { name:'Liam Rosenior', yrs:'2026', all:{ neg:4, bad:1, n:13, xgd:0.59, ppg:1.31 }, f10:{ n:11, xgd:0.79, ppg:1.55 } },
+      { name:'Xabi Alonso', yrs:'2026–', me:true, all:{ neg:7, bad:3, n:11, xgd:-0.23, ppg:1.45 }, f10:{ n:11, xgd:-0.23, ppg:1.45 } },
     ],
     managersNote:'Premier League only, August 2022 to 21 November 2026. Tuchel (6 games under BlueCo) and caretakers Saltor and McFarlane left out.',
     // Every league game since August 2022 with an xG difference of −1.00 or worse
@@ -1891,8 +1891,8 @@ Season ↓	Team	After 11	Points then	Finished	Final points
     const all = SITE.FIRST10.map(r => ({ ...r, pts: r.w*3 + r.d }));
     const hasGA = all.every(r => r.ga != null);
     const MODES = {
-      pts: { key:'pts', sort:(a,b) => b.pts - a.pts || b.w - a.w, h:'Points after ten games', sub:'Each spell counted separately. Interim spells under ten league games left out.', rec:r => `${r.w}-${r.d}-${r.l}` },
-      ga:  { key:'ga', sort:(a,b) => b.ga - a.ga || a.pts - b.pts, h:'Goals conceded in ten games', sub:'Leakiest first. Goals scored–conceded on the right.', rec:r => `${r.gf}–${r.ga}` },
+      pts: { key:'pts', sort:(a,b) => b.pts - a.pts || b.w - a.w, h:'Points after eleven games', sub:'Each spell counted separately. Interim spells under eleven league games left out.', rec:r => `${r.w}-${r.d}-${r.l}` },
+      ga:  { key:'ga', sort:(a,b) => b.ga - a.ga || a.pts - b.pts, h:'Goals conceded in eleven games', sub:'Leakiest first. Goals scored–conceded on the right.', rec:r => `${r.gf}–${r.ga}` },
     };
     let shown = false;
     const render = m => {
@@ -2062,7 +2062,7 @@ Season ↓	Team	After 11	Points then	Finished	Final points
       box.classList.toggle('small', small);
       const yLo = 20, yHi = 80, n = M.length;
       const X = i => m.l + (i + .5) * (W - m.l - m.r) / n, Y = v => m.t + (yHi - v)/(yHi - yLo) * (H - m.t - m.b);
-      let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Chelsea possession in each of the first ten league games">`;
+      let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Chelsea possession in each league game so far">`;
       g += `<rect class="zmid" x="${m.l}" y="${Y(60)}" width="${W-m.l-m.r}" height="${Y(40)-Y(60)}"/>`;
       g += `<text class="zb" x="${W-m.r-6}" y="${Y(yHi)+14}" text-anchor="end">Keep the ball</text>`;
       g += `<text class="zb" x="${W-m.r-6}" y="${Y(60)+16}" text-anchor="end">Balanced</text>`;
@@ -2165,7 +2165,7 @@ Season ↓	Team	After 11	Points then	Finished	Final points
         const best = rows[0];
         $('mgr-call').innerHTML = view === 'all'
           ? `<b>${rank}th of ${rows.length}.</b> ${below.length ? `Only ${esc(below.map(r => r.name.split(' ').pop() + (r.yrs.includes('interim') ? '’s interim spell' : '')).join(' and '))} ended up worse.` : ''} Every other permanent BlueCo manager created more than he conceded. Even Potter.`
-          : `<b>${rank}th of ${rows.length}</b> over the first ten. ${esc(best.name.split(' ').pop())}'s Chelsea were <b>${(best.v.xgd - me.v.xgd).toFixed(1)} xG a game better</b> at the same stage, ${best.v.ppg > me.v.ppg ? 'and took more points too' : 'but took fewer points'}. Potter was worse. So was Lampard.`;
+          : `<b>${rank}th of ${rows.length}</b> over the first eleven. ${esc(best.name.split(' ').pop())}'s Chelsea were <b>${(best.v.xgd - me.v.xgd).toFixed(1)} xG a game better</b> at the same stage, ${best.v.ppg > me.v.ppg ? 'and took more points too' : 'but took fewer points'}. ${rows.filter(r => !r.me && r.v.xgd < me.v.xgd).map(r => r.name.split(' ').pop()).join(' and ')} ${rows.filter(r => !r.me && r.v.xgd < me.v.xgd).length > 1 ? 'were' : 'was'} worse.`;
         if (mgrShown) requestAnimationFrame(() => requestAnimationFrame(growM));
       };
       function growM() { mgrShown = true; document.querySelectorAll('#mgr-rows i').forEach((b,k) => { b.style.transitionDelay = reduce ? '0s' : (k*.05)+'s'; b.style.width = b.dataset.w + '%'; }); }
