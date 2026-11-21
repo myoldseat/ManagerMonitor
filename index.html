@@ -245,6 +245,87 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .hash{color:var(--amber);font-weight:700;margin-left:3px}
 .f10-src .hash{margin:0 2px 0 0}
 
+/* The BlueCo era in one line */
+.era-chart{position:relative;padding:18px 14px 14px}
+.era-svg svg{display:block;width:100%;height:auto;overflow:visible}
+.era-svg .band{opacity:1}
+.era-svg .bl{font:700 11px var(--body);letter-spacing:.06em;text-transform:uppercase;fill:rgba(169,189,255,.75)}
+.era-svg .bl.me{fill:var(--red)}
+.era-svg .zero{stroke:rgba(255,255,255,.45);stroke-width:1.2}
+.era-svg .gridl{stroke:rgba(255,255,255,.06)}
+.era-svg .tick{fill:var(--sky);font:11px var(--body);font-variant-numeric:tabular-nums}
+.era-svg .pos{fill:rgba(79,227,154,.14)}
+.era-svg .neg{fill:rgba(255,75,62,.18)}
+.era-svg .ln{fill:none;stroke:var(--paper);stroke-width:2.2;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 2.4s ease-in-out}
+.era-svg .ln.me{stroke:var(--red);stroke-width:3.2;transition-delay:2.2s;transition-duration:.6s}
+.era-svg.go .ln{stroke-dashoffset:0}
+.era-svg .mk{stroke:#fff;stroke-width:2;opacity:0;transition:opacity .4s 2.8s}
+.era-svg.go .mk{opacity:1}
+.era-svg .ann{font:600 12px var(--body);fill:var(--paper);opacity:0;transition:opacity .4s 2.8s}
+.era-svg.go .ann{opacity:1}
+.era-svg .ann b,.era-svg .annv{font-weight:800}
+.era-svg .hit{fill:transparent;cursor:crosshair}
+.era-svg .cur{stroke:rgba(255,255,255,.5);stroke-dasharray:3 3;pointer-events:none}
+.era-tip{position:absolute;pointer-events:none;background:var(--paper);color:var(--blue-ink);font-size:12.5px;line-height:1.35;padding:7px 10px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35);white-space:nowrap;transform:translate(-50%,calc(-100% - 14px))}
+.era-tip b{display:block;font-size:13.5px}
+.era-seasons{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.era-seasons span{display:inline-flex;align-items:baseline;gap:8px;padding:6px 12px;border-radius:999px;background:var(--blue-ink);border:1px solid var(--line);font-size:13px;color:var(--sky)}
+.era-seasons span b{font-family:var(--display);font-weight:900;font-size:17px;color:var(--green)}
+.era-seasons span.neg b{color:var(--red)}
+.era-seasons span.me{border-color:var(--red);color:var(--paper)}
+.era-seasons small{font-size:11px}
+.era-cards{display:grid;gap:16px;margin-top:16px}
+@media (min-width:900px){.era-cards{grid-template-columns:1.25fr 1fr 1fr}}
+.era-card h3{font-size:clamp(19px,2.2vw,24px);line-height:1.1}
+.era-card .big-n{font-family:var(--display);font-weight:900;font-size:clamp(54px,7vw,76px);line-height:.9;color:var(--red);margin-top:10px}
+.era-card .big-n small{display:block;font-size:.3em;color:var(--sky);font-weight:700;margin-top:6px}
+.era-card p.k{margin-top:8px;font-size:14.5px;line-height:1.45}
+.era-card p.k b{color:var(--amber)}
+.era-rank{list-style:none;margin-top:14px}
+.era-rank li{display:grid;grid-template-columns:86px 1fr 50px;gap:8px;align-items:center;padding:5px 0;font-size:13px}
+.era-rank .tr{height:12px;position:relative;background:rgba(169,189,255,.08);border-radius:3px}
+.era-rank .tr::before{content:'';position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:rgba(255,255,255,.35)}
+.era-rank .tr i{position:absolute;top:0;bottom:0;border-radius:3px}
+.era-rank .tr i.p{left:50%;background:rgba(79,227,154,.7)}
+.era-rank .tr i.n{right:50%;background:rgba(255,75,62,.7)}
+.era-rank li.me{font-weight:700;color:var(--red)}
+.era-rank li.me .tr i{background:var(--red)}
+.era-rank li.flip.me .tr i.p{background:var(--red)}
+.era-rank .v{text-align:right;font-family:var(--display);font-weight:900;font-size:15px;font-variant-numeric:tabular-nums}
+.era-src{font-size:12px;margin-top:14px}
+
+/* Madrid warned us */
+.deja-score{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.deja-score b{font-family:var(--display);font-weight:900;font-size:clamp(64px,10vw,104px);line-height:.9;color:var(--amber)}
+.deja-score span{font-size:17px;max-width:36ch;line-height:1.4}
+.deja{padding:8px 0}
+.deja-head{display:none}
+@media (min-width:860px){
+  .deja-head{display:grid;grid-template-columns:1fr 1.25fr 1.25fr;gap:24px;padding:12px 22px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
+}
+.deja-list{list-style:none}
+.deja-list li{display:grid;gap:10px;padding:16px 22px;border-top:1px solid var(--line)}
+@media (min-width:860px){.deja-list li{grid-template-columns:1fr 1.25fr 1.25fr;gap:24px;align-items:start}}
+.deja-list .c{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.05;display:flex;gap:10px;align-items:flex-start}
+.deja-list .c i{flex:none;font-style:normal;font-size:12px;font-family:var(--body);font-weight:700;padding:3px 8px;border-radius:999px;margin-top:2px}
+.deja-list li.both .c i{background:rgba(255,75,62,.16);color:var(--red)}
+.deja-list li.notyet .c i{background:rgba(169,189,255,.12);color:var(--sky)}
+.deja-list .m,.deja-list .ch{font-size:14.5px;line-height:1.45;position:relative;padding-left:30px}
+.deja-list .m::before,.deja-list .ch::before{position:absolute;left:0;top:1px;font-size:11px;font-weight:800;letter-spacing:.04em;width:22px;height:18px;border-radius:4px;display:grid;place-items:center}
+.deja-list .m::before{content:'RM';background:#f4f4f4;color:#1b1b6b}
+.deja-list .ch::before{content:'CFC';width:24px;background:var(--blue);color:#fff;border:1px solid rgba(255,255,255,.35);font-size:9px}
+.deja-list .m small,.deja-list .ch small{display:block;color:var(--sky);font-size:12px;margin-top:3px}
+.deja-list li.notyet .ch{color:var(--sky)}
+.deja-bottom{display:grid;gap:16px;margin-top:16px}
+@media (min-width:860px){.deja-bottom{grid-template-columns:1.4fr 1fr}}
+.deja-bottom h3{font-size:clamp(18px,2.2vw,22px)}
+.deja-watch ol{list-style:none;margin-top:10px}
+.deja-watch li{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px;line-height:1.4}
+.deja-watch li b{font-size:12px;color:var(--amber)}
+.deja-fair p{margin-top:10px;font-size:15px;line-height:1.5;color:var(--sky)}
+.deja-fair p b{color:var(--paper)}
+.deja-src{font-size:12px;margin-top:14px}
+
 /* The chameleon */
 .cham-quote{margin:0 0 20px;padding:20px 22px;border-left:4px solid var(--amber);background:rgba(255,181,71,.07);border-radius:0 14px 14px 0}
 .cham-quote blockquote{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1.05}
@@ -303,7 +384,7 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .cham-svg .era{stroke:rgba(255,255,255,.25);stroke-dasharray:3 4}
 
 /* Luckier than they look (xG) */
-.xg{display:grid;gap:16px}
+.xg{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
 @media (min-width:900px){.xg{grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);align-items:start}}
 .xg-facts{display:grid;gap:12px}
 @media (min-width:560px) and (max-width:899px){.xg-facts{grid-template-columns:1fr 1fr}}
@@ -332,7 +413,61 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .xg-call{margin-top:14px;font-size:15px;line-height:1.45;min-height:2.9em}
 .xg-call b{color:var(--amber)}
 .xg-src{font-size:12px;margin-top:8px}
-@media (max-width:520px){.xg-plot{gap:3px}.xg-score{font-size:13px}.xg-up,.xg-dn{height:80px}.xg-v{font-size:10px}.xg-opp{font-size:10px}.xg-poss{font-size:10px;padding:1px 2px}}
+.xg-bang{font-family:var(--display);font-weight:900;font-size:28px;line-height:1;height:28px;color:var(--red)}
+.xg-col.bat{background:linear-gradient(180deg,rgba(255,75,62,.16),rgba(255,75,62,.04));border-radius:10px;box-shadow:inset 0 0 0 1.5px rgba(255,75,62,.55)}
+.xg-col.bat .xg-d{background:var(--red);color:#fff;border-radius:6px;padding:1px 6px}
+.xg-col.bat .xg-bang{animation:bang 1.6s ease-in-out infinite}
+@keyframes bang{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+@media (prefers-reduced-motion:reduce){.xg-col.bat .xg-bang{animation:none}}
+.xg-d{font-family:var(--display);font-weight:900;font-size:15px;margin-top:6px;font-variant-numeric:tabular-nums}
+.xg-d.pos{color:var(--green)}.xg-d.neg{color:var(--red)}
+.xg-mgr{margin-top:16px}
+.xg-bad{margin-top:16px}
+.bad-head{display:grid;grid-template-columns:150px 1fr 1.3fr 90px;gap:12px;margin-top:16px;padding-bottom:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky)}
+.bad-head span:last-child{text-align:right}
+.bad-row{display:grid;grid-template-columns:150px 1fr 1.3fr 90px;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.bad-row .nm{font-weight:700;font-size:14px;line-height:1.2}
+.bad-row .nm small{display:block;font-weight:400;font-size:12px;color:var(--sky)}
+.bad-row .dots{display:flex;gap:5px;flex-wrap:wrap}
+.bad-row .dots i{width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 0 2px rgba(255,75,62,.25)}
+.bad-row .dots em{font-style:normal;font-size:13px;color:var(--sky);margin-left:4px}
+.bad-row .rate{display:flex;align-items:center;gap:10px}
+.bad-row .rate .tr{flex:1;height:12px;border-radius:6px;background:rgba(169,189,255,.1);overflow:hidden}
+.bad-row .rate .tr i{display:block;height:100%;width:0;background:rgba(255,75,62,.6);border-radius:6px;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.bad-row .rate b{font-family:var(--display);font-weight:900;font-size:18px;min-width:52px;text-align:right}
+.bad-row .neg{text-align:right;font-family:var(--display);font-weight:900;font-size:18px}
+.bad-row .neg small{display:block;font-family:var(--body);font-weight:400;font-size:11px;color:var(--sky)}
+.bad-row.me{background:rgba(255,75,62,.10);border-radius:10px;border-top-color:transparent;padding:10px 8px;margin:0 -8px}
+.bad-row.me .nm,.bad-row.me .rate b,.bad-row.me .neg{color:var(--red)}
+.bad-row.me .rate .tr i{background:var(--red)}
+.bad-all{margin-top:12px;font-size:14px}
+.bad-all summary{cursor:pointer;font-weight:700;color:var(--sky)}
+.bad-all ol{list-style:none;margin-top:8px}
+.bad-all li{display:grid;grid-template-columns:96px 1fr auto;gap:10px;padding:7px 0;border-top:1px solid var(--line)}
+.bad-all li small{color:var(--sky)}
+.bad-all li b{font-family:var(--display);font-weight:900;color:var(--red)}
+.bad-all li.me span:nth-child(2){color:var(--red);font-weight:700}
+@media (max-width:620px){.bad-head{display:none}.bad-row{grid-template-columns:1fr auto;gap:6px 10px}.bad-row .dots{grid-column:1/-1;order:3}.bad-row .rate{grid-column:1/-1;order:4}.bad-row .neg{order:2}.bad-all li{grid-template-columns:76px 1fr auto;font-size:13px}}
+
+.mgr-axis{display:grid;grid-template-columns:150px 1fr 1fr 64px;gap:0 12px;margin-top:16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky)}
+.mgr-axis span:first-child{grid-column:2;text-align:right;padding-right:8px;color:rgba(255,75,62,.8)}
+.mgr-axis span:last-child{padding-left:8px;color:rgba(79,227,154,.8)}
+.mgr-row{display:grid;grid-template-columns:150px 1fr 1fr 64px;gap:0 12px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.mgr-row .nm{font-weight:700;font-size:14px;line-height:1.2}
+.mgr-row .nm small{display:block;font-weight:400;font-size:12px;color:var(--sky)}
+.mgr-row .l,.mgr-row .r{height:22px;display:flex;align-items:center}
+.mgr-row .l{justify-content:flex-end;border-right:2px solid rgba(255,255,255,.4)}
+.mgr-row .l i,.mgr-row .r i{display:block;height:100%;width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.mgr-row .l i{background:var(--red);border-radius:5px 0 0 5px;opacity:.75}
+.mgr-row .r i{background:var(--green);border-radius:0 5px 5px 0;opacity:.75}
+.mgr-row .l b,.mgr-row .r b{font-family:var(--display);font-weight:900;font-size:17px;padding:0 8px;white-space:nowrap}
+.mgr-row .ppg{text-align:right;font-size:12px;color:var(--sky);line-height:1.2}
+.mgr-row .ppg b{display:block;font-family:var(--display);font-weight:900;font-size:18px;color:var(--paper)}
+.mgr-row.me{background:rgba(255,75,62,.10);border-radius:10px;border-top-color:transparent;padding:10px 8px;margin:0 -8px}
+.mgr-row.me .nm{color:var(--red)}
+.mgr-row.me .l i,.mgr-row.me .r i{opacity:1}
+@media (max-width:620px){.mgr-axis,.mgr-row{grid-template-columns:96px 1fr 1fr 44px;gap:0 6px}.mgr-row .nm{font-size:12.5px}.mgr-row .l b,.mgr-row .r b{font-size:14px;padding:0 4px}.mgr-row .ppg b{font-size:15px}}
+@media (max-width:520px){.xg-d{font-size:11px;letter-spacing:-.02em}.xg-col.bat .xg-d{padding:1px 2px}.xg-bang{font-size:20px;height:20px}.xg-plot{gap:3px}.xg-score{font-size:13px}.xg-up,.xg-dn{height:80px}.xg-v{font-size:10px}.xg-opp{font-size:10px}.xg-poss{font-size:10px;padding:1px 2px}}
 
 /* Direction of travel */
 .dir-grid{display:grid;gap:16px}
@@ -383,6 +518,61 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .dir-short{display:none}
 @media (max-width:560px){.dir-hide{display:none}.dir-long{display:none}.dir-short{display:inline}.dir-table table{font-size:13px}.dir-table th,.dir-table td{padding:8px 4px}.dir-table td.r{font-size:16px}}
 .dir-src{font-size:12px;margin-top:12px}
+
+/* Since the takeover */
+.bc-nums{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-bottom:16px}
+@media (min-width:860px){.bc-nums{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.bc-nums .num .v{display:flex;align-items:baseline;gap:8px;flex-wrap:nowrap;font-size:clamp(32px,3.6vw,42px)}
+.bc-nums .num .v span{display:inline-flex;flex-direction:column;line-height:1}
+.bc-nums .num .v span small{font-family:var(--body);font-size:11px;font-weight:600;color:var(--sky);letter-spacing:.04em;margin-top:6px;text-transform:uppercase}
+.bc-nums .num .v i{font-style:normal;color:var(--sky);font-size:.5em}
+.bc-nums .num .k b{color:var(--paper)}
+.bc-chart{margin-top:14px;position:relative}
+.bc-chart svg{display:block;width:100%;height:auto;overflow:visible}
+.bc-chart .ax{fill:var(--sky);font:11px var(--body)}
+.bc-chart .se{fill:var(--paper);font:700 12px var(--body)}
+.bc-chart .pos{fill:var(--sky);font:11px var(--body)}
+.bc-chart .val{font:800 13px var(--display)}
+.bc-chart .tk{font:800 13px var(--display);letter-spacing:.06em;text-transform:uppercase}
+.bc-chart .bar,.bc-chart .mgr{cursor:pointer}
+.bc-chart .mn{fill:var(--paper);font:700 11px var(--body);pointer-events:none}
+.bc-keys{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--sky)}
+.bc-keys span{display:inline-flex;align-items:center;gap:7px}
+.bc-keys i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.bc-tip{position:absolute;pointer-events:none;background:var(--paper);color:var(--blue-ink);font-size:13px;line-height:1.35;padding:7px 10px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35);white-space:nowrap;transform:translate(-50%,calc(-100% - 12px));z-index:2}
+.bc-tip b{display:block;font-size:14px}
+.bc-call{margin-top:16px;font-size:clamp(16px,1.8vw,18px);max-width:60ch}
+.bc-call b{color:var(--amber)}
+
+/* What happened next */
+.wn-nums{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:16px}
+@media (min-width:860px){.wn-nums{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.wn-nums .num .v small{font-size:.42em;color:var(--sky);font-weight:700;margin-left:4px}
+.wn-nums .num .k b{color:var(--paper)}
+.wn-nums .num.hot .v{color:var(--red)}.wn-nums .num.good .v{color:var(--green)}
+.wn-chart{margin-top:14px;position:relative}
+.wn-chart svg{overflow:visible}
+.wn-chart .ax{fill:var(--sky);font:11px var(--body)}
+.wn-chart .axt{fill:var(--sky);font:600 12px var(--body)}
+.wn-chart .zone{font:800 13px var(--display);letter-spacing:.06em;text-transform:uppercase}
+.wn-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.wn-scroll svg{display:block;max-width:none}
+.wn-chart .pill{cursor:pointer}
+.wn-chart .pill:focus{outline:none}
+.wn-chart .pill:focus rect,.wn-chart .pill:hover rect{stroke:var(--paper)}
+.wn-chart .pc{font:800 11px var(--body);letter-spacing:.03em}
+.wn-chart .py{font:600 10px var(--body)}
+.wn-swipe{font-size:12px;color:var(--sky);margin-top:6px}
+.wn-chart .che{font:900 16px var(--display);letter-spacing:.02em}
+.wn-keys{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--sky)}
+.wn-keys span{display:inline-flex;align-items:center;gap:7px}
+.wn-keys i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.wn-tip{position:absolute;pointer-events:none;background:var(--paper);color:var(--blue-ink);font-size:13px;line-height:1.35;padding:7px 10px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35);white-space:nowrap;transform:translate(-50%,calc(-100% - 12px));z-index:2}
+.wn-tip b{display:block;font-size:14px}
+.wn-call{margin-top:16px;font-size:clamp(16px,1.8vw,18px);max-width:60ch}
+.wn-call b{color:var(--amber)}
+.wn-src{font-size:12px;margin-top:12px}
+
 
 /* Where this is heading */
 .path{display:grid;gap:16px}
@@ -574,7 +764,7 @@ footer a{color:var(--paper)}
   <span class="photo-note">AI-generated illustration</span>
   <div class="wrap">
     <div class="top">
-      <span><strong>Chelsea manager watch</strong> · @TheManagerMeter</span>
+      <span><strong>Chelsea manager watch</strong> · @TheManagerMeter · <a href="/targets" style="color:#ffdd00;font-weight:600">Targets: Alex Scott →</a></span>
       <span id="updated"></span>
     </div>
     <div class="hero-text">
@@ -626,11 +816,112 @@ footer a{color:var(--paper)}
 </section>
 
 <main>
+  <section id="path">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Where this is heading</h2>
+        <p>Eleven games down, 27 to go, still on 16 points. Pick a path, or drag the slider. Based on what 200 Premier League teams did after a start like this.</p>
+      </div>
+      <div class="path">
+        <div class="panel path-chart">
+          <div class="path-btns" id="path-btns" role="group" aria-label="Scenario"></div>
+          <div class="path-svg" id="path-svg"></div>
+          <label class="path-slide">
+            <span>Points per game, last <b id="path-left"></b> games</span>
+            <input type="range" id="path-ppg" min="0.6" max="2.6" step="0.05">
+            <output id="path-ppg-v"></output>
+          </label>
+        </div>
+        <div class="panel path-out">
+          <p class="eyebrow" id="path-name"></p>
+          <div class="path-pos"><span id="path-pos"></span><small id="path-pts"></small></div>
+          <p class="path-verdict" id="path-verdict"></p>
+          <a class="path-share" id="path-share" href="/heading">Post your prediction on X →</a>
+          <div class="path-odds">
+            <div class="path-odds-head"><h3>How often it happens</h3>
+              <div class="f10-tabs" id="path-sample" role="tablist"></div></div>
+            <div id="path-bars"></div>
+            <p class="muted path-src" id="path-src"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="what-next">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="wn-title">What happens to 5th after ten games?</h2>
+        <p id="wn-lede">Every Premier League team in Chelsea's position at this stage since 1995/96: how many points they had, and where they finished.</p>
+      </div>
+      <div class="wn-nums" id="wn-nums"></div>
+      <div class="panel">
+        <h3 id="wn-h3">Points at this stage, and where they finished</h3>
+        <p class="sub">Each tag is one team-season: club and the year the season ended. Tap a tag for details.</p>
+        <div class="wn-chart" id="wn-chart"><div class="wn-tip" id="wn-tip" hidden></div></div>
+        <p class="wn-swipe" id="wn-swipe" hidden>Swipe sideways to see every finishing position.</p>
+        <div class="wn-keys">
+          <span><i style="background:var(--amber)"></i>Won the league</span>
+          <span><i style="background:var(--green)"></i>Top four</span>
+          <span><i style="background:var(--sky)"></i>5th–6th</span>
+          <span><i style="background:#4a5db8"></i>7th or lower</span>
+        </div>
+        <p class="wn-call" id="wn-call"></p>
+        <p class="muted wn-src" id="wn-src"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="era">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>The BlueCo era in one line</h2>
+        <p>Every league game since BlueCo took over. Chances created minus chances conceded, averaged over the last ten games. Above the line, Chelsea are the better side. Below it, they are not.</p>
+      </div>
+      <div class="panel era-chart">
+        <div id="era-svg" class="era-svg"></div>
+        <div class="era-tip" id="era-tip" hidden></div>
+        <div class="era-seasons" id="era-seasons"></div>
+      </div>
+      <div class="era-cards">
+        <div class="panel era-card big" id="era-fin"></div>
+        <div class="panel era-card" id="era-luck"></div>
+        <div class="panel era-card" id="era-small"></div>
+      </div>
+      <p class="muted era-src" id="era-src"></p>
+    </div>
+  </section>
+
+  <section id="deja">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Madrid warned us</h2>
+        <p>Real Madrid fans spent half a season complaining about Xabi Alonso. Chelsea fans are now reading from the same script.</p>
+      </div>
+      <div class="deja-score" id="deja-score"></div>
+      <div class="panel deja">
+        <div class="deja-head" aria-hidden="true"><span>The complaint</span><span>Madrid said</span><span>Chelsea now</span></div>
+        <ol class="deja-list" id="deja-list"></ol>
+      </div>
+      <div class="deja-bottom">
+        <div class="panel deja-watch">
+          <h3>Madrid fans are watching</h3>
+          <ol id="deja-watch"></ol>
+        </div>
+        <div class="panel deja-fair">
+          <h3>In his defence</h3>
+          <p id="deja-fair"></p>
+        </div>
+      </div>
+      <p class="muted deja-src" id="deja-src"></p>
+    </div>
+  </section>
+
   <section id="chameleon">
     <div class="wrap">
       <div class="sec-head">
         <h2>The chameleon</h2>
-        <p>Ten games, ten different Chelseas. No plan you could recognise from one week to the next.</p>
+        <p>Eleven games, eleven different Chelseas. No plan you could recognise from one week to the next.</p>
       </div>
       <figure class="cham-quote">
         <blockquote id="cham-quote"></blockquote>
@@ -643,7 +934,7 @@ footer a{color:var(--paper)}
           <div id="cham-svg" class="cham-svg"></div>
         </div>
         <div class="panel cham-shapes">
-          <h3>Ten games, five systems</h3>
+          <h3>Eleven games, five systems</h3>
           <ol id="cham-shapes"></ol>
         </div>
       </div>
@@ -664,13 +955,13 @@ footer a{color:var(--paper)}
     <div class="wrap">
       <div class="sec-head">
         <h2>Luckier than they look</h2>
-        <p>Sixteen points looks bad enough. The chances Chelsea create and give away say it should be worse.</p>
+        <p>Sixteen points from eleven games looks bad enough. Twenty goals conceded. The chances Chelsea create and give away say it should be worse.</p>
       </div>
       <div class="xg">
         <div class="xg-facts" id="xg-facts"></div>
         <div class="panel xg-chart">
           <div class="xg-head">
-            <div><h3>Chances created and conceded, game by game</h3><p class="sub">Expected goals (xG). Up: Chelsea. Down: the opponent.</p></div>
+            <div><h3>Chances created and conceded, game by game</h3><p class="sub">Expected goals (xG). Up: Chelsea. Down: the opponent. Coloured number: the difference.</p></div>
             <div class="f10-tabs" id="xg-sort" role="tablist">
               <button type="button" role="tab" data-s="date" aria-selected="true">By date</button>
               <button type="button" role="tab" data-s="poss" aria-selected="false">By possession</button>
@@ -678,9 +969,32 @@ footer a{color:var(--paper)}
           </div>
           <div class="xg-plot" id="xg-plot"></div>
           <p class="xg-call" id="xg-call"></p>
-          <p class="muted xg-src" id="xg-src"></p>
         </div>
       </div>
+      <div class="panel xg-mgr">
+        <div class="xg-head">
+          <div><h3>Every BlueCo manager, by xG difference</h3><p class="sub" id="mgr-sub">Chances created minus chances conceded, per league game.</p></div>
+          <div class="f10-tabs" id="mgr-tabs" role="tablist">
+            <button type="button" role="tab" data-v="all" aria-selected="true">Whole spell</button>
+            <button type="button" role="tab" data-v="f10" aria-selected="false">First 10 games</button>
+          </div>
+        </div>
+        <div class="mgr-axis" aria-hidden="true"><span>Out-created</span><span>Out-creating</span></div>
+        <div id="mgr-rows"></div>
+        <p class="xg-call" id="mgr-call"></p>
+        <p class="muted xg-src" id="mgr-note"></p>
+      </div>
+      <div class="panel xg-bad">
+        <div class="xg-head">
+          <div><h3>Battered</h3><p class="sub" id="bad-sub"></p></div>
+          <div class="f10-tabs" id="bad-tabs" role="tablist"></div>
+        </div>
+        <div class="bad-head" aria-hidden="true"><span>Manager</span><span>Battered games</span><span>How often</span><span>Out-created</span></div>
+        <div id="bad-rows"></div>
+        <p class="xg-call" id="bad-call"></p>
+        <details class="bad-all"><summary id="bad-sum">All the games</summary><ol id="bad-list"></ol></details>
+      </div>
+      <p class="muted xg-src" id="xg-src"></p>
     </div>
   </section>
 
@@ -720,38 +1034,6 @@ footer a{color:var(--paper)}
           </table>
         </div>
         <p class="muted dir-src" id="dir-src"></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="path">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Where this is heading</h2>
-        <p>Ten games down, 28 to go. Pick a path, or drag the slider. Based on what 200 Premier League teams did after their first ten games.</p>
-      </div>
-      <div class="path">
-        <div class="panel path-chart">
-          <div class="path-btns" id="path-btns" role="group" aria-label="Scenario"></div>
-          <div class="path-svg" id="path-svg"></div>
-          <label class="path-slide">
-            <span>Points per game, last <b id="path-left"></b> games</span>
-            <input type="range" id="path-ppg" min="0.6" max="2.6" step="0.05">
-            <output id="path-ppg-v"></output>
-          </label>
-        </div>
-        <div class="panel path-out">
-          <p class="eyebrow" id="path-name"></p>
-          <div class="path-pos"><span id="path-pos"></span><small id="path-pts"></small></div>
-          <p class="path-verdict" id="path-verdict"></p>
-          <a class="path-share" id="path-share" href="/heading">Post your prediction on X →</a>
-          <div class="path-odds">
-            <div class="path-odds-head"><h3>How often it happens</h3>
-              <div class="f10-tabs" id="path-sample" role="tablist"></div></div>
-            <div id="path-bars"></div>
-            <p class="muted path-src" id="path-src"></p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -798,8 +1080,8 @@ footer a{color:var(--paper)}
   <section id="five-days">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Charity FC rolls into town</h2>
-        <p>Alonso stupidly starts Neto up front away at Sunderland. The line-up was confusing, and every change he made changed nothing. His position is getting grim.</p>
+        <h2>Leeds end a 27-year wait</h2>
+        <p>Spurs won at the Bridge. Now Leeds have too, for the first time since 1999. Before that, Charity FC at Sunderland. Three defeats in four league games, and the chances say it should have been worse.</p>
       </div>
       <div class="matches" id="matches"></div>
     </div>
@@ -891,6 +1173,29 @@ footer a{color:var(--paper)}
     </div>
   </section>
 
+  <section id="blueco">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Since the takeover</h2>
+        <p>Goals scored and conceded per league game, every season. The attack has held up. The defence has not.</p>
+      </div>
+      <div class="bc-nums" id="bc-nums"></div>
+      <div class="panel">
+        <h3>Goals per game, scored and conceded</h3>
+        <p class="sub">Premier League only. The strip under each season shows who managed it. Tap a bar or a name for details.</p>
+        <div class="bc-chart" id="bc-chart"><div class="bc-tip" id="bc-tip" hidden></div></div>
+        <div class="bc-keys">
+          <span><i style="background:var(--green)"></i>Scored per game</span>
+          <span><i style="background:var(--red)"></i>Conceded per game</span>
+          <span><i style="background:transparent;border:1.5px dashed var(--paper)"></i>Season in progress</span>
+          <span><i style="background:rgba(169,189,255,.28)"></i>Manager, width = league games</span>
+          <span><i style="background:rgba(169,189,255,.10);border:1.5px dashed rgba(169,189,255,.45)"></i>Caretaker</span>
+        </div>
+        <p class="bc-call" id="bc-call"></p>
+      </div>
+    </div>
+  </section>
+
   <section id="owners">
     <div class="wrap">
       <div class="sec-head"><h2>Meanwhile, upstairs</h2></div>
@@ -937,7 +1242,7 @@ footer a{color:var(--paper)}
     <p id="foot-updated"></p>
     <p>Sources: Chelsea FC, Sky Sports, ESPN, Premier League, Wikipedia season records, Squawka. Spot a mistake? Tell <a href="https://x.com/TheManagerMeter">@TheManagerMeter</a>.</p>
     <p>Unofficial fan site and satire. Not affiliated with Chelsea FC, BlueCo or Clearlake. The header image is an AI-generated illustration, not a photograph. KTBFFH.</p>
-    <p><a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+    <p><a href="/targets">Targets</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
   </div>
 </footer>
 
@@ -963,12 +1268,12 @@ const SITE = {
   VARSENAL: true,                  // shows every "Arsenal" as "Varsenal"; set false to turn off
   SACKED: false,
   SACKED_DATE: '',
-  LAST_UPDATED: '8 Nov 2026, after Sunderland (A)',
-  PL_POSITION: '5th',
+  LAST_UPDATED: '21 Nov 2026, after Leeds (H)',
+  PL_POSITION: '8th',
   PL_POINTS: 16,
   GAP_TO_TOP: 11,
 
-  VERDICT: 'Not yet. But he\'s just lost <b>1–0 to the bottom club</b>, nothing he changed worked, and he looks like a fish out of water. The referee was no help either. Leeds come to the Bridge on 21 November. <b>Will Alonso still be at the helm?</b>',
+  VERDICT: 'Not yet. But he has now lost at home to <b>Spurs and to Leeds</b>. Leeds had not won at Stamford Bridge since 1999. <b>1–4</b>, not one big chance, 0.56 xG. Chelsea do not lose to these teams at home. <b>He has to go.</b>',
 
   /* Sack odds: next Premier League manager to leave. Add a line after each match, newest last. */
   ODDS_MARKET: 'Next Premier League manager to leave',
@@ -976,22 +1281,27 @@ const SITE = {
   ODDS: [
     { date:'2026-11-07', odds:'80/1', label:'Before Sunderland' },
     { date:'2026-11-08', odds:'66/1', label:'After Sunderland' },
+    { date:'2026-11-21', odds:'33/1', label:'After Leeds' },
   ],
 
-  /* on:false = ready but switched off. Flip to on:true to count it. */
+  /* on:false = switched off: ready to count, or an old incident that has faded. Flip to on:true to count it. */
   PRESSURE: [
+    { dir:'up',   pts:25, what:'Thrashed by Leeds at home',            ev:'Chelsea 1–4 Leeds, 21 Nov · Leeds’ first win at the Bridge since 1999' },
+    { dir:'up',   pts:5,  what:'Not one big chance',                   ev:'0.56 xG against 2.51. Leeds had seven big chances, Chelsea none' },
+    { dir:'up',   pts:5,  what:'100th home Premier League defeat',     ev:'Opta: the 4–1 was defeat number 100 in 658 home games' },
+    { dir:'up',   pts:5,  what:'Out-run at home',                      ev:'Leeds covered 125.1 km, Chelsea 119.1 km' },
+    { dir:'up',   pts:5,  what:'Out of the top six',                   ev:'8th after Saturday. Leeds now above Chelsea' },
     { dir:'up',   pts:20, what:'Lost to the bottom club',              ev:'Sunderland 1–0 Chelsea, 8 Nov · Le Fée penalty' },
     { dir:'up',   pts:5,  what:'Substitutions changed nothing',        ev:'Colwill off at half-time, Caicedo to centre-back, four attackers on. Still 1–0.' },
-    { dir:'up',   pts:5,  what:'Two penalty calls go against them',    ev:'Palmer not given, Colwill given against · Gillett and Hopton' },
+    { on:false, dir:'up',   pts:5,  what:'Two penalty calls go against them',    ev:'Palmer not given, Colwill given against · Gillett and Hopton' },
     { dir:'up',   pts:15, what:'Knocked out at Anfield',               ev:'Carabao Cup R4 · lost 6–5 on penalties to Liverpool' },
     { dir:'up',   pts:20, what:'Lost to Spurs at home',                ev:'A death sentence at Chelsea. Their first win at the Bridge since April 2018' },
-    { dir:'up',   pts:5,  what:'Best player sent off',                 ev:'Palmer, second yellow, 80 min v Spurs' },
-    { dir:'up',   pts:5,  what:'Goalkeeper own goal',                  ev:'Penders, 77 min v Spurs' },
-    { dir:'up',   pts:5,  what:'Olés from the away end',               ev:'Spurs fans, Stamford Bridge, 24 Oct' },
-    { dir:'up',   pts:15, what:'Thrashed at Brentford',                ev:'0–3, 18 Sep · heaviest defeat of the season' },
+    { on:false, dir:'up',   pts:5,  what:'Best player sent off',                 ev:'Palmer, second yellow, 80 min v Spurs' },
+    { on:false, dir:'up',   pts:5,  what:'Goalkeeper own goal',                  ev:'Penders, 77 min v Spurs' },
+    { on:false, dir:'up',   pts:5,  what:'Olés from the away end',               ev:'Spurs fans, Stamford Bridge, 24 Oct' },
+    { on:false, dir:'up',   pts:15, what:'Thrashed at Brentford',                ev:'0–3, 18 Sep · heaviest defeat of the season' },
     { dir:'up',   pts:5,  what:'The xG table says mid-table',          ev:'14th on expected goals, 5th in reality' },
     { dir:'down', pts:10, what:'Beat Manchester United',               ev:'2–0 at the Bridge, 31 Oct · Rogers, Palmer (pen)' },
-    { dir:'down', pts:5,  what:'Still in the top five, just',          ev:'5th, 11 points behind Varsenal, level with Everton' },
     { dir:'down', pts:5,  what:'A five-goal win',                      ev:'Bournemouth (H) 5–1, 10 Oct' },
     { dir:'down', pts:5,  what:'First league clean sheet',             ev:'Everton (A) 2–0, 17 Oct' },
   ],
@@ -1011,14 +1321,15 @@ const SITE = {
     { date:'2026-10-28', comp:'EFL', opp:'Liverpool',   venue:'A', score:'1–1', result:'D', pens:'5–6', out:true },
     { date:'2026-10-31', comp:'PL',  opp:'Manchester United', venue:'H', score:'2–0', result:'W' },
     { date:'2026-11-08', comp:'PL',  opp:'Sunderland',  venue:'A', score:'0–1', result:'L' },
+    { date:'2026-11-21', comp:'PL',  opp:'Leeds United', venue:'H', score:'1–4', result:'L' },
   ],
 
   /* Featured match cards (newest first) */
   FEATURED: [
+    { when:'Saturday 21 November · Premier League · Stamford Bridge', home:'Chelsea', away:'Leeds', score:'1–4',
+      events:[ ['22′','Caicedo off injured. Henderson on'], ['24′','Emegha scores on his first league start'], ['27′','Okafor equalises inside three minutes'], ['53′','Rogers handball, given after a long VAR review. Calvert-Lewin scores the penalty'], ['59′','Okafor again'], ['64′','Welbeck on for Emegha'], ['90+1′','Aaronson makes it four. Leeds’ first win at the Bridge since 1999'] ] },
     { when:'Sunday 8 November · Premier League · Stadium of Light', home:'Sunderland', away:'Chelsea', score:'1–0',
       events:[ ['1H','Palmer brought down by O\'Nien. VAR checks, no penalty'], ['1H','Colwill penalised for a foul on Brobbey. Le Fée scores the penalty'], ['46′','Colwill off, Estêvão on. Caicedo drops to centre-back'], ['62′','Gusto and Welbeck on for Palestra and Neto'], ['79′','Quenda on for Chavarría. Nothing changes'] ] },
-    { when:'Saturday 31 October · Premier League · Stamford Bridge', home:'Chelsea', away:'Man Utd', score:'2–0',
-      events:[ ['50′','Morgan Rogers opens the scoring'], ['63′','Lisandro Martínez sent off: two yellows in two minutes, the second for the penalty'], ['64′','Cole Palmer scores from the spot'] ] },
   ],
 
   /* gd is optional: leave it out and the column hides */
@@ -1030,11 +1341,12 @@ const SITE = {
     { pos:5, team:'Chelsea',         p:10, gd:'+3',  pts:16 },
     { pos:6, team:'Everton',         p:10, gd:'+2',  pts:16 },
   ],
-  TABLE_NOTE: 'After gameweek 10 · the line marks 5th, a Champions League place if England keep their extra spot. Everton are level on points',
+  TABLE_NOTE: 'After gameweek 10. After Saturday’s games in gameweek 11 Chelsea are 8th, with Leeds above them · the line marks 5th, a Champions League place if England keep their extra spot',
 
   FIXTURES: [
-    { date:'2026-11-21', opp:'Leeds United',      venue:'H', comp:'Premier League' },
     { date:'2026-11-27', opp:'Nottingham Forest', venue:'A', comp:'Premier League' },
+    { date:'2026-12-02', opp:'Crystal Palace',    venue:'H', comp:'Premier League' },
+    { date:'2026-12-05', opp:'Liverpool',         venue:'H', comp:'Premier League' },
   ],
 
   /* First ten Premier League games of every Chelsea spell since 2004. me:true = highlighted */
@@ -1070,6 +1382,52 @@ const SITE = {
   FIRST10_REAL_NOTE: 'Squad made up of real footballers.',
   FIRST10_SOURCE: 'Sources: StatMuse, FBref, Sky Sports, Premier League results.',
 
+  /* The BlueCo era in one line. One row per league game, oldest first:
+     [date, manager, opponent, H/A, score (Chelsea first), Chelsea xG, opponent xG]. Add a row after each game. */
+  ERA: {
+    window:10,
+    bigSeven:['Varsenal','Man City','Liverpool','Man United','Tottenham','Newcastle','Villa'],
+    managers:['Potter','Lampard','Pochettino','Maresca','Rosenior','Alonso'],
+    me:'Alonso',
+    seasonEnd:{ '2022-23':'12th' },
+    source:'xG: RShiri/XEPL Premier League database, 163 games, 6 Aug 2022 to 21 Nov 2026 (mostly model-estimated, the latest games provider xG; Leeds from the Premier League match centre). Expected points: our own calculation from each game’s xG. Big seven: Varsenal, Man City, Liverpool, Man United, Tottenham, Newcastle, Villa.',
+    games:[["2022-08-06","Tuchel","Everton","A","1–0",1.81,0.35],["2022-08-14","Tuchel","Tottenham","H","2–2",1.62,1.26],["2022-08-21","Tuchel","Leeds","A","0–3",0.76,2.02],["2022-08-27","Tuchel","Leicester","H","2–1",1.7,1.77],["2022-08-30","Tuchel","Southampton","A","1–2",1.28,1.31],["2022-09-03","Tuchel","West Ham","H","2–1",0.83,1.21],["2022-10-01","Potter","Palace","A","2–1",1.02,0.62],["2022-10-08","Potter","Wolves","H","3–0",2.1,0.72],["2022-10-16","Potter","Villa","A","2–0",1.19,1.97],["2022-10-19","Potter","Brentford","A","0–0",0.62,1.15],["2022-10-22","Potter","Man United","H","1–1",1.15,0.81],["2022-10-29","Potter","Brighton","A","1–4",1.08,2.03],["2022-11-06","Potter","Varsenal","H","0–1",0.21,2.05],["2022-11-12","Potter","Newcastle","A","0–1",0.32,1.21],["2022-12-27","Potter","Bournemouth","H","2–0",1.52,0.39],["2023-01-01","Potter","Forest","A","1–1",0.93,0.83],["2023-01-05","Potter","Man City","H","0–1",0.41,1.6],["2023-01-12","Potter","Fulham","A","1–2",2.36,0.56],["2023-01-15","Potter","Palace","H","1–0",1.66,0.51],["2023-01-21","Potter","Liverpool","A","0–0",1.21,0.79],["2023-02-03","Potter","Fulham","H","0–0",1.07,0.36],["2023-02-11","Potter","West Ham","A","1–1",0.97,0.83],["2023-02-18","Potter","Southampton","H","0–1",1.44,0.48],["2023-02-26","Potter","Tottenham","A","0–2",0.38,0.77],["2023-03-04","Potter","Leeds","H","1–0",1.45,0.58],["2023-03-11","Potter","Leicester","A","3–1",1.28,2.27],["2023-03-18","Potter","Everton","H","2–2",1.74,1.25],["2023-04-01","Potter","Villa","H","0–2",2.22,0.92],["2023-04-04","Saltor","Liverpool","H","0–0",2.1,0.21],["2023-04-08","Lampard","Wolves","A","0–1",0.78,0.39],["2023-04-15","Lampard","Brighton","H","1–2",0.39,2.47],["2023-04-26","Lampard","Brentford","H","0–2",1.1,0.33],["2023-05-02","Lampard","Varsenal","A","1–3",0.93,1.94],["2023-05-06","Lampard","Bournemouth","A","3–1",1.12,1.19],["2023-05-13","Lampard","Forest","H","2–2",1.19,1.4],["2023-05-21","Lampard","Man City","A","0–1",0.97,1.05],["2023-05-25","Lampard","Man United","A","1–4",1.52,4.81],["2023-05-28","Lampard","Newcastle","H","1–1",1.75,1.44],["2023-08-13","Pochettino","Liverpool","H","1–1",1.97,1.24],["2023-08-20","Pochettino","West Ham","A","1–3",1.58,1.73],["2023-08-25","Pochettino","Luton","H","3–0",2.42,0.44],["2023-09-02","Pochettino","Forest","H","0–1",2.57,0.97],["2023-09-17","Pochettino","Bournemouth","A","0–0",1.22,0.97],["2023-09-24","Pochettino","Villa","H","0–1",1.09,0.95],["2023-10-02","Pochettino","Fulham","A","2–0",1.68,0.9],["2023-10-07","Pochettino","Burnley","A","4–1",1.97,0.82],["2023-10-21","Pochettino","Varsenal","H","2–2",1.66,0.71],["2023-10-28","Pochettino","Brentford","H","0–2",1.46,1.88],["2023-11-06","Pochettino","Tottenham","A","4–1",3.87,0.71],["2023-11-12","Pochettino","Man City","H","4–4",3.21,2.92],["2023-11-25","Pochettino","Newcastle","A","1–4",1.01,2.13],["2023-12-03","Pochettino","Brighton","H","3–2",1.91,0.88],["2023-12-06","Pochettino","Man United","A","1–2",1.94,3.91],["2023-12-10","Pochettino","Everton","A","0–2",0.94,1.1],["2023-12-16","Pochettino","Sheffield Utd","H","2–0",2.76,0.35],["2023-12-24","Pochettino","Wolves","A","1–2",1.76,1.31],["2023-12-27","Pochettino","Palace","H","2–1",2.59,0.96],["2023-12-30","Pochettino","Luton","A","3–2",1.28,2.34],["2024-01-13","Pochettino","Fulham","H","1–0",1.94,0.63],["2024-01-31","Pochettino","Liverpool","A","1–4",0.53,3.35],["2024-02-04","Pochettino","Wolves","H","2–4",2.37,2.19],["2024-02-12","Pochettino","Palace","A","3–1",1.44,0.62],["2024-02-17","Pochettino","Man City","A","1–1",1.72,2.24],["2024-03-02","Pochettino","Brentford","A","2–2",1.36,1.67],["2024-03-11","Pochettino","Newcastle","H","3–2",1.41,0.52],["2024-03-30","Pochettino","Burnley","H","2–2",4.08,2.04],["2024-04-04","Pochettino","Man United","H","4–3",3.15,1.57],["2024-04-07","Pochettino","Sheffield Utd","A","2–2",0.61,1.43],["2024-04-15","Pochettino","Everton","H","6–0",3.28,1.26],["2024-04-23","Pochettino","Varsenal","A","0–5",1.32,2.82],["2024-04-27","Pochettino","Villa","A","2–2",1.62,0.53],["2024-05-02","Pochettino","Tottenham","H","2–0",1.92,1.46],["2024-05-05","Pochettino","West Ham","H","5–0",3.43,1.09],["2024-05-11","Pochettino","Forest","A","3–2",1.93,2.3],["2024-05-15","Pochettino","Brighton","A","2–1",1.39,1.17],["2024-05-19","Pochettino","Bournemouth","H","2–1",1.18,2.02],["2024-08-18","Maresca","Man City","H","0–2",0.94,1.14],["2024-08-25","Maresca","Wolves","A","6–2",2.12,2.06],["2024-09-01","Maresca","Palace","H","1–1",2.33,0.51],["2024-09-14","Maresca","Bournemouth","A","1–0",0.92,1.64],["2024-09-21","Maresca","West Ham","A","3–0",2.2,0.77],["2024-09-28","Maresca","Brighton","H","4–2",3.51,1.57],["2024-10-06","Maresca","Forest","H","1–1",2.09,1.46],["2024-10-20","Maresca","Liverpool","A","1–2",1.42,2.23],["2024-10-27","Maresca","Newcastle","H","2–1",1.31,1.62],["2024-11-03","Maresca","Man United","A","1–1",0.92,1.96],["2024-11-10","Maresca","Varsenal","H","1–1",1.14,1.65],["2024-11-23","Maresca","Leicester","A","2–1",2.09,0.98],["2024-12-01","Maresca","Villa","H","3–0",1.47,0.98],["2024-12-04","Maresca","Southampton","A","5–1",5.28,1.63],["2024-12-08","Maresca","Tottenham","A","4–3",2.48,3],["2024-12-15","Maresca","Brentford","H","2–1",2.21,1.63],["2024-12-22","Maresca","Everton","A","0–0",1.31,0.98],["2024-12-26","Maresca","Fulham","H","1–2",1.22,1.59],["2024-12-30","Maresca","Ipswich","A","0–2",1.71,1.59],["2025-01-04","Maresca","Palace","A","1–1",1.29,1.23],["2025-01-14","Maresca","Bournemouth","H","2–2",2.52,1.09],["2025-01-20","Maresca","Wolves","H","3–1",2.79,1.12],["2025-01-25","Maresca","Man City","A","1–3",1.41,2.64],["2025-02-03","Maresca","West Ham","H","2–1",1.33,0.79],["2025-02-14","Maresca","Brighton","A","0–3",0.56,2.19],["2025-02-22","Maresca","Villa","A","1–2",2.1,2.05],["2025-02-25","Maresca","Southampton","H","4–0",2.4,0.67],["2025-03-09","Maresca","Leicester","H","1–0",1.44,0.11],["2025-03-16","Maresca","Varsenal","A","0–1",0.33,0.55],["2025-04-03","Maresca","Tottenham","H","1–0",1.15,1.03],["2025-04-06","Maresca","Brentford","A","0–0",1.16,1.08],["2025-04-13","Maresca","Ipswich","H","2–2",2.45,1.19],["2025-04-20","Maresca","Fulham","A","2–1",0.63,0.28],["2025-04-26","Maresca","Everton","H","1–0",0.78,0.66],["2025-05-04","Maresca","Liverpool","H","3–1",3.3,1.16],["2025-05-11","Maresca","Newcastle","A","0–2",0.63,1.19],["2025-05-16","Maresca","Man United","H","1–0",1.16,0.29],["2025-05-25","Maresca","Forest","A","1–0",1.14,1.26],["2025-08-17","Maresca","Palace","H","0–0",1.5,0.67],["2025-08-22","Maresca","West Ham","A","5–1",3.26,0.82],["2025-08-30","Maresca","Fulham","H","2–0",1.99,1.03],["2025-09-13","Maresca","Brentford","A","2–2",1.44,1.05],["2025-09-20","Maresca","Man United","A","1–2",0.47,1.52],["2025-09-27","Maresca","Brighton","H","1–3",1.71,1.83],["2025-10-04","Maresca","Liverpool","H","2–1",1.1,2.05],["2025-10-18","Maresca","Forest","A","3–0",1.93,1.81],["2025-10-25","Maresca","Sunderland","H","1–2",1.02,1.39],["2025-11-01","Maresca","Tottenham","A","1–0",2.84,0.17],["2025-11-08","Maresca","Wolves","H","3–0",3.33,0.14],["2025-11-22","Maresca","Burnley","A","2–0",1.31,0.5],["2025-11-30","Maresca","Varsenal","H","1–1",0.63,0.86],["2025-12-03","Maresca","Leeds","A","1–3",0.88,1.95],["2025-12-06","Maresca","Bournemouth","A","0–0",0.58,1.33],["2025-12-13","Maresca","Everton","H","2–0",2.06,1.06],["2025-12-20","Maresca","Newcastle","A","2–2",0.92,2.14],["2025-12-27","Maresca","Villa","H","1–2",1.84,2.2],["2025-12-30","Maresca","Bournemouth","H","2–2",2.1,3.42],["2026-01-04","McFarlane","Man City","A","1–1",2.28,0.91],["2026-01-07","McFarlane","Fulham","A","1–2",2.36,0.91],["2026-01-17","Rosenior","Brentford","H","2–0",1.5,1.44],["2026-01-25","Rosenior","Palace","A","3–1",2.53,2.27],["2026-01-31","Rosenior","West Ham","H","3–2",2.8,1.23],["2026-02-07","Rosenior","Wolves","A","3–1",3.36,1.19],["2026-02-10","Rosenior","Leeds","H","2–2",3.54,1.31],["2026-02-21","Rosenior","Burnley","H","1–1",2.11,0.81],["2026-03-01","Rosenior","Varsenal","A","1–2",1.3,1.54],["2026-03-04","Rosenior","Villa","A","4–1",3.12,1.18],["2026-03-14","Rosenior","Newcastle","H","0–1",1.65,0.81],["2026-03-21","Rosenior","Everton","A","0–3",1.05,1.27],["2026-04-12","Rosenior","Man City","H","0–3",0.84,2.1],["2026-04-18","Rosenior","Man United","H","0–1",1.35,0.46],["2026-04-21","Rosenior","Brighton","A","0–3",0.39,2.24],["2026-05-04","McFarlane","Forest","H","1–3",2.21,2.08],["2026-05-09","McFarlane","Liverpool","A","1–1",0.57,0.55],["2026-05-19","McFarlane","Tottenham","H","2–1",0.89,1.51],["2026-05-24","McFarlane","Sunderland","A","1–2",0.97,1.61],["2026-08-24","Alonso","Fulham","A","3–2",2.17,1.24],["2026-08-30","Alonso","Brighton","H","4–3",3.22,1.56],["2026-09-06","Alonso","Varsenal","A","1–2",0.41,1.91],["2026-09-12","Alonso","Hull","H","2–2",1.02,1.81],["2026-09-18","Alonso","Brentford","A","0–3",0.79,2.18],["2026-10-10","Alonso","Bournemouth","H","5–1",1.1,1.38],["2026-10-17","Alonso","Everton","A","2–0",1.47,0.43],["2026-10-24","Alonso","Tottenham","H","0–2",0.47,0.74],["2026-10-31","Alonso","Man United","H","2–0",3.01,1.24],["2026-11-08","Alonso","Sunderland","A","0–1",0.66,2.38],["2026-11-21","Alonso","Leeds","H","1–4",0.56,2.51]],
+  },
+
+  /* Madrid warned us. both:true = heard at Madrid AND at Chelsea. Fan views are paraphrased, not quoted */
+  DEJA: {
+    rows:[
+      { c:'No identity', both:true,
+        m:'No consistent attacking patterns. Leaned on individual quality to bail the team out.', md:'r/realmadrid, 11 Jan 2026',
+        ch:'Five systems in eleven games. Possession anywhere from 26% to 69%.', chd:'See “The chameleon”' },
+      { c:'Formation roulette', both:true,
+        m:'A dull 3-5-2 that made almost no chances.', md:'r/realmadrid, 24 Oct 2026',
+        ch:'A 3-4-3 for five games, then 4-4-2, a hybrid, a strikerless 4-4-2 and a 4-3-3.', chd:'Last Word on Sports, FourFourTwo' },
+      { c:'Players out of position', both:true,
+        m:'Álvaro Carreras at centre-back, with real centre-backs available.', md:'r/realmadrid, 24 Oct 2026',
+        ch:'Caicedo at centre-back at Sunderland. Neto as the striker.', chd:'Sunderland 1–0 Chelsea, 8 Nov' },
+      { c:'Subs make it worse', both:true,
+        m:'The team often got worse after his substitutions.', md:'r/realmadrid, 11 Jan 2026',
+        ch:'Colwill off at half-time, four attackers on. Still 0–1.', chd:'Sunderland 1–0 Chelsea, 8 Nov' },
+      { c:'Endless rotation', both:true,
+        m:'Squad management and rotation criticised all season.', md:'r/realmadrid, 11 Jan 2026',
+        ch:'24 changes to the starting XI. Only Spurs have made more.', chd:'BBC Sport, 8 Nov' },
+      { c:'Young talent on the bench', both:true,
+        m:'Took far too long to trust Endrick.', md:'Foro Real Madrid, 1 Nov 2026',
+        ch:'The same fans say he took far too long with Estêvão.', chd:'Foro Real Madrid, 1 Nov 2026' },
+      { c:'Lost the dressing room', both:false,
+        m:'Could not stand up to Vinícius after the Clásico substitution row.', md:'Foro Real Madrid, 9 Nov 2026; BBC, ESPN',
+        ch:'Not yet. Give it time.', chd:'' },
+    ],
+    watch:[
+      ['6 Sep','One Madrid fan predicted he would not last until Christmas at Chelsea.'],
+      ['31 Oct','Another, sarcastically: he will make winning the Premier League look easy.'],
+      ['9 Nov','Mockery after losing to the bottom club. One fan still backs the project.'],
+    ],
+    fair:'Madrid sacked him on <b>12 January 2026 after 24 wins in 34 games</b>, and many of their fans still say he was never backed against the stars. The argument in Madrid is whether he could not implement his ideas, or whether the ideas were not working. <b>Chelsea are about to find out.</b>',
+    source:'Fan views paraphrased from r/realmadrid, r/RealMadridFC and Foro Real Madrid (fororealmadrid.com), January to November 2026. Individual supporters, not a poll. Madrid exit: BBC Sport.',
+  },
+
   /* The chameleon. Possession comes from XG.matches below */
   CHAMELEON: {
     quote:'“We are not just sticking to one idea.”',
@@ -1081,6 +1439,7 @@ const SITE = {
       ['Game 8','4-4-2 with two false nines “pressing erratically”. Spurs win 2–0.'],
       ['Game 9','A first half “mess” with Palmer dropping deep. Fixed at half-time with a 4-2-3-1.'],
       ['Game 10','A three-man midfield for the first time. Neto up front, no striker again. 0–1.'],
+      ['Game 11','Back to a back four and a 4-2-3-1 against Leeds. Caicedo off injured after 22 minutes. 1–4.'],
     ],
     // Starting XI changes after 10 league games (BBC Sport, 8 Nov). rest = the most any other club has made
     xiChanges:{ rows:[ ['Tottenham',28], ['Chelsea',24,true] ], rest:23, gaps:9 },
@@ -1100,20 +1459,62 @@ const SITE = {
      These two feed "Direction of travel". */
   XG: {
     matches: [
-      { code:'FUL', opp_elo:1807.5, hfa:38, opp:'Fulham', venue:'A', score:'3–2', res:'W', poss:38, xg:2.24, xga:1.33, shape:'3-4-3', back:'3' },
-      { code:'BHA', opp_elo:1868.0, hfa:36, opp:'Brighton', venue:'H', score:'4–3', res:'W', poss:26, xg:2.93, xga:1.41, shape:'3-4-3', back:'3' },
-      { code:'VAR', opp_elo:2040.0, hfa:39, opp:'Varsenal', venue:'A', score:'1–2', res:'L', poss:45, xg:0.39, xga:2.05, shape:'3-4-3', back:'3' },
-      { code:'HUL', opp_elo:1630.0, hfa:40, opp:'Hull City', venue:'H', score:'2–2', res:'D', poss:68, xg:0.91, xga:1.38, shape:'3-4-3', back:'3' },
-      { code:'BRE', opp_elo:1851.0, hfa:39, opp:'Brentford', venue:'A', score:'0–3', res:'L', poss:60, xg:0.83, xga:2.65, shape:'3-4-3', back:'3' },
+      { code:'FUL', opp_elo:1807.5, hfa:38, opp:'Fulham', venue:'A', score:'3–2', res:'W', poss:38, xg:2.17, xga:1.24, shape:'3-4-3', back:'3' },
+      { code:'BHA', opp_elo:1868.0, hfa:36, opp:'Brighton', venue:'H', score:'4–3', res:'W', poss:26, xg:3.22, xga:1.56, shape:'3-4-3', back:'3' },
+      { code:'VAR', opp_elo:2040.0, hfa:39, opp:'Varsenal', venue:'A', score:'1–2', res:'L', poss:45, xg:0.41, xga:1.91, shape:'3-4-3', back:'3' },
+      { code:'HUL', opp_elo:1630.0, hfa:40, opp:'Hull City', venue:'H', score:'2–2', res:'D', poss:68, xg:1.02, xga:1.81, shape:'3-4-3', back:'3' },
+      { code:'BRE', opp_elo:1851.0, hfa:39, opp:'Brentford', venue:'A', score:'0–3', res:'L', poss:60, xg:0.79, xga:2.18, shape:'3-4-3', back:'3' },
       { code:'BOU', opp_elo:1860.0, hfa:42, opp:'Bournemouth', venue:'H', score:'5–1', res:'W', poss:50, xg:1.10, xga:1.38, shape:'4-4-2', back:'4' },
       { code:'EVE', opp_elo:1823.0, hfa:38, opp:'Everton', venue:'A', score:'2–0', res:'W', poss:53, xg:1.47, xga:0.43, shape:'Hybrid', back:'3/4' },
-      { code:'TOT', opp_elo:1803.0, hfa:41, opp:'Tottenham', venue:'H', score:'0–2', res:'L', poss:31, xg:0.43, xga:0.74, shape:'4-4-2', back:'4' },
+      { code:'TOT', opp_elo:1803.0, hfa:41, opp:'Tottenham', venue:'H', score:'0–2', res:'L', poss:31, xg:0.47, xga:0.74, shape:'4-4-2', back:'4' },
       { code:'MUN', opp_elo:1852.0, hfa:45, opp:'Manchester United', venue:'H', score:'2–0', res:'W', poss:58, xg:3.01, xga:1.24, shape:'→ 4-2-3-1', back:'?', note:'United down to ten men from the 59th minute' },
-      { code:'SUN', opp_elo:1719.0, hfa:49, opp:'Sunderland', venue:'A', score:'0–1', res:'L', poss:69, xg:0.53, xga:2.55, shape:'4-3-3', back:'4' },
+      { code:'SUN', opp_elo:1719.0, hfa:49, opp:'Sunderland', venue:'A', score:'0–1', res:'L', poss:69, xg:0.66, xga:2.38, shape:'4-3-3', back:'4' },
+      { code:'LEE', opp_elo:1812.0, hfa:50, opp:'Leeds', venue:'H', score:'1–4', res:'L', poss:57, xg:0.56, xga:2.51, shape:'4-2-3-1', back:'4' },
     ],
-    xpts: [ ['OddAlerts',13.29], ['Kepler',13.1], ['The Fishy',12.5] ],
+    // expected points are worked out from each game's xG (see the engine)
+    // Goals conceded, league only, and the clubs that have conceded more (Opta / The Analyst, 21 Nov)
+    conceded:{ ga:20, worse:['Coventry (21)','Ipswich (22)','Crystal Palace (27)'] },
     possHigh: 55,
-    source:'xG and possession: CrunchClash (Opta-based match data). Expected points: OddAlerts, Kepler, The Fishy. Small differences from official totals because of rounding.',
+    source:'xG: RShiri/XEPL Premier League database (first five games model-estimated, last five provider xG), so every manager is measured the same way. Possession: CrunchClash. Expected points: OddAlerts, Kepler, The Fishy.',
+    // Every BlueCo manager with 9+ league games. xgd = xG difference per game, ppg = points per game
+    managers:[
+      { name:'Graham Potter', yrs:'2022–23', all:{ neg:8, bad:1, n:22, xgd:0.17, ppg:1.27 }, f10:{ n:10, xgd:-0.16, ppg:1.50 } },
+      { name:'Frank Lampard', yrs:'2023, interim', all:{ neg:6, bad:2, n:9, xgd:-0.59, ppg:0.56 }, f10:{ n:9, xgd:-0.59, ppg:0.56 } },
+      { name:'Mauricio Pochettino', yrs:'2023–24', all:{ neg:13, bad:3, n:38, xgd:0.46, ppg:1.66 }, f10:{ n:10, xgd:0.70, ppg:1.20 } },
+      { name:'Enzo Maresca', yrs:'2024–26', all:{ neg:23, bad:1, n:57, xgd:0.36, ppg:1.74 }, f10:{ n:10, xgd:0.28, ppg:1.80 } },
+      { name:'Liam Rosenior', yrs:'2026', all:{ neg:4, bad:1, n:13, xgd:0.59, ppg:1.31 }, f10:{ n:10, xgd:0.99, ppg:1.70 } },
+      { name:'Xabi Alonso', yrs:'2026–', me:true, all:{ neg:7, bad:3, n:11, xgd:-0.23, ppg:1.45 }, f10:{ n:10, xgd:-0.05, ppg:1.60 } },
+    ],
+    managersNote:'Premier League only, August 2022 to 21 November 2026. Tuchel (6 games under BlueCo) and caretakers Saltor and McFarlane left out.',
+    // Every league game since August 2022 with an xG difference of −1.00 or worse
+    badDays:[
+      ['2022-11-06','Graham Potter','Varsenal','H','0–1',0.21,2.05],
+      ['2023-01-05','Graham Potter','Manchester City','H','0–1',0.41,1.60],
+      ['2023-04-15','Frank Lampard','Brighton','H','1–2',0.39,2.47],
+      ['2023-05-02','Frank Lampard','Varsenal','A','1–3',0.93,1.94],
+      ['2023-05-25','Frank Lampard','Manchester United','A','1–4',1.52,4.81],
+      ['2023-11-25','Mauricio Pochettino','Newcastle','A','1–4',1.01,2.13],
+      ['2023-12-06','Mauricio Pochettino','Manchester United','A','1–2',1.94,3.91],
+      ['2023-12-30','Mauricio Pochettino','Luton Town','A','3–2',1.28,2.34],
+      ['2024-01-31','Mauricio Pochettino','Liverpool','A','1–4',0.53,3.35],
+      ['2024-04-23','Mauricio Pochettino','Varsenal','A','0–5',1.32,2.82],
+      ['2024-11-03','Enzo Maresca','Manchester United','A','1–1',0.92,1.96],
+      ['2025-01-25','Enzo Maresca','Manchester City','A','1–3',1.41,2.64],
+      ['2025-02-14','Enzo Maresca','Brighton','A','0–3',0.56,2.19],
+      ['2025-09-20','Enzo Maresca','Manchester United','A','1–2',0.47,1.52],
+      ['2025-12-03','Enzo Maresca','Leeds','A','1–3',0.88,1.95],
+      ['2025-12-20','Enzo Maresca','Newcastle','A','2–2',0.92,2.14],
+      ['2025-12-30','Enzo Maresca','Bournemouth','H','2–2',2.10,3.42],
+      ['2026-04-12','Liam Rosenior','Manchester City','H','0–3',0.84,2.10],
+      ['2026-04-21','Liam Rosenior','Brighton','A','0–3',0.39,2.24],
+      ['2026-09-06','Xabi Alonso','Varsenal','A','1–2',0.41,1.91],
+      ['2026-09-18','Xabi Alonso','Brentford','A','0–3',0.79,2.18],
+      ['2026-11-08','Xabi Alonso','Sunderland','A','0–1',0.66,2.38],
+      ['2026-11-21','Xabi Alonso','Leeds','H','1–4',0.56,2.51],
+    ],
+    // xG difference in every league game, per manager, oldest first
+    games:{"Graham Potter": [0.4, 1.38, -0.78, -0.53, 0.34, -0.95, -1.84, -0.89, 1.13, 0.1, -1.19, 1.8, 1.15, 0.42, 0.71, 0.14, 0.96, -0.39, 0.87, -0.99, 0.49, 1.3], "Frank Lampard": [0.39, -2.08, 0.77, -1.01, -0.07, -0.21, -0.08, -3.29, 0.31], "Mauricio Pochettino": [0.73, -0.15, 1.98, 1.6, 0.25, 0.14, 0.78, 1.15, 0.95, -0.42, 3.16, 0.29, -1.12, 1.03, -1.97, -0.16, 2.41, 0.45, 1.63, -1.06, 1.31, -2.82, 0.18, 0.82, -0.52, -0.31, 0.89, 2.04, 1.58, -0.82, 2.02, -1.5, 1.09, 0.46, 2.34, -0.37, 0.22, -0.84], "Enzo Maresca": [-0.2, 0.06, 1.82, -0.72, 1.43, 1.94, 0.63, -0.81, -0.31, -1.04, -0.51, 1.11, 0.49, 3.65, -0.52, 0.58, 0.33, -0.37, 0.12, 0.06, 1.43, 1.67, -1.23, 0.54, -1.63, 0.05, 1.73, 1.33, -0.22, 0.12, 0.08, 1.26, 0.35, 0.12, 2.14, -0.56, 0.87, -0.12, 0.83, 2.44, 0.96, 0.39, -1.05, -0.12, -0.95, 0.12, -0.37, 2.67, 3.19, 0.81, -0.23, -1.07, -0.75, 1.0, -1.22, -0.36, -1.32], "Liam Rosenior": [0.06, 0.26, 1.57, 2.17, 2.23, 1.3, -0.24, 1.94, 0.84, -0.22, -1.26, 0.89, -1.85], "Xabi Alonso": [0.93, 1.66, -1.5, -0.79, -1.39, -0.28, 1.04, -0.27, 1.77, -1.72,-1.95]},
+    thresholds:[1.0,1.2,1.3,1.5], threshold:1.3,
   },
 
   /* Direction of travel. Uses XG.matches above (score, xg, xga, opp_elo, hfa). */
@@ -1122,6 +1523,88 @@ const SITE = {
     BLEND: 0.3,                    // performance = 30% points + 70% xPts
     HALF_LIFE: { level:8, short:5, long:15 },
     source:'Ratings: ClubElo, matchday ratings from the clubelo.com/Chelsea calculation table. xG: CrunchClash (Opta-based). xPts: Poisson model from match xG. Expected points: 3 × win expectancy − 0.13.',
+  },
+
+  /* Since the takeover. One line per league season, as copied:
+     season, league, position, played, won, drawn, lost, goals for, goals against,
+     goal difference, clean sheets, points, points per game. Paste new rows freely;
+     update the current season's line after each game. TAKEOVER = first BlueCo season. */
+  BLUECO: {
+    TAKEOVER: '2022/23',
+    /* League games managed in each season: [surname, games] or [surname, games, 'c'] for a caretaker.
+       The current season's last manager stretches to the games played, so it never needs editing mid-season. */
+    MANAGERS: {
+      '2020/21': [['Lampard',19],['Tuchel',19]],
+      '2021/22': [['Tuchel',38]],
+      '2022/23': [['Tuchel',6],['Potter',22],['Saltor',1,'c'],['Lampard',9,'c']],
+      '2023/24': [['Pochettino',38]],
+      '2024/25': [['Maresca',38]],
+      '2025/26': [['Maresca',19],['McFarlane',2,'c'],['Rosenior',13],['McFarlane',4,'c']],
+      '2026/27': [['Alonso',11]],
+    },
+    RAW: `2026/27 (so far)	E0	8/20	11	5	1	5	20	20	0	2	16	1.45
+2025/26	E0	10/20	38	14	10	14	58	52	+6	9	52	1.37
+2024/25	E0	4/20	38	20	9	9	64	43	+21	11	69	1.82
+2023/24	E0	6/20	38	18	9	11	77	63	+14	8	63	1.66
+2022/23	E0	12/20	38	11	11	16	38	47	-9	10	44	1.16
+2021/22	E0	3/20	38	21	11	6	76	33	+43	16	74	1.95
+2020/21	E0	4/20	38	19	10	9	58	36	+22	18	67	1.76`,
+  },
+
+  /* What happened next. HOW TO UPDATE: open
+     https://fixtureshark.com/football/history/what-happened-next?league=E0&pos=5
+     set "After matches" to Chelsea's games played and "Position" to Chelsea's place,
+     select all the text on the page (Ctrl/Cmd+A), copy, and paste it between the
+     backticks below, replacing what is there. Everything else is read from the text. */
+  NEXT: {
+    source:'https://fixtureshark.com/football/history/what-happened-next?league=E0&pos=8',
+    LINE: 17,   // optional: points that split the chart. Leave it out to work it out from the data
+    RAW: `What happened next?
+League
+Premier League
+After matches
+11
+By
+Position
+Position (e.g. 1 or 18-20)
+8
+Premier League teams 8th after 11 matches: 2 of 31 (6%) won the league, 0 of 31 (0%) were relegated.
+
+In the table now: Chelsea (8th, 16 pts).
+
+Every team-season
+Season ↓	Team	After 11	Points then	Finished	Final points
+2025/26	Liverpool	8th	18	5th	60
+2024/25	Newcastle	8th	18	5th	66
+2023/24	Manchester United	8th	18	8th	60
+2022/23	Brighton	8th	15	6th	62
+2021/22	Wolves	8th	16	10th	51
+2020/21	Manchester City	8th	19	1st ★	86
+2019/20	Brighton	8th	15	15th	41
+2018/19	Watford	8th	19	11th	50
+2017/18	Brighton	8th	15	15th	40
+2016/17	Watford	8th	15	17th	40
+2015/16	Liverpool	8th	17	8th	60
+2014/15	Newcastle	8th	16	15th	39
+2013/14	Manchester City	8th	19	1st ★	86
+2012/13	Varsenal	8th	16	4th	73
+2011/12	Aston Villa	8th	15	16th	38
+2010/11	Sunderland	8th	15	10th	47
+2009/10	Sunderland	8th	17	13th	44
+2008/09	Fulham	8th	14	7th	53
+2007/08	Aston Villa	8th	18	6th	60
+2006/07	Wigan	8th	17	17th	38
+2005/06	Liverpool	8th	19	3rd	82
+2004/05	Newcastle	8th	16	14th	44
+2003/04	Liverpool	8th	17	4th	60
+2002/03	Blackburn	8th	18	6th	60
+2001/02	Tottenham	8th	17	9th	50
+2000/01	Chelsea	8th	16	6th	61
+1999/00	Everton	8th	17	13th	50
+1998/99	West Ham	8th	16	5th	57
+1997/98	Derby	8th	17	9th	55
+1996/97	Aston Villa	8th	15	5th	61
+1995/96	Leeds	8th	20	13th	43`,
   },
 
   /* Where this is heading. ppg = points per game for the rest of the season.
@@ -1189,13 +1672,13 @@ const SITE = {
   ],
 
   TICKER: [
-    { t:'SUNDERLAND 1–0 CHELSEA', c:'bad' },
-    { t:'LOST TO THE BOTTOM CLUB', c:'bad' },
-    { t:'COLWILL OFF AT HALF-TIME. CAICEDO AT CENTRE-BACK.', c:'bad' },
-    { t:'GILLETT AND HOPTON. HERE WE GO AGAIN.', c:'bad' },
-    { t:'CHELSEA 2–0 MAN UTD LAST WEEK', c:'good' },
-    { t:'OUT OF THE CARABAO CUP AT ANFIELD', c:'bad' },
-    { t:'SPURS WON AT THE BRIDGE. NOBODY HAS FORGOTTEN.', c:'bad' },
+    { t:'CHELSEA 1–4 LEEDS', c:'bad' },
+    { t:'LEEDS’ FIRST WIN AT THE BRIDGE SINCE 1999', c:'bad' },
+    { t:'LOST AT HOME TO SPURS. LOST AT HOME TO LEEDS.', c:'bad' },
+    { t:'0.56 xG. NOT ONE BIG CHANCE.', c:'bad' },
+    { t:'100TH HOME PREMIER LEAGUE DEFEAT', c:'bad' },
+    { t:'SACK ODDS: 66/1 TO 33/1 IN TWO WEEKS', c:'bad' },
+    { t:'SUNDERLAND 1–0 CHELSEA BEFORE THAT', c:'bad' },
     { t:'CLEARLAKE NOW IN FULL CONTROL', c:'' },
   ],
 
@@ -1438,6 +1921,108 @@ const SITE = {
     else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); grow(); } }, { threshold:.25 }).observe($('f10-list'));
   }
 
+  /* The BlueCo era in one line */
+  if (SITE.ERA && $('era-svg')) {
+    const E = SITE.ERA, G = E.games.map(([d,m,o,v,sc,xg,xa]) => { const [gf,ga] = sc.split(/[–-]/).map(Number); return { d, m, o, v, sc, xg, xa, gf, ga, x:xg - xa }; });
+    const N = G.length, Wn = E.window || 10;
+    const roll = G.map((g,i) => i < Wn - 1 ? null : G.slice(i - Wn + 1, i + 1).reduce((a,b) => a + b.x, 0) / Wn);
+    const pois = (l,k) => { let f = 1; for (let i = 2; i <= k; i++) f *= i; return Math.exp(-l) * Math.pow(l,k) / f; };
+    const xpts = (a,b) => { let w = 0, dr = 0; for (let i = 0; i < 10; i++) for (let j = 0; j < 10; j++) { const p = pois(a,i)*pois(b,j); if (i > j) w += p; else if (i === j) dr += p; } return 3*w + dr; };
+    G.forEach(g => { g.pts = g.gf > g.ga ? 3 : g.gf === g.ga ? 1 : 0; g.xp = xpts(g.xg, g.xa); });
+    const by = {}; G.forEach(g => (by[g.m] = by[g.m] || []).push(g));
+    const st = m => { const a = by[m] || [], n = a.length || 1, sm = f => a.reduce((t,g) => t + f(g), 0);
+      const oth = a.filter(g => !E.bigSeven.includes(g.o));
+      return { m, n:a.length, fin: sm(g => g.gf - g.xg)/n, luck: sm(g => g.pts - g.xp)/n, xp: sm(g => g.xp), pts: sm(g => g.pts), small: oth.length ? oth.reduce((t,g) => t + g.x, 0)/oth.length : 0, smallN: oth.length }; };
+    const MS = E.managers.map(st), me = MS.find(r => r.m === E.me);
+    const sg = (n,d=2) => { const r = +n.toFixed(d); return (r > 0 ? '+' : r < 0 ? '−' : '') + Math.abs(r).toFixed(d); };
+    const rankList = (key, title, flip) => { const rows = [...MS].sort((a,b) => b[key] - a[key]), mx = Math.max(...rows.map(r => Math.abs(r[key]))) || 1;
+      return `<ol class="era-rank">${rows.map(r => { const v = r[key], w = (Math.abs(v)/mx*50).toFixed(1);
+        return `<li class="${r.m === E.me ? 'me' : ''}${flip ? ' flip' : ''}"><span>${esc(r.m)}</span><span class="tr"><i class="${v >= 0 ? 'p' : 'n'}" style="width:${w}%"></i></span><span class="v">${sg(v)}</span></li>`; }).join('')}</ol>`; };
+    const finRank = [...MS].sort((a,b) => b.fin - a.fin).indexOf(me) + 1, second = [...MS].sort((a,b) => b.fin - a.fin).find(r => r !== me);
+    $('era-fin').innerHTML = `<h3>Finishing is papering over the cracks</h3>
+      <div class="big-n">${sg(me.fin)}<small>goals a game above xG</small></div>
+      <p class="k">${finRank === 1 ? `<b>No BlueCo manager comes close.</b> Next best: ${esc(second.m)} on ${sg(second.fin)}.` : ''} Finish like their chances say and Chelsea would have <b>${Math.round(me.xp)} points, not ${me.pts}</b>. That kind of finishing rarely lasts.</p>
+      ${rankList('fin')}`;
+    const luckRank = [...MS].sort((a,b) => b.luck - a.luck).indexOf(me) + 1, unluck = [...MS].sort((a,b) => a.luck - b.luck)[0];
+    $('era-luck').innerHTML = `<h3>The luckiest manager BlueCo has had</h3>
+      <p class="k">Points a game above what the chances deserved. ${luckRank === 1 ? '<b>Alonso tops it.</b>' : ''} ${(() => { const r = MS.find(x => x.m === 'Rosenior'); return r && r.luck < 0 ? `Rosenior lost ${Math.abs(r.luck).toFixed(2)} a game to bad luck, and he did not last.` : ''; })()}</p>
+      ${rankList('luck')}`;
+    const smallBetter = MS.filter(r => r !== me && r.small > me.small).length;
+    $('era-small').innerHTML = `<h3>Can't out-create the small teams</h3>
+      <p class="k">xG difference against everyone outside the big seven. <b>${sg(me.small)}</b> for Alonso. ${smallBetter >= MS.length - 2 ? 'Only Lampard’s interim spell was worse.' : ''} Sunderland, Brentford and Hull have made as many chances as Chelsea.</p>
+      ${rankList('small')}`;
+    // seasons
+    const seasonOf = d => { const y = +d.slice(0,4), mo = +d.slice(5,7); const s0 = mo >= 7 ? y : y - 1; return `${s0}-${String((s0+1)%100).padStart(2,'0')}`; };
+    const SE = {}; G.forEach(g => { const k = seasonOf(g.d); (SE[k] = SE[k] || []).push(g); });
+    const cur = seasonOf(G[N-1].d);
+    $('era-seasons').innerHTML = Object.entries(SE).map(([k,a]) => { const v = a.reduce((t,g) => t + g.x, 0)/a.length;
+      return `<span class="${v < 0 ? 'neg' : ''}${k === cur ? ' me' : ''}">${k.replace('-', '/')} <b>${sg(v)}</b>${E.seasonEnd && E.seasonEnd[k] ? `<small>finished ${esc(E.seasonEnd[k])}</small>` : k === cur ? `<small>so far</small>` : ''}</span>`; }).join('');
+    $('era-src').textContent = E.source || '';
+    // chart
+    const box = $('era-svg'), tip = $('era-tip'); let went = false;
+    const draw = () => {
+      const W = Math.max(300, Math.round(box.getBoundingClientRect().width)), small = W < 560;
+      const H = Math.round(W * (small ? .75 : .38)), m = { l:36, r: small ? 10 : 16, t:26, b:26 };
+      const vals = roll.filter(v => v != null), lo = Math.min(-0.6, Math.min(...vals) - .1), hi = Math.max(1.2, Math.max(...vals) + .1);
+      const X = i => m.l + i/(N-1)*(W-m.l-m.r), Y = v => m.t + (hi - v)/(hi - lo)*(H-m.t-m.b);
+      let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Chelsea ten-game rolling xG difference since August 2022, by manager">`;
+      // manager bands
+      let start = 0; const bands = [];
+      for (let i = 1; i <= N; i++) if (i === N || G[i].m !== G[start].m) { bands.push([start, i-1, G[start].m]); start = i; }
+      bands.forEach(([a,b,mg],k) => { const x1 = X(Math.max(a - .5, 0)), x2 = X(Math.min(b + .5, N-1)), main = E.managers.includes(mg), isMe = mg === E.me;
+        g += `<rect x="${x1}" y="${m.t}" width="${x2-x1}" height="${H-m.t-m.b}" fill="${isMe ? 'rgba(255,75,62,.12)' : k % 2 ? 'rgba(255,255,255,.035)' : 'rgba(255,255,255,0)'}"/>`;
+        if (main && (x2 - x1) > (small ? 30 : 44)) g += `<text class="bl${isMe ? ' me' : ''}" x="${(x1+x2)/2}" y="${m.t-8}" text-anchor="middle">${esc(small && mg.length > 7 ? mg.slice(0,5) + '.' : mg)}</text>`; });
+      for (let v = Math.ceil(lo*2)/2; v <= hi; v += .5) g += `<line class="gridl" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="tick" x="${m.l-6}" y="${Y(v)+4}" text-anchor="end">${v > 0 ? '+' : ''}${v.toFixed(1)}</text>`;
+      // area fills
+      const pts = roll.map((v,i) => v == null ? null : [X(i), Y(v)]).filter(Boolean), y0 = Y(0), first = Wn - 1;
+      const area = `M${pts[0][0]} ${y0} ` + pts.map(p => `L${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(' ') + ` L${pts[pts.length-1][0]} ${y0} Z`;
+      g += `<clipPath id="eraAbove"><rect x="0" y="0" width="${W}" height="${y0}"/></clipPath><clipPath id="eraBelow"><rect x="0" y="${y0}" width="${W}" height="${H}"/></clipPath>`;
+      g += `<path class="pos" clip-path="url(#eraAbove)" d="${area}"/><path class="neg" clip-path="url(#eraBelow)" d="${area}"/>`;
+      g += `<line class="zero" x1="${m.l}" x2="${W-m.r}" y1="${y0}" y2="${y0}"/>`;
+      // line, with Alonso segment on top
+      const meStart = G.findIndex(x => x.m === E.me), seg = (a,b) => { let L = 0, d = ''; for (let i = a; i <= b; i++) { if (roll[i] == null) continue; const x = X(i), y = Y(roll[i]); if (d) { const px = X(i-1), py = Y(roll[i-1]); L += Math.hypot(x-px, y-py); } d += (d ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1) + ' '; } return [d, L]; };
+      const [dAll, lAll] = seg(first, N-1); g += `<path class="ln" style="--len:${lAll.toFixed(0)}" d="${dAll}"/>`;
+      if (meStart > 0) { const [dMe, lMe] = seg(Math.max(meStart - 1, first), N-1); g += `<path class="ln me" style="--len:${lMe.toFixed(0)}" d="${dMe}"/>`; }
+      // markers: lowest point and now
+      let minI = first; roll.forEach((v,i) => { if (v != null && v < roll[minI]) minI = i; });
+      const nowI = N-1;
+      g += `<circle class="mk" cx="${X(minI)}" cy="${Y(roll[minI])}" r="5" fill="var(--amber)"/>`;
+      g += `<text class="ann" x="${X(minI)+8}" y="${Y(roll[minI])+16}">Rock bottom, ${new Date(G[minI].d+'T12:00').toLocaleDateString('en-GB',{month:'short',year:'numeric'})}: ${sg(roll[minI])}</text>`;
+      const below = vals.filter(v => v < roll[nowI]).length;
+      g += `<circle class="mk" cx="${X(nowI)}" cy="${Y(roll[nowI])}" r="6" fill="var(--red)"/>`;
+      g += `<text class="ann" x="${X(nowI)}" y="${H-m.b-8}" text-anchor="end">Now: ${sg(roll[nowI])}${small ? '' : `. Lower than ${Math.round((1 - below/vals.length)*100)}% of the era`}</text>`;
+      g += `<rect class="hit" x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}"/><line class="cur" id="era-cur" x1="0" x2="0" y1="${m.t}" y2="${H-m.b}" style="display:none"/>`;
+      box.innerHTML = g + '</svg>';
+      if (went) box.classList.add('go');
+      const svg = box.querySelector('svg'), hit = svg.querySelector('.hit'), cl = svg.querySelector('#era-cur');
+      const move = ev => { const r = svg.getBoundingClientRect(), px = ((ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left) * (W / r.width);
+        let i = Math.round((px - m.l)/(W-m.l-m.r)*(N-1)); i = Math.max(first, Math.min(N-1, i)); const gm = G[i];
+        cl.setAttribute('x1', X(i)); cl.setAttribute('x2', X(i)); cl.style.display = '';
+        tip.innerHTML = `<b>${esc(gm.m)} · ${esc(gm.o)} (${gm.v}) ${esc(gm.sc)}</b>${new Date(gm.d+'T12:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})} · game ${sg(gm.x)} · last ten ${sg(roll[i])}`;
+        const pb = box.parentElement.getBoundingClientRect(); tip.style.left = Math.min(Math.max(r.left - pb.left + X(i)*(r.width/W), 120), pb.width - 120) + 'px'; tip.style.top = (r.top - pb.top + Y(roll[i])*(r.height/H)) + 'px'; tip.hidden = false; };
+      hit.addEventListener('mousemove', move); hit.addEventListener('touchstart', move, { passive:true }); hit.addEventListener('touchmove', move, { passive:true });
+      hit.addEventListener('mouseleave', () => { tip.hidden = true; cl.style.display = 'none'; });
+    };
+    draw();
+    const go = () => { went = true; box.classList.add('go'); };
+    if (reduce || !('IntersectionObserver' in window)) go();
+    else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); go(); } }, { threshold:.3 }).observe(box);
+    let ert; addEventListener('resize', () => { clearTimeout(ert); ert = setTimeout(draw, 150); });
+  }
+
+  /* Madrid warned us */
+  if (SITE.DEJA && $('deja-list')) {
+    const D = SITE.DEJA, both = D.rows.filter(r => r.both).length;
+    $('deja-score').innerHTML = `<b>${both}/${D.rows.length}</b><span>of the complaints Madrid fans made about Alonso are already being made at Chelsea. <strong>After eleven games.</strong></span>`;
+    $('deja-list').innerHTML = D.rows.map(r => `<li class="${r.both ? 'both' : 'notyet'}">
+      <span class="c"><i>${r.both ? 'Both' : 'Not yet'}</i>${esc(r.c)}</span>
+      <span class="m">${esc(r.m)}${r.md ? `<small>${esc(r.md)}</small>` : ''}</span>
+      <span class="ch">${esc(r.ch)}${r.chd ? `<small>${esc(r.chd)}</small>` : ''}</span></li>`).join('');
+    $('deja-watch').innerHTML = (D.watch || []).map(([d,t]) => `<li><b>${esc(d)}</b><span>${esc(t)}</span></li>`).join('');
+    $('deja-fair').innerHTML = D.fair || '';
+    $('deja-src').textContent = D.source || '';
+  }
+
   /* The chameleon */
   if (SITE.CHAMELEON && SITE.XG && $('cham-svg')) {
     const C = SITE.CHAMELEON, M = SITE.XG.matches;
@@ -1518,31 +2103,40 @@ const SITE = {
     const pts = M.reduce((a,m) => a + (m.res==='W' ? 3 : m.res==='D' ? 1 : 0), 0);
     const gf = M.reduce((a,m) => a + parseInt(m.score), 0), ga = M.reduce((a,m) => a + parseInt(m.score.split(/[–-]/)[1]), 0);
     const xg = sum('xg'), xga = sum('xga'), negN = M.filter(m => m.xg < m.xga).length;
-    const xp = X.xpts.reduce((a,x) => a + x[1], 0) / X.xpts.length;
+    const poisX = (l,k) => { let f = 1; for (let i = 2; i <= k; i++) f *= i; return Math.exp(-l) * Math.pow(l,k) / f; };
+    const xp = M.reduce((t,m) => { let w = 0, d = 0; for (let i = 0; i < 10; i++) for (let j = 0; j < 10; j++) { const q = poisX(m.xg,i)*poisX(m.xga,j); if (i > j) w += q; else if (i === j) d += q; } return t + 3*w + d; }, 0);
     const hiM = M.filter(m => m.poss > X.possHigh);
     const hiPts = hiM.reduce((a,m) => a + (m.res==='W' ? 3 : m.res==='D' ? 1 : 0), 0);
     const f1 = n => n.toFixed(1), sg = n => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n).toFixed(1);
+    const batN = M.filter(m => m.xg - m.xga <= -(X.threshold||1.5) + 1e-9).length;
+    const marG = (X.games && X.games['Enzo Maresca']) || [], marN = marG.filter(x => x <= -(X.threshold||1.5) + 1e-9).length;
+    const marBat = marG.length ? `Maresca managed ${['none','one','two','three','four','five','six','seven'][marN] || marN} in ${marG.length}.` : '';
+    const CQ = X.conceded;
     $('xg-facts').innerHTML = [
-      { v:`${f1(xp)}<small>vs ${pts}</small>`, k:`expected points. The models say Chelsea have <b>about ${Math.round(pts - xp)} points more</b> than their chances deserve.`, hot:true },
-      { v:`${sg(xg - xga)}<small>vs +${gf - ga}</small>`, k:`expected goal difference. The real one is positive. <b>The chances are not.</b>`, hot: xg < xga },
+      CQ && { v:`${CQ.ga}`, k:`league goals conceded in ${M.length} games. <b>Only ${CQ.worse.length} clubs have let in more:</b> ${esc(CQ.worse.join(', '))}.`, hot:true },
+      { v:`${f1(xp)}<small>vs ${pts}</small>`, k:`expected points from the chances in each game. Chelsea have <b>about ${Math.round(pts - xp)} points more</b> than they deserve.`, hot:true },
+      { v:`${sg(xg - xga)}<small>vs ${gf - ga > 0 ? '+' : gf - ga < 0 ? '−' : ''}${Math.abs(gf - ga)}</small>`, k: gf - ga > 0 ? `expected goal difference. The real one is positive. <b>The chances are not.</b>` : `expected goal difference, ${M.length} games in. <b>The real goal difference has now caught up:</b> ${gf}–${ga}.`, hot: xg < xga },
+      { v:`${batN}!`, k:`games where Chelsea were <b>battered</b>: out-created by ${(X.threshold||1.5).toFixed(1)} xG or more. ${batN} of ${M.length}. ${marBat}`, hot:true },
       { v:`${negN}/${M.length}`, k:`games where the opponent created more. Including five of the last seven.`, hot:true },
       { v:`${hiPts}/${hiM.length*3}`, k:`points from the ${hiM.length} games with more than ${X.possHigh}% of the ball. <b>More of the ball, fewer of the chances.</b>` },
-    ].map(f => `<div class="num${f.hot ? ' hot' : ''}"><div class="v">${f.v}</div><div class="k">${f.k}</div></div>`).join('');
+    ].filter(Boolean).map(f => `<div class="num${f.hot ? ' hot' : ''}"><div class="v">${f.v}</div><div class="k">${f.k}</div></div>`).join('');
     const max = Math.max(...M.map(m => Math.max(m.xg, m.xga)));
     const plot = $('xg-plot');
-    plot.innerHTML = M.map(m => `<div class="xg-col ${m.res}${m.xg < m.xga ? ' neg' : ''}${m.poss > X.possHigh ? ' hi' : ''}" data-i="${m.i}" title="${esc(m.opp)} (${m.venue}) ${m.score} · ${m.poss}% possession · xG ${m.xg.toFixed(2)}–${m.xga.toFixed(2)}${m.note ? ' · ' + esc(m.note) : ''}">
+    plot.innerHTML = M.map(m => `<div class="xg-col ${m.res}${m.xg < m.xga ? ' neg' : ''}${m.poss > X.possHigh ? ' hi' : ''}${m.xg - m.xga <= -(X.threshold||1.5) + 1e-9 ? ' bat' : ''}" data-i="${m.i}" title="${esc(m.opp)} (${m.venue}) ${m.score} · ${m.poss}% possession · xG ${m.xg.toFixed(2)}–${m.xga.toFixed(2)}${m.note ? ' · ' + esc(m.note) : ''}">
+        <span class="xg-bang" aria-hidden="true">${m.xg - m.xga <= -(X.threshold||1.5) + 1e-9 ? '!' : ''}</span>
         <span class="xg-score">${esc(m.score)}</span>
         <span class="xg-v">${m.xg.toFixed(1)}</span>
         <div class="xg-up"><i data-h="${(m.xg/max*100).toFixed(1)}"></i></div>
         <div class="xg-dn"><i data-h="${(m.xga/max*100).toFixed(1)}"></i></div>
         <span class="xg-v">${m.xga.toFixed(1)}</span>
+        <span class="xg-d ${m.xg >= m.xga ? 'pos' : 'neg'}">${m.xg >= m.xga ? '+' : '−'}${Math.abs(m.xg - m.xga).toFixed(1)}</span>
         <span class="xg-opp">${esc(m.code)}</span>
         <span class="xg-poss">${m.poss}%</span></div>`).join('');
     const late = M.slice(-7).filter(m => m.xg < m.xga).length;
     $('xg-facts').innerHTML = $('xg-facts').innerHTML.replace('five of the last seven', `${['none','one','two','three','four','five','six','seven'][late]} of the last seven`);
     const hiXg = hiM.reduce((a,m) => a + m.xg, 0), hiXga = hiM.reduce((a,m) => a + m.xga, 0);
     const calls = {
-      date: `Five wins, but the opponent made the better chances in <b>${negN} of ${M.length}</b> games. The 5–1 over Bournemouth came from 1.1 xG.`,
+      date: `<span style="color:var(--red);font-weight:900">!</span> = out-created by ${(X.threshold||1.5).toFixed(1)} xG or more. <b>${batN} of ${M.length}</b> already: ${M.filter(m => m.xg - m.xga <= -(X.threshold||1.5) + 1e-9).map(m => esc(m.opp) + ' ' + esc(m.score)).join(', ')}. ${marBat} And the opponent made the better chances in <b>${negN} of ${M.length}</b>.`,
       poss: `With more than ${X.possHigh}% of the ball: <b>${hiPts} points from ${hiM.length*3}</b>, and ${hiXg.toFixed(1)} xG against ${hiXga.toFixed(1)}. Sunderland had 31% of it and the best chances.`,
     };
     const setSort = s => {
@@ -1555,6 +2149,65 @@ const SITE = {
     document.querySelectorAll('#xg-sort button').forEach(b => b.addEventListener('click', () => setSort(b.dataset.s)));
     setSort('date');
     $('xg-src').textContent = X.source || '';
+    if (X.managers && $('mgr-rows')) {
+      let view = 'all', mgrShown = false;
+      const sg2 = n => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n).toFixed(2);
+      const drawMgr = () => {
+        document.querySelectorAll('#mgr-tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.v === view));
+        const rows = X.managers.map(m => ({ ...m, v:m[view] })).sort((a,b) => b.v.xgd - a.v.xgd);
+        const mx = Math.max(...rows.map(r => Math.abs(r.v.xgd))) || 1;
+        $('mgr-rows').innerHTML = rows.map(r => { const w = (Math.abs(r.v.xgd)/mx*100).toFixed(1), neg = r.v.xgd < 0;
+          return `<div class="mgr-row${r.me ? ' me' : ''}"><span class="nm">${esc(r.name)}<small>${esc(r.yrs)} · ${r.v.n} games</small></span>
+            <span class="l">${neg ? `<b>${sg2(r.v.xgd)}</b><i data-w="${w}"></i>` : ''}</span>
+            <span class="r">${neg ? '' : `<i data-w="${w}"></i><b>${sg2(r.v.xgd)}</b>`}</span>
+            <span class="ppg"><b>${r.v.ppg.toFixed(2)}</b>pts/game</span></div>`; }).join('');
+        const me = rows.find(r => r.me), rank = rows.indexOf(me) + 1, below = rows.filter(r => !r.me && r.v.xgd < 0);
+        const best = rows[0];
+        $('mgr-call').innerHTML = view === 'all'
+          ? `<b>${rank}th of ${rows.length}.</b> ${below.length ? `Only ${esc(below.map(r => r.name.split(' ').pop() + (r.yrs.includes('interim') ? '’s interim spell' : '')).join(' and '))} ended up worse.` : ''} Every other permanent BlueCo manager created more than he conceded. Even Potter.`
+          : `<b>${rank}th of ${rows.length}</b> over the first ten. ${esc(best.name.split(' ').pop())}'s Chelsea were <b>${(best.v.xgd - me.v.xgd).toFixed(1)} xG a game better</b> at the same stage, ${best.v.ppg > me.v.ppg ? 'and took more points too' : 'but took fewer points'}. Potter was worse. So was Lampard.`;
+        if (mgrShown) requestAnimationFrame(() => requestAnimationFrame(growM));
+      };
+      function growM() { mgrShown = true; document.querySelectorAll('#mgr-rows i').forEach((b,k) => { b.style.transitionDelay = reduce ? '0s' : (k*.05)+'s'; b.style.width = b.dataset.w + '%'; }); }
+      document.querySelectorAll('#mgr-tabs button').forEach(b => b.addEventListener('click', () => { view = b.dataset.v; drawMgr(); }));
+      drawMgr();
+      $('mgr-note').textContent = X.managersNote || '';
+      if (X.badDays && X.games && $('bad-rows')) {
+        let T = X.threshold || 1.5, shownB = false;
+        const fmtT = t => '−' + t.toFixed(1);
+        const words = ['None','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'];
+        $('bad-tabs').innerHTML = X.thresholds.map(t => `<button type="button" role="tab" data-t="${t}">${fmtT(t)}</button>`).join('');
+        const drawB = () => {
+          document.querySelectorAll('#bad-tabs button').forEach(b => b.setAttribute('aria-selected', +b.dataset.t === T));
+          const hit = x => x <= -T + 1e-9;
+          const rows = X.managers.map(m => { const g = X.games[m.name] || []; const bad = g.filter(hit).length; return { ...m, n:g.length, bad, rate:bad/g.length, negp:g.filter(x => x < 0).length/g.length }; })
+            .sort((a,b) => b.rate - a.rate || b.bad - a.bad);
+          const total = rows.reduce((a,r) => a + r.bad, 0), me = rows.find(r => r.me), rk = rows.indexOf(me) + 1, mar = rows.find(r => r.name.includes('Maresca'));
+          $('bad-sub').textContent = `League games where the opponent out-created Chelsea by ${T.toFixed(1)} xG or more. ${words[total] || total} since BlueCo took over. Alonso already has ${(words[me.bad] || me.bad).toLowerCase()}.`;
+          const mx = Math.max(...rows.map(r => r.rate)) || 1;
+          $('bad-rows').innerHTML = rows.map(r => `<div class="bad-row${r.me ? ' me' : ''}"><span class="nm">${esc(r.name)}<small>${r.n} games</small></span>
+            <span class="dots">${'<i></i>'.repeat(r.bad)}<em>${r.bad}</em></span>
+            <span class="rate"><span class="tr"><i data-w="${(r.rate/mx*100).toFixed(1)}"></i></span><b>${(r.rate*100).toFixed((r.rate*1000) % 10 ? 1 : 0)}%</b></span>
+            <span class="neg">${Math.round(r.negp*100)}%<small>out-created</small></span></div>`).join('');
+          const share = Math.round(me.rate*100), lead = rows[0], second = rows[1];
+          $('bad-call').innerHTML = rk === 1
+            ? `<b>Worst of every BlueCo manager.</b> Battered in ${me.bad} of ${me.n} games, ${share}%. ${esc(second.name.split(' ').pop())} ${second.name.includes('Lampard') ? 'in his interim spell ' : ''}is next on ${Math.round(second.rate*100)}%. Maresca: ${mar.bad} in ${mar.n}.`
+            : `<b>${rk === 2 ? 'Second worst' : ordM(rk)} of ${rows.length}.</b> Battered in ${me.bad} of ${me.n} games, ${share}%. Only ${esc(lead.name.split(' ').pop())}${lead.name.includes('Lampard') ? '’s nine-game interim spell' : ''} was worse. Maresca: ${mar.bad} in ${mar.n}.`;
+          const list = X.badDays.filter(r => hit(r[5] - r[6]));
+          $('bad-sum').textContent = `All ${list.length} games at ${fmtT(T)} or worse`;
+          $('bad-list').innerHTML = list.map(([d,mg,o,v,sc,a,b]) => `<li class="${mg.includes('Alonso') ? 'me' : ''}"><small>${new Date(d+'T12:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</small><span>${esc(mg.split(' ').pop())} · ${esc(o)} (${v}) ${esc(sc)}</span><b>−${(b-a).toFixed(2)}</b></li>`).join('');
+          if (shownB) requestAnimationFrame(() => requestAnimationFrame(growB));
+        };
+        const ordM = n => n + ({1:'st',2:'nd',3:'rd'}[n] || 'th');
+        function growB() { shownB = true; document.querySelectorAll('#bad-rows .tr i').forEach((b,k) => { b.style.transitionDelay = reduce ? '0s' : (k*.06)+'s'; b.style.width = b.dataset.w + '%'; }); }
+        document.querySelectorAll('#bad-tabs button').forEach(b => b.addEventListener('click', () => { T = +b.dataset.t; drawB(); }));
+        drawB();
+        if (reduce || !('IntersectionObserver' in window)) growB();
+        else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); growB(); } }, { threshold:.3 }).observe($('bad-rows'));
+      }
+      if (reduce || !('IntersectionObserver' in window)) growM();
+      else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); growM(); } }, { threshold:.3 }).observe($('mgr-rows'));
+    }
     const growX = () => plot.querySelectorAll('i[data-h]').forEach((b,k) => { b.style.transitionDelay = reduce ? '0s' : (k*.03)+'s'; b.style.height = b.dataset.h + '%'; });
     if (reduce || !('IntersectionObserver' in window)) growX();
     else new IntersectionObserver((e,o) => { if (e[0].isIntersecting) { o.disconnect(); growX(); } }, { threshold:.3 }).observe(plot);
@@ -1657,7 +2310,9 @@ const SITE = {
       const peak = S.reduce((a,p) => p.z > a.z ? p : a), low = S.reduce((a,p) => p.z < a.z ? p : a);
       let since = n; while (since > 0 && Math.abs(S[since-1].z) < 1) since--; since += 1;
       $('dir-call').innerHTML = focus === 'perf'
-        ? `Performance peaked after <b>${esc(G[peak.t-1].opp)}</b>${peak.z >= 1 ? ', briefly leaning positive,' : ''} and has stayed in the middle band since game ${since}, ending on the ${last.z < 0 ? 'negative' : 'positive'} side. ${last.z < 0 ? '<b>No sign yet of the lift a new manager is supposed to bring.</b>' : ''}`
+        ? (Math.abs(last.z) >= 1
+          ? `Performance peaked after <b>${esc(G[peak.t-1].opp)}</b>${peak.z >= 1 ? ', briefly leaning positive' : ''}. After <b>${esc(G[n-1].opp)}</b> it has left the middle band and is now <b>${last.z < 0 ? 'leaning negative' : 'leaning positive'}</b>. ${last.z < 0 ? '<b>The wrong way, and no sign of the lift a new manager is supposed to bring.</b>' : ''}`
+          : `Performance peaked after <b>${esc(G[peak.t-1].opp)}</b>${peak.z >= 1 ? ', briefly leaning positive,' : ''} and has stayed in the middle band since game ${since}, ending on the ${last.z < 0 ? 'negative' : 'positive'} side. ${last.z < 0 ? '<b>No sign yet of the lift a new manager is supposed to bring.</b>' : ''}`)
         : `Results swing harder: up after <b>${esc(G[peak.t-1].opp)}</b>, down after <b>${esc(G[low.t-1].opp)}</b>. Wins in games Chelsea were expected to win would move this line up fastest.`;
     };
     document.querySelectorAll('#dir-tabs button').forEach(b => b.addEventListener('click', () => {
@@ -1868,11 +2523,197 @@ const SITE = {
     `<li class="stone${g.live?' live':''}"><div><div class="name">${esc(g.name)}</div><div class="role">${esc(g.role)}</div></div><div><div class="dur">${esc(g.dur)}</div><div class="how">${esc(g.how)}</div></div></li>`).join('');
 
   /* Ticker */
+  /* Since the takeover */
+  if (SITE.BLUECO && SITE.BLUECO.RAW && $('bc-chart')) {
+    const S = [];
+    SITE.BLUECO.RAW.split(/\r?\n/).forEach(line => {
+      const m = line.trim().match(/^(\d{4}\/\d{2})(.*)$/); if (!m) return;
+      const live = /so far|\*/i.test(m[2]);
+      const pos = (m[2].match(/(\d+)\s*\/\s*\d+/) || [])[1];
+      const nums = m[2].replace(/\d+\s*\/\s*\d+/, ' ').replace(/\b[A-Z]{1,2}\d\b/, ' ').match(/[+-]?\d+(?:\.\d+)?/g) || [];
+      if (nums.length < 9) return;
+      const [P,W,D,L,GF,GA,GD,CS,Pts] = nums.map(Number);
+      S.push({ season:m[1], live, pos: pos ? +pos : null, P, W, D, L, GF, GA, CS, Pts, gf:GF/P, ga:GA/P, cs:CS/P, ppg:Pts/P });
+    });
+    S.sort((a,b) => a.season.localeCompare(b.season));
+    if (S.length >= 2) {
+      const T = SITE.BLUECO.TAKEOVER, pre = S.filter(r => r.season < T), post = S.filter(r => r.season >= T && !r.live), now = S.find(r => r.live);
+      const agg = (a,k) => { const P = a.reduce((s,r) => s + r.P, 0); return P ? a.reduce((s,r) => s + r[k], 0)/P : NaN; };
+      const f2 = v => isFinite(v) ? v.toFixed(2) : '–', pc = v => isFinite(v) ? Math.round(v*100) + '%' : '–';
+      const cell = (v, lab, col) => `<span${col ? ` style="color:${col}"` : ''}>${v}<small>${lab}</small></span>`;
+      const yrs = a => a.length ? `${a[0].season.slice(0,4)}–${a[a.length-1].season.slice(-2)}` : '';
+      $('bc-nums').innerHTML = [
+        { v:[cell(f2(agg(pre,'GA')),'Before','var(--green)'), '<i>→</i>', cell(f2(agg(post,'GA')),'BlueCo','var(--amber)')].concat(now ? ['<i>→</i>', cell(f2(now.ga),'Now','var(--red)')] : []).join(''), k:'<b>Goals conceded per game.</b> The clearest change since the takeover.' },
+        { v:[cell(pc(agg(pre,'CS')),'Before','var(--green)'), '<i>→</i>', cell(pc(agg(post,'CS')),'BlueCo','var(--amber)')].concat(now ? ['<i>→</i>', cell(pc(now.cs),'Now','var(--red)')] : []).join(''), k:'<b>Clean sheets,</b> share of league games.' },
+        { v:[cell(f2(agg(pre,'GF')),'Before',''), '<i>→</i>', cell(f2(agg(post,'GF')),'BlueCo','')].concat(now ? ['<i>→</i>', cell(f2(now.gf),'Now','')] : []).join(''), k:`<b>Goals scored per game.</b> Roughly where it was. Before = ${yrs(pre)}, BlueCo = ${yrs(post)}.` },
+      ].map(f => `<div class="num"><div class="v">${f.v}</div><div class="k">${f.k}</div></div>`).join('');
+      const gaUp = (agg(post,'GA') - agg(pre,'GA'))/agg(pre,'GA');
+      $('bc-call').innerHTML = `Before the takeover Chelsea conceded <b>${f2(agg(pre,'GA'))}</b> a game. Under BlueCo it is <b>${f2(agg(post,'GA'))}</b>, about ${Math.round(gaUp*100)}% more${now ? `, and <b>${f2(now.ga)}</b> so far this season` : ''}. Scoring has stayed between ${f2(Math.min(...post.map(r => r.gf)))} and ${f2(Math.max(...post.map(r => r.gf)))} a game. ${pre.length < 3 ? `The "before" years are only ${pre.length} seasons, one of them straight after winning the Champions League, so the gap is a little flattered.` : ''}`;
+
+      const drawBC = () => {
+        const box = $('bc-chart'), tip = $('bc-tip'), W = Math.max(300, Math.round(box.getBoundingClientRect().width)), small = W < 560;
+        const MG = SITE.BLUECO.MANAGERS || {}, hasMg = Object.keys(MG).length > 0;
+        const H = Math.round(W*(small ? .82 : .42)) + (hasMg ? 30 : 0), m = { l: small ? 30 : 40, r:8, t:34, b: (small ? 40 : 44) + (hasMg ? 30 : 0) };
+        const yMax = Math.max(2.25, Math.ceil(Math.max(...S.map(r => Math.max(r.gf, r.ga)))*4)/4 + .25);
+        const n = S.length, slot = (W - m.l - m.r)/n, bw = Math.min(34, slot*.32), gap = small ? 2 : 4;
+        const X = i => m.l + slot*(i + .5), Y = v => m.t + (1 - v/yMax)*(H - m.t - m.b);
+        let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Goals scored and conceded per game by season">`;
+        for (let v = 0; v <= yMax + 1e-9; v += .5) g += `<line x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="${v === 0 ? 'rgba(255,255,255,.35)' : 'rgba(255,255,255,.07)'}"/><text class="ax" x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end">${v.toFixed(1)}</text>`;
+        const ti = S.findIndex(r => r.season >= T);
+        if (ti > 0) {
+          const tx = m.l + slot*ti;
+          g += `<rect x="${tx}" y="${m.t}" width="${W - m.r - tx}" height="${H - m.t - m.b}" fill="rgba(255,255,255,.03)"/>`;
+          g += `<line x1="${tx}" x2="${tx}" y1="${m.t - 22}" y2="${H - m.b}" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="5 4"/>`;
+          g += `<text class="tk" x="${tx + 6}" y="${m.t - 12}" fill="var(--amber)">BlueCo takeover${small ? '' : ', 30 May 2022'} →</text>`;
+        }
+        const bar = (x, v, col, live, i, k) => {
+          const y = Y(v), h = Y(0) - y;
+          return `<rect class="bar" data-i="${i}" data-k="${k}" x="${x}" y="${y}" width="${bw}" height="${h}" rx="3" fill="${live ? 'transparent' : col}" ${live ? `stroke="${col}" stroke-width="2" stroke-dasharray="5 3"` : ''}/>`
+            + `<text class="val" x="${x + bw/2}" y="${y - 6}" text-anchor="middle" fill="${col}">${small ? v.toFixed(1) : v.toFixed(2)}</text>`;
+        };
+        S.forEach((r,i) => {
+          const cx = X(i);
+          g += bar(cx - bw - gap/2, r.gf, 'var(--green)', r.live, i, 'gf') + bar(cx + gap/2, r.ga, 'var(--red)', r.live, i, 'ga');
+          const lab = small ? r.season.slice(2,4) + '/' + r.season.slice(-2) : r.season.slice(2);
+          g += `<text class="se" x="${cx}" y="${H - m.b + 16}" text-anchor="middle">${lab}${r.live ? '*' : ''}</text>`;
+          if (r.pos) g += `<text class="pos" x="${cx}" y="${H - m.b + 30}" text-anchor="middle">${r.pos}${r.pos === 1 ? 'st' : r.pos === 2 ? 'nd' : r.pos === 3 ? 'rd' : 'th'}${r.live ? ' now' : ''}</text>`;
+          const mg = (MG[r.season] || []).map(a => a.slice());
+          if (mg.length) {
+            const used = mg.reduce((s,a) => s + a[1], 0);
+            if (r.live && used !== r.P) mg[mg.length-1][1] += r.P - used;
+            const tot = mg.reduce((s,a) => s + a[1], 0), sw = slot*.92, sy = H - m.b + 40, sh = 20;
+            let x0 = cx - sw/2;
+            mg.forEach(([name, games, kind]) => {
+              const w = sw*games/tot, care = kind === 'c', nm = name.length*6.6 + 8 <= w ? name : w >= 30 ? name.slice(0,3).toUpperCase() : w >= 13 ? name[0] : '';
+              g += `<g class="mgr" data-n="${esc(name)}" data-g="${games}" data-c="${care ? 1 : 0}" data-s="${esc(r.season)}"><rect x="${(x0 + .75).toFixed(1)}" y="${sy}" width="${Math.max(1, w - 1.5).toFixed(1)}" height="${sh}" rx="4" fill="${care ? 'rgba(169,189,255,.10)' : 'rgba(169,189,255,.28)'}" ${care ? 'stroke="rgba(169,189,255,.45)" stroke-dasharray="3 2"' : ''}/>`
+                + (nm ? `<text class="mn" x="${(x0 + w/2).toFixed(1)}" y="${sy + 14}" text-anchor="middle">${esc(nm)}</text>` : '') + `</g>`;
+              x0 += w;
+            });
+          }
+        });
+        box.querySelector('svg')?.remove();
+        box.insertAdjacentHTML('afterbegin', g + '</svg>');
+        box.querySelectorAll('.bar').forEach(d => {
+          const r = S[+d.dataset.i];
+          const show = () => { const bb = d.getBoundingClientRect(), pb = box.getBoundingClientRect();
+            tip.innerHTML = `<b>${esc(r.season)}${r.live ? ', after ' + r.P + ' games' : ''}</b>${r.GF} scored · ${r.GA} conceded · ${r.CS} clean sheets<br>${r.Pts} pts (${r.ppg.toFixed(2)} a game)${r.pos ? ' · ' + r.pos + (r.live ? ' now' : ' at the end') : ''}`;
+            tip.style.left = Math.min(pb.width - 110, Math.max(110, bb.left + bb.width/2 - pb.left)) + 'px'; tip.style.top = (bb.top - pb.top) + 'px'; tip.hidden = false; };
+          d.addEventListener('mouseenter', show); d.addEventListener('click', show); d.addEventListener('mouseleave', () => tip.hidden = true);
+        });
+        box.querySelectorAll('.mgr').forEach(d => {
+          const show = () => { const bb = d.getBoundingClientRect(), pb = box.getBoundingClientRect();
+            tip.innerHTML = `<b>${d.dataset.n}${d.dataset.c === '1' ? ' (caretaker)' : ''}</b>${d.dataset.g} league game${d.dataset.g === '1' ? '' : 's'} in ${d.dataset.s}`;
+            tip.style.left = Math.min(pb.width - 110, Math.max(110, bb.left + bb.width/2 - pb.left)) + 'px'; tip.style.top = (bb.top - pb.top) + 'px'; tip.hidden = false; };
+          d.addEventListener('mouseenter', show); d.addEventListener('click', show); d.addEventListener('mouseleave', () => tip.hidden = true);
+        });
+      };
+      drawBC();
+      let bct; addEventListener('resize', () => { clearTimeout(bct); bct = setTimeout(drawBC, 150); });
+    }
+  }
+
+  /* What happened next */
+  let wnTicker = null;
+  if (SITE.NEXT && SITE.NEXT.RAW && $('wn-chart')) {
+    const raw = SITE.NEXT.RAW, ord = n => n + (n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th','st','nd','rd'][n % 10] || 'th');
+    const after = +((raw.match(/after\s+(\d+)\s+matches/i) || [])[1] || (raw.match(/After matches\s+(\d+)/i) || [])[1] || 10);
+    const posM = raw.match(/teams\s+(\d+)(?:st|nd|rd|th)\s+after/i);
+    const nowM = raw.match(/In the table now:\s*(.+?)\s*\((\d+)(?:st|nd|rd|th),\s*(\d+)\s*pts?\)/i);
+    const R = [];
+    raw.split(/\r?\n/).forEach(line => {
+      const m = line.trim().match(/^(\d{4}\/\d{2})\s+(.+?)\s+(\d+)(?:st|nd|rd|th)\s+(\d+)\s+(\d+)(?:st|nd|rd|th)\s*★?\s+(\d+)$/);
+      if (m) R.push({ season:m[1], team:m[2], pts:+m[4], fin:+m[5], final:+m[6] });
+    });
+    const pos = posM ? +posM[1] : (R[0] ? null : null);
+    const NOW = nowM ? { team:nowM[1], pos:+nowM[2], pts:+nowM[3] } : null;
+    if (R.length >= 5 && NOW) {
+      const top = R.filter(r => r.fin <= 4);
+      const LINE = SITE.NEXT.LINE || (top.length ? Math.min(...top.map(r => r.pts)) : Math.max(...R.map(r => r.pts)) + 1);
+      const hi = R.filter(r => r.pts >= LINE), lo = R.filter(r => r.pts < LINE);
+      const avg = a => a.length ? a.reduce((s,r) => s + r.fin, 0)/a.length : NaN;
+      const below = NOW.pts < LINE;
+      const peers = R.filter(r => Math.abs(r.pts - NOW.pts) <= 1);
+      const band = (below ? lo : peers.length ? peers : R);
+      const bMin = Math.min(...band.map(r => r.fin)), bMax = Math.max(...band.map(r => r.fin));
+      const P = ord(NOW.pos);
+      $('wn-title').textContent = `What happens to ${P} after ${after === 1 ? 'one game' : after + ' games'}?`;
+      $('wn-lede').textContent = `Every Premier League team that was ${P} after ${after} games since ${R[R.length-1].season}: how many points they had, and where they finished.`;
+      $('wn-h3').textContent = `Points after ${after} games, and where they finished`;
+      $('wn-nums').innerHTML = [
+        { v:`${hi.filter(r => r.fin <= 4).length}<small>/ ${hi.length}</small>`, k:`<b>Made the top four with ${LINE}+ points</b> after ${after} games.`, cls:'good' },
+        { v:`${lo.filter(r => r.fin <= 4).length}<small>/ ${lo.length}</small>`, k:`<b>Made the top four with ${LINE - 1} or fewer.</b>${lo.length && !lo.some(r => r.fin <= 4) ? ' Not one.' : lo.some(r => r.fin <= 4) ? ' Only ' + lo.filter(r => r.fin <= 4).map(r => esc(r.team) + ' ' + esc(r.season)).join(', ') + '.' : ''}`, cls: lo.length ? 'hot' : '' },
+        { v: lo.length ? avg(lo).toFixed(1) : '–', k:`<b>Average finish</b> for teams on ${LINE - 1} or fewer, against ${avg(hi).toFixed(1)} for the rest.`, cls:'' },
+        { v:`${NOW.pts}<small>pts</small>`, k:`<b>${esc(NOW.team)} now</b>, ${P} after ${after} games. ${below ? 'Below the line.' : 'Above the line.'}`, cls: below ? 'hot' : 'good' },
+      ].map(f => `<div class="num ${f.cls}"><div class="v">${f.v}</div><div class="k">${f.k}</div></div>`).join('');
+      $('wn-call').innerHTML = below
+        ? (lo.some(r => r.fin <= 4) ? `Only <b>${lo.filter(r => r.fin <= 4).length} of the ${lo.length}</b> teams on ${LINE - 1} points or fewer made the top four. The rest finished as low as <b>${ord(bMax)}</b>, ${avg(lo).toFixed(1)} on average. That is the company ${esc(NOW.team)} keep now.` : `Every team that won the league or finished in the top four from here had at least ${LINE} points. The ${lo.length} teams below that line finished between <b>${ord(bMin)} and ${ord(bMax)}</b>. That is the range history gives ${esc(NOW.team)}.`)
+        : `${esc(NOW.team)} are on the right side of the line: ${hi.filter(r => r.fin <= 4).length} of the ${hi.length} teams with ${LINE}+ points finished in the top four. Teams within a point of ${NOW.pts} finished between <b>${ord(bMin)} and ${ord(bMax)}</b>.`;
+      $('wn-src').innerHTML = `${R.length} team-seasons, ${esc(R[R.length-1].season)}–${esc(R[0].season)}. Source: <a href="${esc(SITE.NEXT.source)}" target="_blank" rel="noopener">FixtureShark, What happened next?</a>`;
+      wnTicker = { t:`${ord(NOW.pos).toUpperCase()} AFTER ${after}: ${lo.filter(r => r.fin <= 4).length} OF ${lo.length} ON UNDER ${LINE} PTS MADE THE TOP FOUR`, c: below ? 'bad' : '' };
+
+      const colour = f => f === 1 ? 'var(--amber)' : f <= 4 ? 'var(--green)' : f <= 6 ? 'var(--sky)' : '#4a5db8';
+      const CODES = { 'Bournemouth':'BOU','Varsenal':'VAR','Arsenal':'ARS','Aston Villa':'AVL','Manchester United':'MUN','Tottenham':'TOT','Tottenham Hotspur':'TOT','Leicester':'LEI','West Ham':'WHU','Manchester City':'MCI','West Brom':'WBA','Chelsea':'CHE','Liverpool':'LIV','Fulham':'FUL','Middlesbrough':'MID','Newcastle':'NEW','Newcastle United':'NEW','Everton':'EVE','Brighton':'BHA','Brentford':'BRE','Nottingham Forest':'NFO','Crystal Palace':'CRY','Sunderland':'SUN','Leeds':'LEE','Leeds United':'LEE','Wolves':'WOL','Ipswich':'IPS','Ipswich Town':'IPS','Southampton':'SOU','Blackburn':'BLA','Bolton':'BOL','Charlton':'CHA','Sheffield Wednesday':'SHW','Wigan':'WIG','Stoke':'STK','Hull City':'HUL','Burnley':'BUR','Watford':'WAT','Norwich':'NOR','Swansea':'SWA','Coventry':'COV','Coventry City':'COV','Derby':'DER','Portsmouth':'POR','Reading':'REA','Birmingham':'BIR','QPR':'QPR','Wimbledon':'WIM','Leeds Utd':'LEE' };
+      const code = t => CODES[t] || t.replace(/[^A-Za-z]/g, '').slice(0,3).toUpperCase();
+      const yr = s => '’' + s.slice(-2);
+      const drawWN = () => {
+        const box = $('wn-chart'), tip = $('wn-tip');
+        let sc = box.querySelector('.wn-scroll'); if (!sc) { sc = document.createElement('div'); sc.className = 'wn-scroll'; box.prepend(sc); }
+        const avail = Math.round(box.getBoundingClientRect().width), W = Math.max(780, avail), small = avail < 560;
+        $('wn-swipe').hidden = avail >= 780;
+        const pts = R.map(r => r.pts).concat(NOW.pts);
+        const yMin = Math.min(...pts) - 1, yMax = Math.max(...pts) + 1, m = { l:42, r:12, t:26, b:40 };
+        const H = Math.max(Math.round(W*.5), (yMax - yMin)*46 + m.t + m.b);
+        const X = f => m.l + (f - .5)/20*(W - m.l - m.r), Y = p => m.t + (yMax - p)/(yMax - yMin)*(H - m.t - m.b), cw = (W - m.l - m.r)/20;
+        const ly = Y(LINE - .5);
+        let g = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Points after ${after} games against final position for ${R.length} teams">`;
+        g += `<rect x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${Math.max(0, ly - m.t)}" fill="rgba(79,227,154,.06)"/>`;
+        g += `<rect x="${m.l}" y="${ly}" width="${W-m.l-m.r}" height="${Math.max(0, H - m.b - ly)}" fill="rgba(255,75,62,.08)"/>`;
+        g += `<rect x="${X(.5)}" y="${m.t}" width="${cw*4}" height="${H-m.t-m.b}" fill="rgba(255,255,255,.04)"/><text class="zone" x="${X(.5) + 6}" y="${m.t - 8}" fill="var(--green)">Top four</text>`;
+        for (let f = 1; f < 20; f++) { const key = f === 4 || f === 6 || f === 17; g += `<line x1="${X(f + .5)}" x2="${X(f + .5)}" y1="${m.t}" y2="${H - m.b}" stroke="${key ? 'rgba(245,247,255,.38)' : 'rgba(255,255,255,.10)'}" stroke-width="${key ? 1.5 : 1}"${key ? ' stroke-dasharray="4 4"' : ''}/>`; }
+        g += `<rect x="${X(17.5)}" y="${m.t}" width="${cw*3}" height="${H-m.t-m.b}" fill="rgba(255,75,62,.10)"/><text class="zone" x="${X(20.5) - 4}" y="${m.t - 8}" text-anchor="end" fill="var(--red)">Relegation</text>`;
+        g += `<text class="zone" x="${X(6.5) - 4}" y="${m.t - 8}" text-anchor="end" fill="var(--sky)" opacity=".9">Europe</text>`;
+        for (let p = yMin + 1; p <= yMax - 1; p++) g += `<line x1="${m.l}" x2="${W-m.r}" y1="${Y(p)}" y2="${Y(p)}" stroke="rgba(255,255,255,.06)"/><text class="ax" x="${m.l - 6}" y="${Y(p) + 4}" text-anchor="end">${p}</text>`;
+        for (let f = 1; f <= 20; f++) g += `<text class="ax" x="${X(f)}" y="${H - m.b + 16}" text-anchor="middle">${f}</text>`;
+        g += `<text class="axt" x="${(m.l + W - m.r)/2}" y="${H - 6}" text-anchor="middle">Final position</text>`;
+        g += `<line x1="${m.l}" x2="${W-m.r}" y1="${ly}" y2="${ly}" stroke="var(--paper)" stroke-width="1.5" stroke-dasharray="6 5"/>`;
+        g += `<text class="zone" x="${W - m.r - 6}" y="${ly - 8}" text-anchor="end" fill="var(--green)">${LINE}+ points</text><text class="zone" x="${W - m.r - 6}" y="${ly + 18}" text-anchor="end" fill="var(--red)">${LINE - 1} or fewer</text>`;
+        const cy = Y(NOW.pts), cc = below ? 'var(--red)' : 'var(--green)';
+        g += `<rect x="${X(bMin) - cw*.5}" y="${cy - 16}" width="${X(bMax) - X(bMin) + cw}" height="32" rx="16" fill="${below ? 'rgba(255,75,62,.18)' : 'rgba(79,227,154,.16)'}" stroke="${cc}" stroke-width="1.5"/>`;
+        const lx = X(bMax) + cw*.7, flip = lx > W - 90;
+        g += `<text class="che" x="${flip ? X(bMin) - cw*.7 : lx}" y="${cy + 5}" text-anchor="${flip ? 'end' : 'start'}" fill="${cc}">${esc(code(NOW.team))} NOW?</text>`;
+        const seen = {}, used = {};
+        R.forEach(r => { const k = r.pts + '|' + r.fin; seen[k] = (seen[k] || 0) + 1; });
+        R.forEach((r,i) => {
+          const k = r.pts + '|' + r.fin, cnt = seen[k], idx = used[k] = (used[k] || 0) + 1, dy = (idx - (cnt + 1)/2)*26;
+          const dark = r.fin <= 6;
+          g += `<g class="pill" data-i="${i}" tabindex="0" transform="translate(${X(r.fin).toFixed(1)},${(Y(r.pts) + dy).toFixed(1)})"><rect x="-17" y="-12" width="34" height="24" rx="6" fill="${colour(r.fin)}" stroke="var(--blue-deep)" stroke-width="1.5"/>`
+            + `<text class="pc" y="-1.5" text-anchor="middle" fill="${dark ? 'var(--blue-ink)' : 'var(--paper)'}">${esc(code(r.team))}</text>`
+            + `<text class="py" y="9" text-anchor="middle" fill="${dark ? 'var(--blue-ink)' : 'var(--sky)'}">${esc(yr(r.season))}</text><title>${esc(r.team)} ${esc(r.season)}</title></g>`;
+        });
+        sc.innerHTML = g + '</svg>';
+        sc.querySelectorAll('.pill').forEach(d => {
+          const r = R[+d.dataset.i];
+          const show = () => { const bb = d.getBoundingClientRect(), pb = box.getBoundingClientRect();
+            tip.innerHTML = `<b>${esc(r.team)} ${esc(r.season)}</b>${r.pts} pts after ${after} · finished ${ord(r.fin)} on ${r.final}`;
+            tip.style.left = Math.min(pb.width - 90, Math.max(90, bb.left + bb.width/2 - pb.left)) + 'px'; tip.style.top = (bb.top - pb.top) + 'px'; tip.hidden = false; };
+          d.addEventListener('mouseenter', show); d.addEventListener('focus', show); d.addEventListener('click', show);
+          d.addEventListener('mouseleave', () => tip.hidden = true); d.addEventListener('blur', () => tip.hidden = true);
+        });
+        sc.addEventListener('scroll', () => tip.hidden = true, { passive:true });
+      };
+      drawWN();
+      let wnt; addEventListener('resize', () => { clearTimeout(wnt); wnt = setTimeout(drawWN, 150); });
+    } else {
+      $('wn-call').textContent = 'Could not read the pasted FixtureShark text. Paste the whole page again into SITE.NEXT.RAW.';
+    }
+  }
+
   const items = [
     { t:`DAY ${dayN} OF THE ALONSO ERA`, c:'' },
     { t:`${W}W ${D}D ${L}L IN ${R.length} GAMES`, c:'' },
     { t:`SACK PRESSURE: ${score}/100, ${band.toUpperCase()}`, c: score>55 ? 'bad' : '' },
     ...(dirTicker ? [dirTicker] : []),
+    ...(wnTicker ? [wnTicker] : []),
     ...SITE.TICKER,
   ];
   const html = items.map(i => `<span class="${i.c}">${esc(i.t)}</span><span aria-hidden="true">◆</span>`).join('');
