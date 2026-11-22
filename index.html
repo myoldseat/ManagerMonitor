@@ -722,6 +722,13 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 @media (max-width:560px){.bn-axis,.bn-row{grid-template-columns:52px minmax(0,1fr);gap:6px}.bn-row .lab{flex-direction:column;gap:0;font-size:11px}.bn-track{height:18px}}
 
 /* Palmer */
+.pl-tabs{margin-bottom:14px}
+.pl-tabs .f10-tabs{flex-wrap:wrap;justify-content:center;border-radius:16px}
+.pal-bars>div.dnp,.pal-opp>span.dnp,.pal-res>span.dnp{background:#262d5e}
+.pal-bars>div.cam,.pal-opp>span.cam,.pal-res>span.cam{background:#3b4478}
+.pal-bars .st{font:700 10px var(--body);letter-spacing:.06em;text-transform:uppercase;color:rgba(245,247,255,.55);writing-mode:vertical-rl;transform:rotate(180deg);margin-bottom:6px}
+.pal-min>span{background:rgba(245,247,255,var(--o))}
+
 .pal{display:grid;gap:16px}
 @media (min-width:900px){.pal{grid-template-columns:minmax(0,1.45fr) minmax(0,.55fr);align-items:start}}
 .pal-facts{display:grid;gap:12px}
@@ -741,7 +748,7 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .pal-bars>div.hi,.pal-opp>span.hi,.pal-res>span.hi{background:#1f8a5b}
 .pal-bars>div.mid,.pal-opp>span.mid,.pal-res>span.mid{background:#2e5c52}
 .pal-bars>div.no,.pal-opp>span.no,.pal-res>span.no{background:#6c2334}
-.pal-res>span.hi,.pal-res>span.mid,.pal-res>span.no{color:var(--paper) !important;font-weight:700}
+.pal-res>span.hi,.pal-res>span.mid,.pal-res>span.no,.pal-res>span.cam,.pal-res>span.dnp{color:var(--paper) !important;font-weight:700}
 .pal-opp>span small{color:rgba(245,247,255,.7) !important}
 .pal-bars .zero{color:rgba(245,247,255,.45) !important}
 .pal-opp,.pal-res{row-gap:0}
@@ -995,16 +1002,14 @@ footer a{color:var(--paper)}
 <main>
   <section id="palmer">
     <div class="wrap">
+      <div class="shot-tabs pl-tabs"><div class="f10-tabs" role="tablist" id="pl-tabs"></div></div>
       <div class="panel shot">
-        <div class="shot-head"><h2>What happened to Palmer?</h2><p id="pal-lede"></p></div>
+        <div class="shot-head"><h2 id="pl-title"></h2><p id="pal-lede"></p></div>
         <div class="pal-row pal-bars" id="pal-bars"></div>
         <div class="pal-row pal-opp" id="pal-opp"></div>
         <div class="pal-row pal-res" id="pal-res"></div>
-        <p class="pal-lab">Palmer shots</p><div class="pal-row pal-sh" id="pal-sh"></div>
-        <p class="pal-lab">Palmer xG (no penalties)</p><div class="pal-row pal-pxg" id="pal-pxg"></div>
-        <p class="pal-lab">Chelsea xG</p><div class="pal-row pal-xg" id="pal-xg"></div>
-        <p class="pal-lab">Possession %</p><div class="pal-row pal-poss" id="pal-poss"></div>
-        <div class="pal-key"><span><i class="t" style="background:#1f8a5b"></i>Goal from open play, or two+</span><span><i class="t" style="background:#2e5c52"></i>One assist or a penalty</span><span><i class="t" style="background:#6c2334"></i>Nothing</span><span><i style="background:var(--green)"></i>Goal (P = pen)</span><span><i style="background:var(--sky)"></i>Assist</span></div>
+        <div id="pl-rows"></div>
+        <div class="pal-key" id="pl-key"></div>
         <div class="shot-facts" id="pal-facts"></div>
         <div class="shot-foot"><span id="pal-src"></span><span class="url">hasxabialonsobeensackedyet.com</span></div>
       </div>
@@ -1670,27 +1675,93 @@ const SITE = {
     },
     source:'Substitutions: Chelsea FC match reports, SI. Goal minutes: FBref, FotMob.',
   },
-  PALMER: {
-    // Cole Palmer, Premier League, by XG.matches code. g = goal minutes ('64p' = penalty), a = assists, y/r = cards,
-    // sh = shots, xg = his xG without penalties (null = not found yet).
-    games: {
-      FUL:{ g:['49'], a:1, sh:5, xg:.28 },
-      BHA:{ g:['74'], a:0, sh:4, xg:.66 },
-      VAR:{ g:[], a:0, sh:3, xg:.12, y:1 },
-      HUL:{ g:[], a:1, sh:3, xg:.14 },
-      BRE:{ g:[], a:0, sh:2, xg:.13 },
-      BOU:{ g:[], a:1, sh:0, xg:0 },
-      EVE:{ g:[], a:0, sh:6, xg:.13, y:1 },
-      TOT:{ g:[], a:0, sh:2, xg:.06, r:1, note:'Sent off on 80 minutes' },
-      MUN:{ g:['64p'], a:0, sh:3, xg:.22 },
-      SUN:{ g:[], a:0, sh:1, xg:.04 },
-      LEE:{ g:[], a:0, sh:1, xg:null, note:'Evening Standard 4/10: “Anonymous in the second half.”' },
-    },
-    lastOpenPlay:'30 August',
-    touches:'About 56 touches per 90 minutes this season, low for a player Chelsea build around (The Pride of London).',
-    cup:'Not counted: two goals off the bench in the 6–3 League Cup win over Leeds.',
-    source:'Goals, assists: FBref, FotMob. Shots, xG: StatMuse, Querostats; penalty taken out (0.79). Leeds shots: FootyMetrics.',
-  },
+  PLAYERS: [
+    // One profile per player, by XG.matches code.
+    // m = minutes (leave out if he did not play), st = started, s = 'inj' | 'unused' | 'out' when he did not play,
+    // g = goal minutes ('64p' = penalty), a = assists, y/r = cards, sh = shots, xg = xG without penalties, pos:'ST' = started up front.
+    { id:'palmer', name:'Palmer', title:'What happened to Palmer?',
+      lede:'<b>{G} goals, {A} assists</b> in {apps} league games. He is not missing chances. He is not getting them.',
+      cards:['g','a','sinceOpen','lossXG'], lastOpenPlay:'30 August',
+      source:'Goals, assists: FBref, FotMob. Shots, xG: StatMuse, Querostats; penalty taken out (0.79).',
+      games:{
+        FUL:{ m:83, st:1, g:['49'], a:1, sh:5, xg:.28 },
+        BHA:{ m:90, st:1, g:['74'], a:0, sh:4, xg:.66 },
+        VAR:{ m:90, st:1, g:[], a:0, sh:3, xg:.12, y:1 },
+        HUL:{ m:90, st:1, g:[], a:1, sh:3, xg:.14 },
+        BRE:{ m:90, st:1, g:[], a:0, sh:2, xg:.13 },
+        BOU:{ m:88, st:1, g:[], a:1, sh:0, xg:0 },
+        EVE:{ m:90, st:1, g:[], a:0, sh:6, xg:.13, y:1 },
+        TOT:{ m:80, st:1, g:[], a:0, sh:2, xg:.06, r:1, note:'Sent off on 80 minutes' },
+        MUN:{ m:89, st:1, g:['64p'], a:0, sh:3, xg:.22 },
+        SUN:{ m:90, st:1, g:[], a:0, sh:1, xg:.04 },
+        LEE:{ m:90, st:1, g:[], a:0, sh:1, xg:null },
+      } },
+    { id:'joao', name:'João Pedro', title:'Chelsea without João Pedro',
+      lede:'<b>{G} goals, {A} assists</b> in {apps} games. Chelsea scored {wg} with him in the side, {wo} in the {won} games without him.',
+      cards:['g','a','withPG','withoutPG'],
+      source:'FBref, Chelsea FC match reports, FotMob. Muscle injury since 24 October (FotMob).',
+      games:{
+        FUL:{ m:90, st:1, g:['1'], a:1 },
+        BHA:{ m:90, st:1, g:['32'], a:1, note:'Also an own goal at 63′' },
+        VAR:{ m:90, st:1, g:[], a:0, y:1 },
+        HUL:{ m:90, st:1, g:['66'], a:1 },
+        BRE:{ s:'out' },
+        BOU:{ m:72, st:1, g:['46','67'], a:0 },
+        EVE:{ m:89, st:1, g:[], a:0 },
+        TOT:{ s:'inj' }, MUN:{ s:'inj' }, SUN:{ s:'inj' }, LEE:{ s:'inj' },
+      } },
+    { id:'rogers', name:'Rogers', title:'Rogers keeps turning up',
+      lede:'<b>{G} goals, {A} assists</b>. Every league game, {mins} of {possible} minutes.',
+      cards:['g','a','mins','early'],
+      source:'FBref, Chelsea FC match reports, FotMob, Goal (Leeds assist).',
+      games:{
+        FUL:{ m:82, st:1, g:['41'], a:0 },
+        BHA:{ m:90, st:1, g:[], a:1 },
+        VAR:{ m:87, st:1, g:['2'], a:0 },
+        HUL:{ m:90, st:1, g:['7'], a:0 },
+        BRE:{ m:90, st:1, g:[], a:0 },
+        BOU:{ m:84, st:1, g:['3'], a:0 },
+        EVE:{ m:90, st:1, g:[], a:0 },
+        TOT:{ m:90, st:1, g:[], a:0 },
+        MUN:{ m:90, st:1, g:['50'], a:0 },
+        SUN:{ m:90, st:1, g:[], a:0 },
+        LEE:{ m:90, st:1, g:[], a:1 },
+      } },
+    { id:'neto', name:'Neto', title:'Neto, centre-forward?',
+      lede:'<b>{G} goals, {A} assist</b> in {apps} games. With no striker fit, Alonso put a winger up front.',
+      cards:['g','a','starts','asStriker'],
+      source:'FBref, Chelsea FC match reports, FotMob. Up front: Chelsea FC line-up (Man United), The Pride of London (Sunderland).',
+      games:{
+        FUL:{ m:14, g:[], a:0 },
+        BHA:{ m:68, st:1, g:['14'], a:0 },
+        VAR:{ m:81, st:1, g:[], a:0 },
+        HUL:{ m:86, st:1, g:[], a:0 },
+        BRE:{ m:87, st:1, g:[], a:0 },
+        BOU:{ m:83, st:1, g:[], a:1 },
+        EVE:{ m:89, st:1, g:['46','90'], a:0, y:1 },
+        TOT:{ m:88, st:1, g:[], a:0, y:1 },
+        MUN:{ m:87, st:1, g:[], a:0, pos:'ST' },
+        SUN:{ m:62, st:1, g:[], a:0, y:1, pos:'ST' },
+        LEE:{ m:26, g:[], a:0 },
+      } },
+    { id:'estevao', name:'Estêvão', title:'Where is Estêvão?',
+      lede:'<b>{mins} minutes</b> in {n} league games. {starts} starts.',
+      cards:['ga','mins','starts','cameos'],
+      source:'FotMob, Chelsea FC match reports. Minutes from substitution times.',
+      games:{
+        FUL:{ m:8, g:[], a:0 },
+        BHA:{ s:'out' },
+        VAR:{ m:9, g:[], a:0 },
+        HUL:{ m:4, g:[], a:0 },
+        BRE:{ m:3, g:[], a:0 },
+        BOU:{ m:6, g:[], a:0 },
+        EVE:{ s:'unused' },
+        TOT:{ m:18, g:[], a:0 },
+        MUN:{ m:87, st:1, g:[], a:0 },
+        SUN:{ m:45, g:[], a:0 },
+        LEE:{ m:64, st:1, g:[], a:0 },
+      } },
+  ],
   GOALS: {
     // Minutes of every league goal, by XG.matches code. f = Chelsea scored, a = conceded.
     // Stoppage time as '90+6'. Add p for a penalty, og for an own goal.
@@ -2338,44 +2409,81 @@ Season ↓	Team	After 11	Points then	Finished	Final points
     else new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { o.disconnect(); goB(); } }, { threshold:.2 }).observe($('bn'));
   } else if ($('bench')) { $('bench').remove(); }
 
-  /* What happened to Palmer? */
-  if (SITE.PALMER && SITE.XG && $('pal-bars')) {
-    const PL = SITE.PALMER, M = SITE.XG.matches.filter(m => PL.games[m.code]), n = M.length;
-    const sw = M.findIndex(m => m.back && m.back !== '3'), split = sw > 0 ? sw : Math.min(5, n);
-    const gp = m => PL.games[m.code], ga = m => gp(m).g.length + gp(m).a;
-    const sum = (arr, f) => arr.reduce((t, m) => t + f(m), 0);
-    const pre = M.slice(0, split), post = M.slice(split);
-    const preGA = sum(pre, ga), postGA = sum(post, ga);
-    const pens = sum(M, m => gp(m).g.filter(t => /p$/.test(t)).length);
-    const postPens = sum(post, m => gp(m).g.filter(t => /p$/.test(t)).length);
-    const G = sum(M, m => gp(m).g.length), A = sum(M, m => gp(m).a);
-    const losses = M.filter(m => m.res === 'L'), lossGA = sum(losses, ga), lossCards = sum(losses, m => (gp(m).y || 0) + (gp(m).r || 0)), lossReds = sum(losses, m => gp(m).r || 0);
-    const lowP = M.filter(m => m.poss < 50), highP = M.filter(m => m.poss >= 50);
-    let lastOpen = -1; M.forEach((m, i) => { if (gp(m).g.some(t => !/p$/.test(t))) lastOpen = i; });
-    const sinceOpen = n - 1 - lastOpen;
-    document.querySelectorAll('#palmer .pal-row').forEach(r => r.style.setProperty('--n', n));
-    const tier = m => { const d = gp(m), open = d.g.some(t => !/p$/.test(t)); return open || ga(m) >= 2 ? 'hi' : ga(m) >= 1 ? 'mid' : 'no'; };
-    const tierTxt = { hi:'Goal from open play, or two+', mid:'One assist or a penalty', no:'Nothing' };
-    $('pal-bars').innerHTML = M.map((m, i) => { const d = gp(m);
-      const blocks = [...d.g.map(t => `<i class="g" title="Goal ${esc(t.replace(/p$/, ''))}′${/p$/.test(t) ? ' (pen)' : ''}">${/p$/.test(t) ? 'P' : ''}</i>`), ...Array(d.a).fill('<i class="a" title="Assist"></i>')];
-      const cards = (d.r ? '<span class="card r" title="Red card"></span>' : '') + (d.y ? '<span class="card y" title="Yellow card"></span>' : '');
-      return `<div class="${tier(m)}" title="${esc(m.opp)} (${m.venue}) ${esc(m.score)} · ${tierTxt[tier(m)]}${d.note ? ' · ' + esc(d.note) : ''}">${blocks.join('') || cards || '<span class="zero">0</span>'}${blocks.length ? cards : ''}</div>`; }).join('');
-    $('pal-opp').innerHTML = M.map(m => `<span class="${tier(m)}">${esc(m.code)}<small>${m.venue}</small></span>`).join('');
-    $('pal-res').innerHTML = M.map(m => `<span class="${m.res} ${tier(m)}">${esc(m.score)}</span>`).join('');
-    $('pal-poss').innerHTML = M.map(m => `<span style="--o:${(Math.abs(m.poss - 50) / 30 * .35 + .05).toFixed(2)}">${m.poss}</span>`).join('');
-    $('pal-xg').innerHTML = M.map(m => `<span style="--o:${Math.min(.45, m.xg / 3.3 * .45 + .03).toFixed(2)}">${m.xg.toFixed(1)}</span>`).join('');
-    $('pal-sh').innerHTML = M.map(m => { const v = gp(m).sh; return `<span style="--o:${v == null ? 0 : Math.min(.5, v / 6 * .5 + .03).toFixed(2)}">${v == null ? '–' : v}</span>`; }).join('');
-    $('pal-pxg').innerHTML = M.map(m => { const v = gp(m).xg; return `<span style="--o:${v == null ? 0 : Math.min(.5, v / .66 * .5 + .03).toFixed(2)}">${v == null ? '–' : v.toFixed(2)}</span>`; }).join('');
-    $('pal-lede').innerHTML = `<b>${G} goals, ${A} assists</b> in ${n} league games. He is not missing chances. He is not getting them.`;
-    const facts = [
-      { v:`${G}`, k:`goals${pens ? ` (${pens} penalt${pens === 1 ? 'y' : 'ies'})` : ''}` },
-      { v:`${A}`, k:`assists` },
-      { v:`${sinceOpen}`, k:`games since his last <b>open-play goal</b>`, hot: sinceOpen >= 5 },
-      { v:(sum(losses, m => m.xg) / losses.length).toFixed(2), k:`Chelsea xG per game in the <b>${losses.length} defeats</b>. Nothing to finish`, hot:true },
-    ];
-    $('pal-facts').innerHTML = facts.map(f => `<div class="num${f.hot ? ' hot' : ''}"><div class="v">${esc(f.v)}</div><div class="k">${f.k}</div></div>`).join('');
-    $('pal-src').textContent = PL.source;
-    const goP = () => $('pal-bars').querySelectorAll('i').forEach((el, i) => el.style.transitionDelay = reduce ? '0s' : (i * .12) + 's') || $('pal-bars').classList.add('go');
+  /* Player profiles (Palmer first) */
+  if (SITE.PLAYERS && SITE.XG && $('pal-bars')) {
+    const XM = SITE.XG.matches;
+    let shownP = false, cur = 0;
+    const sum = (arr, f) => arr.reduce((t, x) => t + f(x), 0);
+    const ord = n => n + (n % 10 === 1 && n % 100 !== 11 ? 'st' : n % 10 === 2 && n % 100 !== 12 ? 'nd' : n % 10 === 3 && n % 100 !== 13 ? 'rd' : 'th');
+    $('pl-tabs').innerHTML = SITE.PLAYERS.map((P, i) => `<button type="button" role="tab" data-i="${i}" aria-selected="${i === 0}">${esc(P.name)}</button>`).join('');
+    const render = idx => {
+      const P = SITE.PLAYERS[idx], M = XM.filter(m => P.games[m.code]), n = M.length, gp = m => P.games[m.code];
+      const played = m => gp(m).m != null, ga = m => (gp(m).g || []).length + (gp(m).a || 0);
+      const isPen = t => /p$/.test(t);
+      const tier = m => { const d = gp(m); if (!played(m)) return 'dnp'; const open = (d.g || []).some(t => !isPen(t));
+        if (open || ga(m) >= 2) return 'hi'; if (ga(m) >= 1) return 'mid'; return d.m < 15 ? 'cam' : 'no'; };
+      const P_ = M.filter(played), G = sum(M, m => (gp(m).g || []).length), A = sum(M, m => gp(m).a || 0);
+      const pens = sum(M, m => (gp(m).g || []).filter(isPen).length), mins = sum(P_, m => gp(m).m), starts = M.filter(m => gp(m).st).length;
+      const withG = sum(P_, m => +m.score.split('–')[0]), woM = M.filter(m => !played(m)), woG = sum(woM, m => +m.score.split('–')[0]);
+      let lastOpen = -1; M.forEach((m, i) => { if ((gp(m).g || []).some(t => !isPen(t))) lastOpen = i; });
+      const sinceOpen = n - 1 - lastOpen, losses = M.filter(m => m.res === 'L');
+      const early = sum(M, m => (gp(m).g || []).filter(t => parseInt(t) <= 10).length);
+      const st = M.filter(m => gp(m).pos === 'ST'), stG = sum(st, m => (gp(m).g || []).length);
+      const cameos = P_.filter(m => gp(m).m < 15).length;
+      const T = { G, A, apps: P_.length, n, mins, possible: n * 90, starts, wg: withG, wo: woG, won: woM.length };
+      $('pl-title').textContent = P.title;
+      $('pal-lede').innerHTML = P.lede.replace(/\{(\w+)\}/g, (_, k) => T[k] != null ? T[k] : '');
+      document.querySelectorAll('#palmer .pal-row').forEach(r => r.style.setProperty('--n', n));
+      const stLab = { inj:'Injured', unused:'Unused', out:'Did not play' };
+      $('pal-bars').innerHTML = M.map(m => { const d = gp(m), t = tier(m);
+        if (!played(m)) return `<div class="dnp" title="${esc(m.opp)} (${m.venue}) ${esc(m.score)} · ${stLab[d.s] || 'Did not play'}"><span class="st">${stLab[d.s] || 'Out'}</span></div>`;
+        const blocks = [...(d.g || []).map(x => `<i class="g" title="Goal ${esc(x.replace(/p$/, ''))}′${isPen(x) ? ' (pen)' : ''}">${isPen(x) ? 'P' : ''}</i>`), ...Array(d.a || 0).fill('<i class="a" title="Assist"></i>')];
+        const cards = (d.r ? '<span class="card r" title="Red card"></span>' : '') + (d.y ? '<span class="card y" title="Yellow card"></span>' : '');
+        return `<div class="${t}" title="${esc(m.opp)} (${m.venue}) ${esc(m.score)} · ${d.m}′${d.note ? ' · ' + esc(d.note) : ''}">${blocks.join('') || cards || '<span class="zero">0</span>'}${blocks.length ? cards : ''}</div>`; }).join('');
+      $('pal-opp').innerHTML = M.map(m => `<span class="${tier(m)}">${esc(m.code)}<small>${m.venue}</small></span>`).join('');
+      $('pal-res').innerHTML = M.map(m => `<span class="${m.res} ${tier(m)}">${esc(m.score)}</span>`).join('');
+      const row = (lab, cls, cells) => `<p class="pal-lab">${lab}</p><div class="pal-row ${cls}" style="--n:${n}">${cells}</div>`;
+      const cell = (v, o) => `<span style="--o:${o.toFixed(2)}">${v}</span>`;
+      const hasSh = M.some(m => gp(m).sh != null);
+      let rows = row('Minutes', 'pal-min', M.map(m => played(m) ? cell(gp(m).m, gp(m).m / 90 * .22 + .02) : cell('–', 0)).join(''));
+      if (hasSh) {
+        rows += row(`${esc(P.name)} shots`, 'pal-sh', M.map(m => { const v = gp(m).sh; return v == null ? cell('–', 0) : cell(v, Math.min(.5, v / 6 * .5 + .03)); }).join(''));
+        rows += row(`${esc(P.name)} xG (no penalties)`, 'pal-pxg', M.map(m => { const v = gp(m).xg; return v == null ? cell('–', 0) : cell(v.toFixed(2), Math.min(.5, v / .66 * .5 + .03)); }).join(''));
+      }
+      if (M.some(m => gp(m).pos)) rows += row('Started up front', 'pal-min', M.map(m => gp(m).pos === 'ST' ? cell('<b style="color:var(--amber)">9</b>', .12) : cell('', 0)).join(''));
+      rows += row('Chelsea xG', 'pal-xg', M.map(m => cell(m.xg.toFixed(1), Math.min(.45, m.xg / 3.3 * .45 + .03))).join(''));
+      rows += row('Possession %', 'pal-poss', M.map(m => cell(m.poss, Math.abs(m.poss - 50) / 30 * .35 + .05)).join(''));
+      $('pl-rows').innerHTML = rows;
+      const usedT = new Set(M.map(tier));
+      const KEY = [['hi', '#1f8a5b', 'Goal from open play, or two+'], ['mid', '#2e5c52', 'One assist or a penalty'], ['no', '#6c2334', 'Nothing'], ['cam', '#3b4478', 'Under 15 minutes'], ['dnp', '#262d5e', 'Did not play']];
+      $('pl-key').innerHTML = KEY.filter(k => usedT.has(k[0])).map(k => `<span><i class="t" style="background:${k[1]}"></i>${k[2]}</span>`).join('') +
+        '<span><i style="background:var(--green)"></i>Goal (P = pen)</span><span><i style="background:var(--sky)"></i>Assist</span>';
+      const C = {
+        g:        { v:`${G}`, k:`goal${G === 1 ? '' : 's'}${pens ? ` (${pens} penalt${pens === 1 ? 'y' : 'ies'})` : ''}` },
+        a:        { v:`${A}`, k:`assist${A === 1 ? '' : 's'}` },
+        ga:       { v:`${G} + ${A}`, k:`goals + assists`, hot: G + A === 0 },
+        sinceOpen:{ v:`${sinceOpen}`, k:`games since his last <b>open-play goal</b>`, hot: sinceOpen >= 5 },
+        lossXG:   { v:(sum(losses, m => m.xg) / Math.max(losses.length, 1)).toFixed(2), k:`Chelsea xG per game in the <b>${losses.length} defeats</b>. Nothing to finish`, hot:true },
+        withPG:   { v:(withG / Math.max(P_.length, 1)).toFixed(2), k:`Chelsea goals per game <b>with him</b> (${P_.length})` },
+        withoutPG:{ v:(woG / Math.max(woM.length, 1)).toFixed(2), k:`Chelsea goals per game <b>without him</b> (${woM.length})`, hot:true },
+        mins:     { v:`${mins}`, k:`minutes of a possible ${n * 90}` , hot: mins < n * 30 },
+        early:    { v:`${early}`, k:`goals in the <b>first ten minutes</b>` },
+        starts:   { v:`${starts}`, k:`starts in ${n} games`, hot: starts < n / 3 },
+        asStriker:{ v:`${stG}`, k:`goals in <b>${st.length} starts up front</b>`, hot: st.length > 0 && stG === 0 },
+        cameos:   { v:`${cameos}`, k:`appearances of <b>under 15 minutes</b>`, hot: cameos >= 3 },
+      };
+      $('pal-facts').innerHTML = P.cards.map(c => C[c]).filter(Boolean).map(f => `<div class="num${f.hot ? ' hot' : ''}"><div class="v">${esc(f.v)}</div><div class="k">${f.k}</div></div>`).join('');
+      $('pal-src').textContent = `${P.source} League games only.`;
+      const bars = $('pal-bars');
+      bars.classList.remove('go');
+      if (shownP) requestAnimationFrame(() => requestAnimationFrame(() => bars.classList.add('go')));
+    };
+    document.querySelectorAll('#pl-tabs button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('#pl-tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+      render(+b.dataset.i);
+    }));
+    render(0);
+    const goP = () => { shownP = true; $('pal-bars').classList.add('go'); };
     if (reduce || !('IntersectionObserver' in window)) goP();
     else new IntersectionObserver((e, o) => { if (e[0].isIntersecting) { o.disconnect(); goP(); } }, { threshold:.3 }).observe($('pal-bars'));
   } else if ($('palmer')) { $('palmer').remove(); }
