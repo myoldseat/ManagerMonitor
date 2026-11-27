@@ -1139,6 +1139,39 @@ footer a{color:var(--paper)}
   </div>
 </section>
 
+<section id="path">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Where this is heading</h2>
+        <p>Twelve games down, 26 to go, still on 16 points. None of the 31 teams on 15–17 points after twelve games finished in the top four. Pick a path, or drag the slider. Based on what 200 Premier League teams did after a start like this.</p>
+      </div>
+      <div class="path">
+        <div class="panel path-chart">
+          <div class="path-btns" id="path-btns" role="group" aria-label="Scenario"></div>
+          <div class="path-svg" id="path-svg"></div>
+          <label class="path-slide">
+            <span>Points per game, last <b id="path-left"></b> games</span>
+            <input type="range" id="path-ppg" min="0.6" max="2.6" step="0.05">
+            <output id="path-ppg-v"></output>
+          </label>
+        </div>
+        <div class="panel path-out">
+          <p class="eyebrow" id="path-name"></p>
+          <div class="path-pos"><span id="path-pos"></span><small id="path-pts"></small></div>
+          <p class="path-verdict" id="path-verdict"></p>
+          <a class="path-share" id="path-share" href="/heading">Post your prediction on X →</a>
+          <div class="path-odds">
+            <div class="path-odds-head"><h3>How often it happens</h3>
+              <div class="f10-tabs" id="path-sample" role="tablist"></div></div>
+            <div id="path-bars"></div>
+            <p class="muted path-src" id="path-src"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 
 <main>
   <section id="verdict">
@@ -1188,38 +1221,6 @@ footer a{color:var(--paper)}
       </div>
     </div>
   </section>
-  <section id="path">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Where this is heading</h2>
-        <p>Eleven games down, 27 to go, still on 16 points. Pick a path, or drag the slider. Based on what 200 Premier League teams did after a start like this.</p>
-      </div>
-      <div class="path">
-        <div class="panel path-chart">
-          <div class="path-btns" id="path-btns" role="group" aria-label="Scenario"></div>
-          <div class="path-svg" id="path-svg"></div>
-          <label class="path-slide">
-            <span>Points per game, last <b id="path-left"></b> games</span>
-            <input type="range" id="path-ppg" min="0.6" max="2.6" step="0.05">
-            <output id="path-ppg-v"></output>
-          </label>
-        </div>
-        <div class="panel path-out">
-          <p class="eyebrow" id="path-name"></p>
-          <div class="path-pos"><span id="path-pos"></span><small id="path-pts"></small></div>
-          <p class="path-verdict" id="path-verdict"></p>
-          <a class="path-share" id="path-share" href="/heading">Post your prediction on X →</a>
-          <div class="path-odds">
-            <div class="path-odds-head"><h3>How often it happens</h3>
-              <div class="f10-tabs" id="path-sample" role="tablist"></div></div>
-            <div id="path-bars"></div>
-            <p class="muted path-src" id="path-src"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="what-next">
     <div class="wrap">
       <div class="sec-head">
@@ -1276,7 +1277,7 @@ footer a{color:var(--paper)}
   <section id="keepers">
     <div class="wrap">
       <div class="panel shot">
-        <div class="shot-head"><h2>Keeper roulette</h2><p id="gk-lede">Three goalkeepers in eleven league games.</p></div>
+        <div class="shot-head"><h2>Keeper roulette</h2><p id="gk-lede">Three goalkeepers in twelve league games.</p></div>
         <div class="gk-cards" id="gk-cards"></div>
         <div class="gk-games" id="gk-games"></div>
         <div class="gk-labs" id="gk-labs"></div>
@@ -1335,7 +1336,7 @@ footer a{color:var(--paper)}
     <div class="wrap">
       <div class="sec-head">
         <h2>The chameleon</h2>
-        <p>Eleven games, eleven different Chelseas. No plan you could recognise from one week to the next.</p>
+        <p>Twelve games, twelve different Chelseas. No plan you could recognise from one week to the next.</p>
       </div>
       <figure class="cham-quote">
         <blockquote id="cham-quote"></blockquote>
@@ -1348,7 +1349,7 @@ footer a{color:var(--paper)}
           <div id="cham-svg" class="cham-svg"></div>
         </div>
         <div class="panel cham-shapes">
-          <h3>Eleven games, five systems</h3>
+          <h3>Twelve games, five systems</h3>
           <ol id="cham-shapes"></ol>
         </div>
       </div>
@@ -1390,7 +1391,7 @@ footer a{color:var(--paper)}
           <div><h3>Every BlueCo manager, by xG difference</h3><p class="sub" id="mgr-sub">Chances created minus chances conceded, per league game.</p></div>
           <div class="f10-tabs" id="mgr-tabs" role="tablist">
             <button type="button" role="tab" data-v="all" aria-selected="true">Whole spell</button>
-            <button type="button" role="tab" data-v="f10" aria-selected="false">First 11 games</button>
+            <button type="button" role="tab" data-v="f10" aria-selected="false">First 12 games</button>
           </div>
         </div>
         <div class="mgr-axis" aria-hidden="true"><span>Out-created</span><span>Out-creating</span></div>
@@ -1472,8 +1473,8 @@ footer a{color:var(--paper)}
   <section id="first-ten">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Eleven games in</h2>
-        <p>Every Chelsea manager's first eleven Premier League games since 2004. Nineteen starts. Alonso's is one of the worst.</p>
+        <h2>Twelve games in</h2>
+        <p>Every Chelsea manager's first twelve Premier League games since 2004. Nineteen starts. Alonso's is one of the worst.</p>
       </div>
       <div class="f10">
         <div class="f10-facts" id="f10-facts"></div>
@@ -1482,8 +1483,8 @@ footer a{color:var(--paper)}
             <button type="button" role="tab" data-m="pts" aria-selected="true">Points</button>
             <button type="button" role="tab" data-m="ga" aria-selected="false">Goals conceded</button>
           </div>
-          <h3 id="f10-h">Points after eleven games</h3>
-          <p class="sub" id="f10-sub">Each spell counted separately. Interim spells under eleven league games left out.</p>
+          <h3 id="f10-h">Points after twelve games</h3>
+          <p class="sub" id="f10-sub">Each spell counted separately. Interim spells under twelve league games left out.</p>
           <ol class="f10-list" id="f10-list"></ol>
           <p class="muted f10-src" id="f10-src"></p>
         </div>
@@ -1811,38 +1812,38 @@ const SITE = {
     { date:'2026-12-05', opp:'Liverpool',         venue:'H', comp:'Premier League' },
   ],
 
-  /* First eleven Premier League games of every Chelsea spell since 2004. me:true = highlighted */
+  /* First twelve Premier League games of every Chelsea spell since 2004 (data key keeps its old name). me:true = highlighted */
   FIRST10: [
-    { who:'Guus Hiddink', yr:2009, w:9, d:1, l:1, gf:19, ga:7 },
-    { who:'Carlo Ancelotti', yr:2009, w:9, d:0, l:2, gf:25, ga:8 },
-    { who:'Maurizio Sarri', yr:2018, w:8, d:3, l:0, gf:27, ga:8 },
-    { who:'José Mourinho', yr:2004, w:8, d:2, l:1, gf:16, ga:3 },
-    { who:'Avram Grant', yr:2007, w:7, d:2, l:2, gf:17, ga:4 },
-    { who:'Luiz Felipe Scolari', yr:2008, w:8, d:2, l:1, gf:27, ga:4 },
-    { who:'Antonio Conte', yr:2016, w:8, d:1, l:2, gf:26, ga:9 },
-    { who:'Thomas Tuchel', yr:2021, w:6, d:4, l:1, gf:13, ga:7 },
-    { who:'José Mourinho', yr:2013, w:6, d:3, l:2, gf:18, ga:10 },
-    { who:'Frank Lampard', yr:2019, w:7, d:2, l:2, gf:25, ga:17 },
-    { who:'André Villas-Boas', yr:2011, w:7, d:1, l:3, gf:24, ga:15 },
-    { who:'Rafael Benítez', yr:2012, w:5, d:4, l:2, gf:21, ga:11 },
-    { who:'Enzo Maresca', yr:2024, w:5, d:4, l:2, gf:21, ga:13 },
-    { who:'Guus Hiddink', yr:2015, w:4, d:7, l:0, gf:20, ga:11 },
-    { who:'Liam Rosenior', yr:2026, w:5, d:2, l:4, gf:19, ga:17 },
-    { who:'Xabi Alonso', yr:2026, w:5, d:1, l:5, gf:20, ga:20, me:true },
-    { who:'Graham Potter', yr:2022, w:4, d:3, l:4, gf:12, ga:10, gone:true },
-    { who:'Roberto Di Matteo', yr:2012, w:5, d:3, l:3, gf:18, ga:14 },
-    { who:'Mauricio Pochettino', yr:2023, w:4, d:3, l:4, gf:17, ga:12, gone:true },
+    { who:'Guus Hiddink', yr:2009, w:10, d:1, l:1, gf:21, ga:7 },
+    { who:'Carlo Ancelotti', yr:2009, w:10, d:0, l:2, gf:29, ga:8 },
+    { who:'José Mourinho', yr:2004, w:9, d:2, l:1, gf:17, ga:3 },
+    { who:'Luiz Felipe Scolari', yr:2008, w:9, d:2, l:1, gf:29, ga:4 },
+    { who:'Antonio Conte', yr:2016, w:9, d:1, l:2, gf:27, ga:9 },
+    { who:'Maurizio Sarri', yr:2018, w:8, d:4, l:0, gf:27, ga:8 },
+    { who:'Avram Grant', yr:2007, w:8, d:2, l:2, gf:18, ga:4 },
+    { who:'Frank Lampard', yr:2019, w:8, d:2, l:2, gf:27, ga:17 },
+    { who:'Thomas Tuchel', yr:2021, w:7, d:4, l:1, gf:17, ga:8 },
+    { who:'José Mourinho', yr:2013, w:7, d:3, l:2, gf:21, ga:10 },
+    { who:'Guus Hiddink', yr:2015, w:6, d:6, l:0, gf:24, ga:12 },
+    { who:'Rafael Benítez', yr:2012, w:6, d:4, l:2, gf:25, ga:11 },
+    { who:'Enzo Maresca', yr:2024, w:6, d:4, l:2, gf:23, ga:14 },
+    { who:'André Villas-Boas', yr:2011, w:7, d:1, l:4, gf:25, ga:17 },
+    { who:'Roberto Di Matteo', yr:2012, w:6, d:3, l:3, gf:20, ga:14 },
+    { who:'Liam Rosenior', yr:2026, w:5, d:2, l:5, gf:19, ga:18 },
+    { who:'Xabi Alonso', yr:2026, w:5, d:1, l:6, gf:22, ga:23, me:true },
+    { who:'Mauricio Pochettino', yr:2023, w:4, d:4, l:4, gf:21, ga:16, gone:true },
+    { who:'Graham Potter', yr:2022, w:4, d:3, l:5, gf:13, ga:12, gone:true },
   ],
   FIRST10_FACTS: [
-    { v:'17th', k:'of 19 Chelsea starts since 2004. <b>Only Potter and Pochettino began worse.</b>', hot:true },
-    { v:'5', k:'defeats in his first eleven. <b>The most of any Chelsea manager since 2004.</b> Nobody else lost more than four.', hot:true },
-    { v:'20', k:'goals conceded. <b>The most of any Chelsea start since 2004.</b> Lampard and Rosenior let in 17. Mourinho let in 3.', hot:true },
+    { v:'17th', k:'of 19 Chelsea starts since 2004, level with Pochettino. <b>Only Potter began worse.</b>', hot:true },
+    { v:'6', k:'defeats in his first twelve. <b>The most of any Chelsea manager since 2004.</b> Nobody else lost more than five.', hot:true },
+    { v:'23', k:'goals conceded. <b>The most of any Chelsea start since 2004.</b> Rosenior let in 18. Mourinho let in 3.', hot:true },
     { v:'−1', k:'point behind <b>Liam Rosenior</b>, the man he replaced, who took over mid-season.' },
-    { v:'2/2', k:'of the managers below him are <b>gone</b>. Potter was sacked. Pochettino lasted one season.' },
+    { v:'2/2', k:'of the managers level with or below him are <b>gone</b>. Potter was sacked. Pochettino lasted one season.' },
   ],
   FIRST10_REAL_BEFORE: 2022,       // spells before this year get the # mark
   FIRST10_REAL_NOTE: 'Squad made up of real footballers.',
-  FIRST10_SOURCE: 'Sources: StatMuse, FBref, Sky Sports, Premier League results.',
+  FIRST10_SOURCE: 'Results: OpenFootball (Premier League results, every season since 2004/05), checked against FBref.',
 
   /* The BlueCo era in one line. One row per league game, oldest first:
      [date, manager, opponent, H/A, score (Chelsea first), Chelsea xG, opponent xG]. Add a row after each game. */
@@ -2014,7 +2015,7 @@ const SITE = {
     rows:[
       { c:'No identity', both:true,
         m:'No consistent attacking patterns. Leaned on individual quality to bail the team out.', md:'r/realmadrid, 11 Jan 2026',
-        ch:'Five systems in eleven games. Possession anywhere from 26% to 69%.', chd:'See “The chameleon”' },
+        ch:'Five systems in twelve games. Possession anywhere from 26% to 69%.', chd:'See “The chameleon”' },
       { c:'Formation roulette', both:true,
         m:'A dull 3-5-2 that made almost no chances.', md:'r/realmadrid, 24 Oct 2026',
         ch:'A 3-4-3 for five games, then 4-4-2, a hybrid, a strikerless 4-4-2 and a 4-3-3.', chd:'Last Word on Sports, FourFourTwo' },
@@ -2055,6 +2056,7 @@ const SITE = {
       ['Game 9','A first half “mess” with Palmer dropping deep. Fixed at half-time with a 4-2-3-1.'],
       ['Game 10','A three-man midfield for the first time. Neto up front, no striker again. 0–1.'],
       ['Game 11','Back to a back four and a 4-2-3-1 against Leeds. Caicedo off injured after 22 minutes. 1–4.'],
+      ['Game 12','Caicedo at centre-back, Henderson and Welbeck, both 36, in the spine. Fixed at half-time with Emegha and Colwill. 2–3.'],
     ],
     // Starting XI changes after 10 league games (BBC Sport, 8 Nov). rest = the most any other club has made
     xiChanges:{ rows:[ ['Tottenham',28], ['Chelsea',24,true] ], rest:23, gaps:9 },
@@ -2094,14 +2096,14 @@ const SITE = {
     source:'xG: RShiri/XEPL Premier League database (first five games model-estimated, last five provider xG), so every manager is measured the same way. Possession: CrunchClash. Expected points: OddAlerts, Kepler, The Fishy.',
     // Every BlueCo manager with 9+ league games. xgd = xG difference per game, ppg = points per game
     managers:[
-      { name:'Graham Potter', yrs:'2022–23', all:{ neg:8, bad:1, n:22, xgd:0.17, ppg:1.27 }, f10:{ n:11, xgd:-0.26, ppg:1.36 } },
+      { name:'Graham Potter', yrs:'2022–23', all:{ neg:8, bad:1, n:22, xgd:0.17, ppg:1.27 }, f10:{ n:12, xgd:-0.09, ppg:1.25 } },
       { name:'Frank Lampard', yrs:'2023, interim', all:{ neg:6, bad:2, n:9, xgd:-0.59, ppg:0.56 }, f10:{ n:9, xgd:-0.59, ppg:0.56 } },
-      { name:'Mauricio Pochettino', yrs:'2023–24', all:{ neg:13, bad:3, n:38, xgd:0.46, ppg:1.66 }, f10:{ n:11, xgd:0.92, ppg:1.36 } },
-      { name:'Enzo Maresca', yrs:'2024–26', all:{ neg:23, bad:1, n:57, xgd:0.36, ppg:1.74 }, f10:{ n:11, xgd:0.21, ppg:1.73 } },
-      { name:'Liam Rosenior', yrs:'2026', all:{ neg:4, bad:1, n:13, xgd:0.59, ppg:1.31 }, f10:{ n:11, xgd:0.79, ppg:1.55 } },
-      { name:'Xabi Alonso', yrs:'2026–', me:true, all:{ neg:7, bad:3, n:11, xgd:-0.23, ppg:1.45 }, f10:{ n:11, xgd:-0.23, ppg:1.45 } },
+      { name:'Mauricio Pochettino', yrs:'2023–24', all:{ neg:13, bad:3, n:38, xgd:0.46, ppg:1.66 }, f10:{ n:12, xgd:0.87, ppg:1.33 } },
+      { name:'Enzo Maresca', yrs:'2024–26', all:{ neg:23, bad:1, n:57, xgd:0.36, ppg:1.74 }, f10:{ n:12, xgd:0.28, ppg:1.83 } },
+      { name:'Liam Rosenior', yrs:'2026', all:{ neg:4, bad:1, n:13, xgd:0.59, ppg:1.31 }, f10:{ n:12, xgd:0.79, ppg:1.42 } },
+      { name:'Xabi Alonso', yrs:'2026–', me:true, all:{ neg:8, bad:3, n:12, xgd:-0.23, ppg:1.33 }, f10:{ n:12, xgd:-0.23, ppg:1.33 } },
     ],
-    managersNote:'Premier League only, August 2022 to 21 November 2026. Tuchel (6 games under BlueCo) and caretakers Saltor and McFarlane left out.',
+    managersNote:'Premier League only, August 2022 to 27 November 2026. Tuchel (6 games under BlueCo) and caretakers Saltor and McFarlane left out.',
     // Every league game since August 2022 with an xG difference of −1.00 or worse
     badDays:[
       ['2022-11-06','Graham Potter','Varsenal','H','0–1',0.21,2.05],
@@ -2173,54 +2175,61 @@ const SITE = {
      select all the text on the page (Ctrl/Cmd+A), copy, and paste it between the
      backticks below, replacing what is there. Everything else is read from the text. */
   NEXT: {
-    source:'https://fixtureshark.com/football/history/what-happened-next?league=E0&pos=8',
-    LINE: 17,   // optional: points that split the chart. Leave it out to work it out from the data
+    source:'https://fixtureshark.com/football/history/what-happened-next?league=E0',
+    NOW: { team:'Chelsea', pts:16 },   // used when the paste is by points, not by position
     RAW: `What happened next?
 League
 Premier League
 After matches
-11
+12
 By
-Position
-Position (e.g. 1 or 18-20)
-8
-Premier League teams 8th after 11 matches: 2 of 31 (6%) won the league, 0 of 31 (0%) were relegated.
-
-In the table now: Chelsea (8th, 16 pts).
+Points
+Points (e.g. 20-22)
+16
+Premier League teams on 16 points after 12 matches: 0 of 40 (0%) won the league, 2 of 40 (5%) were relegated.
 
 Every team-season
-Season ↓	Team	After 11	Points then	Finished	Final points
-2025/26	Liverpool	8th	18	5th	60
-2024/25	Newcastle	8th	18	5th	66
-2023/24	Manchester United	8th	18	8th	60
-2022/23	Brighton	8th	15	6th	62
-2021/22	Wolves	8th	16	10th	51
-2020/21	Manchester City	8th	19	1st ★	86
-2019/20	Brighton	8th	15	15th	41
-2018/19	Watford	8th	19	11th	50
-2017/18	Brighton	8th	15	15th	40
-2016/17	Watford	8th	15	17th	40
-2015/16	Liverpool	8th	17	8th	60
-2014/15	Newcastle	8th	16	15th	39
-2013/14	Manchester City	8th	19	1st ★	86
-2012/13	Varsenal	8th	16	4th	73
-2011/12	Aston Villa	8th	15	16th	38
-2010/11	Sunderland	8th	15	10th	47
-2009/10	Sunderland	8th	17	13th	44
-2008/09	Fulham	8th	14	7th	53
-2007/08	Aston Villa	8th	18	6th	60
-2006/07	Wigan	8th	17	17th	38
-2005/06	Liverpool	8th	19	3rd	82
-2004/05	Newcastle	8th	16	14th	44
-2003/04	Liverpool	8th	17	4th	60
-2002/03	Blackburn	8th	18	6th	60
-2001/02	Tottenham	8th	17	9th	50
-2000/01	Chelsea	8th	16	6th	61
-1999/00	Everton	8th	17	13th	50
-1998/99	West Ham	8th	16	5th	57
-1997/98	Derby	8th	17	9th	55
-1996/97	Aston Villa	8th	15	5th	61
-1995/96	Leeds	8th	20	13th	43`,
+Season ↓	Team	After 12	Points then	Finished	Final points
+2025/26	Brentford	13th	16	9th	53
+2024/25	Manchester United	12th	16	15th	42
+2023/24	Chelsea	10th	16	6th	63
+2023/24	Brentford	11th	16	16th	39
+2022/23	Liverpool	9th	16	5th	67
+2022/23	Crystal Palace	10th	16	11th	45
+2021/22	Crystal Palace	10th	16	12th	48
+2019/20	Manchester United	7th	16	3rd	66
+2019/20	Wolves	8th	16	7th	59
+2019/20	Bournemouth	9th	16	18th ↓	34
+2018/19	Wolves	11th	16	7th	57
+2017/18	Brighton	9th	16	15th	40
+2016/17	West Brom	9th	16	10th	45
+2015/16	Watford	11th	16	13th	45
+2015/16	Stoke	12th	16	9th	51
+2012/13	Fulham	9th	16	12th	43
+2012/13	Swansea	10th	16	9th	46
+2011/12	Everton	8th	16	7th	56
+2010/11	Bolton	6th	16	14th	46
+2010/11	Tottenham	7th	16	5th	62
+2010/11	Sunderland	8th	16	10th	47
+2010/11	Liverpool	9th	16	6th	58
+2010/11	Aston Villa	10th	16	9th	48
+2010/11	West Brom	11th	16	11th	47
+2009/10	Stoke	9th	16	11th	47
+2009/10	Blackburn	10th	16	10th	50
+2009/10	Burnley	11th	16	18th ↓	30
+2006/07	Reading	11th	16	8th	55
+2004/05	Newcastle	9th	16	14th	44
+2003/04	Newcastle	10th	16	5th	56
+2002/03	Southampton	10th	16	8th	52
+2001/02	Everton	11th	16	15th	43
+2001/02	Bolton	12th	16	16th	40
+2000/01	Chelsea	11th	16	6th	61
+2000/01	Sunderland	12th	16	7th	57
+1998/99	Liverpool	11th	16	7th	54
+1997/98	Wimbledon	10th	16	15th	44
+1997/98	West Ham	11th	16	8th	56
+1996/97	Sheffield Wednesday	10th	16	7th	57
+1995/96	Chelsea	10th	16	11th	50`,
   },
 
   /* Where this is heading. ppg = points per game for the rest of the season.
@@ -2234,13 +2243,13 @@ Season ↓	Team	After 11	Points then	Finished	Final points
     ],
     // hist = average points per game in the last 28 games for that group
     samples: [
-      { id:'all', name:'All 200', n:200, count:{ down:52, same:101, up:47 }, hist:1.384 },
-      { id:'near', name:'15–17 pts', n:37, count:{ down:13, same:19, up:5 }, hist:1.454 },
-      { id:'exact', name:'16 pts, 4 lost', n:4, count:{ down:2, same:2, up:0 }, hist:1.339,
-        teams:[ ['Chelsea 2019/20',66,'4th'], ['Everton 2020/21',59,'10th'], ['Wolves 2021/22',51,'10th'], ['Tottenham 2024/25',38,'17th'] ] },
+      { id:'all', name:'All 200', n:200, count:{ down:48, same:105, up:47 }, hist:1.385 },
+      { id:'near', name:'15–17 pts', n:31, count:{ down:8, same:19, up:4 }, hist:1.297 },
+      { id:'exact', name:'16 pts', n:10, count:{ down:3, same:5, up:2 }, hist:1.304,
+        teams:[ ['Liverpool 2022/23',67,'5th'], ['Chelsea 2023/24',63,'6th'], ['Wolves 2018/19',57,'7th'], ['Brentford 2025/26',53,'9th'], ['Crystal Palace 2021/22',48,'12th'], ['West Brom 2016/17',45,'10th'], ['Crystal Palace 2022/23',45,'11th'], ['Man United 2024/25',42,'15th'], ['Brighton 2017/18',40,'15th'], ['Brentford 2023/24',39,'16th'] ] },
     ],
     defaultSample:'near', defaultScenario:'hist',
-    note:'Every Premier League team-season 2016/17 to 2025/26: 200 teams, 3,800 games. First 10 games against the last 28. “Same” = within ±0.30 points a game. Data: OpenFootball. History, not a forecast.',
+    note:'Every Premier League team-season 2016/17 to 2025/26: 200 teams, 3,800 games. First 12 games against the last 26. None of the 31 teams on 15–17 points after 12 finished in the top four. “Same” = within ±0.30 points a game. Data: OpenFootball. History, not a forecast.',
     // rough PL points by finishing position, recent seasons
     typical:[91,84,75,70,67,63,60,57,54,51,49,47,45,43,41,38,35,32,27,20],
   },
@@ -2632,8 +2641,8 @@ Season ↓	Team	After 11	Points then	Finished	Final points
     const all = SITE.FIRST10.map(r => ({ ...r, pts: r.w*3 + r.d }));
     const hasGA = all.every(r => r.ga != null);
     const MODES = {
-      pts: { key:'pts', sort:(a,b) => b.pts - a.pts || b.w - a.w, h:'Points after eleven games', sub:'Each spell counted separately. Interim spells under eleven league games left out.', rec:r => `${r.w}-${r.d}-${r.l}` },
-      ga:  { key:'ga', sort:(a,b) => b.ga - a.ga || a.pts - b.pts, h:'Goals conceded in eleven games', sub:'Leakiest first. Goals scored–conceded on the right.', rec:r => `${r.gf}–${r.ga}` },
+      pts: { key:'pts', sort:(a,b) => b.pts - a.pts || b.w - a.w, h:'Points after twelve games', sub:'Each spell counted separately. Interim spells under twelve league games left out.', rec:r => `${r.w}-${r.d}-${r.l}` },
+      ga:  { key:'ga', sort:(a,b) => b.ga - a.ga || a.pts - b.pts, h:'Goals conceded in twelve games', sub:'Leakiest first. Goals scored–conceded on the right.', rec:r => `${r.gf}–${r.ga}` },
     };
     let shown = false;
     const render = m => {
@@ -3078,7 +3087,7 @@ Season ↓	Team	After 11	Points then	Finished	Final points
   /* Madrid warned us */
   if (SITE.DEJA && $('deja-list')) {
     const D = SITE.DEJA, both = D.rows.filter(r => r.both).length;
-    $('deja-score').innerHTML = `<b>${both}/${D.rows.length}</b><span>of the complaints Madrid fans made about Alonso are already being made at Chelsea. <strong>After eleven games.</strong></span>`;
+    $('deja-score').innerHTML = `<b>${both}/${D.rows.length}</b><span>of the complaints Madrid fans made about Alonso are already being made at Chelsea. <strong>After twelve games.</strong></span>`;
     $('deja-list').innerHTML = D.rows.map(r => `<li class="${r.both ? 'both' : 'notyet'}">
       <span class="c"><i>${r.both ? 'Both' : 'Not yet'}</i>${esc(r.c)}</span>
       <span class="m">${esc(r.m)}${r.md ? `<small>${esc(r.md)}</small>` : ''}</span>
@@ -3230,7 +3239,7 @@ Season ↓	Team	After 11	Points then	Finished	Final points
         const best = rows[0];
         $('mgr-call').innerHTML = view === 'all'
           ? `<b>${rank}th of ${rows.length}.</b> ${below.length ? `Only ${esc(below.map(r => r.name.split(' ').pop() + (r.yrs.includes('interim') ? '’s interim spell' : '')).join(' and '))} ended up worse.` : ''} Every other permanent BlueCo manager created more than he conceded. Even Potter.`
-          : `<b>${rank}th of ${rows.length}</b> over the first eleven. ${esc(best.name.split(' ').pop())}'s Chelsea were <b>${(best.v.xgd - me.v.xgd).toFixed(1)} xG a game better</b> at the same stage, ${best.v.ppg > me.v.ppg ? 'and took more points too' : 'but took fewer points'}. ${rows.filter(r => !r.me && r.v.xgd < me.v.xgd).map(r => r.name.split(' ').pop()).join(' and ')} ${rows.filter(r => !r.me && r.v.xgd < me.v.xgd).length > 1 ? 'were' : 'was'} worse.`;
+          : `<b>${rank}th of ${rows.length}</b> over the first twelve. ${esc(best.name.split(' ').pop())}'s Chelsea were <b>${(best.v.xgd - me.v.xgd).toFixed(1)} xG a game better</b> at the same stage, ${best.v.ppg > me.v.ppg ? 'and took more points too' : best.v.ppg < me.v.ppg ? 'but took fewer points' : 'with the same points'}. ${rows.filter(r => !r.me && r.v.xgd < me.v.xgd).map(r => r.name.split(' ').pop()).join(' and ')} ${rows.filter(r => !r.me && r.v.xgd < me.v.xgd).length > 1 ? 'were' : 'was'} worse.`;
         if (mgrShown) requestAnimationFrame(() => requestAnimationFrame(growM));
       };
       function growM() { mgrShown = true; document.querySelectorAll('#mgr-rows i').forEach((b,k) => { b.style.transitionDelay = reduce ? '0s' : (k*.05)+'s'; b.style.width = b.dataset.w + '%'; }); }
@@ -3686,12 +3695,68 @@ Season ↓	Team	After 11	Points then	Finished	Final points
     const nowM = raw.match(/In the table now:\s*(.+?)\s*\((\d+)(?:st|nd|rd|th),\s*(\d+)\s*pts?\)/i);
     const R = [];
     raw.split(/\r?\n/).forEach(line => {
-      const m = line.trim().match(/^(\d{4}\/\d{2})\s+(.+?)\s+(\d+)(?:st|nd|rd|th)\s+(\d+)\s+(\d+)(?:st|nd|rd|th)\s*★?\s+(\d+)$/);
+      const m = line.trim().match(/^(\d{4}\/\d{2})\s+(.+?)\s+(\d+)(?:st|nd|rd|th)\s+(\d+)\s+(\d+)(?:st|nd|rd|th)\s*[★↓]?\s+(\d+)$/);
       if (m) R.push({ season:m[1], team:m[2], pts:+m[4], fin:+m[5], final:+m[6] });
     });
     const pos = posM ? +posM[1] : (R[0] ? null : null);
     const NOW = nowM ? { team:nowM[1], pos:+nowM[2], pts:+nowM[3] } : null;
-    if (R.length >= 5 && NOW) {
+    const ptsM = raw.match(/teams\s+on\s+(\d+)\s+points\s+after\s+(\d+)\s+matches/i);
+    if (ptsM && R.length >= 5) {
+      /* By points: everyone in the sample had the same points, so show where they finished */
+      const PTS = +ptsM[1], NW = SITE.NEXT.NOW || { team:'Chelsea', pts:PTS }, n = R.length;
+      const cnt = f => R.filter(f).length, avgF = R.reduce((t, r) => t + r.fin, 0) / n;
+      const sorted = R.map(r => r.fin).sort((a, b) => a - b), med = n % 2 ? sorted[(n - 1) / 2] : (sorted[n / 2 - 1] + sorted[n / 2]) / 2;
+      const t4 = R.filter(r => r.fin <= 4), own = R.filter(r => /^Chelsea$/i.test(r.team));
+      $('wn-title').textContent = `What happens to teams on ${PTS} points after ${after} games?`;
+      $('wn-lede').textContent = `Every Premier League team on ${PTS} points after ${after} games since ${R[n-1].season}, and where they finished.`;
+      $('wn-h3').textContent = `Where the ${n} teams on ${PTS} points finished`;
+      $('wn-nums').innerHTML = [
+        { v:`${t4.length}<small>/ ${n}</small>`, k:`<b>Made the top four.</b>${t4.length ? ' ' + t4.map(r => esc(r.team) + ' ' + esc(r.season)).join(', ') + '.' : ' Not one.'}`, cls:'hot' },
+        { v:`${cnt(r => r.fin <= 6)}<small>/ ${n}</small>`, k:`<b>Made the top six.</b>`, cls:'' },
+        { v:avgF.toFixed(1), k:`<b>Average finish</b> (median ${med}).`, cls:'' },
+        { v:`${cnt(r => r.fin >= 18)}<small>/ ${n}</small>`, k:`<b>Relegated.</b> Nobody won the league.`, cls:'' },
+      ].map(f => `<div class="num ${f.cls}"><div class="v">${f.v}</div><div class="k">${f.k}</div></div>`).join('');
+      $('wn-call').innerHTML = `${esc(NW.team)} are on <b>${NW.pts} points after ${after}</b>. Of the ${n} teams who were there before, <b>${t4.length === 1 ? 'one' : t4.length}</b> made the top four.` +
+        (own.length ? ` Chelsea have been here ${own.length === 1 ? 'once' : own.length === 2 ? 'twice' : own.length + ' times'} before: ${own.map(r => `${esc(r.season)} ${ord(r.fin)}`).join(', ')}. <b>None of them made the top four.</b>` : '');
+      $('wn-src').innerHTML = `${n} team-seasons, ${esc(R[n-1].season)}–${esc(R[0].season)}. Source: <a href="${esc(SITE.NEXT.source)}" target="_blank" rel="noopener">FixtureShark, What happened next?</a>`;
+      wnTicker = { t:`${PTS} PTS AFTER ${after}: ${t4.length} OF ${n} MADE THE TOP FOUR`, c:'bad' };
+      const colour = f => f === 1 ? 'var(--amber)' : f <= 4 ? 'var(--green)' : f <= 6 ? 'var(--sky)' : f >= 18 ? 'var(--red)' : '#4a5db8';
+      const CODE = t => ({ 'Manchester United':'MUN', 'Crystal Palace':'CRY', 'West Brom':'WBA', 'Aston Villa':'AVL', 'Sheffield Wednesday':'SHW', 'West Ham':'WHU', 'Tottenham':'TOT' })[t] || t.replace(/[^A-Za-z]/g, '').slice(0,3).toUpperCase();
+      const drawP = () => {
+        const box = $('wn-chart'), tip = $('wn-tip');
+        let sc = box.querySelector('.wn-scroll'); if (!sc) { sc = document.createElement('div'); sc.className = 'wn-scroll'; box.prepend(sc); }
+        const avail = Math.round(box.getBoundingClientRect().width), W = Math.max(640, avail);
+        $('wn-swipe').hidden = avail >= 640;
+        const stack = {}; R.forEach(r => stack[r.fin] = (stack[r.fin] || 0) + 1);
+        const maxS = Math.max(...Object.values(stack)), m = { l:12, r:12, t:30, b:40 }, rowH = 28;
+        const H = m.t + maxS * rowH + m.b, cw = (W - m.l - m.r) / 20, X = f => m.l + (f - .5) * cw;
+        let g = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Final position of ${n} teams on ${PTS} points after ${after} games">`;
+        g += `<rect x="${m.l}" y="${m.t}" width="${cw*4}" height="${H-m.t-m.b}" fill="rgba(79,227,154,.08)"/><text class="zone" x="${m.l + 6}" y="${m.t - 10}" fill="var(--green)">Top four</text>`;
+        g += `<rect x="${X(18) - cw/2}" y="${m.t}" width="${cw*3}" height="${H-m.t-m.b}" fill="rgba(255,75,62,.10)"/><text class="zone" x="${W - m.r - 4}" y="${m.t - 10}" text-anchor="end" fill="var(--red)">Relegation</text>`;
+        for (let f = 1; f < 20; f++) { const key = f === 4 || f === 6 || f === 17; g += `<line x1="${X(f) + cw/2}" x2="${X(f) + cw/2}" y1="${m.t}" y2="${H - m.b}" stroke="${key ? 'rgba(245,247,255,.38)' : 'rgba(255,255,255,.08)'}"${key ? ' stroke-dasharray="4 4"' : ''}/>`; }
+        for (let f = 1; f <= 20; f++) g += `<text class="ax" x="${X(f)}" y="${H - m.b + 16}" text-anchor="middle">${f}</text>`;
+        g += `<text class="axt" x="${(m.l + W - m.r)/2}" y="${H - 6}" text-anchor="middle">Final position</text>`;
+        const used = {};
+        R.forEach((r, i) => {
+          const k = used[r.fin] = (used[r.fin] || 0) + 1, y = H - m.b - (k - .5) * rowH, dark = r.fin <= 6 && r.fin > 0;
+          const ch = /^Chelsea$/i.test(r.team);
+          g += `<g class="pill" data-i="${i}" tabindex="0" transform="translate(${X(r.fin).toFixed(1)},${y.toFixed(1)})"><rect x="-17" y="-12" width="34" height="24" rx="6" fill="${colour(r.fin)}" stroke="${ch ? 'var(--paper)' : 'var(--blue-ink)'}" stroke-width="${ch ? 2.5 : 1}"/>`
+            + `<text class="pc" y="-1.5" text-anchor="middle" fill="${dark ? 'var(--blue-ink)' : 'var(--paper)'}">${esc(CODE(r.team))}</text>`
+            + `<text class="py" y="9" text-anchor="middle" fill="${dark ? 'var(--blue-ink)' : 'var(--sky)'}">’${esc(r.season.slice(-2))}</text><title>${esc(r.team)} ${esc(r.season)}</title></g>`;
+        });
+        sc.innerHTML = g + '</svg>';
+        sc.querySelectorAll('.pill').forEach(d => {
+          const r = R[+d.dataset.i];
+          const show = () => { const bb = d.getBoundingClientRect(), pb = box.getBoundingClientRect();
+            tip.innerHTML = `<b>${esc(r.team)} ${esc(r.season)}</b>${r.pts} pts after ${after} · finished ${ord(r.fin)} on ${r.final}`;
+            tip.style.left = Math.min(pb.width - 90, Math.max(90, bb.left + bb.width/2 - pb.left)) + 'px'; tip.style.top = (bb.top - pb.top) + 'px'; tip.hidden = false; };
+          d.addEventListener('mouseenter', show); d.addEventListener('focus', show); d.addEventListener('click', show);
+          d.addEventListener('mouseleave', () => tip.hidden = true); d.addEventListener('blur', () => tip.hidden = true);
+        });
+      };
+      drawP();
+      let wpt; addEventListener('resize', () => { clearTimeout(wpt); wpt = setTimeout(drawP, 150); });
+    } else if (R.length >= 5 && NOW) {
       const top = R.filter(r => r.fin <= 4);
       const LINE = SITE.NEXT.LINE || (top.length ? Math.min(...top.map(r => r.pts)) : Math.max(...R.map(r => r.pts)) + 1);
       const hi = R.filter(r => r.pts >= LINE), lo = R.filter(r => r.pts < LINE);

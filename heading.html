@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Where is Alonso taking Chelsea? | Drag the slider</title>
-<meta name="description" content="Eleven games down, 27 to go. Drag the slider and see where Xabi Alonso's Chelsea finish. Based on 200 Premier League team-seasons.">
+<meta name="description" content="Twelve games down, 26 to go. Drag the slider and see where Xabi Alonso's Chelsea finish. Based on 200 Premier League team-seasons.">
 <link rel="canonical" href="https://hasxabialonsobeensackedyet.com/heading">
 <meta property="og:title" content="Where is Alonso taking Chelsea? Drag the slider.">
-<meta property="og:description" content="16 points from 11 games. History says 9th. Pick your own path for the last 27.">
+<meta property="og:description" content="16 points from 12 games. History says 11th. Pick your own path for the last 26.">
 <meta property="og:url" content="https://hasxabialonsobeensackedyet.com/heading">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://hasxabialonsobeensackedyet.com/og-heading.png">
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@TheManagerMeter">
 <meta name="twitter:title" content="Where is Alonso taking Chelsea? Drag the slider.">
-<meta name="twitter:description" content="16 points from 11 games. History says 9th. Pick your own path.">
+<meta name="twitter:description" content="16 points from 12 games. History says 11th. Pick your own path.">
 <meta name="twitter:image" content="https://hasxabialonsobeensackedyet.com/og-heading.png">
 <meta name="theme-color" content="#0d2a9c">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230d2a9c'/%3E%3Ctext x='50' y='70' font-family='Arial Black,Impact,sans-serif' font-size='52' font-weight='900' text-anchor='middle' fill='%23ff4b3e'%3ENO%3C/text%3E%3C/svg%3E">
@@ -143,7 +143,7 @@ body.video .cta{display:block}
   <header class="top">
     <p class="kicker"><a href="/">Has Xabi Alonso been sacked yet?</a> · The Manager Meter</p>
     <h1>Where is Alonso taking Chelsea? <em>Drag it.</em></h1>
-    <p class="lede">16 points from 11 games. 27 to go. Pick a path, or drag the slider, and see where they finish. Built on what 200 Premier League teams did after a start like this.</p>
+    <p class="lede">16 points from 12 games. 26 to go. Pick a path, or drag the slider, and see where they finish. Built on what 200 Premier League teams did after a start like this.</p>
   </header>
   <section id="path">
     <div class="path">
@@ -189,7 +189,7 @@ body.video .cta{display:block}
   if (qs.has('og')) document.body.classList.add('cap','og');
   if (qs.has('video')) document.body.classList.add('cap','video');
   // League results so far, oldest first. Add a letter after each game: W, D or L.
-  const FORM = 'WWLDLWWLWLL';
+  const FORM = 'WWLDLWWLWLLL';
   const SITE = {
   PATH: {
     scenarios: [
@@ -200,13 +200,13 @@ body.video .cta{display:block}
     ],
     // hist = average points per game in the last 28 games for that group
     samples: [
-      { id:'all', name:'All 200', n:200, count:{ down:52, same:101, up:47 }, hist:1.384 },
-      { id:'near', name:'15–17 pts', n:37, count:{ down:13, same:19, up:5 }, hist:1.454 },
-      { id:'exact', name:'16 pts, 4 lost', n:4, count:{ down:2, same:2, up:0 }, hist:1.339,
-        teams:[ ['Chelsea 2019/20',66,'4th'], ['Everton 2020/21',59,'10th'], ['Wolves 2021/22',51,'10th'], ['Tottenham 2024/25',38,'17th'] ] },
+      { id:'all', name:'All 200', n:200, count:{ down:48, same:105, up:47 }, hist:1.385 },
+      { id:'near', name:'15–17 pts', n:31, count:{ down:8, same:19, up:4 }, hist:1.297 },
+      { id:'exact', name:'16 pts', n:10, count:{ down:3, same:5, up:2 }, hist:1.304,
+        teams:[ ['Liverpool 2022/23',67,'5th'], ['Chelsea 2023/24',63,'6th'], ['Wolves 2018/19',57,'7th'], ['Brentford 2025/26',53,'9th'], ['Crystal Palace 2021/22',48,'12th'], ['West Brom 2016/17',45,'10th'], ['Crystal Palace 2022/23',45,'11th'], ['Man United 2024/25',42,'15th'], ['Brighton 2017/18',40,'15th'], ['Brentford 2023/24',39,'16th'] ] },
     ],
     defaultSample:'near', defaultScenario:'hist',
-    note:'Every Premier League team-season 2016/17 to 2025/26: 200 teams, 3,800 games. First 10 games against the last 28. “Same” = within ±0.30 points a game. Data: OpenFootball. History, not a forecast.',
+    note:'Every Premier League team-season 2016/17 to 2025/26: 200 teams, 3,800 games. First 12 games against the last 26. None of the 31 teams on 15–17 points after 12 finished in the top four. “Same” = within ±0.30 points a game. Data: OpenFootball. History, not a forecast.',
     // rough PL points by finishing position, recent seasons
     typical:[91,84,75,70,67,63,60,57,54,51,49,47,45,43,41,38,35,32,27,20],
   }
